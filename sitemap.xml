@@ -2,14 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://machinelearninglifescience.github.io/hdbo_benchmark/about/</loc>
+    <loc>/docs/hdbo/about/</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://machinelearninglifescience.github.io/hdbo_benchmark/b2/</loc>
+    <loc>/docs/hdbo/license/</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://machinelearninglifescience.github.io/hdbo_benchmark/benchmarks/</loc>
+    <loc>/</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://machinelearninglifescience.github.io/hdbo_benchmark/tags/</loc>
+    <loc>/docs/hdbo/credits/</loc>
+    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://machinelearninglifescience.github.io/hdbo_benchmark/</loc>
+    <loc>/benchmarks/</loc>
+  </url><url>
+    <loc>/tags/</loc>
   </url>
 </urlset>

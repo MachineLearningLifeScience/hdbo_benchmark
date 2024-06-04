@@ -2,31 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Welcome to HDBO on HDBO</title>
-    <link>https://machinelearninglifescience.github.io/hdbo_benchmark/</link>
+    <link>/</link>
     <description>Recent content in Welcome to HDBO on HDBO</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright © 2024 HDBO Team.</copyright>
-    <atom:link href="https://machinelearninglifescience.github.io/hdbo_benchmark/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>About</title>
-      <link>https://machinelearninglifescience.github.io/hdbo_benchmark/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://machinelearninglifescience.github.io/hdbo_benchmark/about/</guid>
-      <description>Lorem ipsum neural network convolutional GANs, deep reinforcement learning transformer models. Gradient descent tensor optimization backpropagation big data, cloud compute scalability quantum supremacy singularity.</description>
+      <title>HDBO</title>
+      <link>/docs/hdbo/about/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>/docs/hdbo/about/</guid>
+      <description>Optimizing discrete black-box functions is key in several domains, ranging from protein engineering to drug design. Due to the lack of gradient information and the need for sample efficiency, Bayesian optimization is an ideal candidate for these tasks.</description>
+    </item>
+    <item>
+      <title>License</title>
+      <link>/docs/hdbo/license/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>/docs/hdbo/license/</guid>
+      <description>Codebase &amp;nbsp; aaa&#xA;Documentation &amp;nbsp; bbb</description>
+    </item>
+    <item>
+      <title>Credits</title>
+      <link>/docs/hdbo/credits/</link>
+      <pubDate>Fri, 04 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>/docs/hdbo/credits/</guid>
+      <description> Frameworks and Libraries &amp;nbsp; Frameworks and Libraries &amp;nbsp; Frameworks and Libraries &amp;nbsp; </description>
     </item>
     <item>
       <title>Benchmarks</title>
-      <link>https://machinelearninglifescience.github.io/hdbo_benchmark/b2/</link>
+      <link>/benchmarks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://machinelearninglifescience.github.io/hdbo_benchmark/b2/</guid>
-      <description> Filter Aggregated by model Aggregated by dataset Model 1 Model 2 Model 3 Dataset 1 Dataset 2 Dataset 3 Col 0 Col 1 Col 2 Col 3 10 Model 1 &amp;nbsp; &amp;nbsp; 10 Model 2 &amp;nbsp; &amp;nbsp; 10 Model 3 &amp;nbsp; &amp;nbsp; 10 Dataset 1 &amp;nbsp; &amp;nbsp; 20 Dataset 2 &amp;nbsp; &amp;nbsp; 15 Dataset 3 &amp;nbsp; &amp;nbsp; </description>
-    </item>
-    <item>
-      <title>Benchmarks</title>
-      <link>https://machinelearninglifescience.github.io/hdbo_benchmark/benchmarks/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://machinelearninglifescience.github.io/hdbo_benchmark/benchmarks/</guid>
+      <guid>/benchmarks/</guid>
       <description>Lorem ipsum neural network convolutional GANs, deep reinforcement learning transformer models. Gradient descent tensor optimization backpropagation big data, cloud compute scalability quantum supremacy singularity.</description>
     </item>
   </channel>
