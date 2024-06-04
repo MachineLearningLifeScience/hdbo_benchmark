@@ -2,7 +2,7 @@
 title: Benchmarks
 description: Subtitle
 type: minimal
-# includeToc: false
+layout: single_wide
 ---
 
 > Lorem ipsum neural network convolutional GANs, deep reinforcement learning transformer models. Gradient descent tensor optimization backpropagation big data, cloud compute scalability quantum supremacy singularity. 

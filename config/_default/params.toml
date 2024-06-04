@@ -9,8 +9,8 @@
     loading = "lazy"
     breakpoint = "md"
     [main.externalLinks]
-        cue = false
-        tab = false
+        cue = true
+        tab = true
     [main.build]
         transpiler = "libsass"
 
@@ -35,14 +35,14 @@
     centerHeadline = false
     style = ""
 
-[home.feature]
-    orientation = "horizontal"
-    color = "secondary"
-    width = 8
-    align = "start"
+    [home.feature]
+        orientation = "horizontal"
+        color = "secondary"
+        width = 8
+        align = "start"
 
 [navigation]
-    anchor = false
+    anchor = true
     #logo = "/img/logo_icon.svg"
     logo = false
     color = "body"
@@ -51,9 +51,9 @@
     search = true
     searchModal = false
     breadcrumb = false
-    toc = false
-    sidebar = false
-    size = "md"
+    toc = true
+    sidebar = true
+    size = "lg"
 
 [messages]
     placement = "bottom-right"

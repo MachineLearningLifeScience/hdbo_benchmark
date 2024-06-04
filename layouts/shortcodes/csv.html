@@ -22,15 +22,19 @@
             <thead>
             <tr>
                 {{ range index $data 0}}
-                <th scope="col">{{ . | safeHTML }}</th>
+                    <th scope="col">{{ . | safeHTML }}</th>
                 {{ end }}
             </tr>
             </thead>
             <tbody>
                 {{ range after 1 $data }}
                 <tr>
-                    {{ range . }}
-                    <td>{{ . | safeHTML }}</td>
+                    {{ range first 1 . }}
+                        <th scope="row" class="font-monospace">{{ . | safeHTML }}</th>
+                    {{ end }}
+
+                    {{ range after 1 . }}
+                        <td>{{ . | safeHTML }}</td>
                     {{ end }}
                 </tr>
                 {{ end }}

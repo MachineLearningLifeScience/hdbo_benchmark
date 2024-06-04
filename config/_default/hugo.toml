@@ -4,8 +4,9 @@ paginate = 9
 enableGitInfo = false
 
 # additional settings
-baseURL = "https://machinelearninglifescience.github.io/hdbo_benchmark"
+baseURL = '/' #"https://machinelearninglifescience.github.io/hdbo_benchmark"
 canonifyURLs = false
+relativeURLs = true
 enableEmoji = true
 enableRobotsTXT = true
 enableInlineShortcodes = true
