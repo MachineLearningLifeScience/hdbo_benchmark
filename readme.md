@@ -1,6 +1,8 @@
 # HDBO Benchmark website
 
-This branch is for the source of the website only. The "rendered" website will be in the `gh-pages` branch. Do not confuse the two.
+This branch is for the source of the website. 
+
+The "rendered" or "hosted" website is in the `gh-pages` branch which. Do not confuse the two.
 
 ### How to run this:
 
@@ -61,5 +63,6 @@ cd public && git add --all && git commit -m "Publishing to gh-pages" && git push
 5) Go back to the main repo and push the changes to the master branch
 
 ```
-git push origin gh-pages
+cd ..
+git push origin website gh-pages 
 ```
