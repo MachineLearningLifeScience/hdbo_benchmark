@@ -1,0 +1,38 @@
+{
+    "title": "Benchmark",
+    "description": "This is benchmark data",
+    "items": [
+      {
+        "name": "Model 1",
+        "target": 10,
+        "category": "agg_model"
+      },
+      {
+        "name": "Model 2",
+        "target": 10,
+        "category": "agg_model"
+      },
+      {
+        "name": "Model 3",
+        "target": 10,
+        "category": "agg_model"
+      },
+      {
+        "name": "Dataset 1",
+        "target": 10,
+        "category": "agg_dataset"
+      },
+      {
+        "name": "Dataset 2",
+        "target": 20,
+        "category": "agg_dataset"
+      },
+      {
+        "name": "Dataset 3",
+        "target": 15,
+        "category": "agg_dataset"
+      }
+    ]
+  }
+  
+    

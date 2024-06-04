@@ -1,0 +1,15 @@
+<style>
+    figure.svg svg {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    figure.svg svg a {
+        position: absolute;
+        top: 0px;
+    }
+</style>
+
+<figure class="svg {{index .Params 1}}"> 
+{{ readFile (print (index .Params 0)) | safeHTML }}
+</figure>

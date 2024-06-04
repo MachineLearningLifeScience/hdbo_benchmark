@@ -1,0 +1,11 @@
+[en]
+    languageName = "English"
+    contentDir = "content"
+    weight = 1
+    [en.params.head]
+        tagline = "A Hugo Theme"
+    [en.params.social]
+        title = "Follow me"
+        caption = "I work on everything coding and tweet developer memes"
+    [en.params.footer]
+        # license = "Licensed under Creative Commons (<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' class='link-secondary' target='_blank' rel='noopener noreferrer'>CC BY-NC-SA 4.0</a>)."

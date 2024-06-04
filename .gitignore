@@ -1,71 +1,8 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+/_vendor
+/public
+/cache
+resources/
+node_modules/
 
-# C extensions
-*.so
-
-# Distribution / packaging
-dist/
-build/
-*.egg-info/
-
-# IDEs and editors
-.idea/
-.vscode/
-*.sublime-project
-*.sublime-workspace
-
-# Local development settings
-.env
-venv/
-env/
-
-# MacOS stuff
-.DS_Store
-
-# Experiment artifacts and data
-wandb/
-data/small_molecule_datasets/raw/
-data/small_molecule_datasets/processed/*.npz
-data/small_molecule_datasets/processed/*.pkl
-data/small_molecule_datasets/processed/zinc250k.csv
-data/trained_models/zinc_250k
-data/trained_models/vae_mario
-data/trained_models/vae_mario-*
-data/trained_models/gps
-data/benchmark_on_toy_objective/
-data/benchmark_on_toy_objective_*/
-data/benchmark_on_low_intrinsic_dimensionality/
-data/benchmark_on_low_intrinsic_dimensionality*/
-data/regressing_a_simple_function/
-reports/figures/regressing_a_simple_function/ExactGPModel*
-reports/figures/regressing_a_simple_function/ExactGPModelWithLogNormalPrior*
-reports/figures/regressing_a_simple_function/ExactGPWithPolynomialKernel*
-reports/figures/regressing_a_simple_function/ExactGPModel/
-reports/figures/regressing_a_simple_function/ExactGPModelWithLogNormalPrior/
-reports/figures/regressing_a_simple_function/ExactGPWithPolynomialKernel/
-local.*.sh
-*.png
-error*.log
-output*.log
-reports/figures/
-
-# Baxus output
-conf_dict.json
-*.txt.xz
-model_history.zip
-
-# TDC
-oracle/
-
-# Bounce
-data/bounce_results/
-
-# Results cache
-data/results_cache/
-
-# Running experiments locally
-*.local.sh
-*_local.py
+.DS_store
+.hugo_build.lock

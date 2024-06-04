@@ -1,0 +1,44 @@
+
+
+
+<!-- <img src="/img/mlls-logo.png" class="d-none-inline-light" alt="logo" height="30" width="30"> -->
+
+<!-- <div class="container-fluid bg-primary bg-opacity-{{ .Site.Params.style.themeOpacity | default "25" | safeHTML }}"> -->
+<div class="container-fluid"></div>
+    <div class="container">
+        <div class="row py-2">
+            <div class="col-lg-1 pt-2">
+                <img src="{{ absURL "img/mlls-logo.png" }}" class="pt-1 d-none-inline-dark" alt="logo" width="100">
+                <img src="{{ absURL "img/mlls-logo.png" }}" class="pt-1 d-none-inline-light" alt="logo" width="100">
+            </div>
+            <div class="col-md">
+                <div class="fs-3 fw-bold">{{ or .Site.Params.footer.socialTitle .Site.Params.social.title }}</div>
+                <p>{{ or .Site.Params.footer.socialCaption .Site.Params.social.caption }}</p>
+            </div>
+            <div class="col-md-auto py-4">
+                <small class="text-muted text-end">
+                    {{- $copyright := printf "%s © %s %s %s." (T "copyright") (dateFormat "2006" now) .Site.Title (T "rights") }}
+                    {{ cond (gt (len .Site.Copyright) 0) .Site.Copyright $copyright }}
+                    {{ .Site.Params.footer.license | safeHTML }}
+                    {{ if .Site.Params.main.endorse }}
+                        {{ $link := partial "assets/link.html" (dict "destination" (index site.Params.links "hinode") "text" "Hinode" "class" "link-bg-footer" "page" .Page) }}
+                        {{ T "poweredBy" $link | safeHTML }}
+                    {{ end }}
+                </small>
+            </div>
+        </div>
+    </div>
+        
+    <!-- <div class="container-xxl px-4 px-xxl-0">
+        <div class="row row-cols-2 py-3 align-items-center">
+            <div class="col col-6">
+                <div class="row justify-content-end p-0">
+                    <div class="col-12 col-md-8 p-0">
+                        <div class="fs-3 fw-bold">{{ or .Site.Params.footer.socialTitle .Site.Params.social.title }}</div>
+                        <p>{{ or .Site.Params.footer.socialCaption .Site.Params.social.caption }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

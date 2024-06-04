@@ -1,0 +1,12 @@
+{{ define "main" -}}
+    {{- $breakpoint := $.Scratch.Get "breakpoint" -}}
+    {{ $toc := .Render "single/panel-toc" }}
+    
+    <div class="container-xxl flex-fill p-4 px-xxl-0">
+        <div class="row">
+            <div class="col col-{{ $breakpoint.prev }}-12 col-{{ $breakpoint.current }}-12">
+                {{ .Render "single/main" }}
+            </div>
+        </div>            
+    </div>
+{{ end -}}

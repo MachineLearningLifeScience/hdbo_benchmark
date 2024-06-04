@@ -1,0 +1,77 @@
+<style>
+    .hidden { display: none; }
+</style>
+
+<nav class="navbar bg-body-tertiary border-bottom border-body sticky-top" style="border-radius: 5px 5px 0 0;">
+    <div class="container-fluid">
+        <span class="navbar-text">
+            Filter
+        </span>
+
+        <select id="category-select" class="form-select form-select-md mb-3" onchange="filterItems()">
+            <optgroup label="Aggregated view">
+                <option value="agg_model">Aggregated by model</option>
+                <option value="agg_dataset">Aggregated by dataset</option>
+            </optgroup>
+            <optgroup label="Filter by specific model">
+                <option value="model1">Model 1</option>
+                <option value="model2">Model 2</option>
+                <option value="model3">Model 3</option>
+            </optgroup>
+            <optgroup label="Filter by specific dataset">
+                <option value="model1">Dataset 1</option>
+                <option value="model2">Dataset 2</option>
+                <option value="model3">Dataset 3</option>
+            </optgroup>
+        </select>
+    </div>
+</nav>
+
+<table class="table table-hover round" style="background: #c1c1c1;">
+    <thead>
+      <tr>
+        <th scope="col">Col 0</th>
+        <th scope="col">Col 1</th>
+        <th scope="col">Col 2</th>
+        <th scope="col">Col 3</th>
+      </tr>
+    </thead>
+    <tbody>
+        {{ $data := site.Data.benchmarks }}
+        <!-- {{ $data.title }}, {{ $data.description }} -->
+
+        {{ range $data.items }}
+        <tr class='hidden item' data-category="{{ .category }}">
+            <th scope="row">{{ .target }}</th>
+            <td>{{ .name }}</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
+
+<!-- 
+<ul id="item-list">
+    {{ range $data.items }}
+    <li class="item" data-category="{{ .category }}">{{ .name }}: ${{ .price }}</li>
+    {{ end }}
+</ul> -->
+
+<script>
+    function filterItems() {
+        var select = document.getElementById('category-select');
+        var category = select.value;
+        var items = document.querySelectorAll('.item');
+
+        items.forEach(function(item) {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    }
+
+    filterItems()
+</script>

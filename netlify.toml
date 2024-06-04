@@ -1,0 +1,91 @@
+[build]
+    publish = "public"
+    command = "npm run build"
+
+[build.environment]
+    DART_SASS_VERSION = "1.77.0"
+    HUGO_VERSION = "0.125.7"
+    HUGO_ENV = "production"
+    HUGO_ENABLEGITINFO = "true"
+    NODE_VERSION = "18.20.2"
+    NPM_VERSION = "10.5.0"
+
+[[headers]]
+    for = "/*"
+    [headers.values]
+        Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+        X-Content-Type-Options = "nosniff"
+        X-XSS-Protection = "1; mode=block"
+        Content-Security-Policy = """\
+            default-src 'self'; \
+            child-src 'self' app.netlify.com; \
+            script-src 'self' \
+                https://*.netlify.app app.netlify.com netlify-cdp-loader.netlify.app \
+                https://*.google-analytics.com https://*.googletagmanager.com; \
+            style-src 'self' \
+                https://*.netlify.app https://fonts.googleapis.com https://www.youtube.com; \
+            object-src 'none'; \
+            base-uri 'self'; \
+            connect-src 'self'
+                https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; \
+            font-src 'self' https://*.netlify.app https://fonts.gstatic.com; \
+            frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com \
+                app.netlify.com; \
+            img-src 'self' data: https://*.netlify.app https://i.vimeocdn.com https://i.ytimg.com https://*.google-analytics.com https://*.googletagmanager.com https://tile.openstreetmap.org; \
+            manifest-src 'self'; \
+            media-src 'self' \
+            """
+        X-Frame-Options = "SAMEORIGIN"
+        Referrer-Policy = "strict-origin"
+        Permissions-Policy = """\
+            geolocation=(), \
+            midi=(), \
+            sync-xhr=(), \
+            microphone=(), \
+            camera=(), \
+            magnetometer=(), \
+            gyroscope=(), \
+            fullscreen=(), \
+            payment=() \
+            """
+        cache-control = """\
+            max-age=0, \
+            no-cache, \
+            no-store, \
+            must-revalidate \
+            """
+        Access-Control-Allow-Origin = "*"
+
+[context.deploy-preview]
+    command = "npm run build -- -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy]
+    command = "npm run build -- -b $DEPLOY_PRIME_URL"
+
+[context.next]
+    command = "npm run build"
+
+[context.next.environment]
+    HUGO_ENV = "next"
+
+[dev]
+    framework = "#custom"
+    command = "npm run start"
+    targetPort = 1313
+    port = 8888
+    publish = "public"
+    autoLaunch = false
+
+[[plugins]]
+    package = "@gethinode/netlify-plugin-dartsass"
+
+[[plugins]]
+    package = "netlify-plugin-hugo-cache-resources"
+	[plugins.inputs]
+	# Relative path to source directory in case you use Hugo's "--s" option
+	# srcdir = ""
+
+[[plugins]]
+    package = "@netlify/plugin-lighthouse"
+    # [plugins.inputs]
+    # output_path = "reports/lighthouse.html"
