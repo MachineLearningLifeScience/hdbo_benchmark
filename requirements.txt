@@ -1,0 +1,18 @@
+# selfies
+# pandas
+# torch
+# torch-scatter
+# torch-cluster
+# torchdrug
+CairoSVG
+botorch
+matplotlib
+seaborn
+# TODO: Add poli and poli-baselines
+poli @ git+https://github.com/MachineLearningLifeScience/poli.git@dev
+poli-baselines @ git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main
+wandb
+# ax-platform
+mypy
+pandas-stubs
+types-Pillow

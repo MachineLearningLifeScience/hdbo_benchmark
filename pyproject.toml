@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools<=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hdbo_benchmark"
+version = "0.0.1"
+dependencies = [
+    "numpy",
+    "torch",
+]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
