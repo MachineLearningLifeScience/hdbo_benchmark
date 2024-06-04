@@ -47,12 +47,17 @@ mkdir public
 
 ```
 git clone .git --branch gh-pages public
+rm -rf public/*
 ```
 
 3) Generate the website (in the public folder)
 
 ```
 hugo
+```
+or
+```
+./node_modules/.bin/hugo
 ```
 
 4) Commit the changes in the clone and push them back to the local gh-pages branch
