@@ -16,7 +16,7 @@
 
     
     
-<link rel="stylesheet" href="../css/main.min.0b8e507140f199e90deda3cd6f6aa9e7825433dab3566109e01c0e0d1b4e21b9.css" integrity="sha256-C45QcUDxmekN7aPNb2qp54JUM9qzVmEJ4BwODRtOIbk=" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/main.min.e52868d1cfa2c35c84304b03b90addd0fbc6dbb0bcbecaa2ace488e97bf8f87b.css" integrity="sha256-5Sho0c&#43;iw1yEMEsDuQrd0PvG27C8vsqirOSI6Xv4&#43;Hs=" crossorigin="anonymous">
     
         
     
@@ -149,10 +149,10 @@
   ]
 }
 </script>
-    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon_hu546703baadbac0de87b2f81dc4001b45_20430_16x16_resize_catmullrom_3.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon_hu546703baadbac0de87b2f81dc4001b45_20430_32x32_resize_catmullrom_3.png">
-        <link rel="icon" type="image/png" sizes="48x48" href="../img/favicon_hu546703baadbac0de87b2f81dc4001b45_20430_48x48_resize_catmullrom_3.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon_hu546703baadbac0de87b2f81dc4001b45_20430_180x0_resize_catmullrom_3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_16x16_resize_catmullrom_3.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_32x32_resize_catmullrom_3.png">
+        <link rel="icon" type="image/png" sizes="48x48" href="../img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_48x48_resize_catmullrom_3.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_180x0_resize_catmullrom_3.png">
     
 
 </head>
@@ -380,557 +380,1088 @@
 
 
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-<li class="nav-item" role="presentation">
-    <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Model rankings</button>
-</li>
-<li class="nav-item" role="presentation">
-    <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">PMO 128D</button>
-</li>
-<li class="nav-item" role="presentation">
-    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">PMO 2D</button>
-</li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab">Model rankings</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pills-128d" type="button">PMO 128D</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-2d">PMO 2D</button>
+    </li>
 </ul>
 
 <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-        TBA 1
-    </div>
 
-    <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <table class="table table-hover">
-            <thead>
+    
+    
+    
+
+<div class="tab-pane active" id="pills-128d" role="tabpanel" aria-labelledby="pills-128d-tab">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            
+                <th scope="col">Oracle</th>
+            
+                <th scope="col">HillClimbing</th>
+            
+                <th scope="col">Hvarfner's&nbsp;VanillaBO</th>
+            
+                <th scope="col">RandomLineBO</th>
+            
+                <th scope="col">SAASBO</th>
+            
+                <th scope="col">Bounce</th>
+            
+                <th scope="col">ProbRep</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+            
             <tr>
                 
-                    <th scope="col">Oracle</th>
+                    <th scope="row" class="font-monospace">albuterol_similarity</th>
                 
-                    <th scope="col">HillClimbing</th>
+
                 
-                    <th scope="col">Hvarfner's&nbsp;VanillaBO</th>
+                    <td>0.47&nbsp;&plusmn;&nbsp;0.00</td>
                 
-                    <th scope="col">RandomLineBO</th>
+                    <td>0.41&nbsp;&plusmn;&nbsp;0.04</td>
                 
-                    <th scope="col">SAASBO</th>
+                    <td>0.29&nbsp;&plusmn;&nbsp;0.10</td>
                 
-                    <th scope="col">Bounce</th>
+                    <td>0.38&nbsp;&plusmn;&nbsp;0.00</td>
                 
-                    <th scope="col">ProbRep</th>
+                    <td>0.16&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.21&nbsp;&plusmn;&nbsp;0.03</td>
                 
             </tr>
-            </thead>
-            <tbody>
+            
+            <tr>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">albuterol_similarity</th>
-                    
-
-                    
-                        <td>0.35&nbsp;&plusmn;&nbsp;0.13</td>
-                    
-                        <td>0.43&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                        <td>0.41&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                        <td>0.37&nbsp;&plusmn;&nbsp;0.08</td>
-                    
-                        <td>0.18&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                        <td>0.21&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                </tr>
+                    <th scope="row" class="font-monospace">amlodipine_mpo</th>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">amlodipine_mpo</th>
-                    
 
-                    
-                        <td>0.33&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.35&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                        <td>0.40&nbsp;&plusmn;&nbsp;0.05</td>
-                    
-                        <td>0.40&nbsp;&plusmn;&nbsp;0.05</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">celecoxib_rediscovery</th>
-                    
-
-                    
-                        <td>0.16&nbsp;&plusmn;&nbsp;0.06</td>
-                    
-                        <td>0.15&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.18&nbsp;&plusmn;&nbsp;0.05</td>
-                    
-                        <td>0.14&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
+                    <td>0.44&nbsp;&plusmn;&nbsp;0.00</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">deco_hop</th>
-                    
-
-                    
-                        <td>0.52&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.54&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.54&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.52&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.50&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.51&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
+                    <td>0.42&nbsp;&plusmn;&nbsp;0.03</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">drd2_docking</th>
-                    
-
-                    
-                        <td>0.07&nbsp;&plusmn;&nbsp;0.06</td>
-                    
-                        <td>0.07&nbsp;&plusmn;&nbsp;0.07</td>
-                    
-                        <td>0.03&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
+                    <td>0.36&nbsp;&plusmn;&nbsp;0.04</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">fexofenadine_mpo</th>
-                    
-
-                    
-                        <td>0.20&nbsp;&plusmn;&nbsp;0.22</td>
-                    
-                        <td>0.63&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                        <td>0.66&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                        <td>0.62&nbsp;&plusmn;&nbsp;0.09</td>
-                    
-                        <td>0.13&nbsp;&plusmn;&nbsp;0.13</td>
-                    
-                        <td>0.20&nbsp;&plusmn;&nbsp;0.08</td>
-                    
-                </tr>
+                    <td>0.25&nbsp;&plusmn;&nbsp;0.22</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">gsk3_beta</th>
-                    
-
-                    
-                        <td>0.12&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                        <td>0.28&nbsp;&plusmn;&nbsp;0.10</td>
-                    
-                        <td>0.28&nbsp;&plusmn;&nbsp;0.07</td>
-                    
-                        <td>0.18&nbsp;&plusmn;&nbsp;0.05</td>
-                    
-                        <td>0.09&nbsp;&plusmn;&nbsp;0.08</td>
-                    
-                        <td>0.12&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                </tr>
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">isomer_c7h8n2o2</th>
-                    
-
-                    
-                        <td>0.56&nbsp;&plusmn;&nbsp;0.16</td>
-                    
-                        <td>0.89&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.83&nbsp;&plusmn;&nbsp;0.06</td>
-                    
-                        <td>0.85&nbsp;&plusmn;&nbsp;0.09</td>
-                    
-                        <td>0.11&nbsp;&plusmn;&nbsp;0.09</td>
-                    
-                        <td>0.24&nbsp;&plusmn;&nbsp;0.11</td>
-                    
-                </tr>
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">isomer_c9h10n2o2pf2cl</th>
-                    
-
-                    
-                        <td>0.47&nbsp;&plusmn;&nbsp;0.11</td>
-                    
-                        <td>0.69&nbsp;&plusmn;&nbsp;0.07</td>
-                    
-                        <td>0.58&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                        <td>0.59&nbsp;&plusmn;&nbsp;0.14</td>
-                    
-                        <td>0.01&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.06&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                </tr>
+            </tr>
+            
+            <tr>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">jnk3</th>
-                    
-
-                    
-                        <td>0.10&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                        <td>0.12&nbsp;&plusmn;&nbsp;0.05</td>
-                    
-                        <td>0.13&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                        <td>0.10&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                        <td>0.05&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                        <td>0.06&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                </tr>
+                    <th scope="row" class="font-monospace">celecoxib_rediscovery</th>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">median_1</th>
-                    
 
-                    
-                        <td>0.16&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.16&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.17&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                        <td>0.15&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                        <td>0.03&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">median_2</th>
-                    
-
-                    
-                        <td>0.11&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.13&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.14&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.12&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
+                    <td>0.05&nbsp;&plusmn;&nbsp;0.01</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">mestranol_similarity</th>
-                    
-
-                    
-                        <td>0.37&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.36&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                        <td>0.35&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                        <td>0.38&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                        <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
+                    <td>0.05&nbsp;&plusmn;&nbsp;0.01</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">osimetrinib_mpo</th>
-                    
-
-                    
-                        <td>0.05&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                        <td>0.67&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                        <td>0.67&nbsp;&plusmn;&nbsp;0.05</td>
-                    
-                        <td>0.66&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                        <td>0.30&nbsp;&plusmn;&nbsp;0.31</td>
-                    
-                        <td>0.59&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                </tr>
+                    <td>0.03&nbsp;&plusmn;&nbsp;0.00</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">perindopril_mpo</th>
-                    
-
-                    
-                        <td>0.19&nbsp;&plusmn;&nbsp;0.05</td>
-                    
-                        <td>0.16&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.17&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                        <td>0.23&nbsp;&plusmn;&nbsp;0.10</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">ranolazine_mpo</th>
-                    
-
-                    
-                        <td>0.63&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                        <td>0.65&nbsp;&plusmn;&nbsp;0.15</td>
-                    
-                        <td>0.70&nbsp;&plusmn;&nbsp;0.07</td>
-                    
-                        <td>0.57&nbsp;&plusmn;&nbsp;0.07</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.11&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                </tr>
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">rdkit_logp</th>
-                    
-
-                    
-                        <td>21.43&nbsp;&plusmn;&nbsp;0.31</td>
-                    
-                        <td>21.27&nbsp;&plusmn;&nbsp;0.26</td>
-                    
-                        <td>21.24&nbsp;&plusmn;&nbsp;0.31</td>
-                    
-                        <td>19.40&nbsp;&plusmn;&nbsp;4.35</td>
-                    
-                        <td>3.12&nbsp;&plusmn;&nbsp;1.20</td>
-                    
-                        <td>5.49&nbsp;&plusmn;&nbsp;3.01</td>
-                    
-                </tr>
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">rdkit_qed</th>
-                    
-
-                    
-                        <td>0.83&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                        <td>0.84&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                        <td>0.80&nbsp;&plusmn;&nbsp;0.05</td>
-                    
-                        <td>0.80&nbsp;&plusmn;&nbsp;0.10</td>
-                    
-                        <td>0.52&nbsp;&plusmn;&nbsp;0.09</td>
-                    
-                        <td>0.60&nbsp;&plusmn;&nbsp;0.05</td>
-                    
-                </tr>
+            </tr>
+            
+            <tr>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">sa_tdc</th>
-                    
-
-                    
-                        <td>7.75&nbsp;&plusmn;&nbsp;0.29</td>
-                    
-                        <td>7.99&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>6.86&nbsp;&plusmn;&nbsp;1.96</td>
-                    
-                        <td>7.96&nbsp;&plusmn;&nbsp;0.05</td>
-                    
-                        <td>8.36&nbsp;&plusmn;&nbsp;0.46</td>
-                    
-                        <td>8.59&nbsp;&plusmn;&nbsp;0.13</td>
-                    
-                </tr>
+                    <th scope="row" class="font-monospace">deco_hop</th>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">scaffold_hop</th>
-                    
 
-                    
-                        <td>0.36&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.38&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.39&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.37&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                        <td>0.34&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.34&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">sitagliptin_mpo</th>
-                    
-
-                    
-                        <td>0.22&nbsp;&plusmn;&nbsp;0.06</td>
-                    
-                        <td>0.18&nbsp;&plusmn;&nbsp;0.09</td>
-                    
-                        <td>0.15&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                        <td>0.15&nbsp;&plusmn;&nbsp;0.13</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
+                    <td>0.53&nbsp;&plusmn;&nbsp;0.00</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">thiothixene_rediscovery</th>
-                    
-
-                    
-                        <td>0.16&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                        <td>0.24&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.20&nbsp;&plusmn;&nbsp;0.03</td>
-                    
-                        <td>0.21&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                        <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.03&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                </tr>
+                    <td>0.53&nbsp;&plusmn;&nbsp;0.00</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">troglitazone_rediscovery</th>
-                    
-
-                    
-                        <td>0.14&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.16&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.16&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.15&nbsp;&plusmn;&nbsp;0.02</td>
-                    
-                        <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
-                    
-                        <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
+                    <td>0.53&nbsp;&plusmn;&nbsp;0.00</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">valsartan_smarts</th>
-                    
-
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
+                    <td>\alert{[TBD]}</td>
                 
-                <tr>
-                    
-                        <th scope="row" class="font-monospace">zaleplon_mpo</th>
-                    
-
-                    
-                        <td>0.14&nbsp;&plusmn;&nbsp;0.07</td>
-                    
-                        <td>0.23&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                        <td>0.29&nbsp;&plusmn;&nbsp;0.13</td>
-                    
-                        <td>0.12&nbsp;&plusmn;&nbsp;0.04</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                        <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
-                    
-                </tr>
+                    <td>0.50&nbsp;&plusmn;&nbsp;0.00</td>
                 
-            </tbody>
-        </table>
-    </div>
+                    <td>0.51&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">drd2_docking</th>
+                
 
-<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-    TBA 2
-</div>
+                
+                    <td>0.03&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.09&nbsp;&plusmn;&nbsp;0.06</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.03&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">fexofenadine_mpo</th>
+                
 
+                
+                    <td>0.49&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.44&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.29&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.13&nbsp;&plusmn;&nbsp;0.13</td>
+                
+                    <td>0.20&nbsp;&plusmn;&nbsp;0.08</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">gsk3_beta</th>
+                
+
+                
+                    <td>0.35&nbsp;&plusmn;&nbsp;0.08</td>
+                
+                    <td>0.27&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.23&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.22&nbsp;&plusmn;&nbsp;0.06</td>
+                
+                    <td>0.09&nbsp;&plusmn;&nbsp;0.08</td>
+                
+                    <td>0.12&nbsp;&plusmn;&nbsp;0.02</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">isomer_c7h8n2o2</th>
+                
+
+                
+                    <td>0.69&nbsp;&plusmn;&nbsp;0.10</td>
+                
+                    <td>0.55&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.07&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.11&nbsp;&plusmn;&nbsp;0.09</td>
+                
+                    <td>0.24&nbsp;&plusmn;&nbsp;0.11</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">isomer_c9h10n2o2pf2cl</th>
+                
+
+                
+                    <td>0.54&nbsp;&plusmn;&nbsp;0.07</td>
+                
+                    <td>0.60&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.34&nbsp;&plusmn;&nbsp;0.21</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.06&nbsp;&plusmn;&nbsp;0.03</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">jnk3</th>
+                
+
+                
+                    <td>0.21&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.16&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.10&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.07&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.05&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.06&nbsp;&plusmn;&nbsp;0.01</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">median_1</th>
+                
+
+                
+                    <td>0.07&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.06&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.03&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.03&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">median_2</th>
+                
+
+                
+                    <td>0.04&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.03&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">mestranol_similarity</th>
+                
+
+                
+                    <td>0.23&nbsp;&plusmn;&nbsp;0.06</td>
+                
+                    <td>0.18&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.06&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">osimetrinib_mpo</th>
+                
+
+                
+                    <td>0.63&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.62&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.59&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.30&nbsp;&plusmn;&nbsp;0.31</td>
+                
+                    <td>0.59&nbsp;&plusmn;&nbsp;0.04</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">perindopril_mpo</th>
+                
+
+                
+                    <td>0.03&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">ranolazine_mpo</th>
+                
+
+                
+                    <td>0.43&nbsp;&plusmn;&nbsp;0.14</td>
+                
+                    <td>0.27&nbsp;&plusmn;&nbsp;0.12</td>
+                
+                    <td>0.07&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.11&nbsp;&plusmn;&nbsp;0.02</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">rdkit_logp</th>
+                
+
+                
+                    <td>6.60&nbsp;&plusmn;&nbsp;0.32</td>
+                
+                    <td>6.20&nbsp;&plusmn;&nbsp;1.00</td>
+                
+                    <td>5.75&nbsp;&plusmn;&nbsp;4.08</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>3.12&nbsp;&plusmn;&nbsp;1.20</td>
+                
+                    <td>5.49&nbsp;&plusmn;&nbsp;3.01</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">rdkit_qed</th>
+                
+
+                
+                    <td>0.66&nbsp;&plusmn;&nbsp;0.07</td>
+                
+                    <td>0.61&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.42&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.52&nbsp;&plusmn;&nbsp;0.09</td>
+                
+                    <td>0.60&nbsp;&plusmn;&nbsp;0.05</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">sa_tdc</th>
+                
+
+                
+                    <td>9.21&nbsp;&plusmn;&nbsp;0.32</td>
+                
+                    <td>9.08&nbsp;&plusmn;&nbsp;0.26</td>
+                
+                    <td>8.23&nbsp;&plusmn;&nbsp;0.84</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>8.36&nbsp;&plusmn;&nbsp;0.46</td>
+                
+                    <td>8.59&nbsp;&plusmn;&nbsp;0.13</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">scaffold_hop</th>
+                
+
+                
+                    <td>0.38&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.38&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.37&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.34&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.34&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">sitagliptin_mpo</th>
+                
+
+                
+                    <td>0.19&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.17&nbsp;&plusmn;&nbsp;0.10</td>
+                
+                    <td>0.05&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">thiothixene_rediscovery</th>
+                
+
+                
+                    <td>0.05&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.05&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.03&nbsp;&plusmn;&nbsp;0.01</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">troglitazone_rediscovery</th>
+                
+
+                
+                    <td>0.06&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.05&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>\alert{[TBD]}</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">valsartan_smarts</th>
+                
+
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">zaleplon_mpo</th>
+                
+
+                
+                    <td>0.10&nbsp;&plusmn;&nbsp;0.09</td>
+                
+                    <td>0.12&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.31&nbsp;&plusmn;&nbsp;0.12</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+        </tbody>
+    </table>
 </div>
 
 
 
+
+    
+    
+    
+
+<div class="tab-pane " id="pills-2d" role="tabpanel" aria-labelledby="pills-2d-tab">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            
+                <th scope="col">Oracle</th>
+            
+                <th scope="col">HillClimbing</th>
+            
+                <th scope="col">Hvarfner's&nbsp;VanillaBO</th>
+            
+                <th scope="col">RandomLineBO</th>
+            
+                <th scope="col">SAASBO</th>
+            
+                <th scope="col">Bounce</th>
+            
+                <th scope="col">ProbRep</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">albuterol_similarity</th>
+                
+
+                
+                    <td>0.35&nbsp;&plusmn;&nbsp;0.13</td>
+                
+                    <td>0.43&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.41&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.37&nbsp;&plusmn;&nbsp;0.08</td>
+                
+                    <td>0.18&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.21&nbsp;&plusmn;&nbsp;0.03</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">amlodipine_mpo</th>
+                
+
+                
+                    <td>0.33&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.35&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.40&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.40&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">celecoxib_rediscovery</th>
+                
+
+                
+                    <td>0.16&nbsp;&plusmn;&nbsp;0.06</td>
+                
+                    <td>0.15&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.18&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.14&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">deco_hop</th>
+                
+
+                
+                    <td>0.52&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.54&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.54&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.52&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.50&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.51&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">drd2_docking</th>
+                
+
+                
+                    <td>0.07&nbsp;&plusmn;&nbsp;0.06</td>
+                
+                    <td>0.07&nbsp;&plusmn;&nbsp;0.07</td>
+                
+                    <td>0.03&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">fexofenadine_mpo</th>
+                
+
+                
+                    <td>0.20&nbsp;&plusmn;&nbsp;0.22</td>
+                
+                    <td>0.63&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.66&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.62&nbsp;&plusmn;&nbsp;0.09</td>
+                
+                    <td>0.13&nbsp;&plusmn;&nbsp;0.13</td>
+                
+                    <td>0.20&nbsp;&plusmn;&nbsp;0.08</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">gsk3_beta</th>
+                
+
+                
+                    <td>0.12&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.28&nbsp;&plusmn;&nbsp;0.10</td>
+                
+                    <td>0.28&nbsp;&plusmn;&nbsp;0.07</td>
+                
+                    <td>0.18&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.09&nbsp;&plusmn;&nbsp;0.08</td>
+                
+                    <td>0.12&nbsp;&plusmn;&nbsp;0.02</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">isomer_c7h8n2o2</th>
+                
+
+                
+                    <td>0.56&nbsp;&plusmn;&nbsp;0.16</td>
+                
+                    <td>0.89&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.83&nbsp;&plusmn;&nbsp;0.06</td>
+                
+                    <td>0.85&nbsp;&plusmn;&nbsp;0.09</td>
+                
+                    <td>0.11&nbsp;&plusmn;&nbsp;0.09</td>
+                
+                    <td>0.24&nbsp;&plusmn;&nbsp;0.11</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">isomer_c9h10n2o2pf2cl</th>
+                
+
+                
+                    <td>0.47&nbsp;&plusmn;&nbsp;0.11</td>
+                
+                    <td>0.69&nbsp;&plusmn;&nbsp;0.07</td>
+                
+                    <td>0.58&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.59&nbsp;&plusmn;&nbsp;0.14</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.06&nbsp;&plusmn;&nbsp;0.03</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">jnk3</th>
+                
+
+                
+                    <td>0.10&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.12&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.13&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.10&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.05&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.06&nbsp;&plusmn;&nbsp;0.01</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">median_1</th>
+                
+
+                
+                    <td>0.16&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.16&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.17&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.15&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.03&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">median_2</th>
+                
+
+                
+                    <td>0.11&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.13&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.14&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.12&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">mestranol_similarity</th>
+                
+
+                
+                    <td>0.37&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.36&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.35&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.38&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.01&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">osimetrinib_mpo</th>
+                
+
+                
+                    <td>0.05&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.67&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.67&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.66&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.30&nbsp;&plusmn;&nbsp;0.31</td>
+                
+                    <td>0.59&nbsp;&plusmn;&nbsp;0.04</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">perindopril_mpo</th>
+                
+
+                
+                    <td>0.19&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.16&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.17&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.23&nbsp;&plusmn;&nbsp;0.10</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">ranolazine_mpo</th>
+                
+
+                
+                    <td>0.63&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.65&nbsp;&plusmn;&nbsp;0.15</td>
+                
+                    <td>0.70&nbsp;&plusmn;&nbsp;0.07</td>
+                
+                    <td>0.57&nbsp;&plusmn;&nbsp;0.07</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.11&nbsp;&plusmn;&nbsp;0.02</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">rdkit_logp</th>
+                
+
+                
+                    <td>21.43&nbsp;&plusmn;&nbsp;0.31</td>
+                
+                    <td>21.27&nbsp;&plusmn;&nbsp;0.26</td>
+                
+                    <td>21.24&nbsp;&plusmn;&nbsp;0.31</td>
+                
+                    <td>19.40&nbsp;&plusmn;&nbsp;4.35</td>
+                
+                    <td>3.12&nbsp;&plusmn;&nbsp;1.20</td>
+                
+                    <td>5.49&nbsp;&plusmn;&nbsp;3.01</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">rdkit_qed</th>
+                
+
+                
+                    <td>0.83&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.84&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.80&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>0.80&nbsp;&plusmn;&nbsp;0.10</td>
+                
+                    <td>0.52&nbsp;&plusmn;&nbsp;0.09</td>
+                
+                    <td>0.60&nbsp;&plusmn;&nbsp;0.05</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">sa_tdc</th>
+                
+
+                
+                    <td>7.75&nbsp;&plusmn;&nbsp;0.29</td>
+                
+                    <td>7.99&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>6.86&nbsp;&plusmn;&nbsp;1.96</td>
+                
+                    <td>7.96&nbsp;&plusmn;&nbsp;0.05</td>
+                
+                    <td>8.36&nbsp;&plusmn;&nbsp;0.46</td>
+                
+                    <td>8.59&nbsp;&plusmn;&nbsp;0.13</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">scaffold_hop</th>
+                
+
+                
+                    <td>0.36&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.38&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.39&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.37&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.34&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.34&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">sitagliptin_mpo</th>
+                
+
+                
+                    <td>0.22&nbsp;&plusmn;&nbsp;0.06</td>
+                
+                    <td>0.18&nbsp;&plusmn;&nbsp;0.09</td>
+                
+                    <td>0.15&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.15&nbsp;&plusmn;&nbsp;0.13</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">thiothixene_rediscovery</th>
+                
+
+                
+                    <td>0.16&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.24&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.20&nbsp;&plusmn;&nbsp;0.03</td>
+                
+                    <td>0.21&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.03&nbsp;&plusmn;&nbsp;0.01</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">troglitazone_rediscovery</th>
+                
+
+                
+                    <td>0.14&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.16&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.16&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.15&nbsp;&plusmn;&nbsp;0.02</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.01</td>
+                
+                    <td>0.02&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">valsartan_smarts</th>
+                
+
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+            <tr>
+                
+                    <th scope="row" class="font-monospace">zaleplon_mpo</th>
+                
+
+                
+                    <td>0.14&nbsp;&plusmn;&nbsp;0.07</td>
+                
+                    <td>0.23&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.29&nbsp;&plusmn;&nbsp;0.13</td>
+                
+                    <td>0.12&nbsp;&plusmn;&nbsp;0.04</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+                    <td>0.00&nbsp;&plusmn;&nbsp;0.00</td>
+                
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+
+
+
+
+</div>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
@@ -947,7 +1478,7 @@
 
 
 
-<div class="container-fluid"></div>
+<div class="container-fluid footer">
     <div class="container">
         <div class="row py-2">
             <div class="col-lg-1 pt-2">
@@ -989,7 +1520,7 @@
 </div>
 </div>
 
-<script src="../js/main.bundle.min.a6a801f6dae02e5e0d127ea2aa64f8304ca7ab34c81f777b9f86d27fa9587c72.js" integrity="sha256-pqgB9trgLl4NEn6iqmT4MEynqzTIH3d7n4bSf6lYfHI=" crossorigin="anonymous" async></script>
+<script src="../js/main.bundle.min.0efb86e73fedb0dd8e012118c6f92da88e181d91eb31e92d3337aab06d831eb4.js" integrity="sha256-DvuG5z/tsN2OASEYxvktqI4YHZHrMektMzeqsG2DHrQ=" crossorigin="anonymous" async></script>
     
 
     

@@ -16,13 +16,18 @@
 
     
     
-<link rel="stylesheet" href="./css/main.min.0b8e507140f199e90deda3cd6f6aa9e7825433dab3566109e01c0e0d1b4e21b9.css" integrity="sha256-C45QcUDxmekN7aPNb2qp54JUM9qzVmEJ4BwODRtOIbk=" crossorigin="anonymous">
+<link rel="stylesheet" href="./css/main.min.e52868d1cfa2c35c84304b03b90addd0fbc6dbb0bcbecaa2ace488e97bf8f87b.css" integrity="sha256-5Sho0c&#43;iw1yEMEsDuQrd0PvG27C8vsqirOSI6Xv4&#43;Hs=" crossorigin="anonymous">
     
         
     
+
+
+
+    
+    
+
          
         <link rel="preload" href="./fonts/inter-v12-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-
 
 
 
@@ -38,23 +43,23 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Welcome to HDBO">
+<meta property="og:title" content="Benchmarking high-dimensional Bayesian Optimization of discrete sequences">
 <meta property="og:description" content="High-Dimensional Bayesian Optimization of discrete sequences.">
 <meta property="og:url" content="/">
 <meta property="og:site_name" content="HDBO">
 <meta property="og:updated_time" content="2024-01-01T00:00:00+00:00">
-    <meta property="og:image" content="/img/paper-1280x640.jpg">
-<meta property="og:image:alt" content="Welcome to HDBO">
+    <meta property="og:image" content="/logo.png">
+<meta property="og:image:alt" content="Benchmarking high-dimensional Bayesian Optimization of discrete sequences">
 
 
 
 <meta name="twitter:card" content="summary_large_image">
 
 
-<meta name="twitter:title" content="Welcome to HDBO">
+<meta name="twitter:title" content="Benchmarking high-dimensional Bayesian Optimization of discrete sequences">
 <meta name="twitter:description" content="High-Dimensional Bayesian Optimization of discrete sequences.">
-<meta name="twitter:image" content="/img/paper-1280x640.jpg">
-<meta name="twitter:image:alt" content="Welcome to HDBO">
+<meta name="twitter:image" content="/logo.png">
+<meta name="twitter:image:alt" content="Benchmarking high-dimensional Bayesian Optimization of discrete sequences">
 
 <link rel="alternate" type="application/rss&#43;xml" href="./index.xml">
 
@@ -93,7 +98,7 @@
       "@type": "WebPage",
       "@id": "/",
       "url": "/",
-      "name": "Welcome to HDBO",
+      "name": "Benchmarking high-dimensional Bayesian Optimization of discrete sequences",
       "description": "High-Dimensional Bayesian Optimization of discrete sequences.",
       "isPartOf": {
         "@id": "/#/schema/website/1"
@@ -133,9 +138,9 @@
         {
           "@type": "ImageObject",
           "@id": "/#/schema/image/2",
-          "url": "/img/paper-1280x640.jpg",
-          "contentUrl": "/img/paper-1280x640.jpg",
-          "caption": "Welcome to HDBO"
+          "url": "/logo.png",
+          "contentUrl": "/logo.png",
+          "caption": "Benchmarking high-dimensional Bayesian Optimization of discrete sequences"
         }
       ]
     }
@@ -143,10 +148,10 @@
   ]
 }
 </script>
-    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon_hu546703baadbac0de87b2f81dc4001b45_20430_16x16_resize_catmullrom_3.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon_hu546703baadbac0de87b2f81dc4001b45_20430_32x32_resize_catmullrom_3.png">
-        <link rel="icon" type="image/png" sizes="48x48" href="./img/favicon_hu546703baadbac0de87b2f81dc4001b45_20430_48x48_resize_catmullrom_3.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon_hu546703baadbac0de87b2f81dc4001b45_20430_180x0_resize_catmullrom_3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_16x16_resize_catmullrom_3.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_32x32_resize_catmullrom_3.png">
+        <link rel="icon" type="image/png" sizes="48x48" href="./img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_48x48_resize_catmullrom_3.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_180x0_resize_catmullrom_3.png">
     
 
 </head>
@@ -154,7 +159,7 @@
     <body>
 <script src="./js/critical.bundle.min.a73ed0b9da936bca55cd96a54840ab270bde232f86b9b2f7ca2026635b177982.js" integrity="sha256-pz7QudqTa8pVzZalSECrJwveIy&#43;GubL3yiAmY1sXeYI=" crossorigin="anonymous"></script>
     <div class="d-flex flex-column min-vh-100">
-            <div class="d-flex flex-column  fullscreen ">
+            <div class="d-flex flex-column  ">
 
 
 
@@ -343,15 +348,57 @@
 
 
 
-<div class="container-fluid p-0  bg-secondary bg-opacity-25">
-    <div class="container-xxl p-4 px-xxl-0  fullcover d-flex flex-column">
+
+
+<style>
+    .hero {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.8);
+        margin-top: -250px;
+        border-radius: 10px;
+    }
+
+    @media (min-width: 768px) {
+        .hero {
+           background-color: rgba(0, 0, 0, 0.85);
+            
+           margin-top: 200px;
+           margin-left: -18px;
+        }
+
+        .lottie-animation {
+            position: absolute;
+            bottom: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lottie-animation svg {
+            border-radius: 10px;
+        }
+    }
+</style>
+
+
+
+
+<div class="container-fluid p-0">
+
+    <div class="container-xxl p-4 my-4 px-xxl-0  d-flex flex-column" style="position: relative;">
         
+            
+            <div class="lottie-animation" data-lottie-data="/animation.json" data-lottie-loop="true" data-lottie-auto="true" data-lottie-data="/animation.json" data-lottie-playing="true"></div> 
             <div class="row row-cols-1 row-cols-md-2 justify-content-center flex-fill">
                 <div class="col col-12 col-md-8 order-1 order-md-0 my-md-auto">
-                    <div class="text-start">
-        <p class="display-4">Welcome to HDBO</p>
+                    <div data-bs-theme="dark" class="hero text-start p-3">
+        
+        <p class="h1 text-light-emphasis">Benchmarking high-dimensional Bayesian Optimization of discrete sequences</p>
         <span class="fs-5 text-muted">High-Dimensional Bayesian Optimization of discrete sequences.</span>
-
+        
         <div class="hstack gap-1 justify-content-start pt-5 pt-md-3">
                 
                     
@@ -431,80 +478,11 @@
                 
                 
                 
+                
                 <div class="col col-12 col-md-4 order-0 order-md-1 text-center my-md-auto align-self-end">
                     
 
     
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-            
-        
-    
-
-        
-        
-            
-        
-    
-
-        
-        
-            
-        
-    
-
-
-
-
-
-
-
-
-    
-    
-    
-
-
-
-
-
-
-    
-        
-            
-            
-        
-    
-
-
-
-
-
-
-<div class="img-wrap mx-auto mx-md-0 pb-4 pb-md-0"><img class="img-fluid rounded"
-            src="./img/paper-2800x1575.jpg"
-            
-            fetchpriority="high"
-            srcset="./img/paper-576x324.webp 576w, ./img/paper-768x432.webp 768w, ./img/paper-992x558.webp 992w, ./img/paper-1200x675.webp 1200w, ./img/paper-1400x788.webp 1400w, ./img/paper-2800x1575.webp 2800w" sizes="(min-width: 768px) 33vw, 50vw"
-            height="1575"
-            width="2800"
-            alt="HDBO">
-</div>
-        
     
                 </div>
             </div>
@@ -513,6 +491,7 @@
         
     </div>
 </div>
+
 </div>
                 
             </div>
@@ -522,8 +501,8 @@
     <div class="col-12 col-md-9">
         
         
-        <!-- raw HTML omitted -->
-
+        <p> </p>
+<!-- raw HTML omitted -->
     </div>
     <div class="col col-md-3 d-none d-md-block">
                 
@@ -547,7 +526,7 @@
 
 
 
-<div class="container-fluid"></div>
+<div class="container-fluid footer">
     <div class="container">
         <div class="row py-2">
             <div class="col-lg-1 pt-2">
@@ -589,12 +568,14 @@
 </div>
 </div>
 
-<script src="./js/main.bundle.min.a6a801f6dae02e5e0d127ea2aa64f8304ca7ab34c81f777b9f86d27fa9587c72.js" integrity="sha256-pqgB9trgLl4NEn6iqmT4MEynqzTIH3d7n4bSf6lYfHI=" crossorigin="anonymous" async></script>
+<script src="./js/main.bundle.min.0efb86e73fedb0dd8e012118c6f92da88e181d91eb31e92d3337aab06d831eb4.js" integrity="sha256-DvuG5z/tsN2OASEYxvktqI4YHZHrMektMzeqsG2DHrQ=" crossorigin="anonymous" async></script>
     
 
     
 
 
 
-</body>
+
+<script src="./js/lottie.bundle.min.bf90bc3fc24f53d0286eb3ec3ee00111cf6c5e51905ba04d165bf48e1a14a361.js" integrity="sha256-v5C8P8JPU9AobrPsPuABEc9sXlGQW6BNFlv0jhoUo2E=" crossorigin="anonymous" async></script>
+    </body>
 </html>
