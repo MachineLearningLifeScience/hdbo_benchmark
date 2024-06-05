@@ -77,6 +77,13 @@ ax.set_xlabel("")
 ax.set_ylim([0, 10**4])
 ax.legend(title="Metric", loc="upper center", bbox_to_anchor=(0.5, 1.15))
 
+# Adding a vertical line to separate prot and chem from the rest
+ax.axvline(7.5, color="black", linestyle="--", linewidth=2)
+
+# Annotating that one side is solvers, and the other is problems
+# ax.text(6.9, 10**3 + 700, "Solvers", ha="center")
+# ax.text(8.5, 10**3 + 700, "Problems", ha="center")
+
 fig.tight_layout()
 fig.savefig(
     ROOT_DIR
