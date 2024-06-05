@@ -1,9 +1,11 @@
 ---
-title: Welcome to HDBO
+title: Benchmarking high-dimensional Bayesian Optimization of discrete sequences
 description: High-Dimensional Bayesian Optimization of discrete sequences.
-thumbnail:
-    url: /img/paper.jpg
-    originName: Unsplash
+modules: ["lottie"]
+fullCover: false
+# thumbnail:
+#     url: /img/paper.jpg
+#     originName: Unsplash
 actions:
   benchmark:
     url: "benchmarks"
@@ -14,7 +16,8 @@ actions:
     url: "docs/hdbo/about"
     title: "What is this about"
     icon: "fas circle-question"
+    # outline: true
     weight: 1
 ---
-
+&nbsp;
 <hr>

@@ -13,6 +13,7 @@
         tab = true
     [main.build]
         transpiler = "libsass"
+        #transpiler = "dartsass"
 
 [footer]
     socialTitle = "MLLS"
@@ -31,7 +32,7 @@
 [home]
     # sections = ["posts"]
     # sections = []
-    fullCover = true
+    fullCover = false
     centerHeadline = false
     style = ""
 
@@ -124,7 +125,7 @@
     info = "#0dcaf0"
     warning = "#ffc107"
     danger = "#dc3545"
-    light = "#f8f9fa"
+    light = ""#f8f9fa"
     dark = "#111111" #"#212529"
     themeOpacity = "25"
     darkModeShade = "20%"

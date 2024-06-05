@@ -4,7 +4,7 @@ paginate = 9
 enableGitInfo = false
 
 # additional settings
-baseURL = '/' #"https://machinelearninglifescience.github.io/hdbo_benchmark"
+baseURL = "/"
 canonifyURLs = false
 relativeURLs = true
 enableEmoji = true
@@ -36,7 +36,7 @@ home = ["HTML", "RSS", "REDIR"]
 
 [build]
   writeStats = true
-  
+
 [taxonomies]
   tag = 'tags'
 

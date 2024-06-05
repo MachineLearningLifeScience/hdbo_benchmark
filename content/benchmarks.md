@@ -18,7 +18,4 @@ This is the second item's nav body. It too supports HTML content.
 {{< /nav-item >}}
 {{< nav-item header="Mario (TBA)" disabled="true" />}}
 {{< /nav >}}
-
-
-
  -->
