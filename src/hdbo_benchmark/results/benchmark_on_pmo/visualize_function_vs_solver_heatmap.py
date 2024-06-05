@@ -264,7 +264,12 @@ if __name__ == "__main__":
     # tags = ["2024-06-03", "2024-06-02", "2024-06-01", "2024-05-31", "Old-PR-Results"]
     tags: None = None
     df = create_base_table(
-        n_dimensions=N_DIMENSIONS, save_cache=True, use_cache=True, tags=tags
+        n_dimensions=N_DIMENSIONS,
+        save_cache=True,
+        use_cache=True,
+        tags=tags,
     )
+    max_iter = 310 if N_DIMENSIONS == 128 else 110
+    df = df[df["_step"] <= max_iter]
     plot_heatmap(df, normalized=normalized)
     print_table(df, normalized=False)
