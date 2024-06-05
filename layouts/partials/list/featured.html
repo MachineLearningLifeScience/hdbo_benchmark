@@ -104,8 +104,6 @@
     }
 </style>
 
-<!-- <div class="lottie-animation" data-lottie-loop="true" data-lottie-auto="true" data-lottie-data="/animation.json" data-lottie-playing="true"></div> -->
-<!-- <div class="lottie-animation" data-lottie-data="/animation.json"></div> -->
 
 <div class="container-fluid p-0">
 <!-- <div style="position: relative; z-index: 0;" class="container-fluid p-0 {{ with site.Params.home.feature.color }} bg-{{ . }} bg-opacity-{{ site.Params.style.themeOpacity | default "25" | safeHTML }}{{ end }}"></div> -->
@@ -124,7 +122,8 @@
             </div>
         {{ else }}
             
-            <div class="lottie-animation" data-lottie-data="/animation.json" data-lottie-loop="true" data-lottie-auto="true" data-lottie-data="/animation.json" data-lottie-playing="true"></div> 
+
+            <div class="lottie-animation" data-lottie-data="./img/animation.json" data-lottie-loop="true" data-lottie-auto="true" data-lottie-playing="true"></div> 
             <div class="row row-cols-1 row-cols-md-2 justify-content-{{ $justify }} flex-fill">
                 <div class="col col-12 col-md-{{ $width }} order-1 order-md-0 my-md-auto">
                     {{ partial "partials/list/featured-body.html" (dict "page" $page "headings" $headings "orientation" $orientation "actions" $actions "align" $align) }}
