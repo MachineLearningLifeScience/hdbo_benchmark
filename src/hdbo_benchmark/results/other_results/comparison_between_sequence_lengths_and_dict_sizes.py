@@ -23,6 +23,8 @@ max_sequence_length = {
     # r"\texttt{LADDER}$^*$": 70,  # Not reported explicitly, assuming similar zinc250k postprocessings.
     # r"\texttt{WR}$^*$": 70,
     # r"\texttt{DML}": [...],
+    "Prot.": 228,  # Longest RFP sequence.
+    "Chem.": 70,
 }
 
 max_dict_size = {
@@ -38,10 +40,12 @@ max_dict_size = {
     # r"\texttt{LADDER}$^*$": 64,
     # r"\texttt{WR}$^*$": 64,
     # r"\texttt{DML}": [...],
+    "Prot.": 20,
+    "Chem.": 64,
 }
 
 rows = [
-    (solver_name, np.log10(sequence_length), np.log10(dict_size))
+    (solver_name, sequence_length, dict_size)
     for solver_name, sequence_length, dict_size in zip(
         max_sequence_length.keys(), max_sequence_length.values(), max_dict_size.values()
     )
@@ -64,12 +68,13 @@ sns.barplot(
     data=df_melted,
     ax=ax,
 )
-ax.set_ylabel("Log-Value")
+ax.set_yscale("log")
+ax.set_ylabel("")
 ax.set_xlabel("")
 # ax.axhline(np.log10(70), color="blue", linestyle="--", linewidth=2)
 # ax.axhline(np.log10(64), color="orange", linestyle="dotted", linewidth=2)
 
-ax.set_ylim([0, 4])
+ax.set_ylim([0, 10**4])
 ax.legend(title="Metric", loc="upper center", bbox_to_anchor=(0.5, 1.15))
 
 fig.tight_layout()

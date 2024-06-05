@@ -61,7 +61,7 @@ for i, (title, data) in enumerate(
     [
         ("Initialization", initialization),
         ("Eval. Budget", evaluation_budget),
-        ("Indep. Replications", independent_replications),
+        ("Replications", independent_replications),
     ]
 ):
     df_ = pd.DataFrame(
@@ -70,7 +70,7 @@ for i, (title, data) in enumerate(
     )
     # df = pd.DataFrame(data)
     # df = df.melt(var_name="Solver", value_name="Value")
-    df_["Log-Value"] = np.log10(df_["Value"])
+    # df_["Log-Value"] = np.log10(df_["Value"])
     # axs[i].set_title(title)
 
     dfs.append(df_)
@@ -80,7 +80,7 @@ df = pd.concat(dfs)
 sns.swarmplot(
     data=df,
     x="Type",
-    y="Log-Value",
+    y="Value",
     ax=ax,
     hue="Solver",
     size=15,
@@ -88,9 +88,11 @@ sns.swarmplot(
     linewidth=1.0,
 )
 
+ax.set_yscale("log")
 ax.legend(bbox_to_anchor=(1.04, 1), loc="upper left", ncol=2)
 ax.set_xlabel("")
-ax.set_ylim([0, 5])
+ax.set_ylabel("")
+ax.set_ylim([0, 10**5])
 
 plt.tight_layout()
 plt.savefig(
