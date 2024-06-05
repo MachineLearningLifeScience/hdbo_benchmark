@@ -14,18 +14,37 @@ pd.set_option("display.max_colwidth", None)
 from hdbo_benchmark.utils.constants import ROOT_DIR
 from hdbo_benchmark.results.benchmark_on_pmo.create_table import create_base_table
 
-solver_name_but_pretty = {
-    "random_mutation": r"\texttt{HillClimbing}",
-    # "cma_es": r"\texttt{CMAES}",
-    "vanilla_bo_hvarfner": r"Hvarfner's \texttt{VanillaBO}",
-    "line_bo": r"\texttt{RandomLineBO}",
-    "saas_bo": r"\texttt{SAASBO}",
-    # "alebo": r"\texttt{ALEBO}",
-    "turbo": r"\texttt{Turbo}",
-    # "baxus": r"\texttt{BAxUS}",
-    "bounce": r"\texttt{Bounce}",
-    "pr": r"\texttt{ProbRep}",
-}
+N_DIMENSIONS = 128
+COLOR_IN_TABLE = "Green"
+
+if N_DIMENSIONS == 2:
+    solver_name_but_pretty = {
+        "random_mutation": r"\texttt{HillClimbing}",
+        # "cma_es": r"\texttt{CMAES}",
+        "vanilla_bo_hvarfner": r"Hvarfner's \texttt{VanillaBO}",
+        "line_bo": r"\texttt{RandomLineBO}",
+        "saas_bo": r"\texttt{SAASBO}",
+        # "alebo": r"\texttt{ALEBO}",
+        "turbo": r"\texttt{Turbo}",
+        # "baxus": r"\texttt{BAxUS}",
+        "bounce": r"\texttt{Bounce}",
+        "pr": r"\texttt{ProbRep}",
+    }
+elif N_DIMENSIONS == 128:
+    solver_name_but_pretty = {
+        "random_mutation": r"\texttt{HillClimbing}",
+        # "cma_es": r"\texttt{CMAES}",
+        "vanilla_bo_hvarfner": r"Hvarfner's \texttt{VanillaBO}",
+        "line_bo": r"\texttt{RandomLineBO}",
+        # "saas_bo": r"\texttt{SAASBO}",
+        # "alebo": r"\texttt{ALEBO}",
+        "turbo": r"\texttt{Turbo}",
+        "baxus": r"\texttt{BAxUS}",
+        "bounce": r"\texttt{Bounce}",
+        "pr": r"\texttt{ProbRep}",
+    }
+else:
+    raise NotImplementedError()
 
 matplotlib.rcParams.update({"text.usetex": True})
 sns.set_theme(style="whitegrid", font_scale=1.75)
@@ -86,6 +105,7 @@ def summary_per_function(
 
 
 def plot_heatmap(df, normalized: bool = True):
+
     summary_avg, _ = summary_per_function(df, normalized_per_row=normalized)
 
     # We keep the columns in solver_name_but_pretty order
@@ -116,13 +136,13 @@ def plot_heatmap(df, normalized: bool = True):
     plt.xticks(rotation=45, ha="right", rotation_mode="anchor")
 
     ax.set_title(
-        f"Avg. Best Value ({n_dimensions}D latent space, 3 seeds, max. 10+100 function calls)"
+        f"Avg. Best Value ({N_DIMENSIONS}D latent space, 3 seeds, max. 10+100 function calls)"
         + "\n",
         fontsize=25,
     )
     fig.tight_layout()
     fig.savefig(
-        ROOT_DIR / "reports" / "figures" / f"table_as_heatmap_pmo_{n_dimensions}.jpg",
+        ROOT_DIR / "reports" / "figures" / f"table_as_heatmap_pmo_{N_DIMENSIONS}.jpg",
         dpi=300,
         bbox_inches="tight",
     )
@@ -152,7 +172,7 @@ def print_table(df, normalized: bool = False):
             "Oracle": function_name.replace("_", r"\_"),
         }
         for solver_name, pretty_solver_name in solver_name_but_pretty.items():
-            if n_dimensions == 2 and solver_name == "baxus":
+            if N_DIMENSIONS == 2 and solver_name == "baxus":
                 continue
             if solver_name not in summary_avg.columns:
                 row[pretty_solver_name] = r"\alert{[TBD]}"
@@ -168,7 +188,11 @@ def print_table(df, normalized: bool = False):
                 std = f"{std:.2f}" if not np.isnan(std) else r"\alert{?}"
                 normalized_avg = summary_avg_normalized.loc[function_name, solver_name]
                 cell_color_str = (
-                    r"\cellcolor{RoyalBlue!" + f"{int(50 * normalized_avg)}" + "}"
+                    r"\cellcolor{"
+                    + COLOR_IN_TABLE
+                    + "!"
+                    + f"{int(50 * normalized_avg)}"
+                    + "}"
                 )
                 row[pretty_solver_name] = (
                     cell_color_str + f"${avg}" r"{\pm \scriptstyle " + f"{std}" + "}$"
@@ -185,7 +209,7 @@ def print_table(df, normalized: bool = False):
     print(latex_table)
 
     with open(
-        ROOT_DIR / "data" / "results_cache" / f"table_{n_dimensions}.tex", "w"
+        ROOT_DIR / "data" / "results_cache" / f"table_{N_DIMENSIONS}.tex", "w"
     ) as f:
         f.write(latex_table)
 
@@ -193,12 +217,11 @@ def print_table(df, normalized: bool = False):
 
 
 if __name__ == "__main__":
-    n_dimensions = 2
     normalized = True
     # tags = ["2024-06-03", "2024-06-02", "2024-06-01", "2024-05-31", "Old-PR-Results"]
     tags: None = None
     df = create_base_table(
-        n_dimensions=n_dimensions, save_cache=True, use_cache=True, tags=tags
+        n_dimensions=N_DIMENSIONS, save_cache=True, use_cache=True, tags=tags
     )
     plot_heatmap(df, normalized=normalized)
     print_table(df, normalized=False)

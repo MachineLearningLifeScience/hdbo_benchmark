@@ -1,8 +1,6 @@
 """
 Implements a Variational Autoencoder that can be trained on
-SELFIES data. It is originally designed to handle the
-TINY-CID-SELFIES-20 datasets, but it could be used on the 
-SMALL-CID-SELFIES-20 with a little bit of work.
+SELFIES data from zinc250k.
 """
 
 from typing import Tuple, Dict, Optional
