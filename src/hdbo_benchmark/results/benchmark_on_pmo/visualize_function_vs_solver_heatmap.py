@@ -38,8 +38,8 @@ elif N_DIMENSIONS == 128:
         "line_bo": r"\texttt{RandomLineBO}",
         # "saas_bo": r"\texttt{SAASBO}",
         # "alebo": r"\texttt{ALEBO}",
-        "turbo": r"\texttt{Turbo}",
         "baxus": r"\texttt{BAxUS}",
+        "turbo": r"\texttt{Turbo}",
         "bounce": r"\texttt{Bounce}",
         "pr": r"\texttt{ProbRep}",
     }
@@ -97,9 +97,10 @@ def summary_per_function(
     if normalized_per_row:
         for i, row in summary_avg.iterrows():
             best_value = row.max()
+            lowest_value = row.min()
             if best_value == 0:
                 continue
-            summary_avg.loc[i] = row / best_value  # type: ignore
+            summary_avg.loc[i] = (row - lowest_value) / (best_value - lowest_value)
 
     return summary_avg, summary_std
 
@@ -202,6 +203,48 @@ def print_table(df, normalized: bool = False):
 
     final_table = pd.DataFrame(final_table_rows)
     final_table.set_index("Oracle", inplace=True)
+
+    # Let's add a final row in whcih we sum the (normalized) scores of each solver
+    row = {
+        "Oracle": "Sum (normalized per row)",
+    }
+    ranks = {}
+    for solver_name, pretty_solver_name in solver_name_but_pretty.items():
+        if N_DIMENSIONS == 2 and solver_name == "baxus":
+            continue
+        if solver_name not in summary_avg.columns:
+            row[pretty_solver_name] = r"\alert{[TBD]}"
+            continue
+
+        solver_score = summary_avg_normalized.loc[:, solver_name].sum()
+        sum_std_scores = summary_std.loc[:, solver_name].sum()
+        ranks[solver_name] = solver_score
+        row[pretty_solver_name] = (
+            f"${solver_score:.2f}"
+            + r"{\pm \scriptstyle "
+            + f"{sum_std_scores:.2f}"
+            + "}$"
+        )
+
+    # Let's compute the colors, normalizing the ranks
+    ranks = pd.Series(ranks)
+    ranks = (ranks - ranks.min()) / (ranks.max() - ranks.min())
+    for solver_name, pretty_solver_name in solver_name_but_pretty.items():
+        if N_DIMENSIONS == 2 and solver_name == "baxus":
+            continue
+        if solver_name not in summary_avg.columns:
+            continue
+        rank = ranks[solver_name]
+        cell_color_str = (
+            r"\cellcolor{" + COLOR_IN_TABLE + "!" + f"{int(50 * rank)}" + "}"
+        )
+        row[pretty_solver_name] = cell_color_str + row[pretty_solver_name]
+
+    new_row = pd.DataFrame(row, index=[0])
+    new_row.set_index("Oracle", inplace=True)
+
+    final_table = pd.concat([final_table, new_row])
+    # final_table = final_table.append(row, ignore_index=True)
 
     latex_table = final_table.to_latex(escape=False)
     latex_table = r"\resizebox{\textwidth}{!}{" + latex_table + "}"
