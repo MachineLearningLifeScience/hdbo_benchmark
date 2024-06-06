@@ -1,6 +1,6 @@
 ---
-title: HDBO
-description: About
+title: BenchmarkingHDBO
+description: A survey and benchmark of high-dimensional Bayesian optimization of discrete sequences
 date: 2024-01-01
 layout: docs
 aliases:
@@ -26,16 +26,9 @@ incorporate new optimization objectives or discrete optimizers.
 
 {{< svg "/static/img/HDBO_timeline.svg" "aaa" >}}
 
-> Don't communicate by sharing memory, share memory by communicating.
+<!-- > Don't communicate by sharing memory, share memory by communicating.
 >
 > — _Rob Pike[^1]_
 {.blockquote}
 
-[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
-
-
-### Subsection 1
-
-### Subsection 2
-
-### Overview
+[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015. -->

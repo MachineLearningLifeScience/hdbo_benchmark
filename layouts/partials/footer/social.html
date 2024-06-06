@@ -12,8 +12,14 @@
                 <img src="{{ absURL "img/mlls-logo.png" }}" class="pt-1 d-none-inline-light" alt="logo" width="100">
             </div>
             <div class="col-md">
-                <div class="fs-3 fw-bold">{{ or .Site.Params.footer.socialTitle .Site.Params.social.title }}</div>
-                <p>{{ or .Site.Params.footer.socialCaption .Site.Params.social.caption }}</p>
+                <div class="fs-3 fw-bold">
+                    <!-- {{ or .Site.Params.footer.socialTitle .Site.Params.social.title }} -->
+                    MLLS
+                </div>
+                <p>
+                    This project is brought to you by <a href="https://mlls.dk/">Center for Basic Machine Learning Research in Life Science</a>
+                    <!-- {{ or .Site.Params.footer.socialCaption .Site.Params.social.caption }} -->
+                </p>
             </div>
             <div class="col-md-auto py-4">
                 <small class="text-muted text-end">

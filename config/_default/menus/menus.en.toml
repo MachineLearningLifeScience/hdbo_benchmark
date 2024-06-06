@@ -16,7 +16,7 @@
 [[main]]
   name = "GitHub"
   pre = "fab fa-github"
-  url = "https://github.com/"
+  url = "https://github.com/MachineLearningLifeScience/hdbo_benchmark"
   weight = 60
   [main.params]
     icon = true

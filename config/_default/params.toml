@@ -17,7 +17,7 @@
 
 [footer]
     socialTitle = "MLLS"
-    socialCaption = "A word about MLLS here"
+    socialCaption = "Center for Basic Machine Learning Research in Life Science"
 
 [debugging]
     showJS = false
