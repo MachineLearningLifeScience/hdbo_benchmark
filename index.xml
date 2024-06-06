@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Benchmarking high-dimensional Bayesian Optimization of discrete sequences on HDBO</title>
+    <title>Benchmarking high-dimensional Bayesian Optimization of discrete sequences on Benchmarking HDBO</title>
     <link>/</link>
-    <description>Recent content in Benchmarking high-dimensional Bayesian Optimization of discrete sequences on HDBO</description>
+    <description>Recent content in Benchmarking high-dimensional Bayesian Optimization of discrete sequences on Benchmarking HDBO</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Copyright © 2024 HDBO Team.</copyright>
     <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>HDBO</title>
+      <title>BenchmarkingHDBO</title>
       <link>/docs/hdbo/about/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       <guid>/docs/hdbo/about/</guid>
@@ -28,14 +28,14 @@
       <link>/docs/hdbo/credits/</link>
       <pubDate>Fri, 04 Aug 2023 00:00:00 +0000</pubDate>
       <guid>/docs/hdbo/credits/</guid>
-      <description> Frameworks and Libraries &amp;nbsp; Frameworks and Libraries &amp;nbsp; Frameworks and Libraries &amp;nbsp; </description>
+      <description></description>
     </item>
     <item>
       <title>Benchmarks</title>
       <link>/benchmarks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/benchmarks/</guid>
-      <description>Lorem ipsum neural network convolutional GANs, deep reinforcement learning transformer models. Gradient descent tensor optimization backpropagation big data, cloud compute scalability quantum supremacy singularity.</description>
+      <description>We test several HDBO methods in the PMO benchmark using the tools provided by the Therapeutics Data Commons. In future work we plan to incorporate objective functions involving protein engineering and other high-dimensional discrete optimization tasks.</description>
     </item>
   </channel>
 </rss>
