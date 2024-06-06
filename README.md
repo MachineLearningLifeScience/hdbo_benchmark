@@ -1,18 +1,16 @@
 # A survey and benchmark of High-Dimensional Bayesian Optimization for discrete sequence optimization
 
-This repository contains the code for our survey and benchmark of **high-dimensional Bayesian optimization** of discrete sequences using [poli]() and [poli-baselines]().
+This repository contains the code for our survey and benchmark of **high-dimensional Bayesian optimization** of discrete sequences using [poli](https://github.com/MachineLearningLifeScience/poli) and [poli-baselines](https://github.com/MachineLearningLifeScience/poli-baselines).
 
 ## Checking ongoing results
 
-TODO: add a banner for the website action.
-
-TODO: add a link to the website.
+[Check our leaderboards here.](https://machinelearninglifescience.github.io/hdbo_benchmark)
 
 ## Adding a new solver
 
 ### Adding necessary files
 
-We expect contributions to this benchmark to be implemented as solvers in `poli-baselines`. Follow the documentation therein.
+We expect contributions to this benchmark to be implemented as solvers in [`poli-baselines`](https://github.com/MachineLearningLifeScience/poli-baselines). Follow the documentation therein.
 
 In a few words, we expect you to provide the following folder structure:
 
@@ -60,7 +58,7 @@ Change the `WANDB_PROJECT` and `WANDB_ENTITY` in `src/hdbo_benchmark/utils/const
 
 After implementing a solver in `poli-baselines`, you can **register it** in `src/hdbo_benchmark/utils/experiments/load_solvers.py`.
 
-The scripts used to run the benchmarks can be found in `src/hdbo_benchmark/experiments`. To run e.g. `albuterol_similarity` [of the PMO benchmark]() you can run:
+The scripts used to run the benchmarks can be found in `src/hdbo_benchmark/experiments`. To run e.g. `albuterol_similarity` [of the PMO benchmark](https://openreview.net/forum?id=yCZRdI0Y7G) you can run:
 
 ```bash
 conda run -n hdbo python src/hdbo_benchmark/experiments/benchmark_on_pmo/run.py \
@@ -84,10 +82,5 @@ and following the scripts in `src/hdbo_benchmark/data_preprocessing/zinc250k`.
 
 ## Citing all the relevant work
 
-If you use our benchmark, there are plenty of references to cite. Here are the relevant `bibtex` entries:
+Depending on the black box you use within `poli`, we expect you to cite a set of references. [Check the documentation of the black box for a list (including `bibtex`)](https://machinelearninglifescience.github.io/poli-docs/using_poli/objective_repository/all_objectives.html).
 
-```bibtex
-@asdf{
-    ...
-}
-```
