@@ -61,14 +61,14 @@ After implementing a solver in `poli-baselines`, you can **register it** in `src
 The scripts used to run the benchmarks can be found in `src/hdbo_benchmark/experiments`. To run e.g. `albuterol_similarity` [of the PMO benchmark](https://openreview.net/forum?id=yCZRdI0Y7G) you can run:
 
 ```bash
-conda run -n hdbo python src/hdbo_benchmark/experiments/benchmark_on_pmo/run.py \
-    --function_name=albuterol_similarity \
-    --solver_name=your_solver_name \
-    --latent_dim=128 \
+conda run -n hdbo_benchmark python src/hdbo_benchmark/experiments/benchmark_on_pmo/run.py \
+    --function-name=albuterol_similarity \
+    --solver-name=line_bo \
+    --latent-dim=128 \
     --max-iter=300 \
 ```
 
-assuming `hdbo` is an environment in which you can run your solver, and in which this package is installed. Examples of environments where solvers have been tested to run can be found in `poli-baselines`.
+assuming `hdbo_benchmark` is an environment in which you can run your solver, and in which this package is installed. Examples of environments where solvers have been tested to run can be found in `poli-baselines`.
 
 ## Replicating the data preprocessing for downloading zinc250k
 
