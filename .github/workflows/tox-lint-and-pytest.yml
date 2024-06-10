@@ -1,6 +1,6 @@
 name: Tests on hdbo (conda, python 3.10)
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build-linux:
