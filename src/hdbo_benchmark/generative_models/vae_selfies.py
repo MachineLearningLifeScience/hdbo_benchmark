@@ -208,9 +208,9 @@ class VAESelfies(VAE):
         pixels = img_width_and_height
         final_img = np.zeros((n_cols * pixels, n_rows * pixels, 3))
         for z, (i, j) in positions.items():
-            final_img[i * pixels : (i + 1) * pixels, j * pixels : (j + 1) * pixels] = (
-                img_dict[z]
-            )
+            final_img[
+                i * pixels : (i + 1) * pixels, j * pixels : (j + 1) * pixels
+            ] = img_dict[z]
 
         final_img = final_img.astype(int)
 
