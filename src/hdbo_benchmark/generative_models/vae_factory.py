@@ -8,7 +8,6 @@ from typing import Literal
 import torch
 
 from hdbo_benchmark.generative_models.vae import VAE
-from hdbo_benchmark.generative_models.vae_molopt import VAEMolOpt
 from hdbo_benchmark.generative_models.vae_selfies import VAESelfies
 from hdbo_benchmark.generative_models.vae_rnn_selfies import VAERNNSelfies
 from hdbo_benchmark.generative_models.vae_mario import VAEMario
@@ -77,7 +76,7 @@ class VAEFactory:
         opt_vae.load_state_dict(torch.load(weights_path, map_location=DEVICE))
         return opt_vae
 
-    def _create_vae_on_molecules(self, latent_dim: int) -> VAESelfies | VAEMolOpt:
+    def _create_vae_on_molecules(self, latent_dim: int) -> VAESelfies:
         match latent_dim:
             case 2:
                 weights_path = (
