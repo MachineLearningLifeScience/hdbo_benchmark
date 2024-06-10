@@ -1,10 +1,14 @@
 # A survey and benchmark of High-Dimensional Bayesian Optimization for discrete sequence optimization
 
+[![Link to Project website](https://img.shields.io/badge/GitHub-Project_Website-100000?style=for-the-badge&logo=github&logoColor=white)](https://machinelearninglifescience.github.io/hdbo_benchmark)
+
+[![Tests on hdbo (conda, python 3.10)](https://github.com/MachineLearningLifeScience/hdbo_benchmark/actions/workflows/tox-lint-and-pytest.yml/badge.svg)](https://github.com/MachineLearningLifeScience/hdbo_benchmark/actions/workflows/tox-lint-and-pytest.yml)
+
 This repository contains the code for our survey and benchmark of **high-dimensional Bayesian optimization** of discrete sequences using [poli](https://github.com/MachineLearningLifeScience/poli) and [poli-baselines](https://github.com/MachineLearningLifeScience/poli-baselines).
 
 ## Checking ongoing results
 
-[Check our leaderboards here.](https://machinelearninglifescience.github.io/hdbo_benchmark)
+[Check our leaderboards in our project website.](https://machinelearninglifescience.github.io/hdbo_benchmark)
 
 ## Adding a new solver
 
@@ -48,8 +52,8 @@ Provide said code as **as a pull request to poli-baselines.** Afterwards, we wil
 If you feel eager to test it in our problems, you could prepare for local testing here. We provide a `requirements.txt`/`environment.yml` you can use to create an environment for running the benchmarks. Afterwards, install this package:
 
 ```bash
-conda create -n hdbo python=3.10
-conda activate hdbo
+conda create -n hdbo_benchmark python=3.10
+conda activate hdbo_benchmark
 pip install -r requirements.txt
 pip install -e .
 ```
