@@ -17,7 +17,6 @@ import poli_baselines  # type: ignore[import]
 
 import hdbo_benchmark
 from hdbo_benchmark.generative_models.vae_factory import VAEFactory, VAESelfies, VAE
-from hdbo_benchmark.generative_models.vae_molopt import VAEMolOpt
 from hdbo_benchmark.utils.experiments.load_solvers import load_solver, SOLVER_NAMES
 from hdbo_benchmark.utils.experiments.load_metadata_for_vaes import (
     load_alphabet_for_pmo,
@@ -39,8 +38,6 @@ def in_latent_space(
 ) -> Callable[[np.ndarray], np.ndarray]:
     def _latent_f(z: np.ndarray) -> np.ndarray:
         selfies_strings = vae.decode_to_string_array(z)
-        if isinstance(vae, VAEMolOpt):
-            selfies_strings = np.array(["".join(selfies_strings)])
         val: np.ndarray = f(np.array(selfies_strings))
         return val
 
