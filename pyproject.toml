@@ -6,8 +6,13 @@ build-backend = "setuptools.build_meta"
 name = "hdbo_benchmark"
 version = "0.0.1"
 dependencies = [
-    "numpy",
-    "torch",
+    "botorch",
+    "seaborn",
+    "CairoSVG",
+    "wandb",
+    "click",
+    "poli@git+https://github.com/MachineLearningLifeScience/poli.git@dev",
+    "poli-baselines@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
 ]
 
 [tool.mypy]

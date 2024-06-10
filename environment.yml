@@ -1,0 +1,15 @@
+name: hdbo_benchmark 
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - botorch
+    - seaborn
+    - CairoSVG
+    - wandb
+    - click
+    - "git+https://github.com/MachineLearningLifeScience/poli.git@dev"
+    - "git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+    - -e .

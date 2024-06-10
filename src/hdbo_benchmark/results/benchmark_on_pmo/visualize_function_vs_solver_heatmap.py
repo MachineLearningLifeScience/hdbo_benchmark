@@ -106,7 +106,6 @@ def summary_per_function(
 
 
 def plot_heatmap(df, normalized: bool = True):
-
     summary_avg, _ = summary_per_function(df, normalized_per_row=normalized)
 
     # We keep the columns in solver_name_but_pretty order
