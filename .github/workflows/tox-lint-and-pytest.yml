@@ -21,9 +21,6 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install tox
-    - name: Test linting with tox
+    - name: Check linting and tests with tox
       run: |
-        tox -c tox.ini -e lint
-    - name: Test running one objective and one solver with tox
-      run: |
-        tox -c tox.ini -e hdbo-base-py310
+        tox
