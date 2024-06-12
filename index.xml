@@ -10,18 +10,11 @@
     <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>BenchmarkingHDBO</title>
-      <link>/docs/hdbo/about/</link>
+      <title>Benchmarking HDBO</title>
+      <link>/docs/hdbo/introduction/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>/docs/hdbo/about/</guid>
-      <description>Optimizing discrete black-box functions is key in several domains, ranging from protein engineering to drug design. Due to the lack of gradient information and the need for sample efficiency, Bayesian optimization is an ideal candidate for these tasks.</description>
-    </item>
-    <item>
-      <title>License</title>
-      <link>/docs/hdbo/license/</link>
-      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>/docs/hdbo/license/</guid>
-      <description>Codebase &amp;nbsp; aaa&#xA;Documentation &amp;nbsp; bbb</description>
+      <guid>/docs/hdbo/introduction/</guid>
+      <description>Abstract&#xA;Optimizing discrete black-box functions is key in several domains, ranging from protein engineering to drug design. Due to the lack of gradient information and the need for sample efficiency, Bayesian optimization is an ideal candidate for these tasks.</description>
     </item>
     <item>
       <title>Credits</title>
@@ -29,6 +22,13 @@
       <pubDate>Fri, 04 Aug 2023 00:00:00 +0000</pubDate>
       <guid>/docs/hdbo/credits/</guid>
       <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>/docs/hdbo/preliminaries/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/hdbo/preliminaries/</guid>
+      <description>Preliminaries &amp;nbsp; Under construction.</description>
     </item>
     <item>
       <title>Benchmarks</title>
