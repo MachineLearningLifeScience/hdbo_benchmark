@@ -6,18 +6,45 @@
     }
 </style>
 
+<figure id="svg" class="svg {{index .Params 1}}"> 
+{{ readFile (print (index .Params 0)) | safeHTML }}
+</figure>
+
 <script>
     // find all href in svg figure#svg
     document.querySelectorAll('figure#svg a').forEach(function(a) {
         // get the href attribute
         var href = a.getAttribute('href');
-        // if the href attribute is not empty
-        if (href) {
-            console.log(href);
+        
+        // if the href attribute is empty, continue to the next iteration
+        if (!href) {
+            return;
         }
+
+        // find the previous svg "g" group element of the "a" element
+        var prev = a.previousElementSibling;
+        // if the previous element is not a "path" element, continue to the next iteration
+        if (prev.tagName !== 'path') {
+            return;
+        }
+        path = prev;
+
+        // change fill to red
+        // console.log(path);
+        // path.style.fill = 'red';
+
+        var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('x', path.getBBox().x);
+        rect.setAttribute('y', path.getBBox().y);
+        rect.setAttribute('href', href);
+        rect.setAttribute('width', path.getBBox().width);
+        rect.setAttribute('height', path.getBBox().height);
+        rect.style.fill = 'red';
+        rect.style.opacity = 0;
+        rect.style.cursor = 'pointer';
+        rect.addEventListener('click', function() {
+            window.location.href = href;
+        });
+        path.parentNode.insertBefore(rect, path.nextSibling);
     });
 </script>
-
-<figure id="svg" class="svg {{index .Params 1}}"> 
-{{ readFile (print (index .Params 0)) | safeHTML }}
-</figure>
