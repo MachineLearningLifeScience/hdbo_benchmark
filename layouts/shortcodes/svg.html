@@ -6,8 +6,9 @@
     }
 </style>
 
-<figure id="svg" class="svg {{index .Params 1}}"> 
-{{ readFile (print (index .Params 0)) | safeHTML }}
+<figure id="svg" class="svg"> 
+    {{ readFile (print (index .Params 0)) | safeHTML }}
+    <figcaption class="figure-caption px-4">{{ index .Params 1 | safeHTML }}</figcaption>
 </figure>
 
 <script>
@@ -39,6 +40,9 @@
         rect.setAttribute('href', href);
         rect.setAttribute('width', path.getBBox().width);
         rect.setAttribute('height', path.getBBox().height);
+        // rect.setAttribute('data-toggle', 'tooltip');
+        // rect.setAttribute('title', 'Click to view details');
+
         rect.style.fill = 'red';
         rect.style.opacity = 0;
         rect.style.cursor = 'pointer';

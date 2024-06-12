@@ -5,7 +5,7 @@
 
 [[main]]
   name = "About"
-  pageRef = "/docs/about"
+  pageRef = "/docs/hdbo/introduction"
   weight = 20
 
 [[main]]

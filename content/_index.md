@@ -11,7 +11,7 @@ actions:
   # https://github.com/MachineLearningLifeScience/poli
   # https://github.com/MachineLearningLifeScience/poli-baselines
   about:
-    url: "docs/hdbo/about"
+    url: "docs/hdbo/introduction"
     title: "About"
     icon: "fas circle-question"
     # outline: true

@@ -3,7 +3,7 @@
 <rect width="1400" height="1400" fill="white"/>
 <g filter="url(#filter0_d_0_1)">
 <rect x="618" y="722" width="72" height="28" rx="14" fill="white"/>
-<rect x="618.5" y="722.5" width="71" height="27" rx="13.5" stroke="black"/>
+<!-- <rect x="618.5" y="722.5" width="71" height="27" rx="13.5" stroke="black"/> -->
 </g>
 <circle cx="700" cy="700" r="650" fill="#1F6A98"/>
 <circle cx="700" cy="700" r="600" fill="#2376A9"/>

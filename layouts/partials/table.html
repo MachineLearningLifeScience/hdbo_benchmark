@@ -1,29 +1,48 @@
 {{ $data := .data }}
 
 <div class="tab-pane {{ if .active }}active{{ end }}" id="{{ .id }}" role="tabpanel" aria-labelledby="{{ .id }}-tab">
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            {{ range index $data 0}}
-                <th scope="col">{{ . | safeHTML }}</th>
-            {{ end }}
-        </tr>
+    <table class="table table-hover border">
+        <thead class="">
+            <tr class="">
+                {{ range index $data 0}}
+                    <th scope="col" class="">{{ . | safeHTML }}</th>
+                {{ end }}
+            </tr>
         </thead>
         <tbody>
             {{ range after 1 $data }}
-            <tr>
-                {{ range first 1 . }}
-                    <th scope="row" class="font-monospace">{{ . | safeHTML }}</th>
-                {{ end }}
+                <tr>
+                    {{ range first 1 . }}
+                        <th scope="row" class="font-monospace">{{ . | safeHTML }}</th>
+                    {{ end }}
 
-                {{ range after 1 . }}
-                    <td>{{ . | safeHTML }}</td>
-                {{ end }}
-            </tr>
+                    {{ range after 1 . }}
+                        <td>{{ . | safeHTML }}</td>
+                    {{ end }}
+                </tr>
             {{ end }}
         </tbody>
     </table>
+
+    {{ if .exp_setup }}
+        {{ $data:= .exp_setup }}
+      <div class="alert alert-success" role="alert">
+        <h5 class="alert-heading">
+            {{- partial "assets/icon.html" (dict "icon" "fas fa-flask" "spacing" false) }}
+            Experiment setup
+        </h5>
+        <!-- iterate through column-names in csv $data -->
+        <ul class="">
+            {{ range $index,$element := index $data 0}}
+                <li class="">
+                    {{ $element | safeHTML }}: {{ index (index $data 1) $index | safeHTML }}
+                </li>
+            {{ end }}
+      </div>
+    {{ end }}
+
 </div>
+
 
 <!-- 
 <p>{{ .name }} is majoring in {{ .major }}.</p>
