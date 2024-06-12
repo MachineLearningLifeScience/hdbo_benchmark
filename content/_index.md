@@ -23,9 +23,14 @@ actions:
     weight: 2
   github:
     url: "https://github.com/MachineLearningLifeScience/hdbo_benchmark"
-    title: "Our GitHub"
+    title: "Code"
     icon: "fab github"
     weight: 3
+  arxiv:
+    url: "https://arxiv.org/abs/2406.04739v1"
+    title: "Paper"
+    icon: "fas file"
+    weight: 4
 ---
 
 <hr>

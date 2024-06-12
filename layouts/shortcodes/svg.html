@@ -1,11 +1,23 @@
 <style>
-    figure.svg svg {
+    figure#svg svg {
         width: 100% !important;
         height: auto !important;
         /* margin-left: 16.5% !important; */
     }
 </style>
 
-<figure class="svg {{index .Params 1}}"> 
+<script>
+    // find all href in svg figure#svg
+    document.querySelectorAll('figure#svg a').forEach(function(a) {
+        // get the href attribute
+        var href = a.getAttribute('href');
+        // if the href attribute is not empty
+        if (href) {
+            console.log(href);
+        }
+    });
+</script>
+
+<figure id="svg" class="svg {{index .Params 1}}"> 
 {{ readFile (print (index .Params 0)) | safeHTML }}
 </figure>

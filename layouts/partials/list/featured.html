@@ -51,20 +51,22 @@
             
         {{ if $actions }}
             {{- $actions = sort $actions "weight" "asc" -}}
-            <div class="hstack{{ if gt (len $actions) 1 }} gap-1{{ end }} justify-content-{{ $align}} pt-5 pt-md-3">
+            <div class="{{ if gt (len $actions) 1 }} gap-1{{ end }} justify-content-{{ $align}} p-4">
                 {{ range $actions }}
                     {{ partial "assets/button.html" (dict "href" .url "icon" .icon "title" .title "outline" .outline "order" "first" "justify" "start") }}
                 {{ end }}
             </div>
         {{ end }}
         
-        <!-- <div class="fs-5 text-muted py-4">
-            # https://github.com/MachineLearningLifeScience/hdbo_benchmark
-            # https://github.com/MachineLearningLifeScience/poli
-            # https://github.com/MachineLearningLifeScience/poli-baselines  
-        </div> 
-        -->
-
+        <div class="alert alert-dark m-4" role="alert">
+            
+            <small class="text-light-emphasis">
+                If you are interested in participating and submitting results to this benchmark, follow the instructions in 
+                <a href="https://github.com/MachineLearningLifeScience/poli-baselines" class="">{{- partial "assets/icon.html" (dict "icon" "fab fa-github" "spacing" false) }}poli-baselines</a> or 
+                <a href="mailto:miguel.gonzalez-duque@bio.ku.dk">{{- partial "assets/icon.html" (dict "icon" "fa envelope" "spacing" false) }}contact us</a> directly.
+            </small>
+        </div>
+        
     </div>
 {{- end -}}
 
