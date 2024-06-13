@@ -1,6 +1,7 @@
 # A survey and benchmark of High-Dimensional Bayesian Optimization for discrete sequence optimization
 
 [![Link to Project website](https://img.shields.io/badge/GitHub-Project_Website-100000?logo=github&logoColor=white)](https://machinelearninglifescience.github.io/hdbo_benchmark)
+[![Link to Project website](https://img.shields.io/badge/GitHub-poli_docs-100000?logo=github&logoColor=white)](https://machinelearninglifescience.github.io/poli-docs)
 [![Tests on hdbo (conda, python 3.10)](https://github.com/MachineLearningLifeScience/hdbo_benchmark/actions/workflows/tox-lint-and-pytest.yml/badge.svg)](https://github.com/MachineLearningLifeScience/hdbo_benchmark/actions/workflows/tox-lint-and-pytest.yml)
 
 This repository contains the code for our survey and benchmark of **high-dimensional Bayesian optimization** of discrete sequences using [poli](https://github.com/MachineLearningLifeScience/poli) and [poli-baselines](https://github.com/MachineLearningLifeScience/poli-baselines).
@@ -13,7 +14,7 @@ This repository contains the code for our survey and benchmark of **high-dimensi
 
 ### Adding necessary files
 
-We expect contributions to this benchmark to be implemented as solvers in [`poli-baselines`](https://github.com/MachineLearningLifeScience/poli-baselines). Follow the documentation therein.
+We expect contributions to this benchmark to be implemented as solvers in [`poli-baselines`](https://github.com/MachineLearningLifeScience/poli-baselines). [Follow the documentation therein](https://machinelearninglifescience.github.io/poli-docs/contributing/a_new_solver.html).
 
 In a few words, we expect you to provide the following folder structure:
 
