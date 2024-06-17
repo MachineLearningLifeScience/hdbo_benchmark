@@ -1,0 +1,15 @@
+name: hdbo__vae_training
+channels:
+  - conda-forge
+  - defaults
+  - milagraph
+  - pytorch
+  - pyg
+dependencies:
+  - python=3.8
+  - torchdrug
+  - pip
+  - pip:
+    - pandas
+    - selfies
+    - torchdrug==0.2.1

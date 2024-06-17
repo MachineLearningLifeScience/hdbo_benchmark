@@ -15,11 +15,13 @@ if __name__ == "__main__":
     PROCESSED_DIR = ROOT_DIR / "data" / "small_molecule_datasets" / "processed"
 
     # We load the sequence lengths
-    sequence_lengths = pd.read_csv(PROCESSED_DIR / "sequence_lengths.csv")["SELFIES"]
+    sequence_lengths = pd.read_csv(PROCESSED_DIR / "zinc250k_sequence_lengths.csv")[
+        "SELFIES"
+    ]
     max_sequence_length = max(sequence_lengths)
 
     # We compute the length of the alphabet
-    with open(PROCESSED_DIR / "alphabet_stoi.json", "r") as fin:
+    with open(PROCESSED_DIR / "zinc250k_alphabet_stoi.json", "r") as fin:
         alphabet = json.load(fin)
 
     alphabet_length = len(alphabet)
@@ -30,5 +32,5 @@ if __name__ == "__main__":
     }
 
     # We save the metadata
-    with open(PROCESSED_DIR / "metadata.json", "w") as fout:
+    with open(PROCESSED_DIR / "zinc250k_metadata.json", "w") as fout:
         json.dump(metadata, fout, indent=4)

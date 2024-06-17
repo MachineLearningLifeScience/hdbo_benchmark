@@ -5,10 +5,51 @@ script transforms the SMILES representation of the
 molecules in the ZINC dataset to SELFIES.
 """
 
+from typing import List
 import pickle
 from pathlib import Path
 
-from poli.core.util.chemistry.string_to_molecule import translate_smiles_to_selfies  # type: ignore
+import selfies as sf
+
+
+def translate_smiles_to_selfies(
+    smiles_strings: List[str], strict: bool = False
+) -> List[str]:
+    """Translates a list of SMILES strings to SELFIES strings.
+
+    Given a list of SMILES strings, returns the translation
+    into SELFIES strings. If strict is True, it raises an error
+    if a SMILES string in the list cannot be parsed. Else, it
+    returns None for those.
+
+    This function uses the `selfies` package from Aspuru-Guzik's
+    lab. See https://github.com/aspuru-guzik-group/selfies
+
+
+    Parameters
+    ----------
+    smiles_strings : List[str]
+        A list of SMILES strings.
+    strict : bool, optional
+        If True, raise an error if a SMILES string in the list cannot be parsed.
+
+    Returns
+    -------
+    List[str]
+        A list of SELFIES strings.
+    """
+    selfies_strings = []
+    for smile in smiles_strings:
+        try:
+            selfies_strings.append(sf.encoder(smile))
+        except sf.EncoderError:
+            if strict:
+                raise ValueError(f"Failed to encode SMILES to SELFIES.")
+            else:
+                selfies_strings.append(None)
+
+    return selfies_strings
+
 
 if __name__ == "__main__":
     # We get the path to the ZINC dataset
