@@ -1,5 +1,6 @@
 """Computes the alphabet by counting the tokens in the dataset."""
 
+from __future__ import annotations
 from collections import defaultdict
 from pathlib import Path
 import json

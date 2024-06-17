@@ -21,7 +21,7 @@ if __name__ == "__main__":
     PROCESSED_DIR = ROOT_DIR / "data" / "small_molecule_datasets" / "processed"
 
     dataset_path = PROCESSED_DIR / "zinc250k.csv"
-    alphabet_path = PROCESSED_DIR / "alphabet_stoi.json"
+    alphabet_path = PROCESSED_DIR / "zinc250k_alphabet_stoi.json"
 
     assert (
         dataset_path.exists()

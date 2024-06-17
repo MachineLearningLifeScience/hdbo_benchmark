@@ -5,6 +5,7 @@ dependencies:
   - python=3.10
   - pip
   - pip:
+    - numpy<2
     - botorch
     - seaborn
     - CairoSVG
