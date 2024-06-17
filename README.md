@@ -79,10 +79,10 @@ assuming `hdbo_benchmark` is an environment in which you can run your solver, an
 We use [torchdrug](https://torchdrug.ai/docs/installation.html) to download the dataset. It has very picky dependencies, but you should be able to install it by running
 
 ```bash
-conda env create --file environment.vae_training.yml
+conda env create --file environment.data_preprocessing.yml
 ```
 
-and following the scripts in `src/hdbo_benchmark/data_preprocessing/zinc250k`.
+and following the scripts in `src/hdbo_benchmark/data_preprocessing/zinc250k` inside that env (`conda activate hdbo__data_preprocessing`).
 
 ## Citing all the relevant work
 
