@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "hdbo_benchmark"
 version = "0.0.1"
 dependencies = [
+    "numpy<2",
     "botorch",
     "seaborn",
     "CairoSVG",
