@@ -1,4 +1,4 @@
-name: hdbo__vae_training
+name: hdbo__data_preprocessing
 channels:
   - conda-forge
   - defaults
