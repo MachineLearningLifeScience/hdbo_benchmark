@@ -13,6 +13,5 @@ def has_uncommitted_changes(library: ModuleType):
             check=True,
         ).stdout
         return len(status) > 0
-    except subprocess.CalledProcessError as e:
-        print(f"Error: {e.stderr}")
+    except subprocess.CalledProcessError:
         return False
