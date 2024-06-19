@@ -8,7 +8,11 @@ def get_git_hash_of_library(library):
     # Get the current Git hash
     try:
         git_hash = (
-            subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=library_path)
+            subprocess.check_output(
+                ["git", "rev-parse", "HEAD"],
+                cwd=library_path,
+                stderr=subprocess.DEVNULL,
+            )
             .strip()
             .decode("utf-8")
         )
