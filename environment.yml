@@ -11,6 +11,6 @@ dependencies:
     - CairoSVG
     - wandb
     - click
-    - "git+https://github.com/MachineLearningLifeScience/poli.git@v0.2.0"
+    - "git+https://github.com/MachineLearningLifeScience/poli.git@v0.2.1"
     - "git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
     - -e .
