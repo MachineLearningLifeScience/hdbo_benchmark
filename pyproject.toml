@@ -12,7 +12,7 @@ dependencies = [
     "CairoSVG",
     "wandb",
     "click",
-    "poli@git+https://github.com/MachineLearningLifeScience/poli.git@dev",
+    "poli@git+https://github.com/MachineLearningLifeScience/poli.git@v0.2.1",
     "poli-baselines@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
 ]
 
