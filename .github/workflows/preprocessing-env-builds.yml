@@ -1,6 +1,9 @@
 name: Data preprocessing env builds (conda, python 3.8)
 
-on: [push]
+on:
+  push:
+  schedule:
+  - cron: "0 0 * * 0"
 
 jobs:
   build-linux:
