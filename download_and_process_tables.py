@@ -31,7 +31,7 @@ def compute_pretty_names(n_dimensions: int, use_tex: bool = True):
                 "random_mutation": (
                     r"\texttt{HillClimbing}" if use_tex else "HillClimbing"
                 ),
-                # "cma_es": r"\texttt{CMAES}",
+                "cma_es": r"\texttt{CMAES}" if use_tex else "CMA-ES",
                 "vanilla_bo_hvarfner": (
                     r"Hvarfner's \texttt{VanillaBO}"
                     if use_tex
@@ -50,7 +50,7 @@ def compute_pretty_names(n_dimensions: int, use_tex: bool = True):
                 "random_mutation": (
                     r"\texttt{HillClimbing}" if use_tex else "HillClimbing"
                 ),
-                # "cma_es": r"\texttt{CMAES}",
+                "cma_es": r"\texttt{CMAES}" if use_tex else "CMA-ES",
                 "vanilla_bo_hvarfner": (
                     r"Hvarfner's \texttt{VanillaBO}"
                     if use_tex
@@ -356,11 +356,12 @@ if __name__ == "__main__":
     tags: None = None
     model_vs_benchmark_table_columns = []
     seeds = [1, 2, 3]
+    download = False
     for n_dimensions in [2, 128]:
         df = create_base_table(
             n_dimensions=n_dimensions,
             save_cache=True,
-            use_cache=True,
+            use_cache=not download,
             tags=tags,
         )
         max_iter = 310 if n_dimensions == 128 else 110
