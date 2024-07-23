@@ -42,6 +42,7 @@ data/benchmark_on_toy_objective_*/
 data/benchmark_on_low_intrinsic_dimensionality/
 data/benchmark_on_low_intrinsic_dimensionality*/
 data/regressing_a_simple_function/
+data/backups
 reports/figures/regressing_a_simple_function/ExactGPModel*
 reports/figures/regressing_a_simple_function/ExactGPModelWithLogNormalPrior*
 reports/figures/regressing_a_simple_function/ExactGPWithPolynomialKernel*

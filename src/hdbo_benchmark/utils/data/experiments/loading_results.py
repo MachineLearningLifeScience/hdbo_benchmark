@@ -3,7 +3,6 @@
 from typing import Dict, Any, List
 from pathlib import Path
 import json
-import multiprocessing as mp
 
 import wandb
 
@@ -105,6 +104,9 @@ def load_results_as_dataframe_from_wandb(
 
 def _load_run_as_row(run: Any) -> list[dict[str, str | int | float]]:
     run_history = run.history()
+    if run_history.empty:
+        return []
+
     return [
         {
             "solver": run.config["solver_name"],
