@@ -9,10 +9,15 @@ These are other dependencies:
 pip install rdkit selfies pandas matplotlib
 ```
 
+Or you could just construct the environment we provide on `environment.data_preprocessing.yml`:
+
+```bash
+conda env create --file environment.data_preprocessing.yml
+```
+
 ## Downloading the dataset
 
 We use TorchDrug to download the dataset (see e.g. [this tutorial](https://torchdrug.ai/docs/tutorials/generation.html#prepare-the-pretraining-dataset)).
-
 
 ## Casting to `selfies`
 

@@ -65,21 +65,21 @@ def selfie_to_png(
 
 
 def selfie_to_image(
-    selfie: str, width: int = 200, height: int = 200, title: str | None = None
+    selfie: str, width: int = 200, height: int = 200, title: str | None = None, dpi=300
 ) -> Image.Image:
     svg = draw_molecule_from_selfies(selfie, width, height, title)
-    s_png = cairosvg.svg2png(bytestring=svg)
+    s_png = cairosvg.svg2png(bytestring=svg, dpi=dpi)
     s_img = Image.open(io.BytesIO(s_png))
 
     return s_img
 
 
 def selfie_to_numpy_image_array(
-    selfie: str, width: int = 200, height: int = 200, title: str | None = None
+    selfie: str, width: int = 200, height: int = 200, title: str | None = None, dpi=300
 ) -> np.ndarray:
     """
     Returns a numpy array representing the image of the molecule
     represented by the given selfie string.
     """
-    img = selfie_to_image(selfie, width, height, title)
+    img = selfie_to_image(selfie, width, height, title, dpi=dpi)
     return np.array(img)
