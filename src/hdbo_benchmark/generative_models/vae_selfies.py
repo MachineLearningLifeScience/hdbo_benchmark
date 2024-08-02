@@ -2,7 +2,7 @@
 Implements a Variational Autoencoder that can be trained on
 SELFIES data from zinc250k.
 """
-
+from __future__ import annotations
 from typing import Tuple, Dict, Optional
 from pathlib import Path
 from itertools import product
@@ -16,9 +16,9 @@ import torch.nn as nn
 
 from torch.distributions import Normal, Categorical
 
-from hdbo_benchmark.utils.selfies.visualization import (
-    selfie_to_numpy_image_array,
-)
+# from hdbo_benchmark.utils.selfies.visualization import (
+#     selfie_to_numpy_image_array,
+# )
 from hdbo_benchmark.utils.selfies.tokens import from_selfie_to_tensor
 from hdbo_benchmark.generative_models.vae import VAE
 
@@ -66,11 +66,11 @@ class VAESelfies(VAE):
 
         # Define the model
         self.encoder = nn.Sequential(
-            nn.Linear(self.input_length, 1024),
+            nn.Linear(self.input_length, 2048),
             nn.ReLU(),
-            nn.Linear(1024, 512),
+            nn.Linear(2048, 1024),
             nn.ReLU(),
-            nn.Linear(512, 256),
+            nn.Linear(1024, 256),
             nn.ReLU(),
         )
         self.encoder_mu = nn.Linear(256, latent_dim)
@@ -81,11 +81,11 @@ class VAESelfies(VAE):
         self.decoder = nn.Sequential(
             nn.Linear(latent_dim, 256),
             nn.ReLU(),
-            nn.Linear(256, 512),
+            nn.Linear(256, 1024),
             nn.ReLU(),
-            nn.Linear(512, 1024),
+            nn.Linear(1024, 2048),
             nn.ReLU(),
-            nn.Linear(1024, self.input_length),
+            nn.Linear(2048, self.input_length),
         )
 
         # Defines the prior
