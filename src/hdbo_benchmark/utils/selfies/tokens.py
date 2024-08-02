@@ -2,6 +2,7 @@
 A set of utilities to transform SELFIE strings into tokens and vice versa.
 """
 
+from __future__ import annotations
 from pathlib import Path
 from typing import List, Dict, Union, Any
 
