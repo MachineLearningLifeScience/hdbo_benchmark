@@ -61,7 +61,7 @@ def train_model(
     experiment_name: str,
     max_epochs: int = 1_000_000,
     lr: float = 1e-3,
-    early_stopping_patience: int = 50,
+    early_stopping_patience: int = 200,
     logger: Callable[[float, float], None] = lambda training_loss, testing_loss: None,
     model_name_for_saving: str | None = None,
 ):
