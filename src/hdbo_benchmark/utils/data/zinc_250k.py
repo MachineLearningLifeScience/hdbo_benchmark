@@ -11,7 +11,7 @@ from torch.utils.data import DataLoader, TensorDataset
 
 from hdbo_benchmark.utils.constants import DEVICE
 
-ROOT_DIR = Path(__file__).parent.parent.parent.parent.parent.resolve()
+ROOT_DIR = Path(__file__).parent.parent.parent.parent.parent.parent.resolve() # TODO: perhaps work from _home_ ?
 
 
 def load_zinc_250k_dataset() -> np.ndarray:
@@ -21,10 +21,9 @@ def load_zinc_250k_dataset() -> np.ndarray:
     loads the dataset of SELFIES strings, and one-hot encodes them.
     """
     dataset_path = (
-        ROOT_DIR
+        ROOT_DIR / "corel" / "experiments" / "assets"
         / "data"
-        / "small_molecule_datasets"
-        / "processed"
+        / "pmo"
         / "zinc250k_onehot_and_integers.npz"
     )
     dataset_onehot: np.ndarray = np.load(dataset_path)["onehot"]
@@ -37,10 +36,9 @@ def load_zinc_250k_alphabet() -> Dict[str, int]:
     Returns the alphabet (dict[str, int]) of SELFIES characters.
     """
     alphabet_path = (
-        ROOT_DIR
+        ROOT_DIR / "corel" / "experiments" / "assets"
         / "data"
-        / "small_molecule_datasets"
-        / "processed"
+        / "pmo"
         / "alphabet_stoi.json"
     )
 
