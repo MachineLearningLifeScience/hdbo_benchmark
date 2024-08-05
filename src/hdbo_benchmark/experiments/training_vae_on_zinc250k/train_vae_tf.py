@@ -81,7 +81,7 @@ def main(
     )
 
     train_model(
-        opt_model,  # type: ignore
+        model,  # type: ignore
         max_epochs=750,
         train_loader=train_loader,
         test_loader=test_loader,
