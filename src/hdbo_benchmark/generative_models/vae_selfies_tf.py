@@ -112,7 +112,7 @@ class VAESelfiesTF(VAE):
         the latent variable z.
         """
         hidden = self.encoder(tf.reshape(x, (x.shape[0], -1)))
-        mu, log_var = tf.split(hidden, num_or_size_splits=2, axis=1)
+        mu, log_var = tf.split(hidden, num_or_size_splits=2, axis=0)
 
         return tfp.distributions.MultivariateNormalDiag(loc=mu, scale_diag=tf.math.exp(0.5 * log_var))
 

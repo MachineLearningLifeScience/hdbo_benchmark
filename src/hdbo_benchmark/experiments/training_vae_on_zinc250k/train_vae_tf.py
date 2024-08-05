@@ -14,7 +14,7 @@ from hdbo_benchmark.utils.logging import has_uncommitted_changes
 
 
 @click.command()
-@click.option("--latent-dim", type=int, default=2)
+@click.option("--latent-dim", type=int, default=64)
 @click.option("--seed", type=int, default=None)
 @click.option("--batch-size", type=int, default=256)
 @click.option("--lr", type=float, default=1e-3)
