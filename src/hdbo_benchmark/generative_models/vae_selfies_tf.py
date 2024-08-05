@@ -101,7 +101,7 @@ class VAESelfiesTF(VAE):
         # Defines the prior
         self.p_z = tfp.distributions.MultivariateNormalDiag(
             loc=tf.zeros(latent_dim),
-            scale=tf.ones(latent_dim),
+            scale_diag=tf.ones(latent_dim),
         )
 
         # Moves to device
@@ -116,7 +116,7 @@ class VAESelfiesTF(VAE):
         mu = self.encoder_mu(hidden)
         log_var = self.encoder_log_var(hidden)
 
-        return tfp.distributions.MultivariateNormalDiag(loc=mu, scale=tf.math.exp(0.5 * log_var))
+        return tfp.distributions.MultivariateNormalDiag(loc=mu, scale_diag=tf.math.exp(0.5 * log_var))
 
     def decode(self, z: tf.Tensor) -> tfp.distributions.Categorical:
         """
