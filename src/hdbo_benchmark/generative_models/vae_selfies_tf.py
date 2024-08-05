@@ -24,6 +24,7 @@ ROOT_DIR = Path(__file__).parent.parent.parent.parent.resolve()
 class VAESelfiesTF(tf.keras.Model):
     def __init__(
         self,
+        alphabet_s_to_i: dict[str, int],
         latent_dim: int = 64,
         device: tf.device = tf.device("cpu"),
     ) -> None:
@@ -37,11 +38,11 @@ class VAESelfiesTF(tf.keras.Model):
         ) as fp:
             alphabet_s_to_i = json.load(fp)
 
-        super().__init__(
-            latent_dim=latent_dim,
-            alphabet_s_to_i=alphabet_s_to_i,
-            device=device,
-        )
+        super().__init__()
+        self.latent_dim = latent_dim
+        self.device = device
+        self.alphabet_s_to_i = alphabet_s_to_i
+        self.alphabet_i_to_s = {v: k for k, v in alphabet_s_to_i.items()}
 
         # Load the metadata to find the maximum sequence length
         with open(
