@@ -75,9 +75,8 @@ class VAESelfiesTF(VAE):
             layers.BatchNormalization(),
             layers.ReLU(),
             layers.Dropout(0.2),
+            layers.Dense(latent_dim * 2)
         ])
-        self.encoder_mu = layers.Dense(latent_dim)
-        self.encoder_log_var = layers.Dense(latent_dim)
 
         # The decoder, which outputs the logits of the categorical
         # distribution over the vocabulary.
@@ -113,8 +112,7 @@ class VAESelfiesTF(VAE):
         the latent variable z.
         """
         hidden = self.encoder(tf.reshape(x, (x.shape[0], -1)))
-        mu = self.encoder_mu(hidden)
-        log_var = self.encoder_log_var(hidden)
+        mu, log_var = tf.split(hidden, num_or_size_splits=2, axis=1)
 
         return tfp.distributions.MultivariateNormalDiag(loc=mu, scale_diag=tf.math.exp(0.5 * log_var))
 
