@@ -146,7 +146,7 @@ class VAESelfiesTF(tf.keras.Model):
         q_z_given_x, p_x_given_z = self.call(x)
 
         # Computes the KL divergence between q(z|x) and p(z)
-        kl_div = tf.math.reduce_sum(tfp.distributions.kl_divergence(q_z_given_x, self.p_z), axis=-1)
+        kl_div = tfp.distributions.kl_divergence(q_z_given_x, self.p_z)
         kl_div = kl_div*0.01 # KLD contribution 1%
 
         # Computes the reconstruction loss
