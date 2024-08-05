@@ -107,7 +107,7 @@ class VAESelfiesTF(VAE):
         # Moves to device
         self.device = device
 
-    def encode(self, x: tf.Tensor) -> tfp.distributions.MultivariateNormDiag:
+    def encode(self, x: tf.Tensor) -> tfp.distributions.MultivariateNormalDiag:
         """
         Computes the approximate posterior q(z|x) over
         the latent variable z.
@@ -116,7 +116,7 @@ class VAESelfiesTF(VAE):
         mu = self.encoder_mu(hidden)
         log_var = self.encoder_log_var(hidden)
 
-        return tfp.distributions.MultivariateNormDiag(loc=mu, scale=tf.math.exp(0.5 * log_var))
+        return tfp.distributions.MultivariateNormalDiag(loc=mu, scale=tf.math.exp(0.5 * log_var))
 
     def decode(self, z: tf.Tensor) -> tfp.distributions.Categorical:
         """
