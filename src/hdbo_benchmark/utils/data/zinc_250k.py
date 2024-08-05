@@ -125,7 +125,7 @@ def load_zinc_250k_dataloaders_tf(
     # specified percentage.
     training_index = int(len(one_hot_molecules) * train_test_split)
     train_data = (
-        tf.convert_to_tensor(one_hot_molecules[:training_index], device)
+        tf.convert_to_tensor(one_hot_molecules[:training_index])
         # .to(torch.get_default_dtype())
         # .to(device)
     )
