@@ -122,7 +122,7 @@ class VAESelfiesTF(VAE):
         """
         Returns a categorical likelihood over the vocabulary
         """
-        logits = self.decoder(z.to(self.device))
+        logits = self.decoder(z)
 
         # The categorical distribution expects (batch_size, ..., num_classes)
         return tfp.distributions.Categorical(
