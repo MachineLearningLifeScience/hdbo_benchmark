@@ -21,7 +21,7 @@ from hdbo_benchmark.utils.selfies.tokens import from_selfie_to_tensor
 ROOT_DIR = Path(__file__).parent.parent.parent.parent.resolve()
 
 
-class VAESelfiesTF(VAE):
+class VAESelfiesTF(tf.keras.Model):
     def __init__(
         self,
         latent_dim: int = 64,
