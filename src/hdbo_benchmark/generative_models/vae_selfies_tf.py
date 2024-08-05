@@ -77,8 +77,8 @@ class VAESelfiesTF(VAE):
             layers.ReLU(),
             layers.Dropout(0.2),
         ])
-        self.encoder_mu = layers.Linear(latent_dim)
-        self.encoder_log_var = layers.Linear(latent_dim)
+        self.encoder_mu = layers.Dense(latent_dim)
+        self.encoder_log_var = layers.Dense(latent_dim)
 
         # The decoder, which outputs the logits of the categorical
         # distribution over the vocabulary.
