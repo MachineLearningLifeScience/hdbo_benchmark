@@ -124,9 +124,7 @@ class VAESelfiesTF(VAE):
 
         # The categorical distribution expects (batch_size, ..., num_classes)
         return tfp.distributions.Categorical(
-            logits=logits.reshape(
-                -1, self.max_sequence_length, len(self.alphabet_s_to_i)
-            )
+            logits=tf.reshape(logits, (-1, self.max_sequence_length, len(self.alphabet_s_to_i)))
         )
 
     def call(self, x: tf.Tensor) -> Tuple[tfp.distributions.MultivariateNormDiag, tfp.distributions.Categorical]:
