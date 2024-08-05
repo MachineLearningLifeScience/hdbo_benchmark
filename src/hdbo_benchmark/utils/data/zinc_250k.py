@@ -126,13 +126,9 @@ def load_zinc_250k_dataloaders_tf(
     training_index = int(len(one_hot_molecules) * train_test_split)
     train_data = (
         tf.convert_to_tensor(one_hot_molecules[:training_index])
-        # .to(torch.get_default_dtype())
-        # .to(device)
     )
     test_data = (
         tf.convert_to_tensor(one_hot_molecules[training_index:])
-        # .to(torch.get_default_dtype())
-        # .to(device)
     )
 
     # Overfit to a single batch if specified
