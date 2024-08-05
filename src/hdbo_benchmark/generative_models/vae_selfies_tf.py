@@ -62,7 +62,7 @@ class VAESelfiesTF(VAE):
         self.input_length = self.max_sequence_length * len(self.alphabet_s_to_i)
 
         # Define the model
-        self.encoder = models.Sequential(
+        self.encoder = models.Sequential(layers=[
             layers.InputLayer(input_shape=(self.input_length,)),
             layers.Dense(2048),
             layers.BatchNormalization(),
@@ -76,13 +76,13 @@ class VAESelfiesTF(VAE):
             layers.BatchNormalization(256),
             layers.ReLU(),
             layers.Dropout(0.2),
-        )
+        ])
         self.encoder_mu = layers.Linear(latent_dim)
         self.encoder_log_var = layers.Linear(latent_dim)
 
         # The decoder, which outputs the logits of the categorical
         # distribution over the vocabulary.
-        self.decoder = models.Sequential(
+        self.decoder = models.Sequential(layers=[
             layers.InputLayer(input_shape=(latent_dim,)),
             layers.Dense(256),
             layers.BatchNormalization(),
@@ -97,7 +97,7 @@ class VAESelfiesTF(VAE):
             layers.ReLU(),
             layers.Dropout(0.2),
             layers.Dense(self.input_length),
-        )
+        ])
 
         # Defines the prior
         self.p_z = tfp.distributions.Normal(
