@@ -3,21 +3,20 @@ Implements a Variational Autoencoder in TF that can be trained on
 SELFIES data from zinc250k.
 """
 from __future__ import annotations
-from typing import Tuple, Dict, Optional
-from pathlib import Path
-from itertools import product
+
 import json
+from itertools import product
+from pathlib import Path
+from typing import Dict, Optional, Tuple
 
-import numpy as np
 import matplotlib.pyplot as plt
-
+import numpy as np
 import tensorflow as tf
 import tensorflow_probability as tfp
-from tensorflow.keras import layers, models, losses
+from tensorflow.keras import layers, models
 
-
-from hdbo_benchmark.utils.selfies.tokens import from_selfie_to_tensor
 from hdbo_benchmark.generative_models.vae import VAE
+from hdbo_benchmark.utils.selfies.tokens import from_selfie_to_tensor
 
 ROOT_DIR = Path(__file__).parent.parent.parent.parent.resolve()
 
@@ -101,8 +100,8 @@ class VAESelfiesTF(VAE):
 
         # Defines the prior
         self.p_z = tfp.distributions.Normal(
-            loc=tf.zeros(latent_dim),
-            scale=tf.ones(latent_dim),
+            loc=tf.zeros((latent_dim,)),
+            scale=tf.ones((latent_dim,)),
         )
 
         # Moves to device
