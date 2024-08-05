@@ -101,8 +101,8 @@ class VAESelfiesTF(VAE):
 
         # Defines the prior
         self.p_z = tfp.distributions.Normal(
-            loc=tf.zeros(latent_dim, device=device),
-            scale=tf.ones(latent_dim, device=device),
+            loc=tf.zeros(latent_dim),
+            scale=tf.ones(latent_dim),
         )
 
         # Moves to device
