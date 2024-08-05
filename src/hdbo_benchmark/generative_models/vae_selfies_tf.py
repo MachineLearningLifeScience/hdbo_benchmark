@@ -69,11 +69,11 @@ class VAESelfiesTF(VAE):
             layers.ReLU(),
             layers.Dropout(0.2),
             layers.Dense(1024),
-            layers.BatchNormalization(1024),
+            layers.BatchNormalization(),
             layers.ReLU(),
             layers.Dropout(0.2),
             layers.Dense(256),
-            layers.BatchNormalization(256),
+            layers.BatchNormalization(),
             layers.ReLU(),
             layers.Dropout(0.2),
         ])
