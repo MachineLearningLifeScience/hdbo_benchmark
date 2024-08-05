@@ -99,7 +99,7 @@ class VAESelfiesTF(VAE):
         ])
 
         # Defines the prior
-        self.p_z = tfp.distributions.MultivariateNormDiag(
+        self.p_z = tfp.distributions.MultivariateNormalDiag(
             loc=tf.zeros(latent_dim),
             scale=tf.ones(latent_dim),
         )
