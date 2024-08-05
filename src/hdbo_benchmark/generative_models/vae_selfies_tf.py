@@ -99,15 +99,15 @@ class VAESelfiesTF(VAE):
         ])
 
         # Defines the prior
-        self.p_z = tfp.distributions.Normal(
-            loc=tf.zeros((latent_dim,)),
-            scale=tf.ones((latent_dim,)),
+        self.p_z = tfp.distributions.MultivariateNormDiag(
+            loc=tf.zeros(latent_dim),
+            scale=tf.ones(latent_dim),
         )
 
         # Moves to device
         self.device = device
 
-    def encode(self, x: tf.Tensor) -> tfp.distributions.Normal:
+    def encode(self, x: tf.Tensor) -> tfp.distributions.MultivariateNormDiag:
         """
         Computes the approximate posterior q(z|x) over
         the latent variable z.
@@ -116,7 +116,7 @@ class VAESelfiesTF(VAE):
         mu = self.encoder_mu(hidden)
         log_var = self.encoder_log_var(hidden)
 
-        return tfp.distributions.Normal(loc=mu, scale=tf.math.exp(0.5 * log_var))
+        return tfp.distributions.MultivariateNormDiag(loc=mu, scale=tf.math.exp(0.5 * log_var))
 
     def decode(self, z: tf.Tensor) -> tfp.distributions.Categorical:
         """
@@ -131,7 +131,7 @@ class VAESelfiesTF(VAE):
             )
         )
 
-    def call(self, x: tf.Tensor) -> Tuple[tfp.distributions.Normal, tfp.distributions.Categorical]:
+    def call(self, x: tf.Tensor) -> Tuple[tfp.distributions.MultivariateNormDiag, tfp.distributions.Categorical]:
         """
         Computes a forward pass through the VAE, returning
         the distributions q_z_given_x and p_x_given_z.
