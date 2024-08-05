@@ -90,8 +90,8 @@ def train_model(
         training_losses.append(training_loss)
         testing_losses.append(testing_loss)
 
-        wandb.log({"train_loss": training_loss})
-        wandb.log({"test_loss": testing_loss})
+        wandb.log({"training_loss": training_loss})
+        wandb.log({"testing_loss": testing_loss})
 
         # Log the results
         logger(training_loss, testing_loss)
@@ -111,7 +111,7 @@ def train_model(
         if model_name_for_saving is not None:
             if epoch == 0 or improvement_flag:
                 model.save_weights(
-                    MODELS_DIR / experiment_name / f"{model_name_for_saving}.ckpt",
+                    MODELS_DIR / experiment_name / f"{model_name_for_saving}.weights.h5",
                 )
 
         if current_patience >= early_stopping_patience:
