@@ -148,7 +148,7 @@ class VAESelfiesTF(VAE):
         """
         Computes the ELBO loss for a given batch {x}.
         """
-        q_z_given_x, p_x_given_z = self.forward(x)
+        q_z_given_x, p_x_given_z = self.call(x)
 
         # Computes the KL divergence between q(z|x) and p(z)
         kl_div = tfp.distributions.kl_divergence(q_z_given_x, self.p_z).sum(dim=-1)
