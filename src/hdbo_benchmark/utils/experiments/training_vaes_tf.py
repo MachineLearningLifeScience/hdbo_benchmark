@@ -63,7 +63,7 @@ def train_model(
     model_name_for_saving: str | None = None,
 ):
     # Define the optimizer
-    optimizer = tf.keras.optimizers.AdamW(model.parameters(), lr=lr)
+    optimizer = tf.keras.optimizers.AdamW(learning_rate=lr)
 
     # Run the training loop
     best_testing_loss = float("inf")
