@@ -79,7 +79,6 @@ def train_model(
         (MODELS_DIR / experiment_name).mkdir(exist_ok=True, parents=True)
 
     for epoch in range(max_epochs):
-        model.to(DEVICE)
 
         # Run a training epoch
         training_loss = training_loop(model, train_loader, optimizer)
