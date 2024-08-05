@@ -24,7 +24,6 @@ ROOT_DIR = Path(__file__).parent.parent.parent.parent.resolve()
 class VAESelfiesTF(tf.keras.Model):
     def __init__(
         self,
-        alphabet_s_to_i: dict[str, int],
         latent_dim: int = 64,
         device: tf.device = tf.device("cpu"),
     ) -> None:
