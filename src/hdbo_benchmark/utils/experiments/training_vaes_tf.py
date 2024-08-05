@@ -1,6 +1,7 @@
 from typing import Callable
 
 import tensorflow as tf
+import wandb
 
 from tensorflow.keras.optimizers import Adam
 
@@ -89,6 +90,9 @@ def train_model(
         # Save the losses for plotting
         training_losses.append(training_loss)
         testing_losses.append(testing_loss)
+
+        wandb.log({"train_loss": training_loss})
+        wandb.log({"test_loss": testing_loss})
 
         # Log the results
         logger(training_loss, testing_loss)

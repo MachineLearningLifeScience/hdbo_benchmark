@@ -68,7 +68,7 @@ def main(
     )
     # opt_model = torch.compile(model)
 
-    wandb.watch(model, log="all", log_freq=100)
+    # wandb.watch(model, log="all", log_freq=100)
 
     # Defining the experiment's name
     experiment_name = "training_vae_on_zinc_250k"
