@@ -111,7 +111,7 @@ def train_model(
         if model_name_for_saving is not None:
             if epoch == 0 or improvement_flag:
                 model.save_weights(
-                    MODELS_DIR / experiment_name / f"{model_name_for_saving}.weights.h5",
+                    MODELS_DIR / experiment_name / f"{model_name_for_saving}.chkpt",
                 )
 
         if current_patience >= early_stopping_patience:
