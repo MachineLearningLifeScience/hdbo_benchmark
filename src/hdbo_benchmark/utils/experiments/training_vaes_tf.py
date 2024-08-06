@@ -26,7 +26,7 @@ def training_loop(
         # setup the gradients
         with tf.GradientTape() as tape:
             # Compute the loss (forward pass is inside)
-            loss = model.loss_function(batch)
+            loss = model.loss_function(batch, training=True)
 
         gradients = tape.gradient(loss, model.trainable_variables)
         optimizer.apply_gradients(zip(gradients, model.trainable_variables))
