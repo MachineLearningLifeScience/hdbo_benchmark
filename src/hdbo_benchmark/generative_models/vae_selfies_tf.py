@@ -62,7 +62,7 @@ class VAESelfiesTF(tf.keras.Model):
 
         # Define the model
         self.encoder = models.Sequential(layers=[
-            layers.InputLayer(shape=(self.input_length,)),
+            layers.InputLayer(input_shape=(self.input_length,)),
             layers.Dense(2048),
             layers.BatchNormalization(),
             layers.ReLU(),
@@ -81,7 +81,7 @@ class VAESelfiesTF(tf.keras.Model):
         # The decoder, which outputs the logits of the categorical
         # distribution over the vocabulary.
         self.decoder = models.Sequential(layers=[
-            layers.InputLayer(shape=(latent_dim,)),
+            layers.InputLayer(input_shape=(latent_dim,)),
             layers.Dense(256),
             layers.BatchNormalization(),
             layers.ReLU(),

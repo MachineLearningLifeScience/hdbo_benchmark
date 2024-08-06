@@ -1,15 +1,13 @@
 import click
 import numpy as np
 import tensorflow as tf
-import wandb
 
 import hdbo_benchmark
-from hdbo_benchmark.utils.data.zinc_250k import (
-    load_zinc_250k_dataloaders_tf,
-)
+import wandb
 from hdbo_benchmark.generative_models.vae_selfies_tf import VAESelfiesTF
-from hdbo_benchmark.utils.experiments.training_vaes_tf import train_model
 from hdbo_benchmark.utils.constants import DEVICE, WANDB_ENTITY
+from hdbo_benchmark.utils.data.zinc_250k import load_zinc_250k_dataloaders_tf
+from hdbo_benchmark.utils.experiments.training_vaes_tf import train_model
 from hdbo_benchmark.utils.logging import has_uncommitted_changes
 
 
