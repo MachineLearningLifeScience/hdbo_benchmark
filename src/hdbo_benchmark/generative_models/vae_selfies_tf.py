@@ -106,44 +106,44 @@ class VAESelfiesTF(tf.keras.Model):
         # Moves to device
         self.device = device
 
-    def encode(self, x: tf.Tensor) -> tfp.distributions.MultivariateNormalDiag:
+    def encode(self, x: tf.Tensor, training: bool=False) -> tfp.distributions.MultivariateNormalDiag:
         """
         Computes the approximate posterior q(z|x) over
         the latent variable z.
         """
-        hidden = self.encoder(tf.reshape(x, (x.shape[0], -1)))
+        hidden = self.encoder(tf.reshape(x, (x.shape[0], -1)), training=training)
         mu, log_var = tf.split(hidden, num_or_size_splits=2, axis=1)
 
         return tfp.distributions.MultivariateNormalDiag(loc=mu, scale_diag=tf.math.exp(0.5 * log_var))
 
-    def decode(self, z: tf.Tensor) -> tfp.distributions.Categorical:
+    def decode(self, z: tf.Tensor, training: bool=False) -> tfp.distributions.Categorical:
         """
         Returns a categorical likelihood over the vocabulary
         """
-        logits = self.decoder(z)
+        logits = self.decoder(z, training=training)
 
         # The categorical distribution expects (batch_size, ..., num_classes)
         return tfp.distributions.Categorical(
             logits=tf.reshape(logits, (-1, self.max_sequence_length, len(self.alphabet_s_to_i)))
         )
 
-    def call(self, x: tf.Tensor) -> Tuple[tfp.distributions.MultivariateNormDiag, tfp.distributions.Categorical]:
+    def call(self, x: tf.Tensor, training:bool=False) -> Tuple[tfp.distributions.MultivariateNormDiag, tfp.distributions.Categorical]:
         """
         Computes a forward pass through the VAE, returning
         the distributions q_z_given_x and p_x_given_z.
         """
-        q_z_given_x = self.encode(x)
+        q_z_given_x = self.encode(x, training=training)
         z = q_z_given_x.sample()
 
-        p_x_given_z = self.decode(z)
+        p_x_given_z = self.decode(z, training=training)
 
         return q_z_given_x, p_x_given_z
 
-    def loss_function(self, x: tf.Tensor) -> tf.Tensor:
+    def loss_function(self, x: tf.Tensor, training: bool=False) -> tf.Tensor:
         """
         Computes the ELBO loss for a given batch {x}.
         """
-        q_z_given_x, p_x_given_z = self.call(x)
+        q_z_given_x, p_x_given_z = self.call(x, training=training)
 
         # Computes the KL divergence between q(z|x) and p(z)
         kl_div = tfp.distributions.kl_divergence(q_z_given_x, self.p_z)

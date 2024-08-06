@@ -44,7 +44,7 @@ def testing_loop(model: VAESelfiesTF, testing_data: tf.data.Dataset) -> float:
     losses = []
     for batch in testing_data:
         # Compute the loss (forward pass is inside)
-        loss = model.loss_function(batch)
+        loss = model.loss_function(batch, training=False)
 
         # Append for logging
         losses.append(loss.numpy())
