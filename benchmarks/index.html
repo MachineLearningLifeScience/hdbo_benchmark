@@ -16,7 +16,7 @@
 
     
     
-<link rel="stylesheet" href="../css/main.min.e52868d1cfa2c35c84304b03b90addd0fbc6dbb0bcbecaa2ace488e97bf8f87b.css" integrity="sha256-5Sho0c&#43;iw1yEMEsDuQrd0PvG27C8vsqirOSI6Xv4&#43;Hs=" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/main.min.d0f1ee2fc17f8514d07a1d975a9ee76680c1c1227f694bc0f8f67f67adc329cd.css" integrity="sha256-0PHuL8F/hRTQeh2XWp7nZoDBwSJ/aUvA&#43;PZ/Z63DKc0=" crossorigin="anonymous">
     
         
     
@@ -224,13 +224,7 @@
             </div>
     
             <div class="navbar-collapse collapse" id="navbar-0-collapse">
-                <div class="d-flex flex-fill ms-md-3">
-    <form class="search flex-fill position-relative me-auto">
-        <input class="search-input form-control is-search" type="search" placeholder="Search this site" aria-label="Search this site" autocomplete="off">
-        <div class="search-suggestions shadow bg-body rounded d-none" data-no-results="No results for"></div>
-    </form>
-</div>
-
+                
                 <ul class="navbar-nav ms-auto"><li class="nav-item">
 
 
@@ -399,11 +393,11 @@
         <thead class="">
             <tr class="">
                 
-                    <th scope="col" class=""></th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;</th>
                 
-                    <th scope="col" class="">PMO 2D</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;PMO 2D</th>
                 
-                    <th scope="col" class="">PMO 128D</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;PMO 128D</th>
                 
             </tr>
         </thead>
@@ -415,9 +409,21 @@
                     
 
                     
-                        <td>12.41 ± 1.33</td>
+                        <td>12.38 ± 1.33</td>
                     
-                        <td>14.33 ± 1.89</td>
+                        <td>13.78 ± 2.04</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace">CMA-ES</th>
+                    
+
+                    
+                        <td>17.28 ± 2.56</td>
+                    
+                        <td>20.17 ± 1.57</td>
                     
                 </tr>
             
@@ -427,9 +433,9 @@
                     
 
                     
-                        <td>19.65 ± 1.81</td>
+                        <td>19.59 ± 1.81</td>
                     
-                        <td>13.63 ± 2.16</td>
+                        <td>13.10 ± 2.16</td>
                     
                 </tr>
             
@@ -439,9 +445,9 @@
                     
 
                     
-                        <td>19.60 ± 4.59</td>
+                        <td>19.54 ± 4.59</td>
                     
-                        <td>7.13 ± 5.92</td>
+                        <td>6.81 ± 5.92</td>
                     
                 </tr>
             
@@ -451,9 +457,9 @@
                     
 
                     
-                        <td>19.35 ± 8.38</td>
+                        <td>19.29 ± 8.38</td>
                     
-                        <td>20.54 ± 3.29</td>
+                        <td>19.76 ± 3.29</td>
                     
                 </tr>
             
@@ -463,9 +469,9 @@
                     
 
                     
-                        <td>14.58 ± 4.84</td>
+                        <td>14.53 ± 4.84</td>
                     
-                        <td>16.12 ± 4.08</td>
+                        <td>15.46 ± 4.08</td>
                     
                 </tr>
             
@@ -477,7 +483,7 @@
                     
                         <td>1.72 ± 2.47</td>
                     
-                        <td>1.62 ± 2.47</td>
+                        <td>1.39 ± 2.47</td>
                     
                 </tr>
             
@@ -489,7 +495,7 @@
                     
                         <td>3.93 ± 3.57</td>
                     
-                        <td>3.96 ± 3.56</td>
+                        <td>3.65 ± 3.56</td>
                     
                 </tr>
             
@@ -501,7 +507,7 @@
                     
                         <td></td>
                     
-                        <td>15.82 ± 4.28</td>
+                        <td>15.07 ± 4.28</td>
                     
                 </tr>
             
@@ -509,11 +515,30 @@
     </table>
 
     
-
 </div>
 
+<script src="../js/jquery-3.7.1.slim.min.js"></script>
+<script src="../js/bootstrap-table.min.js"></script>
 
-
+<script>
+    function customSort(sortName, sortOrder, data) {
+        var order = sortOrder === 'desc' ? -1 : 1
+        data.sort(function (a, b) {
+            var aa = +((a[sortName] + '').replace(/[^\d]/g, ''))
+            var bb = +((b[sortName] + '').replace(/[^\d]/g, ''))
+            if (aa < bb) {
+                return order * -1
+            }
+            if (aa > bb) {
+                return order
+            }
+            return 0
+        })
+    }
+    $("#pills-home table").bootstrapTable({
+        customSort: customSort,
+    });
+</script>
 
 
     
@@ -525,23 +550,25 @@
         <thead class="">
             <tr class="">
                 
-                    <th scope="col" class="">Oracle</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Oracle</th>
                 
-                    <th scope="col" class="">HillClimbing</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;HillClimbing</th>
                 
-                    <th scope="col" class="">Hvarfner's VanillaBO</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;CMA-ES</th>
                 
-                    <th scope="col" class="">RandomLineBO</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Hvarfner's VanillaBO</th>
                 
-                    <th scope="col" class="">SAASBO</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;RandomLineBO</th>
                 
-                    <th scope="col" class="">BAxUS</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;SAASBO</th>
                 
-                    <th scope="col" class="">Turbo</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;BAxUS</th>
                 
-                    <th scope="col" class="">Bounce</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Turbo</th>
                 
-                    <th scope="col" class="">ProbRep</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Bounce</th>
+                
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;ProbRep</th>
                 
             </tr>
         </thead>
@@ -554,6 +581,8 @@
 
                     
                         <td>0.47 ± 0.00</td>
+                    
+                        <td>0.44 ± 0.03</td>
                     
                         <td>0.41 ± 0.04</td>
                     
@@ -579,6 +608,8 @@
                     
                         <td>0.44 ± 0.00</td>
                     
+                        <td>0.41 ± 0.01</td>
+                    
                         <td>0.42 ± 0.03</td>
                     
                         <td>0.36 ± 0.04</td>
@@ -602,6 +633,8 @@
 
                     
                         <td>0.04 ± 0.01</td>
+                    
+                        <td>0.16 ± 0.01</td>
                     
                         <td>0.05 ± 0.01</td>
                     
@@ -627,6 +660,8 @@
                     
                         <td>0.53 ± 0.00</td>
                     
+                        <td>0.54 ± 0.01</td>
+                    
                         <td>0.53 ± 0.00</td>
                     
                         <td>0.53 ± 0.00</td>
@@ -648,6 +683,8 @@
                         <th scope="row" class="font-monospace">drd2_docking</th>
                     
 
+                    
+                        <td>0.03 ± 0.00</td>
                     
                         <td>0.03 ± 0.00</td>
                     
@@ -675,6 +712,8 @@
                     
                         <td>0.45 ± 0.01</td>
                     
+                        <td>0.66 ± 0.01</td>
+                    
                         <td>0.40 ± 0.03</td>
                     
                         <td>0.29 ± 0.02</td>
@@ -698,6 +737,8 @@
 
                     
                         <td>0.33 ± 0.10</td>
+                    
+                        <td>0.20 ± 0.04</td>
                     
                         <td>0.27 ± 0.03</td>
                     
@@ -723,6 +764,8 @@
                     
                         <td>0.67 ± 0.13</td>
                     
+                        <td>0.73 ± 0.12</td>
+                    
                         <td>0.49 ± 0.04</td>
                     
                         <td>0.06 ± 0.04</td>
@@ -746,6 +789,8 @@
 
                     
                         <td>0.52 ± 0.10</td>
+                    
+                        <td>0.57 ± 0.14</td>
                     
                         <td>0.56 ± 0.05</td>
                     
@@ -771,6 +816,8 @@
                     
                         <td>0.20 ± 0.02</td>
                     
+                        <td>0.10 ± 0.03</td>
+                    
                         <td>0.16 ± 0.03</td>
                     
                         <td>0.10 ± 0.03</td>
@@ -793,7 +840,9 @@
                     
 
                     
-                        <td>0.06 ± 0.01</td>
+                        <td>0.05 ± 0.01</td>
+                    
+                        <td>0.17 ± 0.01</td>
                     
                         <td>0.05 ± 0.01</td>
                     
@@ -819,6 +868,8 @@
                     
                         <td>0.03 ± 0.01</td>
                     
+                        <td>0.12 ± 0.00</td>
+                    
                         <td>0.03 ± 0.01</td>
                     
                         <td>0.01 ± 0.00</td>
@@ -842,6 +893,8 @@
 
                     
                         <td>0.20 ± 0.04</td>
+                    
+                        <td>0.38 ± 0.02</td>
                     
                         <td>0.18 ± 0.03</td>
                     
@@ -867,6 +920,8 @@
                     
                         <td>0.63 ± 0.02</td>
                     
+                        <td>0.51 ± 0.30</td>
+                    
                         <td>0.60 ± 0.01</td>
                     
                         <td>0.59 ± 0.01</td>
@@ -890,6 +945,8 @@
 
                     
                         <td>0.02 ± 0.03</td>
+                    
+                        <td>0.25 ± 0.10</td>
                     
                         <td>0.00 ± 0.00</td>
                     
@@ -915,6 +972,8 @@
                     
                         <td>0.37 ± 0.15</td>
                     
+                        <td>0.59 ± 0.03</td>
+                    
                         <td>0.26 ± 0.15</td>
                     
                         <td>0.07 ± 0.03</td>
@@ -938,6 +997,8 @@
 
                     
                         <td>6.32 ± 0.75</td>
+                    
+                        <td>21.62 ± 0.12</td>
                     
                         <td>5.93 ± 1.19</td>
                     
@@ -963,6 +1024,8 @@
                     
                         <td>0.64 ± 0.06</td>
                     
+                        <td>0.90 ± 0.04</td>
+                    
                         <td>0.61 ± 0.02</td>
                     
                         <td>0.42 ± 0.03</td>
@@ -985,7 +1048,9 @@
                     
 
                     
-                        <td>9.06 ± 0.23</td>
+                        <td>9.14 ± 0.37</td>
+                    
+                        <td>7.48 ± 0.31</td>
                     
                         <td>8.84 ± 0.25</td>
                     
@@ -1011,6 +1076,8 @@
                     
                         <td>0.38 ± 0.01</td>
                     
+                        <td>0.39 ± 0.01</td>
+                    
                         <td>0.38 ± 0.01</td>
                     
                         <td>0.37 ± 0.00</td>
@@ -1034,6 +1101,8 @@
 
                     
                         <td>0.12 ± 0.09</td>
+                    
+                        <td>0.15 ± 0.15</td>
                     
                         <td>0.12 ± 0.13</td>
                     
@@ -1059,6 +1128,8 @@
                     
                         <td>0.04 ± 0.02</td>
                     
+                        <td>0.20 ± 0.05</td>
+                    
                         <td>0.05 ± 0.01</td>
                     
                         <td>0.02 ± 0.00</td>
@@ -1081,7 +1152,9 @@
                     
 
                     
-                        <td>0.05 ± 0.02</td>
+                        <td>0.04 ± 0.02</td>
+                    
+                        <td>0.16 ± 0.01</td>
                     
                         <td>0.05 ± 0.01</td>
                     
@@ -1121,6 +1194,8 @@
                     
                         <td>0.00 ± 0.00</td>
                     
+                        <td>0.00 ± 0.00</td>
+                    
                 </tr>
             
                 <tr>
@@ -1130,6 +1205,8 @@
 
                     
                         <td>0.10 ± 0.09</td>
+                    
+                        <td>0.13 ± 0.04</td>
                     
                         <td>0.09 ± 0.03</td>
                     
@@ -1153,21 +1230,23 @@
                     
 
                     
-                        <td>14.33 ± 1.89</td>
+                        <td>13.78 ± 2.04</td>
                     
-                        <td>13.63 ± 2.16</td>
+                        <td>20.17 ± 1.57</td>
                     
-                        <td>7.13 ± 5.92</td>
+                        <td>13.10 ± 2.16</td>
                     
-                        <td>20.54 ± 3.29</td>
+                        <td>6.81 ± 5.92</td>
                     
-                        <td>15.82 ± 4.28</td>
+                        <td>19.76 ± 3.29</td>
                     
-                        <td>16.12 ± 4.08</td>
+                        <td>15.07 ± 4.28</td>
                     
-                        <td>1.62 ± 2.47</td>
+                        <td>15.46 ± 4.08</td>
                     
-                        <td>3.96 ± 3.56</td>
+                        <td>1.39 ± 2.47</td>
+                    
+                        <td>3.65 ± 3.56</td>
                     
                 </tr>
             
@@ -1216,11 +1295,30 @@
             
       </div>
     
-
 </div>
 
+<script src="../js/jquery-3.7.1.slim.min.js"></script>
+<script src="../js/bootstrap-table.min.js"></script>
 
-
+<script>
+    function customSort(sortName, sortOrder, data) {
+        var order = sortOrder === 'desc' ? -1 : 1
+        data.sort(function (a, b) {
+            var aa = +((a[sortName] + '').replace(/[^\d]/g, ''))
+            var bb = +((b[sortName] + '').replace(/[^\d]/g, ''))
+            if (aa < bb) {
+                return order * -1
+            }
+            if (aa > bb) {
+                return order
+            }
+            return 0
+        })
+    }
+    $("#pills-128d table").bootstrapTable({
+        customSort: customSort,
+    });
+</script>
 
 
     
@@ -1232,21 +1330,23 @@
         <thead class="">
             <tr class="">
                 
-                    <th scope="col" class="">Oracle</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Oracle</th>
                 
-                    <th scope="col" class="">HillClimbing</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;HillClimbing</th>
                 
-                    <th scope="col" class="">Hvarfner's VanillaBO</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;CMA-ES</th>
                 
-                    <th scope="col" class="">RandomLineBO</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Hvarfner's VanillaBO</th>
                 
-                    <th scope="col" class="">SAASBO</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;RandomLineBO</th>
                 
-                    <th scope="col" class="">Turbo</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;SAASBO</th>
                 
-                    <th scope="col" class="">Bounce</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Turbo</th>
                 
-                    <th scope="col" class="">ProbRep</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Bounce</th>
+                
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;ProbRep</th>
                 
             </tr>
         </thead>
@@ -1259,6 +1359,8 @@
 
                     
                         <td>0.31 ± 0.10</td>
+                    
+                        <td>0.38 ± 0.05</td>
                     
                         <td>0.40 ± 0.02</td>
                     
@@ -1282,6 +1384,8 @@
                     
                         <td>0.30 ± 0.04</td>
                     
+                        <td>0.36 ± 0.04</td>
+                    
                         <td>0.34 ± 0.02</td>
                     
                         <td>0.40 ± 0.05</td>
@@ -1303,6 +1407,8 @@
 
                     
                         <td>0.09 ± 0.01</td>
+                    
+                        <td>0.13 ± 0.04</td>
                     
                         <td>0.13 ± 0.01</td>
                     
@@ -1326,6 +1432,8 @@
                     
                         <td>0.51 ± 0.00</td>
                     
+                        <td>0.52 ± 0.01</td>
+                    
                         <td>0.53 ± 0.01</td>
                     
                         <td>0.53 ± 0.01</td>
@@ -1345,6 +1453,8 @@
                         <th scope="row" class="font-monospace">drd2_docking</th>
                     
 
+                    
+                        <td>0.03 ± 0.00</td>
                     
                         <td>0.03 ± 0.00</td>
                     
@@ -1370,6 +1480,8 @@
                     
                         <td>0.01 ± 0.01</td>
                     
+                        <td>0.55 ± 0.01</td>
+                    
                         <td>0.60 ± 0.04</td>
                     
                         <td>0.57 ± 0.02</td>
@@ -1391,6 +1503,8 @@
 
                     
                         <td>0.07 ± 0.02</td>
+                    
+                        <td>0.16 ± 0.01</td>
                     
                         <td>0.14 ± 0.02</td>
                     
@@ -1414,6 +1528,8 @@
                     
                         <td>0.45 ± 0.05</td>
                     
+                        <td>0.42 ± 0.10</td>
+                    
                         <td>0.81 ± 0.07</td>
                     
                         <td>0.79 ± 0.10</td>
@@ -1435,6 +1551,8 @@
 
                     
                         <td>0.30 ± 0.14</td>
+                    
+                        <td>0.41 ± 0.20</td>
                     
                         <td>0.49 ± 0.11</td>
                     
@@ -1458,6 +1576,8 @@
                     
                         <td>0.10 ± 0.03</td>
                     
+                        <td>0.06 ± 0.01</td>
+                    
                         <td>0.10 ± 0.03</td>
                     
                         <td>0.08 ± 0.02</td>
@@ -1479,6 +1599,8 @@
 
                     
                         <td>0.13 ± 0.03</td>
+                    
+                        <td>0.17 ± 0.02</td>
                     
                         <td>0.13 ± 0.02</td>
                     
@@ -1502,6 +1624,8 @@
                     
                         <td>0.08 ± 0.01</td>
                     
+                        <td>0.11 ± 0.01</td>
+                    
                         <td>0.12 ± 0.01</td>
                     
                         <td>0.12 ± 0.02</td>
@@ -1523,6 +1647,8 @@
 
                     
                         <td>0.37 ± 0.01</td>
+                    
+                        <td>0.36 ± 0.05</td>
                     
                         <td>0.34 ± 0.00</td>
                     
@@ -1546,6 +1672,8 @@
                     
                         <td>0.00 ± 0.00</td>
                     
+                        <td>0.34 ± 0.28</td>
+                    
                         <td>0.65 ± 0.03</td>
                     
                         <td>0.65 ± 0.06</td>
@@ -1567,6 +1695,8 @@
 
                     
                         <td>0.12 ± 0.01</td>
+                    
+                        <td>0.18 ± 0.04</td>
                     
                         <td>0.14 ± 0.00</td>
                     
@@ -1590,6 +1720,8 @@
                     
                         <td>0.58 ± 0.09</td>
                     
+                        <td>0.57 ± 0.09</td>
+                    
                         <td>0.62 ± 0.13</td>
                     
                         <td>0.69 ± 0.08</td>
@@ -1611,6 +1743,8 @@
 
                     
                         <td>20.85 ± 0.21</td>
+                    
+                        <td>20.67 ± 0.66</td>
                     
                         <td>20.73 ± 1.05</td>
                     
@@ -1634,6 +1768,8 @@
                     
                         <td>0.82 ± 0.00</td>
                     
+                        <td>0.82 ± 0.11</td>
+                    
                         <td>0.77 ± 0.02</td>
                     
                         <td>0.77 ± 0.10</td>
@@ -1655,6 +1791,8 @@
 
                     
                         <td>7.64 ± 0.47</td>
+                    
+                        <td>7.00 ± 0.68</td>
                     
                         <td>7.98 ± 0.02</td>
                     
@@ -1682,6 +1820,8 @@
                     
                         <td>0.37 ± 0.00</td>
                     
+                        <td>0.37 ± 0.00</td>
+                    
                         <td>0.37 ± 0.01</td>
                     
                         <td>0.38 ± 0.01</td>
@@ -1699,6 +1839,8 @@
 
                     
                         <td>0.05 ± 0.03</td>
+                    
+                        <td>0.08 ± 0.07</td>
                     
                         <td>0.08 ± 0.06</td>
                     
@@ -1722,6 +1864,8 @@
                     
                         <td>0.15 ± 0.02</td>
                     
+                        <td>0.18 ± 0.02</td>
+                    
                         <td>0.21 ± 0.04</td>
                     
                         <td>0.18 ± 0.05</td>
@@ -1743,6 +1887,8 @@
 
                     
                         <td>0.10 ± 0.01</td>
+                    
+                        <td>0.17 ± 0.02</td>
                     
                         <td>0.15 ± 0.00</td>
                     
@@ -1778,6 +1924,8 @@
                     
                         <td>0.00 ± 0.00</td>
                     
+                        <td>0.00 ± 0.00</td>
+                    
                 </tr>
             
                 <tr>
@@ -1787,6 +1935,8 @@
 
                     
                         <td>0.02 ± 0.02</td>
+                    
+                        <td>0.12 ± 0.05</td>
                     
                         <td>0.15 ± 0.10</td>
                     
@@ -1808,15 +1958,17 @@
                     
 
                     
-                        <td>12.41 ± 1.33</td>
+                        <td>12.38 ± 1.33</td>
                     
-                        <td>19.65 ± 1.81</td>
+                        <td>17.28 ± 2.56</td>
                     
-                        <td>19.60 ± 4.59</td>
+                        <td>19.59 ± 1.81</td>
                     
-                        <td>19.35 ± 8.38</td>
+                        <td>19.54 ± 4.59</td>
                     
-                        <td>14.58 ± 4.84</td>
+                        <td>19.29 ± 8.38</td>
+                    
+                        <td>14.53 ± 4.84</td>
                     
                         <td>1.72 ± 2.47</td>
                     
@@ -1869,11 +2021,30 @@
             
       </div>
     
-
 </div>
 
+<script src="../js/jquery-3.7.1.slim.min.js"></script>
+<script src="../js/bootstrap-table.min.js"></script>
 
-
+<script>
+    function customSort(sortName, sortOrder, data) {
+        var order = sortOrder === 'desc' ? -1 : 1
+        data.sort(function (a, b) {
+            var aa = +((a[sortName] + '').replace(/[^\d]/g, ''))
+            var bb = +((b[sortName] + '').replace(/[^\d]/g, ''))
+            if (aa < bb) {
+                return order * -1
+            }
+            if (aa > bb) {
+                return order
+            }
+            return 0
+        })
+    }
+    $("#pills-2d table").bootstrapTable({
+        customSort: customSort,
+    });
+</script>
 
 
 </div>
@@ -1931,7 +2102,7 @@
 </div>
 </div>
 
-<script src="../js/main.bundle.min.54230e115dfd6ae5f8903f3bc33d4f7575eca2f3f5f5e61ef49a7f51db7a1dab.js" integrity="sha256-VCMOEV39auX4kD87wz1PdXXsovP19eYe9Jp/Udt6Has=" crossorigin="anonymous" async></script>
+<script src="../js/main.bundle.min.14eb9443a33d1ee7a3b9382392e4431611d981c851e07d49a20423c89c9e69c1.js" integrity="sha256-FOuUQ6M9HuejuTgjkuRDFhHZgchR4H1JogQjyJyeacE=" crossorigin="anonymous" async></script>
     
 
     
