@@ -2,7 +2,7 @@
 
 This branch is for the source of the website. 
 
-The "rendered" or "hosted" website is in the `gh-pages` branch which. Do not confuse the two.
+The "rendered" or "hosted" website is in the `gh-pages` branch which is generated from this source (see under Simple Deployment below). Do not confuse the two branches.
 
 ### How to run this:
 
@@ -15,7 +15,8 @@ Then run the following commands:
 
 ```bash
 git clone ...
-cd hdbo-benchmark-website
+cd hdbo_benchmark
+git checkout website
 npm install
 npm run mod:update
 npm run start
@@ -67,7 +68,7 @@ or
 cd public && git add --all && git commit -m "Publishing to gh-pages" && git push origin gh-pages
 ```
 
-5) Go back to the main repo and push the changes to the master branch
+5) Go back to the main repo and push the changes (the `website` and `gh-pages` branch) to origin (github).
 
 ```
 cd ..

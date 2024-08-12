@@ -49,7 +49,7 @@
     color = "body"
     fixed = true
     offset = "5.5rem"
-    search = true
+    search = false
     searchModal = false
     breadcrumb = false
     toc = true

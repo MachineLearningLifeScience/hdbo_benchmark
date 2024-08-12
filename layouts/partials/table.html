@@ -5,7 +5,7 @@
         <thead class="">
             <tr class="">
                 {{ range index $data 0}}
-                    <th scope="col" class="">{{ . | safeHTML }}</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;{{ . | safeHTML }}</th>
                 {{ end }}
             </tr>
         </thead>
@@ -40,11 +40,27 @@
             {{ end }}
       </div>
     {{ end }}
-
 </div>
 
+<script src="{{ absURL "js/jquery-3.7.1.slim.min.js" }}"></script>
+<script src="{{ absURL "js/bootstrap-table.min.js" }}"></script>
 
-<!-- 
-<p>{{ .name }} is majoring in {{ .major }}.</p>
-<p>Their grade point average is {{ .gpa }}.</p>
-<p>See <a href="#">{{ .page }}</a></p> -->
+<script>
+    function customSort(sortName, sortOrder, data) {
+        var order = sortOrder === 'desc' ? -1 : 1
+        data.sort(function (a, b) {
+            var aa = +((a[sortName] + '').replace(/[^\d]/g, ''))
+            var bb = +((b[sortName] + '').replace(/[^\d]/g, ''))
+            if (aa < bb) {
+                return order * -1
+            }
+            if (aa > bb) {
+                return order
+            }
+            return 0
+        })
+    }
+    $("#{{.id}} table").bootstrapTable({
+        customSort: customSort,
+    });
+</script>
