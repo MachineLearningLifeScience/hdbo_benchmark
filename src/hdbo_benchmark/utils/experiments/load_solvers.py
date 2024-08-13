@@ -9,6 +9,7 @@ from hdbo_benchmark.utils.constants import DEVICE
 
 SOLVER_NAMES = [
     "random_mutation",
+    "genetic_algorithm",
     "vanilla_bo",
     "vanilla_bo_with_lognormal_prior",
     "vanilla_bo_hvarfner",
@@ -42,6 +43,19 @@ def load_solver(
             )
 
             return ContinuousRandomMutation, solver_kwargs
+        case "genetic_algorithm":
+            from poli_baselines.solvers.simple.genetic_algorithm import (
+                FixedLengthGeneticAlgorithm,
+            )
+
+            solver_kwargs.update(
+                {
+                    "population_size": n_initial_points,
+                    "prob_of_mutation": 0.25,
+                }
+            )
+
+            return FixedLengthGeneticAlgorithm, solver_kwargs
         case "vanilla_bo":
             from poli_baselines.solvers.bayesian_optimization.vanilla_bayesian_optimization import (
                 VanillaBayesianOptimization,
