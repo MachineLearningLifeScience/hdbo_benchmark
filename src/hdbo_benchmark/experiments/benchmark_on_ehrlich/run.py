@@ -164,7 +164,10 @@ def main(
         y0 = None
     else:
         x0 = np.array(
-            [list(f._sample_random_sequence()) for _ in range(n_initial_points)]
+            [
+                list(f._sample_random_sequence(random_state=i))
+                for i in range(n_initial_points)
+            ]
         )
         onehot_x0 = _from_sequence_to_one_hot(
             x0, alphabet=f.info.alphabet, sequence_length=f.sequence_length
@@ -174,25 +177,16 @@ def main(
     if solve_in_discrete_space:
         f_ = f
         alphabet = f.info.alphabet
-        # We need to split x0 into [b, L] tokens.
-        if x0 is not None:
-            # split_x0 = [list(split_selfies(x_i)) for x_i in x0]
-            # split_x0 = [
-            #     x_i + ["[nop]"] * (sequence_length - len(x_i)) for x_i in split_x0
-            # ]
-            # x0_for_solver = np.array(split_x0)
-            x0_for_solver = x0
-        if x0 is None:
-            x0_for_solver = None
         kwargs_ = {
             "alphabet": alphabet,
             "sequence_length": sequence_length,
         }
+        x0_for_solver = x0
     else:
         f_ = _in_onehot_space(
             f, sequence_length=sequence_length, alphabet=f.info.alphabet
         )
-        x0_for_solver = onehot_x0
+        x0_for_solver = onehot_x0.reshape(n_initial_points, -1)
         kwargs_ = {
             "bounds": bounds,
         }
@@ -202,6 +196,7 @@ def main(
         n_dimensions=sequence_length * len(f.info.alphabet),
         seed=seed,
         n_initial_points=n_initial_points,
+        bounds=bounds,
     )
     kwargs.update(kwargs_)
     solver = solver_(
@@ -214,7 +209,8 @@ def main(
     # 3. Optimize
     try:
         solver.solve(max_iter=max_iter)
-    except (KeyboardInterrupt, BudgetExhaustedException):
+    except (KeyboardInterrupt, BudgetExhaustedException) as e:
+        print(f"Experiment interrupted. Reason: {e}")
         pass
 
 
