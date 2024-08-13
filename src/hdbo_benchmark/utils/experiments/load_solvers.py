@@ -51,7 +51,7 @@ def load_solver(
             solver_kwargs.update(
                 {
                     "population_size": n_initial_points,
-                    "prob_of_mutation": 0.5,
+                    "prob_of_mutation": 0.25,
                 }
             )
 
