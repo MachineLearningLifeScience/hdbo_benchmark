@@ -9,10 +9,10 @@ import matplotlib
 
 import pandas as pd
 
-pd.set_option("display.max_colwidth", None)
-
 from hdbo_benchmark.utils.constants import ROOT_DIR
 from hdbo_benchmark.results.benchmark_on_pmo.create_table import create_base_table
+
+pd.set_option("display.max_colwidth", None)
 
 # N_DIMENSIONS = 128
 COLOR_IN_TABLE = "Green"
