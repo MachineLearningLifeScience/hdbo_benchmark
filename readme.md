@@ -68,6 +68,11 @@ or
 cd public && git add --all && git commit -m "Publishing to gh-pages" && git push origin gh-pages
 ```
 
+Note: Sometimes `gh-pages` is diverged, in that case, checkout `gh-pages` and do
+```
+git pull -X ours origin gh-pages --no-rebase --no-commit
+```
+
 5) Go back to the main repo and push the changes (the `website` and `gh-pages` branch) to origin (github).
 
 ```
