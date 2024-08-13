@@ -152,8 +152,6 @@ def load_solver(
             solver_kwargs.update(
                 {
                     # "initial_trust_region_length": 0.8 * 4,
-                    "upper_bound": upper_bound,
-                    "lower_bound": lower_bound,
                     "noise_std": noise_std,
                     "max_iter": max_iter,
                 }
