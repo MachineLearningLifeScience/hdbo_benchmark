@@ -133,7 +133,8 @@ class VAEMario(VAE):
 
         return onehot
 
-    def decode_to_string_array(self, z: np.ndarray) -> np.ndarray: ...
+    def decode_to_string_array(self, z: np.ndarray) -> np.ndarray:
+        ...
 
     def plot_grid(
         self,
@@ -179,9 +180,9 @@ class VAEMario(VAE):
         pixels = 16 * 14
         final_img = np.zeros((n_cols * pixels, n_rows * pixels, 3))
         for z, (i, j) in positions.items():
-            final_img[i * pixels : (i + 1) * pixels, j * pixels : (j + 1) * pixels] = (
-                img_dict[z]
-            )
+            final_img[
+                i * pixels : (i + 1) * pixels, j * pixels : (j + 1) * pixels
+            ] = img_dict[z]
 
         final_img = final_img.astype(int)
 

@@ -139,7 +139,9 @@ def load_solver(
             assert n_dimensions is not None
             solver_kwargs.update(
                 {
-                    "initial_mean": np.random.randn(n_dimensions).reshape(1, -1).clip(*solver_kwargs.get("bounds", [None, None])),
+                    "initial_mean": np.random.randn(n_dimensions)
+                    .reshape(1, -1)
+                    .clip(*solver_kwargs.get("bounds", [None, None])),
                     "population_size": n_initial_points,
                     "initial_sigma": 1.0,
                 }
@@ -160,7 +162,7 @@ def load_solver(
             return BAxUS, solver_kwargs
         case "turbo":
             from poli_baselines.solvers.bayesian_optimization.turbo.turbo_wrapper import (
-                Turbo
+                Turbo,
             )
 
             return Turbo, solver_kwargs
