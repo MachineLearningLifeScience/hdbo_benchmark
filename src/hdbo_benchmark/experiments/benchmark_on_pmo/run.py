@@ -10,7 +10,6 @@ from selfies import split_selfies  # type: ignore[import]
 import poli  # type: ignore[import]
 from poli.core.util.seeding import seed_numpy, seed_python  # type: ignore[import]
 from poli.core.abstract_black_box import AbstractBlackBox  # type: ignore[import]
-from poli.objective_repository import AlbuterolSimilarityBlackBox  # type: ignore[import]
 from poli.core.exceptions import BudgetExhaustedException  # type: ignore[import]
 
 import poli_baselines  # type: ignore[import]
@@ -22,7 +21,7 @@ from hdbo_benchmark.utils.experiments.load_metadata_for_vaes import (
     load_alphabet_for_pmo,
     load_sequence_length_for_pmo,
 )
-from hdbo_benchmark.utils.constants import MODELS_DIR, ROOT_DIR, DEVICE
+from hdbo_benchmark.utils.constants import ROOT_DIR, DEVICE
 from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
 
 from hdbo_benchmark.utils.logging.wandb_observer import initialize_observer
