@@ -351,6 +351,21 @@ def print_table_as_tex(df, normalized: bool = False, n_dimensions: int = 2):
 
     # print(final_table)
 
+def postprocess_csv(csv_file_path, transpose = False, fix_whitespace = True, save = True):
+    df = pd.read_csv(csv_file_path, index_col = 0)
+
+    if transpose:
+        df = df.T
+    
+    if fix_whitespace: 
+        lmbd = lambda x: x.replace(" ", "&nbsp;") if isinstance(x, str) else x
+        df = df.map(lmbd)
+    
+    if save:
+        df.to_csv(csv_file_path)
+
+    return df
+    
 
 if __name__ == "__main__":
     tags: None = None
@@ -379,3 +394,9 @@ if __name__ == "__main__":
 
     model_vs_benchmark_table = pd.DataFrame(model_vs_benchmark_table_columns)
     model_vs_benchmark_table.T.to_csv(ROOT_DIR / "csv" / "model_vs_benchmark_table.csv")
+
+    ### Postprocessing for the website
+    postprocess_csv(ROOT_DIR / "csv" / "pmo_benchmark_task_2d.csv", transpose = True)
+    postprocess_csv(ROOT_DIR / "csv" / "pmo_benchmark_task_128d.csv", transpose = True)
+    postprocess_csv(ROOT_DIR / "csv" / "model_vs_benchmark_table.csv")
+

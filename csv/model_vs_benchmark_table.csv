@@ -1,10 +1,10 @@
 ,PMO 2D,PMO 128D
-HillClimbing,12.38 ± 1.33,13.78 ± 2.04
-CMA-ES,17.28 ± 2.56,20.17 ± 1.57
-Hvarfner's VanillaBO,19.59 ± 1.81,13.10 ± 2.16
-RandomLineBO,19.54 ± 4.59,6.81 ± 5.92
-SAASBO,19.29 ± 8.38,19.76 ± 3.29
-Turbo,14.53 ± 4.84,15.46 ± 4.08
-Bounce,1.72 ± 2.47,1.39 ± 2.47
-ProbRep,3.93 ± 3.57,3.65 ± 3.56
-BAxUS,,15.07 ± 4.28
+HillClimbing,12.38&nbsp;±&nbsp;1.33,13.78&nbsp;±&nbsp;2.04
+CMA-ES,17.28&nbsp;±&nbsp;2.56,20.17&nbsp;±&nbsp;1.57
+Hvarfner's VanillaBO,19.59&nbsp;±&nbsp;1.81,13.10&nbsp;±&nbsp;2.16
+RandomLineBO,19.54&nbsp;±&nbsp;4.59,6.81&nbsp;±&nbsp;5.92
+SAASBO,19.29&nbsp;±&nbsp;8.38,19.76&nbsp;±&nbsp;3.29
+Turbo,14.53&nbsp;±&nbsp;4.84,15.46&nbsp;±&nbsp;4.08
+Bounce,1.72&nbsp;±&nbsp;2.47,1.39&nbsp;±&nbsp;2.47
+ProbRep,3.93&nbsp;±&nbsp;3.57,3.65&nbsp;±&nbsp;3.56
+BAxUS,,15.07&nbsp;±&nbsp;4.28

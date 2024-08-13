@@ -13,7 +13,7 @@
             {{ range after 1 $data }}
                 <tr>
                     {{ range first 1 . }}
-                        <th scope="row" class="font-monospace">{{ . | safeHTML }}</th>
+                        <th scope="row" class="font-monospace fw-bold">{{ . | safeHTML }}</th>
                     {{ end }}
 
                     {{ range after 1 . }}
@@ -64,3 +64,11 @@
         customSort: customSort,
     });
 </script>
+
+<style>
+    th:first-child, td:first-child{
+        position: sticky;
+        left: 0px;
+        z-index: 1;
+    }
+</style>
