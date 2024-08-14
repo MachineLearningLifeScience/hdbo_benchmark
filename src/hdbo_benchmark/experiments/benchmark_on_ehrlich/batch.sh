@@ -20,9 +20,9 @@ TAG=$7
 
 # Add your commands here
 if [ "${SOLVER_NAME}" == "bounce" ] || [ "${SOLVER_NAME}" == "pr" ] || [ "${SOLVER_NAME}" == "genetic_algorithm" ]; then
-    command="conda run -n ${ENV_NAME} python src/hdbo_benchmark/experiments/benchmark_on_ehrlich/run.py --solver-name=${SOLVER_NAME} --sequence-length=${SEQUENCE_LENGTH} --motif-length=${MOTIF_LENGTH} --max-iter=${MAX_ITER} --solve-in-discrete-space --seed=${SLURM_ARRAY_TASK_ID} --tag=${TAG}"
+    command="conda run -n ${ENV_NAME} python src/hdbo_benchmark/experiments/benchmark_on_ehrlich/run.py --solver-name=${SOLVER_NAME} --sequence-length=${SEQUENCE_LENGTH} --n-motifs=${N_MOTIFS} --motif-length=${MOTIF_LENGTH} --max-iter=${MAX_ITER} --solve-in-discrete-space --seed=${SLURM_ARRAY_TASK_ID} --tag=${TAG}"
 else
-    command="conda run -n ${ENV_NAME} python src/hdbo_benchmark/experiments/benchmark_on_ehrlich/run.py --solver-name=${SOLVER_NAME} --sequence-length=${SEQUENCE_LENGTH} --motif-length=${MOTIF_LENGTH} --max-iter=${MAX_ITER} --seed=${SLURM_ARRAY_TASK_ID} --tag=${TAG}"
+    command="conda run -n ${ENV_NAME} python src/hdbo_benchmark/experiments/benchmark_on_ehrlich/run.py --solver-name=${SOLVER_NAME} --sequence-length=${SEQUENCE_LENGTH} --n-motifs=${N_MOTIFS} --motif-length=${MOTIF_LENGTH} --max-iter=${MAX_ITER} --seed=${SLURM_ARRAY_TASK_ID} --tag=${TAG}"
 fi
 echo $command
 eval $command
