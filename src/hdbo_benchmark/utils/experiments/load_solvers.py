@@ -54,6 +54,7 @@ def load_solver(
                     "prob_of_mutation": 0.25,
                 }
             )
+            solver_kwargs.pop("bounds", None)
 
             return FixedLengthGeneticAlgorithm, solver_kwargs
         case "vanilla_bo":
