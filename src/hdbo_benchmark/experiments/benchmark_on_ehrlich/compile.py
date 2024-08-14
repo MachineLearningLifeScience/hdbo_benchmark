@@ -15,18 +15,16 @@ if TEST_RUN:
         2: [2],
     }
 else:
-    sequence_lengths = [8, 64, 128, 256]
+    sequence_lengths = [8, 64, 256]
     mapping_n_motifs = {
-        8: [1, 2, 4, 8],
-        64: [1, 2, 4, 8],
-        128: [1, 2, 4, 8],
-        256: [1, 2, 4, 8],
+        8: [2],
+        64: [4],
+        256: [16],
     }
     mapping_motif_lengths = {
-        8: [2, 4, 8, 16],
-        64: [2, 4, 8, 16],
-        128: [2, 4, 8, 16],
-        256: [2, 4, 8, 16],
+        8: [4],
+        64: [8],
+        256: [10],
     }
 
 DISCETE_SOLVERS = ["pr", "bounce", "genetic_algorithm"]
@@ -40,15 +38,16 @@ if TEST_RUN:
 def condition_to_write(solver_name, sequence_length) -> bool:
     return solver_name in [
         "random_mutation",
-        "vanilla_bo_hvarfner",
+        "genetic_algorithm",
         "cma_es",
         "line_bo",
-        "saas_bo",
+        "vanilla_bo_hvarfner",
+        # "saas_bo",
         # "alebo",
         # "baxus",
-        "bounce",
-        "pr",
-        "turbo",
+        # "bounce",
+        # "pr",
+        # "turbo",
     ]
 
 
