@@ -4,7 +4,7 @@ from hdbo_benchmark.utils.experiments.load_solvers import SOLVER_NAMES
 
 current_date = datetime.now().strftime("%Y-%m-%d")
 
-TEST_RUN = True
+TEST_RUN = False
 
 if TEST_RUN:
     sequence_lengths = [2]
