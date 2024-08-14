@@ -2,11 +2,11 @@
 #SBATCH --job-name=ehrlich-benchmark
 #SBATCH --output=output_ehrlich.log
 #SBATCH --error=error_ehrlich.log
-#SBATCH --partition=gpu
+#SBATCH -p gpu --gres=gpu:titanx:1
 #SBATCH --array=1-3%3
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=3
+#SBATCH --cpus-per-task=10
 #SBATCH --mem=30G
 #SBATCH --time=1-00:00:00
 
