@@ -139,7 +139,9 @@ def load_solver(
             assert n_dimensions is not None
             solver_kwargs.update(
                 {
-                    "initial_mean": np.random.randn(n_dimensions).reshape(1, -1),
+                    "initial_mean": np.random.randn(n_dimensions)
+                    .reshape(1, -1)
+                    .clip(*solver_kwargs.get("bounds", [None, None])),
                     "population_size": n_initial_points,
                     "initial_sigma": 1.0,
                 }
@@ -152,8 +154,6 @@ def load_solver(
             solver_kwargs.update(
                 {
                     # "initial_trust_region_length": 0.8 * 4,
-                    "upper_bound": upper_bound,
-                    "lower_bound": lower_bound,
                     "noise_std": noise_std,
                     "max_iter": max_iter,
                 }
@@ -162,10 +162,10 @@ def load_solver(
             return BAxUS, solver_kwargs
         case "turbo":
             from poli_baselines.solvers.bayesian_optimization.turbo.turbo_wrapper import (
-                TurboWrapper,
+                Turbo,
             )
 
-            return TurboWrapper, solver_kwargs
+            return Turbo, solver_kwargs
         case "bounce":
             from poli_baselines.solvers.bayesian_optimization.bounce import BounceSolver
 
@@ -175,6 +175,7 @@ def load_solver(
                     "n_initial_points": n_initial_points,
                 }
             )
+            solver_kwargs.pop("bounds", None)
             return BounceSolver, solver_kwargs
         case "pr":
             from poli_baselines.solvers.bayesian_optimization.pr import (
@@ -188,6 +189,7 @@ def load_solver(
                     "device": DEVICE,
                 }
             )
+            solver_kwargs.pop("bounds", None)
 
             return ProbabilisticReparametrizationSolver, solver_kwargs
         case _:

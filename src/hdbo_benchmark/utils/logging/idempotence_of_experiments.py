@@ -22,4 +22,8 @@ def experiment_has_already_run(
             "state": "finished",
         },
     )
-    return len(list(runs)) > 0
+    try:
+        return len(list(runs)) > 0
+    except ValueError:
+        # wandb throws an error if the project does not exist.
+        return False
