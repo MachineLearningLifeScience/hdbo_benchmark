@@ -31,6 +31,9 @@ def compute_pretty_names(n_dimensions: int, use_tex: bool = True):
                 "random_mutation": (
                     r"\texttt{HillClimbing}" if use_tex else "HillClimbing"
                 ),
+                "genetic_algorithm": (
+                    r"\texttt{GeneticAlgorithm}" if use_tex else "GeneticAlgorithm"
+                ),
                 "cma_es": r"\texttt{CMAES}" if use_tex else "CMA-ES",
                 "vanilla_bo_hvarfner": (
                     r"Hvarfner's \texttt{VanillaBO}"
@@ -49,6 +52,9 @@ def compute_pretty_names(n_dimensions: int, use_tex: bool = True):
             solver_name_but_pretty = {
                 "random_mutation": (
                     r"\texttt{HillClimbing}" if use_tex else "HillClimbing"
+                ),
+                "genetic_algorithm": (
+                    r"\texttt{GeneticAlgorithm}" if use_tex else "GeneticAlgorithm"
                 ),
                 "cma_es": r"\texttt{CMAES}" if use_tex else "CMA-ES",
                 "vanilla_bo_hvarfner": (
@@ -351,21 +357,21 @@ def print_table_as_tex(df, normalized: bool = False, n_dimensions: int = 2):
 
     # print(final_table)
 
-def postprocess_csv(csv_file_path, transpose = False, fix_whitespace = True, save = True):
-    df = pd.read_csv(csv_file_path, index_col = 0)
+
+def postprocess_csv(csv_file_path, transpose=False, fix_whitespace=True, save=True):
+    df = pd.read_csv(csv_file_path, index_col=0)
 
     if transpose:
         df = df.T
-    
-    if fix_whitespace: 
-        lmbd = lambda x: x.replace(" ", "&nbsp;") if isinstance(x, str) else x
-        df = df.map(lmbd)
-    
+
+    if fix_whitespace:
+        df = df.map(lambda x: x.replace(" ", "&nbsp;") if isinstance(x, str) else x)
+
     if save:
         df.to_csv(csv_file_path)
 
     return df
-    
+
 
 if __name__ == "__main__":
     tags: None = None
@@ -382,7 +388,7 @@ if __name__ == "__main__":
         max_iter = 310 if n_dimensions == 128 else 110
         df = df[df["_step"] <= max_iter]
         df = df[df["seed"].isin(seeds)]
-        plot_heatmap(df, normalized=True)
+        # plot_heatmap(df, normalized=True)
         table_ = compute_pmo_benchmark_table(
             df, n_dimensions=n_dimensions, use_tex=False
         )
@@ -396,7 +402,6 @@ if __name__ == "__main__":
     model_vs_benchmark_table.T.to_csv(ROOT_DIR / "csv" / "model_vs_benchmark_table.csv")
 
     ### Postprocessing for the website
-    postprocess_csv(ROOT_DIR / "csv" / "pmo_benchmark_task_2d.csv", transpose = True)
-    postprocess_csv(ROOT_DIR / "csv" / "pmo_benchmark_task_128d.csv", transpose = True)
+    postprocess_csv(ROOT_DIR / "csv" / "pmo_benchmark_task_2d.csv", transpose=True)
+    postprocess_csv(ROOT_DIR / "csv" / "pmo_benchmark_task_128d.csv", transpose=True)
     postprocess_csv(ROOT_DIR / "csv" / "model_vs_benchmark_table.csv")
-
