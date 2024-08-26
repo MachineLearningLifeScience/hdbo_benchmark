@@ -21,6 +21,11 @@ actions:
     title: "Benchmarks"
     icon: "fas chart-line"
     weight: 2
+  related_work:
+    url: "related_work"
+    title: "Related Work"
+    icon: "fas circle"
+    weight: 2.5
   github:
     url: "https://github.com/MachineLearningLifeScience/hdbo_benchmark"
     title: "Code"

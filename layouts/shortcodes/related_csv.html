@@ -1,0 +1,67 @@
+{{ $data := (getCSV "," "csv/related_work.csv") }}
+{{ $headers := index $data 0 }}
+
+<table class="table table-hover border" id="table_id">
+    <thead class="">
+        <tr class="">
+            {{ range $headers }}
+                {{ if eq . "Date of publishing" }}
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc" data-sorter="dateSorter">&nbsp;{{ . | safeHTML }}</th>
+                {{ else }}
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;{{ . | safeHTML }}</th>
+                {{ end }}
+            {{ end }}
+        </tr>
+    </thead>
+    <tbody>
+        {{ range $i, $row := after 1 $data }} 
+            <tr>
+                
+                {{ range $j, $f := $headers }}
+                    {{ if eq $j 0 }}
+                        <th scope="row" class="font-monospace fw-bold">{{ index $row $j }}</th>
+                    {{ else if eq $j 2 }}
+                        <td>
+                            {{ if eq (index $row $j) "Couldn’t find one" }}
+                                <a href="{{ index $row $j }}" class="btn btn-sm btn-light disabled">
+                                    {{- partial "assets/icon.html" (dict "icon" "fas fa-flask" "spacing" false) }}
+                                </a>
+                                <!-- <span class="text-muted">n/a</span> -->
+                            {{ else }}
+                                <a href="{{ index $row $j }}" class="btn btn-sm btn-primary">
+                                    {{- partial "assets/icon.html" (dict "icon" "fas fa-flask" "spacing" false) }}
+                                </a>
+                            {{ end }}
+                        </td>
+                    {{ else if eq $j 4 }}
+                        <td>
+                            <a href="{{ index $row $j }}" class="btn btn-sm btn-primary">
+                                {{- partial "assets/icon.html" (dict "icon" "fas fa-link" "spacing" false) }}
+                            </a>
+                        </td>
+                    {{ else }}
+                        <td>{{ index $row $j }}</td>
+                    {{ end }}
+
+                    
+                {{ end }}
+            </tr>
+        {{ end }}
+            
+        
+    </tbody>
+</table>
+
+
+<script src="{{ absURL "js/jquery-3.7.1.slim.min.js" }}"></script>
+<script src="{{ absURL "js/bootstrap-table.min.js" }}"></script>
+
+<script>
+    function dateSorter(a, b){
+        return(new Date(a).getTime() - new Date(b).getTime());
+    }
+
+    $("#table_id").bootstrapTable({
+        search: true,
+    });
+</script>

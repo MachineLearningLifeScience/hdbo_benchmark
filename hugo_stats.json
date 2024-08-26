@@ -71,6 +71,7 @@
       "bottom-bar",
       "btn",
       "btn-close",
+      "btn-light",
       "btn-outline-secondary",
       "btn-primary",
       "btn-sm",
@@ -108,6 +109,7 @@
       "d-none",
       "d-none-inline-dark",
       "d-none-inline-light",
+      "disabled",
       "display-1",
       "display-4",
       "emphasis",
@@ -389,6 +391,7 @@
       "preliminaries",
       "sidebar-collapse-0-1",
       "svg",
+      "table_id",
       "toast-container",
       "toast-copied-code-message"
     ]
