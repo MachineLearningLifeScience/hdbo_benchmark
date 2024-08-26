@@ -31,6 +31,13 @@
       <description>Preliminaries &amp;nbsp; Under construction.</description>
     </item>
     <item>
+      <title>A review of high-dimensional Bayesian optimization</title>
+      <link>/related_work/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/related_work/</guid>
+      <description>We have collected a list of high-dimensional Bayesian optimization methods and their implementations (at least those that we could find) in the following table.</description>
+    </item>
+    <item>
       <title>Benchmarks</title>
       <link>/benchmarks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
