@@ -186,7 +186,7 @@ def main(
         alphabet=alphabet,
         latent_dim=latent_dim,
     ).to(DEVICE)
-    solvers_that_dont_allow_eager_evaluation = ["bounce"]
+    solvers_that_dont_allow_eager_evaluation = ["bounce", "baxus"]
     if solver_name in solvers_that_dont_allow_eager_evaluation:
         z0 = None
         x0 = None

@@ -156,6 +156,8 @@ def load_solver(
                 {
                     # "initial_trust_region_length": 0.8 * 4,
                     "noise_std": noise_std,
+                    "n_dimensions": n_dimensions,
+                    "n_init": n_initial_points,
                     "max_iter": max_iter,
                 }
             )
