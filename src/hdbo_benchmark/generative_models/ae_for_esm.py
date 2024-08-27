@@ -104,6 +104,14 @@ class LitAutoEncoder(L.LightningModule):
         x = torch.nn.functional.one_hot(x_int, num_classes=self.alphabet_size)
         return self.encode(x).detach().numpy()
 
+    def clean_up_special_tokens(self, x: np.ndarray) -> np.ndarray:
+        return np.array(
+            [
+                ["".join([c for c in p if c not in ["<pad>", "<cls>", "<eos>"]])]
+                for p in x
+            ]
+        )
+
 
 if __name__ == "__main__":
     # Defining the training data and dataloaders

@@ -67,7 +67,6 @@ def in_latent_space(
 @click.option("--latent-dim", type=int, default=128)
 @click.option("--seed", type=int, default=None)
 @click.option("--max-iter", type=int, default=100)
-@click.option("--n-initial-points", type=int, default=10)
 @click.option("--strict-on-hash/--no-strict-on-hash", type=bool, default=True)
 @click.option("--force-run/--no-force-run", default=True)
 @click.option("--solve-in-discrete-space/--no-solve-in-discrete-space", default=False)
@@ -185,7 +184,7 @@ def main(
         z0 = ae.encode(torch.from_numpy(x0_esm).to(torch.float32).to(DEVICE)).numpy(
             force=True
         )
-        x0 = ae.decode_to_string_array(z0)
+        x0 = problem.x0
         y0 = f(x0)
 
     if solve_in_discrete_space:
