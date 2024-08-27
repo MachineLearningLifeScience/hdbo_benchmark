@@ -159,6 +159,7 @@ def main(
         wildtype_pdb_path=ALL_PDBS,
         additive=True,
         chains_to_keep=chains_to_keep,
+        penalize_unfeasible_with=-100.0,
         evaluation_budget=max_iter + n_initial_points,
     )
     f = problem.black_box
@@ -179,8 +180,8 @@ def main(
 
     _, alphabet = esm.pretrained.esm2_t33_650M_UR50D()
 
-    latent_space_bounds = (-15.0, 15.0)
-    f_input_bounds = (0.0, 1.0)  # By inspecting z0.
+    latent_space_bounds = (-15.0, 15.0)  # By inspecting z0.
+    f_input_bounds = (0.0, 1.0)
     ae = LitAutoEncoder.load_from_checkpoint(
         MODELS_DIR / "version_23" / "checkpoints" / "epoch=99-step=700.ckpt",
         alphabet=alphabet,
@@ -201,8 +202,8 @@ def main(
 
     if solve_in_discrete_space:
         f_ = f
-        alphabet = f.info.alphabet
-        sequence_length = ae.max_sequence_length
+        alphabet = f.info.alphabet + [""]
+        sequence_length = f.info.max_sequence_length
         x0_for_solver = x0
         kwargs_ = {
             "alphabet": alphabet,
