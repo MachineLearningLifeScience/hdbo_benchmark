@@ -10,17 +10,17 @@ from hdbo_benchmark.utils.constants import DEVICE
 SOLVER_NAMES = [
     "random_mutation",
     "genetic_algorithm",
+    "cma_es",
+    "line_bo",
+    "baxus",
+    "turbo",
     "vanilla_bo",
     "vanilla_bo_with_lognormal_prior",
     "vanilla_bo_hvarfner",
-    "line_bo",
-    "saas_bo",
     "alebo",
-    "cma_es",
-    "baxus",
-    "turbo",
     "bounce",
     "pr",
+    "saas_bo",
 ]
 
 
