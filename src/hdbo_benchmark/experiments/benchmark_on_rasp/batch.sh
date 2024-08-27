@@ -1,25 +1,26 @@
 #!/bin/bash
-#SBATCH --job-name=pmo-benchmark
-#SBATCH --output=output_pmo.log
-#SBATCH --error=error_pmo.log
-#SBATCH --partition=boomsma
+#SBATCH --job-name=ehrlich-benchmark
+#SBATCH --output=output_ehrlich.log
+#SBATCH --error=error_ehrlich.log
+#SBATCH -p gpu --gres=gpu:titanx:1
 #SBATCH --array=1-3%3
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=3
+#SBATCH --cpus-per-task=10
 #SBATCH --mem=30G
-#SBATCH --time=2-23:00:00
+#SBATCH --time=1-00:00:00
 
-# Telling all models to not use GPU
-export CUDA_VISIBLE_DEVICES=""
-
-discrete_solvers=("bounce" "pr")
+ENV_NAME=$1
+SOLVER_NAME=$2
+LATENT_DIM=$3
+MAX_ITER=$4
+TAG=$5
 
 # Add your commands here
-if [ "$1" == "bounce" ] || [ "$1" == "pr" ]; then
-    command="conda run -n $4 python src/hdbo_benchmark/experiments/benchmark_on_pmo/run.py --function-name=$2 --solver-name=$1 --latent-dim=$3 --max-iter=$5 --solve-in-discrete-space --seed=${SLURM_ARRAY_TASK_ID} --tag=$6"
+if [ "${SOLVER_NAME}" == "bounce" ] || [ "${SOLVER_NAME}" == "pr" ] || [ "${SOLVER_NAME}" == "genetic_algorithm" ]; then
+    command="conda run -n ${ENV_NAME} python src/hdbo_benchmark/experiments/benchmark_on_ehrlich/run.py --solver-name=${SOLVER_NAME} --sequence-length=${SEQUENCE_LENGTH} --n-motifs=${N_MOTIFS} --motif-length=${MOTIF_LENGTH} --max-iter=${MAX_ITER} --solve-in-discrete-space --seed=${SLURM_ARRAY_TASK_ID} --tag=${TAG}"
 else
-    command="conda run -n $4 python src/hdbo_benchmark/experiments/benchmark_on_pmo/run.py --function-name=$2 --solver-name=$1 --latent-dim=$3 --max-iter=$5 --seed=${SLURM_ARRAY_TASK_ID} --tag=$6"
+    command="conda run -n ${ENV_NAME} python src/hdbo_benchmark/experiments/benchmark_on_ehrlich/run.py --solver-name=${SOLVER_NAME} --sequence-length=${SEQUENCE_LENGTH} --n-motifs=${N_MOTIFS} --motif-length=${MOTIF_LENGTH} --max-iter=${MAX_ITER} --seed=${SLURM_ARRAY_TASK_ID} --tag=${TAG}"
 fi
 echo $command
 eval $command

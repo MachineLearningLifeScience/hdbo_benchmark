@@ -32,10 +32,20 @@ from hdbo_benchmark.utils.logging.idempotence_of_experiments import (
 torch.set_default_dtype(torch.float32)
 
 
+def from_unit_cube_to_range(z: np.ndarray, bounds: tuple[float, float]) -> np.ndarray:
+    return z * (bounds[1] - bounds[0]) + bounds[0]
+
+
+def from_range_to_unit_cube(z: np.ndarray, bounds: tuple[float, float]) -> np.ndarray:
+    return (z - bounds[0]) / (bounds[1] - bounds[0])
+
+
 def in_latent_space(
-    f: AbstractBlackBox, ae: LitAutoEncoder
+    f: AbstractBlackBox, ae: LitAutoEncoder, latent_space_bounds: tuple[float, float]
 ) -> Callable[[np.ndarray], np.ndarray]:
     def _latent_f(z: np.ndarray) -> np.ndarray:
+        # We assume that z is in [0, 1]
+        z = from_unit_cube_to_range(z, latent_space_bounds)
         protein_strings_w_special_tokens = ae.decode_to_string_array(z)
         protein_strings = [
             ["".join([c for c in p if c not in ["<pad>", "<cls>", "<eos>"]])]
@@ -167,14 +177,15 @@ def main(
     )
     f.set_observer(obs)
 
-    bounds = (-5.0, 5.0)  # TODO: ?
     _, alphabet = esm.pretrained.esm2_t33_650M_UR50D()
 
+    latent_space_bounds = (-15.0, 15.0)
+    f_input_bounds = (0.0, 1.0)  # By inspecting z0.
     ae = LitAutoEncoder.load_from_checkpoint(
         MODELS_DIR / "version_23" / "checkpoints" / "epoch=99-step=700.ckpt",
         alphabet=alphabet,
         latent_dim=latent_dim,
-    )
+    ).to(DEVICE)
     solvers_that_dont_allow_eager_evaluation = ["bounce"]
     if solver_name in solvers_that_dont_allow_eager_evaluation:
         z0 = None
@@ -184,24 +195,24 @@ def main(
         z0 = ae.encode(torch.from_numpy(x0_esm).to(torch.float32).to(DEVICE)).numpy(
             force=True
         )
+        z0 = from_range_to_unit_cube(z0, latent_space_bounds)
         x0 = problem.x0
         y0 = f(x0)
 
     if solve_in_discrete_space:
         f_ = f
         alphabet = f.info.alphabet
-        sequence_length = ae.sequence_length
-        if x0 is None:
-            x0_for_solver = None
+        sequence_length = ae.max_sequence_length
+        x0_for_solver = x0
         kwargs_ = {
             "alphabet": alphabet,
             "sequence_length": sequence_length,
         }
     else:
-        f_ = in_latent_space(f, ae)
+        f_ = in_latent_space(f, ae, latent_space_bounds)
         x0_for_solver = z0
         kwargs_ = {
-            "bounds": bounds,
+            "bounds": f_input_bounds,
         }
 
     solver_, kwargs = load_solver(
@@ -209,6 +220,7 @@ def main(
         n_dimensions=latent_dim,
         seed=seed,
         n_initial_points=6,
+        bounds=f_input_bounds,
     )
     kwargs.update(kwargs_)
     solver = solver_(
@@ -223,6 +235,8 @@ def main(
         solver.solve(max_iter=max_iter)
     except (KeyboardInterrupt, BudgetExhaustedException):
         pass
+
+    obs.finish()
 
 
 if __name__ == "__main__":
