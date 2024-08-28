@@ -43,9 +43,11 @@ def load_solver(
                 ContinuousRandomMutation,
             )
 
-            solver_kwargs.update({
-                "std": std,
-            })
+            solver_kwargs.update(
+                {
+                    "std": std,
+                }
+            )
 
             return ContinuousRandomMutation, solver_kwargs
         case "genetic_algorithm":
