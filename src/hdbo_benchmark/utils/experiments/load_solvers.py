@@ -33,6 +33,7 @@ def load_solver(
     lower_bound: float | None = None,
     max_iter: int | None = None,
     noise_std: float = 0.0,
+    std: float = 0.25,
     n_initial_points: int = 10,
     **solver_kwargs,
 ) -> Tuple[Any, Dict[str, Any]]:
@@ -41,6 +42,10 @@ def load_solver(
             from poli_baselines.solvers.simple.continuous_random_mutation import (
                 ContinuousRandomMutation,
             )
+
+            solver_kwargs.update({
+                "std": std,
+            })
 
             return ContinuousRandomMutation, solver_kwargs
         case "genetic_algorithm":
