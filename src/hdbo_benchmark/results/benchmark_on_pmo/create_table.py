@@ -53,6 +53,7 @@ def convert_data_to_dataframes(
 
 
 def create_base_table(
+    experiment_name: str = "benchmark_on_pmo",
     n_dimensions: int = 128,
     save_cache: bool = True,
     use_cache: bool = False,
@@ -62,7 +63,8 @@ def create_base_table(
     CACHE_PATH.mkdir(exist_ok=True, parents=True)
     tags_str = "-".join(tags) if tags is not None else "all"
     CACHE_FILE = (
-        CACHE_PATH / f"base_table-n_dimensions-{n_dimensions}-tags-{tags_str}.csv"
+        CACHE_PATH
+        / f"base_table_{experiment_name}-n_dimensions-{n_dimensions}-tags-{tags_str}.csv"
     )
 
     if use_cache and CACHE_FILE.exists():
@@ -70,13 +72,13 @@ def create_base_table(
         return df
 
     all_runs = get_all_runs_for_experiment(
-        experiment_name="benchmark_on_pmo", n_dimensions=n_dimensions, tags=tags
+        experiment_name=experiment_name, n_dimensions=n_dimensions, tags=tags
     )
 
     # Append with the results from PR on 2D
     if n_dimensions != 2:
         pr_runs = get_all_runs_for_experiment(
-            experiment_name="benchmark_on_pmo",
+            experiment_name=experiment_name,
             solver_name="pr",
             n_dimensions=2,
             tags=tags,
@@ -86,7 +88,7 @@ def create_base_table(
     # Append the results of Bounce on 128D
     if n_dimensions != 128:
         bounce_runs = get_all_runs_for_experiment(
-            experiment_name="benchmark_on_pmo",
+            experiment_name=experiment_name,
             solver_name="bounce",
             n_dimensions=128,
             tags=tags,
