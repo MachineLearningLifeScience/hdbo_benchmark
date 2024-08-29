@@ -161,10 +161,18 @@ def compute_rasp_benchmark_table(
 ) -> pd.DataFrame:
     solver_name_but_pretty = compute_pretty_names(n_dimensions, use_tex=use_tex)
     summary_avg, summary_std = summary_per_function(
-        df, normalized_per_row=normalized, n_dimensions=n_dimensions, use_tex=use_tex, solvers=solver_name_but_pretty.keys()
+        df,
+        normalized_per_row=normalized,
+        n_dimensions=n_dimensions,
+        use_tex=use_tex,
+        solvers=solver_name_but_pretty.keys(),
     )
     summary_avg_normalized, _ = summary_per_function(
-        df, normalized_per_row=True, n_dimensions=n_dimensions, use_tex=use_tex, solvers=solver_name_but_pretty.keys()
+        df,
+        normalized_per_row=True,
+        n_dimensions=n_dimensions,
+        use_tex=use_tex,
+        solvers=solver_name_but_pretty.keys(),
     )
 
     final_table_rows: list[dict[str, str]] = []
