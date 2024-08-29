@@ -33,14 +33,14 @@
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <title>Benchmarking HDBO HDBO Benchmarks</title>
-    <meta name="description" content="We test several HDBO methods in the PMO benchmark using the tools provided by the Therapeutics Data Commons. In future work we plan to incorporate obj...">
+    <meta name="description" content="We test several HDBO methods on discrete sequence optimization tasks. So far, we have optimized the PMO benchmark on SELFIES representations, and also...">
 
 <link rel="canonical" href="../benchmarks/">
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Benchmarks">
-<meta property="og:description" content="We test several HDBO methods in the PMO benchmark using the tools provided by the Therapeutics Data Commons. In future work we plan to incorporate obj...">
+<meta property="og:description" content="We test several HDBO methods on discrete sequence optimization tasks. So far, we have optimized the PMO benchmark on SELFIES representations, and also...">
 <meta property="og:url" content="/benchmarks/">
 <meta property="og:site_name" content="Benchmarking HDBO">
 <meta property="og:image" content="/logo.png">
@@ -52,7 +52,7 @@
 
 
 <meta name="twitter:title" content="Benchmarks">
-<meta name="twitter:description" content="We test several HDBO methods in the PMO benchmark using the tools provided by the Therapeutics Data Commons. In future work we plan to incorporate obj...">
+<meta name="twitter:description" content="We test several HDBO methods on discrete sequence optimization tasks. So far, we have optimized the PMO benchmark on SELFIES representations, and also...">
 <meta name="twitter:image" content="/logo.png">
 <meta name="twitter:image:alt" content="Benchmarks">
 
@@ -383,7 +383,8 @@
 
 
 
-</div><p>We test several HDBO methods in the <a href="https://openreview.net/forum?id=yCZRdI0Y7G">PMO benchmark</a> using the tools provided by the <a href="https://tdcommons.ai/">Therapeutics Data Commons</a>. In future work we plan to incorporate objective functions involving protein engineering and other high-dimensional discrete optimization tasks.</p>
+</div><p>We test several HDBO methods on discrete sequence optimization tasks. So far, we have optimized the <a href="https://openreview.net/forum?id=yCZRdI0Y7G">PMO benchmark</a> on <strong>SELFIES</strong> representations, and also thermal stability of red fluorescent proteins and their mutations using <a href="https://elifesciences.org/articles/82593">RaSP</a>. Discrete solvers like <code>GeneticAlgorithm</code>, <code>Bounce</code> and <code>ProbRep</code> work directly on sequence space, while others rely on latent representations learned using autoencoders.</p>
+<p>For details, check <a href="https://github.com/MachineLearningLifeScience/hdbo_benchmark">our repository on GitHub</a>.</p>
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
         <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab">Model rankings</button>
@@ -393,6 +394,9 @@
     </li>
     <li class="nav-item" role="presentation">
         <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-2d">PMO 2D</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-rasp32d">RaSP 32D</button>
     </li>
 </ul>
 
@@ -412,91 +416,23 @@
                 
                     <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;PMO 128D</th>
                 
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;RaSP</th>
+                
             </tr>
         </thead>
         <tbody>
             
                 <tr>
                     
-                        <th scope="row" class="font-monospace fw-bold">HillClimbing</th>
+                        <th scope="row" class="font-monospace fw-bold">BAxUS</th>
                     
 
                     
-                        <td>12.34&nbsp;±&nbsp;1.33</td>
+                        <td></td>
                     
-                        <td>13.80&nbsp;±&nbsp;2.03</td>
+                        <td>15.01&nbsp;±&nbsp;4.28</td>
                     
-                </tr>
-            
-                <tr>
-                    
-                        <th scope="row" class="font-monospace fw-bold">GeneticAlgorithm</th>
-                    
-
-                    
-                        <td>13.73&nbsp;±&nbsp;1.26</td>
-                    
-                        <td>14.35&nbsp;±&nbsp;1.19</td>
-                    
-                </tr>
-            
-                <tr>
-                    
-                        <th scope="row" class="font-monospace fw-bold">CMA-ES</th>
-                    
-
-                    
-                        <td>17.27&nbsp;±&nbsp;2.56</td>
-                    
-                        <td>20.08&nbsp;±&nbsp;1.57</td>
-                    
-                </tr>
-            
-                <tr>
-                    
-                        <th scope="row" class="font-monospace fw-bold">Hvarfner's VanillaBO</th>
-                    
-
-                    
-                        <td>19.54&nbsp;±&nbsp;1.81</td>
-                    
-                        <td>12.96&nbsp;±&nbsp;2.14</td>
-                    
-                </tr>
-            
-                <tr>
-                    
-                        <th scope="row" class="font-monospace fw-bold">RandomLineBO</th>
-                    
-
-                    
-                        <td>19.54&nbsp;±&nbsp;4.59</td>
-                    
-                        <td>6.80&nbsp;±&nbsp;5.92</td>
-                    
-                </tr>
-            
-                <tr>
-                    
-                        <th scope="row" class="font-monospace fw-bold">SAASBO</th>
-                    
-
-                    
-                        <td>19.24&nbsp;±&nbsp;8.38</td>
-                    
-                        <td>19.66&nbsp;±&nbsp;3.29</td>
-                    
-                </tr>
-            
-                <tr>
-                    
-                        <th scope="row" class="font-monospace fw-bold">Turbo</th>
-                    
-
-                    
-                        <td>14.52&nbsp;±&nbsp;4.84</td>
-                    
-                        <td>15.39&nbsp;±&nbsp;4.08</td>
+                        <td></td>
                     
                 </tr>
             
@@ -510,6 +446,64 @@
                     
                         <td>1.39&nbsp;±&nbsp;2.47</td>
                     
+                        <td></td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">CMA-ES</th>
+                    
+
+                    
+                        <td>17.27&nbsp;±&nbsp;2.56</td>
+                    
+                        <td>20.08&nbsp;±&nbsp;1.57</td>
+                    
+                        <td>0.59&nbsp;±&nbsp;0.36</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">GeneticAlgorithm</th>
+                    
+
+                    
+                        <td>13.73&nbsp;±&nbsp;1.26</td>
+                    
+                        <td>14.35&nbsp;±&nbsp;1.19</td>
+                    
+                        <td></td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">HillClimbing</th>
+                    
+
+                    
+                        <td>12.34&nbsp;±&nbsp;1.33</td>
+                    
+                        <td>13.80&nbsp;±&nbsp;2.03</td>
+                    
+                        <td>1.00&nbsp;±&nbsp;0.22</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">Hvarfner's VanillaBO</th>
+                    
+
+                    
+                        <td>19.54&nbsp;±&nbsp;1.81</td>
+                    
+                        <td>12.96&nbsp;±&nbsp;2.14</td>
+                    
+                        <td>0.83&nbsp;±&nbsp;0.22</td>
+                    
                 </tr>
             
                 <tr>
@@ -522,17 +516,49 @@
                     
                         <td>3.64&nbsp;±&nbsp;3.56</td>
                     
+                        <td></td>
+                    
                 </tr>
             
                 <tr>
                     
-                        <th scope="row" class="font-monospace fw-bold">BAxUS</th>
+                        <th scope="row" class="font-monospace fw-bold">RandomLineBO</th>
                     
 
                     
+                        <td>19.54&nbsp;±&nbsp;4.59</td>
+                    
+                        <td>6.80&nbsp;±&nbsp;5.92</td>
+                    
+                        <td>0.00&nbsp;±&nbsp;0.00</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">SAASBO</th>
+                    
+
+                    
+                        <td>19.24&nbsp;±&nbsp;8.38</td>
+                    
+                        <td>19.66&nbsp;±&nbsp;3.29</td>
+                    
                         <td></td>
                     
-                        <td>15.01&nbsp;±&nbsp;4.28</td>
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">Turbo</th>
+                    
+
+                    
+                        <td>14.52&nbsp;±&nbsp;4.84</td>
+                    
+                        <td>15.39&nbsp;±&nbsp;4.08</td>
+                    
+                        <td>0.25&nbsp;±&nbsp;0.49</td>
                     
                 </tr>
             
@@ -1246,7 +1272,7 @@
 
     
         
-      <div class="alert alert-success" role="alert">
+      <div class="alert alert-success mt-3" role="alert">
         <h5 class="alert-heading">
 
 
@@ -1932,7 +1958,7 @@
 
     
         
-      <div class="alert alert-success" role="alert">
+      <div class="alert alert-success mt-3" role="alert">
         <h5 class="alert-heading">
 
 
@@ -2006,7 +2032,153 @@
 </style>
 
 
+    
+    
+    
+
+<div class="tab-pane " id="pills-rasp32d" role="tabpanel" aria-labelledby="pills-rasp32d-tab">
+    <table class="table table-hover border">
+        <thead class="">
+            <tr class="">
+                
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;</th>
+                
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;RaSP</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">HillClimbing</th>
+                    
+
+                    
+                        <td>2.02&nbsp;±&nbsp;0.22</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">CMA-ES</th>
+                    
+
+                    
+                        <td>1.36&nbsp;±&nbsp;0.36</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">Hvarfner's VanillaBO</th>
+                    
+
+                    
+                        <td>1.75&nbsp;±&nbsp;0.22</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">RandomLineBO</th>
+                    
+
+                    
+                        <td>0.39&nbsp;±&nbsp;0.00</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">Turbo</th>
+                    
+
+                    
+                        <td>0.80&nbsp;±&nbsp;0.49</td>
+                    
+                </tr>
+            
+        </tbody>
+    </table>
+
+    
+        
+      <div class="alert alert-success mt-3" role="alert">
+        <h5 class="alert-heading">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-flask "></i> --><svg class="svg-inline--fa fas fa-flask " fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 448 512"><path d="M288 0H160 128C110.3 0 96 14.3 96 32s14.3 32 32 32V196.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6C0 480.9 31.1 512 69.4 512H378.6c38.3 0 69.4-31.1 69.4-69.4c0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H288zM192 196.8V64h64V196.8c0 23.7 6.6 46.9 19 67.1L309.5 320h-171L173 263.9c12.4-20.2 19-43.4 19-67.1z"/></svg>
+
+    
+
+            Experiment setup
+        </h5>
+        
+        <ul class="">
+            
+                <li class="">
+                    batch size: 1
+                </li>
+            
+                <li class="">
+                     nr. initialization points:  10
+                </li>
+            
+                <li class="">
+                     budget:  100
+                </li>
+            
+                <li class="">
+                     replications (nr. of seeds):  3
+                </li>
+            
+      </div>
+    
 </div>
+
+<script src="../js/jquery-3.7.1.slim.min.js"></script>
+<script src="../js/bootstrap-table.min.js"></script>
+
+<script>
+    function customSort(sortName, sortOrder, data) {
+        var order = sortOrder === 'desc' ? -1 : 1
+        data.sort(function (a, b) {
+            var aa = +((a[sortName] + '').replace(/[^\d]/g, ''))
+            var bb = +((b[sortName] + '').replace(/[^\d]/g, ''))
+            if (aa < bb) {
+                return order * -1
+            }
+            if (aa > bb) {
+                return order
+            }
+            return 0
+        })
+    }
+    $("#pills-rasp32d table").bootstrapTable({
+        customSort: customSort,
+    });
+</script>
+
+<style>
+    th:first-child, td:first-child{
+        position: sticky;
+        left: 0px;
+        z-index: 1;
+    }
+</style>
+
+</div>
+
 
 
 
@@ -2061,7 +2233,7 @@
 </div>
 </div>
 
-<script src="../js/main.bundle.min.372c80497b8286b6d7c8a290ac42507d9656f29996b677d0e9321a1a392f2137.js" integrity="sha256-NyyASXuChrbXyKKQrEJQfZZW8pmWtnfQ6TIaGjkvITc=" crossorigin="anonymous" async></script>
+<script src="../js/main.bundle.min.fd97bb417cd56c8b1303339c25bceb2029c8bb8936a1304f7d0a25b7bd2ea3bf.js" integrity="sha256-/Ze7QXzVbIsTAzOcJbzrICnIu4k2oTBPfQolt70uo78=" crossorigin="anonymous" async></script>
     
 
     

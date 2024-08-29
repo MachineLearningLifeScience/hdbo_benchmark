@@ -42,7 +42,7 @@
       <link>/benchmarks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/benchmarks/</guid>
-      <description>We test several HDBO methods in the PMO benchmark using the tools provided by the Therapeutics Data Commons. In future work we plan to incorporate objective functions involving protein engineering and other high-dimensional discrete optimization tasks.</description>
+      <description>We test several HDBO methods on discrete sequence optimization tasks. So far, we have optimized the PMO benchmark on SELFIES representations, and also thermal stability of red fluorescent proteins and their mutations using RaSP.</description>
     </item>
   </channel>
 </rss>
