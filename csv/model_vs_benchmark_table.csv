@@ -1,11 +1,11 @@
-,PMO 2D,PMO 128D
-HillClimbing,12.34&nbsp;±&nbsp;1.33,13.80&nbsp;±&nbsp;2.03
-GeneticAlgorithm,13.73&nbsp;±&nbsp;1.26,14.35&nbsp;±&nbsp;1.19
-CMA-ES,17.27&nbsp;±&nbsp;2.56,20.08&nbsp;±&nbsp;1.57
-Hvarfner's VanillaBO,19.54&nbsp;±&nbsp;1.81,12.96&nbsp;±&nbsp;2.14
-RandomLineBO,19.54&nbsp;±&nbsp;4.59,6.80&nbsp;±&nbsp;5.92
-SAASBO,19.24&nbsp;±&nbsp;8.38,19.66&nbsp;±&nbsp;3.29
-Turbo,14.52&nbsp;±&nbsp;4.84,15.39&nbsp;±&nbsp;4.08
-Bounce,1.65&nbsp;±&nbsp;2.47,1.39&nbsp;±&nbsp;2.47
-ProbRep,3.85&nbsp;±&nbsp;3.57,3.64&nbsp;±&nbsp;3.56
-BAxUS,,15.01&nbsp;±&nbsp;4.28
+,PMO 2D,PMO 128D,RaSP
+BAxUS,,15.01&nbsp;±&nbsp;4.28,
+Bounce,1.65&nbsp;±&nbsp;2.47,1.39&nbsp;±&nbsp;2.47,
+CMA-ES,17.27&nbsp;±&nbsp;2.56,20.08&nbsp;±&nbsp;1.57,0.59&nbsp;±&nbsp;0.36
+GeneticAlgorithm,13.73&nbsp;±&nbsp;1.26,14.35&nbsp;±&nbsp;1.19,
+HillClimbing,12.34&nbsp;±&nbsp;1.33,13.80&nbsp;±&nbsp;2.03,1.00&nbsp;±&nbsp;0.22
+Hvarfner's VanillaBO,19.54&nbsp;±&nbsp;1.81,12.96&nbsp;±&nbsp;2.14,0.83&nbsp;±&nbsp;0.22
+ProbRep,3.85&nbsp;±&nbsp;3.57,3.64&nbsp;±&nbsp;3.56,
+RandomLineBO,19.54&nbsp;±&nbsp;4.59,6.80&nbsp;±&nbsp;5.92,0.00&nbsp;±&nbsp;0.00
+SAASBO,19.24&nbsp;±&nbsp;8.38,19.66&nbsp;±&nbsp;3.29,
+Turbo,14.52&nbsp;±&nbsp;4.84,15.39&nbsp;±&nbsp;4.08,0.25&nbsp;±&nbsp;0.49

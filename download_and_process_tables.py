@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-import matplotlib
+import matplotlib, sys
 
 import pandas as pd
 
@@ -373,6 +373,14 @@ def postprocess_csv(csv_file_path, transpose=False, fix_whitespace=True, save=Tr
     return df
 
 
+def join_rankings():
+    df1 = pd.read_csv(ROOT_DIR / "csv" / "model_vs_benchmark_table.csv", index_col=0)
+    df2 = postprocess_csv(ROOT_DIR / "csv" / "table_rasp_normalized_32.csv", save=False).T
+
+    # join the two tables on the index
+    df = df1.join(df2, how="outer")
+    df.to_csv(ROOT_DIR / "csv" / "model_vs_benchmark_table.csv")
+
 if __name__ == "__main__":
     tags: None = None
     model_vs_benchmark_table_columns = []
@@ -402,6 +410,11 @@ if __name__ == "__main__":
     model_vs_benchmark_table.T.to_csv(ROOT_DIR / "csv" / "model_vs_benchmark_table.csv")
 
     ### Postprocessing for the website
+    postprocess_csv(ROOT_DIR / "csv" / "table_rasp_32.csv", transpose=True)
+    
     postprocess_csv(ROOT_DIR / "csv" / "pmo_benchmark_task_2d.csv", transpose=True)
     postprocess_csv(ROOT_DIR / "csv" / "pmo_benchmark_task_128d.csv", transpose=True)
     postprocess_csv(ROOT_DIR / "csv" / "model_vs_benchmark_table.csv")
+
+    ### Fix the model rankings to include the 
+    join_rankings()

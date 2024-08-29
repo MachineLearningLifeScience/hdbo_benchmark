@@ -8,6 +8,9 @@
     <li class="nav-item" role="presentation">
         <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-2d">PMO 2D</button>
     </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-rasp32d">RaSP 32D</button>
+    </li>
 </ul>
 
 <div class="tab-content" id="pills-tabContent">
@@ -40,4 +43,13 @@
     }}
     {{ partial "table.html" $ctx }}
 
+    <!-- RaSP 32D -->
+    {{ $ctx := dict 
+        "page"  .
+        "data"  (getCSV "," "csv/table_rasp_32.csv")
+        "exp_setup"  (getCSV "," "csv/pmo_experimental_setup_2d.csv")
+        "id"    "pills-rasp32d"
+        "active" false
+    }}
+    {{ partial "table.html" $ctx }}
 </div>

@@ -7,6 +7,7 @@
             {{ range $headers }}
                 {{ if eq . "Date of publishing" }}
                     <th scope="col" class="" data-sortable="true" data-sort-order="desc" data-sorter="dateSorter">&nbsp;{{ . | safeHTML }}</th>
+                {{ else if eq . "Reference" }}
                 {{ else }}
                     <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;{{ . | safeHTML }}</th>
                 {{ end }}
@@ -15,43 +16,28 @@
     </thead>
     <tbody>
         {{ range $i, $row := after 1 $data }} 
-            <tr>
-                
-                {{ range $j, $f := $headers }}
-                    {{ if eq $j 0 }}
-                        <th scope="row" class="font-monospace fw-bold">{{ index $row $j }}</th>
-                    {{ else if eq $j 2 }}
-                        <td>
-                            {{ if eq (index $row $j) "Couldn’t find one" }}
-                                <a href="{{ index $row $j }}" class="btn btn-sm btn-light disabled">
-                                    {{- partial "assets/icon.html" (dict "icon" "fas fa-flask" "spacing" false) }}
-                                </a>
-                                <!-- <span class="text-muted">n/a</span> -->
-                            {{ else }}
-                                <a href="{{ index $row $j }}" class="btn btn-sm btn-primary">
-                                    {{- partial "assets/icon.html" (dict "icon" "fas fa-flask" "spacing" false) }}
-                                </a>
-                            {{ end }}
-                        </td>
-                    {{ else if eq $j 4 }}
-                        <td>
-                            <a href="{{ index $row $j }}" class="btn btn-sm btn-primary">
-                                {{- partial "assets/icon.html" (dict "icon" "fas fa-link" "spacing" false) }}
-                            </a>
-                        </td>
-                    {{ else }}
-                        <td>{{ index $row $j }}</td>
-                    {{ end }}
-
-                    
+        <tr>
+            <th scope="row" class="font-monospace fw-bold">{{ index $row 0 }}</th>
+            <td>{{ index $row 1 }}</td>
+            <td>
+                {{ if eq (index $row 2) "Couldn’t find one" }}
+                    <span class="text-muted">n/a</span>
+                {{ else }}
+                    <a href="{{ index $row 2 }}" class="btn btn-sm btn-primary">
+                        {{- partial "assets/icon.html" (dict "icon" "fas fa-flask" "spacing" false) }}
+                    </a>
                 {{ end }}
-            </tr>
+            </td>
+            <td>
+                <a href="{{ index $row 4 }}">
+                    {{ index $row 3 }}
+                </a>
+            </td>
+            <td>{{ index $row 5 }}</td>
+        </tr>
         {{ end }}
-            
-        
     </tbody>
 </table>
-
 
 <script src="{{ absURL "js/jquery-3.7.1.slim.min.js" }}"></script>
 <script src="{{ absURL "js/bootstrap-table.min.js" }}"></script>
