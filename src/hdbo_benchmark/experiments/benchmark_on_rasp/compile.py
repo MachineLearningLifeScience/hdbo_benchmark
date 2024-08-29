@@ -4,7 +4,7 @@ from hdbo_benchmark.utils.experiments.load_solvers import SOLVER_NAMES
 
 current_date = datetime.now().strftime("%Y-%m-%d")
 
-TEST_RUN = True
+TEST_RUN = False
 
 if TEST_RUN:
     latent_dims = [32]
@@ -35,7 +35,7 @@ def condition_to_write(solver_name, latent_dim) -> bool:
     ]
 
 
-for solver_name in SOLVER_NAMES:
+for solver_name in SOLVER_NAMES[::-1]:
     for latent_dim in latent_dims:
         if not condition_to_write(
             solver_name=solver_name,
