@@ -35,7 +35,7 @@ def condition_to_write(solver_name, latent_dim) -> bool:
     ]
 
 
-for solver_name in SOLVER_NAMES[::-1]:
+for solver_name in SOLVER_NAMES:
     for latent_dim in latent_dims:
         if not condition_to_write(
             solver_name=solver_name,
@@ -54,6 +54,6 @@ for solver_name in SOLVER_NAMES[::-1]:
         else:
             conda_env_name = "hdbo_benchmark"
 
-        command_ = f"sbatch src/hdbo_benchmark/experiments/benchmark_on_ehrlich/batch.sh {conda_env_name} {solver_name} {latent_dim} {max_iter} {tag}"
+        command_ = f"sbatch src/hdbo_benchmark/experiments/benchmark_on_rasp/batch.sh {conda_env_name} {solver_name} {latent_dim} {max_iter} {tag}"
 
         print(command_)
