@@ -111,3 +111,10 @@ home = ["HTML", "RSS", "REDIR"]
     target = "assets/config/netlify.toml"
   [[module.imports]]
     path = "github.com/gethinode/hinode"
+
+[markup.goldmark]
+  [markup.goldmark.extensions.passthrough]
+      enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+      block = [['\[', '\]'], ['$$', '$$']]
+      inline = [['\(', '\)'], ['$', '$']]
