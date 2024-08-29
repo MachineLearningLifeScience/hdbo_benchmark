@@ -1,0 +1,1162 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.126.3">
+    <meta name="theme" content="Hinode 0.14.0">
+    
+
+
+
+
+
+    
+    
+<link rel="stylesheet" href="../../../css/main.min.d0f1ee2fc17f8514d07a1d975a9ee76680c1c1227f694bc0f8f67f67adc329cd.css" integrity="sha256-0PHuL8F/hRTQeh2XWp7nZoDBwSJ/aUvA&#43;PZ/Z63DKc0=" crossorigin="anonymous">
+    
+        
+    
+
+
+
+    
+    
+<link rel="stylesheet" href="../../../css/katex.min.c91cb20a3e5563091c9867096d0d6aa85b550327d558fd53c380008fdc22ba6d.css" integrity="sha256-yRyyCj5VYwkcmGcJbQ1qqFtVAyfVWP1Tw4AAj9wium0=" crossorigin="anonymous">
+         
+        <link rel="preload" href="../../../fonts/inter-v12-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+
+
+
+    
+
+
+  <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <title>Benchmarking HDBO HDBO </title>
+    <meta name="description" content="A taxonomy of high-dimensional Bayesian Optimization   We describe the field of high dimensional BO and the large number of related publications throu...">
+
+<link rel="canonical" href="../../../docs/hdbo/taxonomy/">
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Benchmarking HDBO">
+<meta property="og:description" content="A taxonomy of high-dimensional Bayesian Optimization   We describe the field of high dimensional BO and the large number of related publications throu...">
+<meta property="og:url" content="/docs/hdbo/taxonomy/">
+<meta property="og:site_name" content="Benchmarking HDBO">
+<meta property="og:image" content="/logo.png">
+<meta property="og:image:alt" content="Benchmarking HDBO">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="twitter:title" content="Benchmarking HDBO">
+<meta name="twitter:description" content="A taxonomy of high-dimensional Bayesian Optimization   We describe the field of high dimensional BO and the large number of related publications throu...">
+<meta name="twitter:image" content="/logo.png">
+<meta name="twitter:image:alt" content="Benchmarking HDBO">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+        "@id": "/#/schema/organization/1",
+      "name": "HDBO",
+      "url": "/",
+      "sameAs": [
+        , "https://github.com/gethinode/hinode"
+        ],
+      "image": {
+          "@type": "ImageObject",
+          "@id": "/#/schema/image/1",
+          "url": "/\u003cnil\u003e",
+          "width": null ,
+          "height": null ,
+          "caption": "HDBO"
+        }
+      },
+    {
+      "@type": "WebSite",
+      "@id": "/#/schema/website/1",
+      "url": "/",
+      "name": "Benchmarking HDBO",
+      "description": "High-Dimensional Bayesian Optimization of discrete sequences",
+      "publisher": {
+          "@id": "/#/schema/organization/1"
+        }
+      },
+    {
+      "@type": "WebPage",
+      "@id": "/docs/hdbo/taxonomy/",
+      "url": "/docs/hdbo/taxonomy/",
+      "name": "",
+      "description": "",
+      "isPartOf": {
+        "@id": "/#/schema/website/1"
+      },
+      "about": {
+          "@id": "/#/schema/organization/1"
+        },
+      "datePublished": "0001-01-01T00:00:00CET",
+      "dateModified": "0001-01-01T00:00:00CET",
+      "breadcrumb": {
+        "@id": "/docs/hdbo/taxonomy/#/schema/breadcrumb/1"
+      },
+      "primaryImageOfPage": {
+        "@id": "/docs/hdbo/taxonomy/#/schema/image/2"
+      },
+      "inLanguage": "en-US",
+      "potentialAction": [{
+        "@type": "ReadAction", "target": ["/docs/hdbo/taxonomy/"]
+      }]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "/docs/hdbo/taxonomy/#/schema/breadcrumb/1",
+      "name": "Breadcrumbs",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position":  1 ,
+        "item": {
+          "@type": "WebPage",
+          "@id": "/",
+          "url": "/",
+          "name": "Home"
+          }
+        },{
+        "@type": "ListItem",
+        "position":  2 ,
+        "item": {
+          "@id": "/docshdbotaxonomy/"
+          }
+        }]
+    },
+
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "@id": "/#/schema/article/1",
+          "headline": "",
+          "description": "",
+          "isPartOf": {
+            "@id": "/docs/hdbo/taxonomy/"
+          },
+          "mainEntityOfPage": {
+            "@id": "/docs/hdbo/taxonomy/"
+          },
+          "datePublished": "0001-01-01T00:00:00CET",
+          "dateModified": "0001-01-01T00:00:00CET",
+          "author": {
+            "@id": "/#/schema/person/2"
+          },
+          "publisher": {
+              "@id": "/#/schema/organization/1"
+            },
+          "image": {
+            "@id": "/docs/hdbo/taxonomy/#/schema/image/2"
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "/#/schema/person/2",
+          "name":  null ,
+          "sameAs": [
+            ]
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ImageObject",
+          "@id": "/docs/hdbo/taxonomy/#/schema/image/2",
+          "url": "/logo.png",
+          "contentUrl": "/logo.png",
+          "caption": "Benchmarking HDBO"
+        }
+      ]
+    }
+
+  ]
+}
+</script>
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_16x16_resize_catmullrom_3.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../../../img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_32x32_resize_catmullrom_3.png">
+        <link rel="icon" type="image/png" sizes="48x48" href="../../../img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_48x48_resize_catmullrom_3.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../img/favicon_hu6987e6b2cc2f4a23c860d8685bb33960_314445_180x0_resize_catmullrom_3.png">
+    
+
+</head>
+
+    <body>
+<script src="../../../js/critical.bundle.min.a73ed0b9da936bca55cd96a54840ab270bde232f86b9b2f7ca2026635b177982.js" integrity="sha256-pz7QudqTa8pVzZalSECrJwveIy&#43;GubL3yiAmY1sXeYI=" crossorigin="anonymous"></script>
+    <div class="d-flex flex-column min-vh-100">
+            <div class="d-flex flex-column ">
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid fixed-top p-0">
+
+
+
+
+
+
+<nav class="navbar p-4 bg-body navbar-fixed-top navbar-expand-lg"
+        
+        
+        >
+        <div class="container-xxl p-0">
+            <div class="d-flex navbar-container justify-content-center">
+                
+                <div class="d-flex align-items-center"><button class="navbar-toggler collapsed p-0 mx-auto fw-30" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvass-sidebar" aria-controls="offcanvass-sidebar" aria-label="Toggle sidebar navigation">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-ellipsis fa-fw"></i> --><svg class="svg-inline--fa fas fa-ellipsis fa-fw" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 448 512"><path d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z"/></svg>
+
+    
+</button></div>
+        
+                
+                <div class="flex-grow-1 flex-lg-grow-0">
+                    <a class="navbar-brand" href="../../../" aria-label="Home"><div class="navbar-title fw-bold h-100">Benchmarking HDBO</div></a>
+                </div>
+        
+                
+                <div class="d-flex align-items-center">
+                    <button class="navbar-toggler main-nav-toggler collapsed p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-0-collapse"
+                        aria-controls="navbar-0" aria-expanded="false" aria-label="Toggle main navigation">
+                        <span class="toggler-icon top-bar emphasis"></span>
+                        <span class="toggler-icon middle-bar emphasis"></span>
+                        <span class="toggler-icon bottom-bar emphasis"></span>
+                    </button>
+                </div>
+            </div>
+    
+            <div class="navbar-collapse collapse" id="navbar-0-collapse">
+                
+                <ul class="navbar-nav ms-auto"><li class="nav-item">
+
+
+
+
+
+
+
+
+    <a class="nav-link" 
+        
+        data-nav="main" data-nav-main="home" 
+        href="../../../" ><span >Home</span>&nbsp;</a>
+</li><li class="nav-item">
+
+
+
+
+
+
+
+
+    <a class="nav-link" 
+        
+        data-nav="main" data-nav-main="about" 
+        href="../../../docs/hdbo/introduction" ><span >About</span>&nbsp;</a>
+</li><li class="nav-item">
+
+
+
+
+
+
+
+
+    <a class="nav-link" 
+        
+        data-nav="main" data-nav-main="benchmarks" 
+        href="../../../benchmarks" ><span >Benchmarks</span>&nbsp;</a>
+</li><li class="nav-item">
+
+
+
+
+
+
+
+
+    <a class="nav-link" 
+        
+        data-nav="main" data-nav-main="related-work" 
+        href="../../../related_work" ><span >Related work</span>&nbsp;</a>
+</li><li class="nav-item">
+
+
+
+
+
+
+
+    
+
+
+    <a class="nav-link" 
+        aria-label="GitHub"
+        data-nav="main" data-nav-main="github" 
+        href="https://github.com/MachineLearningLifeScience/hdbo_benchmark" target="_blank" rel="noopener noreferrer" >
+            
+                
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fab fa-github "></i> --><svg class="svg-inline--fa fab fa-github " fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+    &nbsp;
+
+            
+        <span ></span></a>
+</li><div class="d-flex mode-switch align-items-center" id="navbar-mode">
+        <input type="checkbox" class="checkbox navbar-mode-selector" id="navbar-mode-checkbox" />
+        <label class="label" for="navbar-mode-checkbox">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-sun fa-fw"></i> --><svg class="svg-inline--fa fas fa-sun fa-fw" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 512 512"><path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"/></svg>
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-moon fa-fw"></i> --><svg class="svg-inline--fa fas fa-moon fa-fw" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 384 512"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"/></svg>
+
+    
+
+            <div class="ball"></div>
+        </label>
+    </div></ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="main-content">
+                    </div>
+                
+            </div>
+
+            
+                
+    
+
+    
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvass-sidebar" aria-inledby="offcanvas-label">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvas-label">Docs</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                
+    
+
+
+
+
+
+
+
+
+    <nav class="sidebar flex-shrink-0 ps-1 pt-3" aria-label="Docs navigation">
+
+        <ul class="list-unstyled ps-0">
+                <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#sidebar-collapse-0-1" aria-expanded="true">
+            <div class="text-start flex-fill">HDBO</div>
+        </button>
+        <div class="collapse show" id="sidebar-collapse-0-1">
+            <ul class="btn-toggle-nav list-unstyled fw-normal ps-3">
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/introduction/">Introduction</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/preliminaries/">Preliminaries</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small active" href="../../../docs/hdbo/taxonomy/">Taxonomy</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/benchmarking/">Benchmarking</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/conclusion/">Conclusion</a>
+            
+        </li>
+    
+
+                    
+            </ul>
+        </div>
+    </li>
+
+        </ul>
+    </nav>
+
+
+
+            </div>
+        </div>
+    
+    
+    <div class="container-xxl flex-fill p-4 px-xxl-0">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                <div class="col col-lg-2 d-none d-lg-block sidebar-overflow sticky-top pt-5">
+                    
+    
+
+
+
+
+
+
+
+
+    <nav class="sidebar flex-shrink-0 ps-1 pt-3" aria-label="Docs navigation">
+
+        <ul class="list-unstyled ps-0">
+                <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#sidebar-collapse-0-1" aria-expanded="true">
+            <div class="text-start flex-fill">HDBO</div>
+        </button>
+        <div class="collapse show" id="sidebar-collapse-0-1">
+            <ul class="btn-toggle-nav list-unstyled fw-normal ps-3">
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/introduction/">Introduction</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/preliminaries/">Preliminaries</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small active" href="../../../docs/hdbo/taxonomy/">Taxonomy</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/benchmarking/">Benchmarking</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/conclusion/">Conclusion</a>
+            
+        </li>
+    
+
+                    
+            </ul>
+        </div>
+    </li>
+
+        </ul>
+    </nav>
+
+
+
+                </div>
+                <div class="col-12 col-md-9 col-lg-8 mb-5 p-4">
+                    
+
+
+
+
+
+
+
+
+
+
+
+<p class="lead mb-5"></p>
+<div class="d-md-none pb-5">
+
+
+
+
+
+
+</div>
+<h4 id="sec:taxonomy" class="heading">A taxonomy of high-dimensional Bayesian Optimization <a href="#sec:taxonomy" aria-labelledby="sec:taxonomy">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h4>
+<p>We describe the field of high dimensional BO and the large number of
+related publications through a refined taxonomy building on previous
+work, discussing <em>variable selection</em>, <em>additive models</em>, <em>trust
+regions</em>, <em>linear embeddings</em>, <em>non-linear embeddings</em>, <em>gradient
+information</em>, <em>structured spaces</em>, and others in turn. While
+encompassing taxonomies over fields may initially appear ill-advised
+[@Wilkins:PhilLang:1668 pp.22], we highlight commonalities in strategies
+that give structure to the HBDO problem-space.</p>
+<p>We expand previous surveys
+[@BinoisWycoff:HDGPs:2022; @SantoniDoerr:HDBO:2023] and identify a finer
+taxonomy, of seven method groups and new families of <em>structured spaces</em>
+(i.e.methods that work directly on mixed representations, or Riemannian
+manifolds, previously categorized as <em>non-linear embeddings</em>), and
+methods that rely on predicted <em>gradient information</em>. This new
+separation emphasizes the heterogeneous nature of discrete solvers: some
+optimizers work directly on discrete space (<em>structured spaces</em>), while
+others optimize using latent representations (<em>non-linear embeddings</em>);
+gradient-based methods are separated to show alternatives when
+first-order information is available.
+Fig. <a href="../../../docs/hdbo/taxonomy/#fig:hdbo_timeline">1</a>{reference-type=&ldquo;ref&rdquo;
+reference=&ldquo;fig:hdbo_timeline&rdquo;} presents a timeline of HDBO methods,
+split into these families, and all methods are detailed in supplementary
+Table <a href="../../../docs/hdbo/taxonomy/#tab:appendix:full_taxonomy">1</a>{reference-type=&ldquo;ref&rdquo;
+reference=&ldquo;tab:appendix:full_taxonomy&rdquo;}; methods are grouped according
+to their most dominant feature.</p>
+
+<h4 id="variable-selection" class="heading">Variable selection <a href="#variable-selection" aria-labelledby="variable-selection">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h4>
+<p>To solve a high-dimensional problem, one approach is to focus on a
+subset of variables of high interest.[^3] One selects the variables
+either by using domain expertise, or by <em>Automatic Relevance Detection</em>
+(ARD) [@RasmussenWilliams:GPs:2006 pp.106-107] i.e.large lengthscales
+indicate independence under the covariance matrix for GPs. Examples of
+this approach include Hierarchical Diagonal Sampling (HDS)
+[@Chen:HDS:2012] and the Dimension Scheduling Algorithm (DSA)
+[@Ulmasov:DSA:2016]. The former determines the active variables by a
+binary tree of subsets of $\{1, \dots, D\}$, and fits GPs in
+lower-dimensional projections. DSA constructs a probability distribution
+by the principal directions of the training inputs
+$\{(\bm{x}_n, y_n)\}_{n=1}^N$ and subsamples the dimensions accordingly.
+In contrast @Li:HDBODropout:2018 randomly sample subsets of active
+dimensions.</p>
+<p>Other methods rely on placing priors on their lengthscales, followed by
+a Bayesian treatment of the training. In Sequential Optimization of
+Locally Important Directions (SOLID), lengthscales are weighted by a
+Bernoulli distributed parameter, and coordinates are removed when their
+posterior probability goes below a user-specified threshold.
+[@Munir:SOLID:2021]. @Eriksson:SAASBO:2021 consider the Sparse
+Axis-Aligned Subspace (SAAS) model of a GP, restricting the function
+space through a (long-tailed) half-Cauchy prior on the
+inverse-lengthscales of the kernel.</p>
+
+<h4 id="additive-models" class="heading">Additive models <a href="#additive-models" aria-labelledby="additive-models">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h4>
+<p>Additive models assume that the objective function $f$ can be decomposed
+into a sum of lower-dimensional functions. Symbolically, the coordinates
+of a given input $\bm{x} = (x_1, \dots, x_D)$ are split into $M$ usually
+disjoint subgroups $g_1, \dots g_M$ of smaller size, called a
+decomposition. Instead of fitting a GP to $D$ variables in $f$, the
+algorithm fits $M$ GPs to the restrictions $f|_{g_1}, \dots f|_{g_M}$
+and adds their Upper Confidence Bound. The differences between the
+algorithms in this family are on how the subgroups are constructed, how
+the additive structure is approximated, the training of the Gaussian
+Process, or leveraging special features [@Mutny:HDBOQFF:2018].</p>
+<p>@Han:AddGPUCB:2021 select the decomposition which maximizes the marginal
+likelihood from a collection of randomly sampled decompositions,
+updating it every certain number of iterations. Alternatives include:
+leveraging a generalization based on restricted projections
+[@Li:RPP:2016], discovering the additive structure using model selection
+and Markov Chain Monte Carlo [@Gardner:AddStruct:2017], considering
+overlapping groups [@Rolland:GAddGPUCB:2018], ensembles of Mondrian
+space-tiling trees [@Wang:BatchedEnsembleHDBO:2018], or use random
+tree-based decompositions [@Ziomek:RDUCB:2023].</p>
+
+<h4 id="trust-regions" class="heading">Trust regions <a href="#trust-regions" aria-labelledby="trust-regions">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h4>
+<p>Some BO algorithms restrict the evaluation of the acquisition function
+to a small region of input space called a <em>trust region</em>, which is
+centered at the incumbent and is dynamically contracted or expanded
+according to performance
+[@Rommel:TRIKE:2016; @Pedrielli:GSTAR:2016; @Eriksson:TuRBO:2019].
+Contemporary variants extend to the multivariate setting (e.g.MORBO
+[@Daulton:MORBO:2022]), to quality-diversity [@Maus:ROBOT:2023] and to
+the optimization of mixed variables (<code>CASMOPOLITAN</code> by
+@Wan:CASMOPOLITAN:2021), including categorical. Since the trust region
+framework involves only the optimization of the acquisition function,
+several other methods leverage it alongside other structural assumptions
+like linear/non-linear embeddings (e.g.@Tripp:WeightedRetraining:2020
+[@Papenmeier:BAxUS:2022]).</p>
+
+<h4 id="sec:taxonomy:linear_embeddings" class="heading">Linear embeddings <a href="#sec:taxonomy:linear_embeddings" aria-labelledby="sec:taxonomy:linear_embeddings">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h4>
+<p>Instead of optimizing directly in input space $\mathbb{R}^D$, several
+methods rely on optimizing in a lower-dimensional space $\mathbb{R}^d$,
+which is linearly embedded into data space using a linear transformation
+$A\in\mathbb{R}^{D\times d}$ [@Wang:REMBO:2016]. The matrix $A$ can be
+either selected at random [@Wang:REMBO:2016; @Qian:SREIMGPO:2016],
+computed as a low-rank approximation of the input data matrix
+[@Djolonga:HDBandits:2013; @Zhang:SIR:2019; @Raponi:PCABO:2020],
+constructed using gradient information and active subspaces
+[@Palar:ASM:2017; @Wycoff:AS:2021], or through the minimization of
+variance estimates [@Hu:MAVEBO:2024].</p>
+<p>These methods are limited by how low-dimensional exploration translates
+into high dimensions. One choice of embedding matrix $A$ spans a
+<em>fixed</em>, highly-restricted subspace of $\mathbb{R}^D$. For this approach
+several issues regarding back-projections need to be addressed. Indeed,
+projecting from bounded domains $\mathcal{Z}\subseteq\mathbb{R}^d$ to
+$\mathbb{R}^D$ might render points outside the bounded domain in the
+input [@BinoisWycoff:HDGPs:2022]. Finally, the transformation $A$ is not
+injective, meaning a point in input space can correspond to several
+latent points [@Binois:WarpedREMBO:2015; @Moriconi:QuantGPBO:2020].</p>
+<p>@Binois:WarpedREMBO:2015 propose a kernel that alleviates these issues
+by including a back-projection to the bounded domain that respects
+distances in the embedded space. <em>Hashing matrices</em>
+$S\in\mathbb{R}^{D\times d}$ are an alternative way to reconstruct an
+input data point in a bounded domain
+$\bm{x}\in [-1, 1]^{D}\subseteq\mathbb{R}^D$ from a latent point
+$\bm{z}\in\mathbb{R}^D$, whose entries are either 0, 1, and -1. Thus,
+the result of multiplying $S\bm{z}$ is a linear combination of the
+coordinates of $\bm{z}$ where the coefficients are 1 and -1
+[@Nayebi:HESBO:2019]. These ideas have been combined with trust regions
+both in the continuous [@Papenmeier:BAxUS:2022] and mixed-variable
+settings [@Papenmeier:BOUNCE:2024]. A natural extension considers a
+family of nested subspaces, progressively growing the embedding matrix
+until it matches the input dimensionality [@Papenmeier:BAxUS:2022]. An
+alternative that does not deal with reconstruction mappings (thus
+circumventing the aforementioned issues) uses the information learned in
+the lower dimensional space to perform optimization directly in input
+space [@Horiguchi:MahalaBatchBO:2022].</p>
+
+<h4 id="sec:taxonomy:non-linear-embeddings" class="heading">Non-linear embeddings <a href="#sec:taxonomy:non-linear-embeddings" aria-labelledby="sec:taxonomy:non-linear-embeddings">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h4>
+<p>Several methods have considered non-linear embeddings to incorporate
+learned latent representations. One set of examples are deep latent
+variable models like Generative Adversarial Networks
+[@Goodfellow:GAN:2014], or variants of Autoencoders
+[@Kingma:VAE:2014; @Stanton:LAMBO:2022; @Maus:LOLBO:2022], algorithms
+that allow for modelling arbitrarily structured inputs. This is highly
+relevant for optimizing sequences, which are modeled as samples from a
+categorical distribution.</p>
+<p>@Bombarelli:AutoChemDesign:2018 pioneered latent space optimization
+(LSBO) by learning a latent space of small molecules through their
+SMILES representation using a Variational Autoencoder (VAE,
+@Kingma:VAE:2014 [@Rezende:VAE:2014]), and optimizing metrics such as
+the qualitative estimate of druglikeness (QED) therein. Several
+approaches have followed, including usage of <em>a-priori</em> given labelled
+data [@Eissman:AttrAdjust:2018] or decoder uncertainty
+[@Notin:Uncert:2021], smart retraining schemes that focus on promising
+points [@Tripp:WeightedRetraining:2020], metric-learning approaches that
+match promising points together [@Grosnit:VAEDML:2021], constraining the
+latent space [@Griffiths:ConstrainedBOVAEs:2020], latent spaces mapping
+to graphs [@Kusner:GrammarVAE:2017; @Jin:JunctionTreeVAE:2018] and
+jointly learning the surrogate model and the latent representation
+[@Maus:LOLBO:2022; @Lee:CoBo:2023; @Chen:PGLBO:2024; @Kong:DSBO:2024].
+@Stanton:LAMBO:2022 take this further by learning multiple
+representations: one shared and required for both the decoder and
+surrogate, and one discriminative encoding as input for a GP used in the
+acquisition function. A prerequisite for these methods is a large
+dataset of <em>unsupervised</em> inputs, which may not be available in all
+applications. The methods that rely on training both the representation
+and the regression at the same time need <em>supervised</em> labels, which may
+be potentially unavailable. Optimization in embedding spaces greatly
+increases the complexity of problems that can be tackled, making it an
+appealing alternative for discrete sequence optimization in real-world
+tasks (see Fig. <a href="../../../docs/hdbo/taxonomy/#fig:overview-of-effective-dim">2</a>{reference-type=&ldquo;ref&rdquo;
+reference=&ldquo;fig:overview-of-effective-dim&rdquo;}).</p>
+
+<h4 id="gradient-information" class="heading">Gradient information <a href="#gradient-information" aria-labelledby="gradient-information">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h4>
+<p>High-dimensional problems can become significantly easier when
+derivative information is available. Even when the objective&rsquo;s
+derivatives are not available, the gradient information from the
+surrogate model can guide exploration. In our case, the referenced
+approaches cannot be applied directly, as they assume a differentiable
+kernel. For methods that rely on a continuous latent representation (see
+Secs. <a href="../../../docs/hdbo/taxonomy/#sec:taxonomy:linear_embeddings">3.4</a>{reference-type=&ldquo;ref&rdquo;
+reference=&ldquo;sec:taxonomy:linear_embeddings&rdquo;} and
+<a href="../../../docs/hdbo/taxonomy/#sec:taxonomy:non-linear-embeddings">3.5</a>{reference-type=&ldquo;ref&rdquo;
+reference=&ldquo;sec:taxonomy:non-linear-embeddings&rdquo;}), gradient information
+of the surrogate model in latent space can be used.</p>
+<p>@Ahmed:FOBO:2016 mention how several Bayesian optimization methods could
+leverage gradient information and encourage the community to augment
+their optimization schemes with gradients, supported by strong empirical
+results even with randomly sampled directional derivatives.
+@Eriksson:DSKIP:2018 alleviate the computational constraints that come
+from using supervised gradient information using structured kernel
+interpolation and computational tricks like fast matrix-vector
+multiplication and pivoted Cholesky preconditioning. Other avenues for
+mitigating the computational complexity involve using structured
+automatic differentiation [@Ament:SBOSDA:2022]. Instead of using the
+gradient for taking stochastic steps, @Penubothula:FirstOrder:2021 aim
+to find local critical points by querying where the predicted gradient
+is zero.</p>
+<p>As mentioned above, fitting a Gaussian process to the objective allows
+for predicting gradients without having seen them <em>a priori</em>
+[@RasmussenWilliams:GPs:2006 Sec 9.4]; @Muller:LPSBO:2021 propose
+<em>Gradient Information with BO</em> (GIBO), in which they guide local policy
+search in reinforcement learning tasks, exploiting this property.
+@Nguyen:MPD:2022 address that expected gradients may not lead to the
+best performing outputs and compute the <em>most probable descent
+direction</em>.</p>
+
+<h4 id="sec:taxonomy:structured-spaces" class="heading">Structured spaces <a href="#sec:taxonomy:structured-spaces" aria-labelledby="sec:taxonomy:structured-spaces">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h4>
+<p>Some applications work over structured spaces. For example, the angles
+of robot arms and protein backbones map to Riemannian manifolds
+[@Jaquier:ManifoldsROBO:2020; @Penner:ProtMODULI:2022], and input spaces
+might also contain mixed variables (i.e. products of real and continuous
+spaces). To compute non-linear embeddings (see
+Sec. <a href="../../../docs/hdbo/taxonomy/#sec:taxonomy:non-linear-embeddings">3.5</a>{reference-type=&ldquo;ref&rdquo;
+reference=&ldquo;sec:taxonomy:non-linear-embeddings&rdquo;}) followed by standard
+Bayesian Optimization (or small variants thereof) can allow us to work
+over such spaces. @Jaquier:GABO:2020 use kernels defined on Riemannian
+manifolds
+[@Feragen:GeodesicKernels:2015; @Borovitsky:MaternKernelOnManifold:2020]
+and optimize the acquisition function using tools from Riemannian
+optimization [@Boumal:ManifoldOpt:2023]. The authors expand their
+framework to high-dimensional manifolds by projecting to
+lower-dimensional submanifolds, which is roughly the equivalent to
+<em>linear embeddings</em> in the Riemannian settings [@Jaquier:HDGABO:2020].</p>
+<p>In the categorical and mixed-variable setting, kernels over string
+spaces [@Lodhi:SSKs:2000; @Shervashidze:WLGraphKernel:2011], can be
+applied to BO [@Moss:BOSS:2020]. Other methods construct combinatorial
+graph and diffusion kernels-based GPs [@Oh:COMBO:2019].
+@Deshwal:LADDER:2021 combine latent space kernels with combinatorial
+kernels in an autoencoder-based approach.</p>
+<p>Recently, @Daulton:PR:2022 have proposed a continuous relaxation of the
+discrete variables to ease the optimization of the acquisition function.
+@Deshwal:BODI:2023 propose another way to map discrete variables to
+continuous space, relying on Hamming distances to make a dictionary for
+embeddings. @Papenmeier:BOUNCE:2024 extend previous work to both
+continuous and categorical variables: <code>BAxUS</code> learns an increasing
+sequence of subspaces using hash matrices which, when combined with the
+<code>CoCaBo</code> kernel [@Ru:CoCaBO:2020], renders an algorithm for the
+mixed-variable setting. Finally, through a continuous relaxation of the
+objective that incorporates <em>prior</em> pretrained models,
+@Michael:COREL:2024 propose a surrogate on the probability vector space
+to optimize either the discrete input space or a continuous latent one.</p>
+<p><strong>Other.</strong>   Some methods evade our taxonomy but are worth mentioning:
+some focus on the optimization of the acquisition function and the
+impact of initializations [@Zhao:AIBO:2024; @Ngo:CMABO:2024]. Other
+methods balance both active learning (i.e.building a better surrogate
+model) and optimization [@Hvarfner:SCOREBO:2023]. Most recently, two
+articles claimed that the standard setting for Bayesian optimization or
+slight variations of it perform as well as the state-of-the-art of all
+the aforementioned families
+[@Hvarfner:VanilaBO:2024; @Xu:StdVanillaBO:2024] &ndash; begging the
+question, can these methods optimize in high dimensional discrete
+problem spaces in a sample efficient manner?</p>
+
+
+
+
+
+
+                </div>
+                <div class="col col-md-3 col-lg-2 d-none d-md-block pt-5">
+                    
+    
+
+
+<div class="toc toc-sidebar mb-5 my-md-0 mb-lg-5 p-3 text-body-secondary sticky-top">
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+
+    </div>
+
+                </div>
+            </div>
+        </div>
+<div class="container-fluid footer">
+    <div class="container">
+        <div class="row py-2">
+            <div class="col-xl-1 pt-2">
+                <img src="../../../img/mlls-logo.png" class="pt-1 d-none-inline-dark" alt="logo" width="100">
+                <img src="../../../img/mlls-logo.png" class="pt-1 d-none-inline-light" alt="logo" width="100">
+            </div>
+            <div class="col-md">
+                <div class="fs-3 fw-bold">
+                    
+                    MLLS
+                </div>
+                <p>
+                    This project is brought to you by <a href="https://mlls.dk/">Center for Basic Machine Learning Research in Life Science</a>
+                    
+                </p>
+            </div>
+            <div class="col-md-auto py-4">
+                <small class="text-muted text-end">
+                    Copyright © 2024 HDBO Team.
+                    
+                    
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+
+        <div id="toast-container" class="toast-container position-fixed bottom-0 end-0 p-3">
+
+
+
+
+
+
+
+<div id="toast-copied-code-message" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <strong class="me-auto">Benchmarking HDBO</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">Code copied to clipboard</div>
+</div>
+</div>
+
+<script src="../../../js/main.bundle.min.659492aa85df79271c4d0050104a69d4602e1a3f828b4b92bc95a303342b82ec.js" integrity="sha256-ZZSSqoXfeSccTQBQEEpp1GAuGj&#43;Ci0uSvJWjAzQrguw=" crossorigin="anonymous" async></script>
+    
+
+    
+
+
+
+
+<script src="../../../js/katex.bundle.min.d81cf3754d87c680eddef208eada62f677e54820e49d9910ebf89244cb2a5f4f.js" integrity="sha256-2BzzdU2HxoDt3vII6tpi9nflSCDknZkQ6/iSRMsqX08=" crossorigin="anonymous" defer></script>
+    </body>
+</html>

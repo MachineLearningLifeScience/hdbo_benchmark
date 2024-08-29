@@ -468,6 +468,69 @@
     
 
                     
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/taxonomy/">Taxonomy</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/benchmarking/">Benchmarking</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/conclusion/">Conclusion</a>
+            
+        </li>
+    
+
+                    
             </ul>
         </div>
     </li>
@@ -545,6 +608,69 @@
     
 
                     
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/taxonomy/">Taxonomy</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/benchmarking/">Benchmarking</a>
+            
+        </li>
+    
+
+                    
+
+    
+        <li>
+            
+            
+            
+            
+                
+
+
+
+
+
+
+
+    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/conclusion/">Conclusion</a>
+            
+        </li>
+    
+
+                    
             </ul>
         </div>
     </li>
@@ -603,9 +729,22 @@
 
     <div class="card  my-4 text-start"><div class="card-body d-flex flex-column p-4">
             <div>
-            <p class="card-title fs-5 fw-bold">Abstract</p><div class="card-text"><p>Optimizing discrete black-box functions is key in several domains, ranging from protein engineering to drug design. Due to the lack of gradient information and the need for sample efficiency, Bayesian optimization is an ideal candidate for these tasks. Several methods for categorical Bayesian optimization have been proposed recently, as well as a large collection of high-dimensional continuous alternatives.</p>
-<p>However, our survey of the field reveals highly heterogeneous experimental setups across methods and technical barriers for the replicability and application of published algorithms to real-world tasks. To address these issues, we implement a unified framework to test a vast array of high-dimensional Bayesian optimization methods, as well as a collection of standardized black-box functions representing real-world application domains in chemistry and biology.</p>
-<p>These two components of the benchmark are each supported by flexible, scalable, and easily extendable software libraries (poli and poli-baselines), allowing practitioners to readily incorporate new optimization objectives or discrete optimizers.</p>
+            <p class="card-title fs-5 fw-bold">Abstract</p><div class="card-text"><p>Optimizing discrete black-box functions is key in several domains,
+e.g. protein engineering and drug design. Due to the lack of gradient
+information and the need for sample efficiency, Bayesian optimization
+is an ideal candidate for these tasks. Several methods for
+high-dimensional continuous and categorical Bayesian optimization have
+been proposed recently. However, our survey of the field reveals
+highly heterogeneous experimental set-ups across methods and technical
+barriers for the replicability and application of published algorithms
+to real-world tasks. To address these issues, we develop a unified
+framework to test a vast array of high-dimensional Bayesian
+optimization methods and a collection of standardized black-box
+functions representing real-world application domains in chemistry and
+biology. These two components of the benchmark are each supported by
+flexible, scalable, and easily extendable software libraries (<code>poli</code>
+and <code>poli-baselines</code>), allowing practitioners to readily incorporate
+new optimization objectives or discrete optimizers.</p>
 <p>Read the full <a href="https://arxiv.org/abs/2406.04739v1">paper on arXiv</a> or continue reading below.</p>
 </div></div>
         </div>
@@ -632,9 +771,26 @@
 
     &nbsp;
 </a></h3>
-<p class="px-4">Optimizing an unknown and expensive-to-evaluate function is a frequent problem across disciplines <a href="#fn:1">(Shahriari et al., 2016)</a> <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> examples are finding the right parameters for machine learning models or simulators, drug discovery or train scheduling, to name a few. In some scenarios, evaluating the black-box involves an expensive process (e.g. training a large model, or running a physical simulation); Bayesian Optimization
-<a href="#fn:2">(BO, Močkus 1975)</a> <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> is a powerful method for sample efficient black-box optimization. High dimensional (discrete) problems have long been identified as a key challenge for Bayesian optimization algorithms
-(<a href="#fn:3">Wang et al., 2013</a> <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, <a href="#fn:4">Snoek et al., 2012</a> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>) given that they tend to scale poorly with both dataset size and dimensionality of the input.</p>
+<p>Optimizing an unknown and expensive-to-evaluate function is a frequent
+problem across disciplines (<a href="#Shahriari2016BOreview">Shahriari et al., 2016</a>): examples are
+finding the right parameters for machine learning models or simulators,
+drug discovery (<a href="#Bombarelli:AutoChemDesign:2018">Gómez-Bombarelli et al., 2018</a> <a href="#Griffiths:ConstrainedBOVAEs:2020">Griffiths and Hernández-Lobato, 2020</a> <a href="#Pyzer-Knapp:BODrugDiscovery:2018">Pyzer-Knapp, 2018</a>), protein design
+(<a href="#Stanton:LAMBO:2022">Stanton et al., 2022</a>,
+<a href="#Gruver:LAMBO2:2023">Gruver et al., 2023</a>),
+hyperparameter tuning in Machine Learning
+(<a href="#Snoek:PracticalBO:2012">Snoek et al., 2012</a>;
+<a href="#Turner:BOHyperTuning:202">Turner et al., 2021</a>)
+and train
+scheduling. In some scenarios, evaluating the black-box involves an
+expensive process (e.g. training a large model, or running a physical
+simulation); Bayesian Optimization (BO, <a href="#Turner:Mockus:OriginalBO:1975"> Močkus (1975)</a>) is a
+powerful method for sample efficient black-box optimization. High
+dimensional (discrete) problems have long been identified as a key
+challenge for Bayesian optimization algorithms
+(<a href="#Wang2013rembo">Wang et al., 2013</a>;
+<a href="#Snoek:PracticalBO:2012">Snoek et al., 2012</a>)
+given that they tend to scale
+poorly with both dataset size and dimensionality of the input.</p>
 <style>
     figure#svg svg {
         width: 100% !important;
@@ -3023,27 +3179,138 @@
     });
 </script>
 
-<p class="px-4">High-dimensional BO has been the focus of an entire research field (see <a href="#svg">Figure 1</a>), in which methods are extended to address the curse of dimensionality and its consequences (Binois and Wycoff, 2022; Santoni et al., 2023). Within this setting, discrete sequence optimization has received particular focus, due to its applicability in the optimization of molecules and proteins. However, prior work often focuses on sequence lengths and number of categories below the hundreds (see Fig. 2), making it difficult for practitioners to judge expected performance on real-world problems in these domains. We contribute (i) a survey of the field while focusing on the real-world applications of high-dimensional discrete sequences, (ii) a benchmark several optimizers in established black boxes, and (iii) an open source, unified interface: poli and poli-baselines.</p>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>Shahriari, B., Swersky, K., Wang, Z., Adams, R. P., and de Freitas, N. (2016). Taking the human out
-of the loop: A review of bayesian optimization. Proceedings of the IEEE, 104(1):148–175.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>Močkus, J. (1975). On bayesian methods for seeking the extremum. In Marchuk, G. I., editor,
-Optimization Techniques IFIP Technical Conference Novosibirsk, July 1–7, 1974, page 400–404,
-Berlin, Heidelberg. Springer.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3">
-<p>Wang&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:4">
-<p>Snoek&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
+<p class="pb-4">High-dimensional BO has been the focus of an entire research field (see <a href="#svg">Figure 1</a>), in which methods are extended to address the curse of dimensionality and its consequences
+(<a href="#BinoisWycoff:HDGPs:2022">Binois and Wycoff, 2022</a>;
+<a href="#SantoniDoerr:HDBO:2023">Santoni et al., 2023</a>). Within this setting, discrete sequence optimization has received particular focus, due to its applicability in the optimization of molecules and proteins. However, prior work often focuses on sequence lengths and number of categories below the hundreds (see Fig. 2), making it difficult for practitioners to judge expected performance on real-world problems in these domains. We contribute (i) a survey of the field while focusing on the real-world applications of high-dimensional discrete sequences, (ii) a benchmark several optimizers in established black boxes, and (iii) an open source, unified interface: <code>poli</code> and <code>poli-baselines</code>.</p>
+
+<h5 id="references" class="heading">References <a href="#references" aria-labelledby="references">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h5>
+
+<h6 id="Shahriari2016BOreview" class="heading">Shahriari, B., Swersky, K., Wang, Z., Adams, R. P., and de Freitas, N. (2016). <a href="#Shahriari2016BOreview" aria-labelledby="Shahriari2016BOreview">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p class="pb-3">Taking the human out of the loop: A review of bayesian optimization. Proceedings of the IEEE, 104(1):148–175.</p>
+
+<h6 id="Bombarelli:AutoChemDesign:2018" class="heading">Gómez-Bombarelli, R., Wei, J. N., Duvenaud, D., Hernández-Lobato, J. M., Sánchez-Lengeling, B., Sheberla, D., Aguilera-Iparraguirre, J., Hirzel, T. D., Adams, R. P., and Aspuru-Guzik, A. (2018). <a href="#Bombarelli:AutoChemDesign:2018" aria-labelledby="Bombarelli:AutoChemDesign:2018">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p class="pb-3">Automatic chemical design using a data-driven continuous representation of molecules. ACS Central Science, 4(2):268–276. PMID: 29532027.</p>
+
+<h6 id="Griffiths:ConstrainedBOVAEs:2020" class="heading">Griffiths, R.-R. and Hernández-Lobato, J. M. (2020). <a href="#Griffiths:ConstrainedBOVAEs:2020" aria-labelledby="Griffiths:ConstrainedBOVAEs:2020">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p class="pb-3">Constrained bayesian optimization for automatic chemical design using variational autoencoders. Chemical Science, 11(2):577–586.</p>
+
+<h6 id="Pyzer-Knapp:BODrugDiscovery:2018" class="heading">Pyzer-Knapp, E. O. (2018). <a href="#Pyzer-Knapp:BODrugDiscovery:2018" aria-labelledby="Pyzer-Knapp:BODrugDiscovery:2018">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p class="pb-3">Bayesian optimization for accelerated drug discovery. IBM Journal of Research and Development, 62(6):2:1–2:7</p>
+
+<h6 id="Stanton:LAMBO:2022" class="heading">Stanton, S., Maddox, W., Gruver, N., Maffettone, P., Delaney, E., Greenside, P., and Wilson, A. G. (2022). <a href="#Stanton:LAMBO:2022" aria-labelledby="Stanton:LAMBO:2022">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p class="pb-3">Accelerating Bayesian optimization for biological sequence design with denoising
+autoencoders. In Chaudhuri, K., Jegelka, S., Song, L., Szepesvari, C., Niu, G., and Sabato, S.,
+editors, Proceedings of the 39th International Conference on Machine Learning, volume 162 of
+Proceedings of Machine Learning Research, pages 20459–20478. PMLR.</p>
+
+<h6 id="Gruver:LAMBO2:2023" class="heading">Gruver, N., Stanton, S., Frey, N., Rudner, T. G. J., Hotzel, I., Lafrance-Vanasse, J., Rajpal, A., Cho, K., and Wilson, A. G. (2023). <a href="#Gruver:LAMBO2:2023" aria-labelledby="Gruver:LAMBO2:2023">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p class="pb-3">Protein design with guided discrete diffusion. In Oh, A., Naumann, T., Globerson, A., Saenko, K., Hardt, M., and Levine, S., editors, Advances in Neural Information
+Processing Systems, volume 36, pages 12489–12517. Curran Associates, Inc</p>
 
 
 
@@ -3121,7 +3388,7 @@ Berlin, Heidelberg. Springer.&#160;<a href="#fnref:2" class="footnote-backref" r
 </div>
 </div>
 
-<script src="../../../js/main.bundle.min.fd97bb417cd56c8b1303339c25bceb2029c8bb8936a1304f7d0a25b7bd2ea3bf.js" integrity="sha256-/Ze7QXzVbIsTAzOcJbzrICnIu4k2oTBPfQolt70uo78=" crossorigin="anonymous" async></script>
+<script src="../../../js/main.bundle.min.659492aa85df79271c4d0050104a69d4602e1a3f828b4b92bc95a303342b82ec.js" integrity="sha256-ZZSSqoXfeSccTQBQEEpp1GAuGj&#43;Ci0uSvJWjAzQrguw=" crossorigin="anonymous" async></script>
     
 
     
