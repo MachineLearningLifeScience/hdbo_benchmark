@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --job-name=ehrlich-benchmark
-#SBATCH --output=output_ehrlich.log
-#SBATCH --error=error_ehrlich.log
+#SBATCH --job-name=rasp-benchmark
+#SBATCH --output=output_rasp.log
+#SBATCH --error=error_rasp.log
 #SBATCH -p gpu --gres=gpu:titanx:1
-#SBATCH --array=1-3%3
+#SBATCH --array=1-5%5
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=10

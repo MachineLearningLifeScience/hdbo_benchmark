@@ -9,7 +9,7 @@ TEST_RUN = True
 if TEST_RUN:
     latent_dims = [32]
 else:
-    latent_dims = [32, 64, 128, 256]
+    latent_dims = [32]
 
 DISCETE_SOLVERS = ["pr", "bounce", "genetic_algorithm"]
 max_iter = 5 if TEST_RUN else 500
@@ -26,16 +26,16 @@ def condition_to_write(solver_name, latent_dim) -> bool:
         "cma_es",
         "line_bo",
         "vanilla_bo_hvarfner",
-        # "saas_bo",
+        "saas_bo",
         # "alebo",
         "baxus",
-        # "bounce",
-        # "pr",
+        "bounce",
+        "pr",
         "turbo",
     ]
 
 
-for solver_name in SOLVER_NAMES:
+for solver_name in SOLVER_NAMES[::-1]:
     for latent_dim in latent_dims:
         if not condition_to_write(
             solver_name=solver_name,
