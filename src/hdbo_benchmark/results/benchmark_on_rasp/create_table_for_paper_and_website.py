@@ -340,7 +340,11 @@ def print_table_as_tex(df, normalized: bool = False, n_dimensions: int = 2):
 if __name__ == "__main__":
     normalized = False
     # tags = ["2024-06-03", "2024-06-02", "2024-06-01", "2024-05-31", "Old-PR-Results"]
-    tags = ["RaSPExperiments-2024-08-27", "RaSPExperiments-2024-08-28", "RaSPExperiments-2024-08-29"]
+    tags = [
+        "RaSPExperiments-2024-08-27",
+        "RaSPExperiments-2024-08-28",
+        "RaSPExperiments-2024-08-29",
+    ]
     for n_dimensions in [32]:
         df = create_base_table(
             experiment_name="benchmark_on_rasp",
