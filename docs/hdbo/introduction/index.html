@@ -447,90 +447,6 @@
     
 
                     
-
-    
-        <li>
-            
-            
-            
-            
-                
-
-
-
-
-
-
-
-    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/preliminaries/">Preliminaries</a>
-            
-        </li>
-    
-
-                    
-
-    
-        <li>
-            
-            
-            
-            
-                
-
-
-
-
-
-
-
-    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/taxonomy/">Taxonomy</a>
-            
-        </li>
-    
-
-                    
-
-    
-        <li>
-            
-            
-            
-            
-                
-
-
-
-
-
-
-
-    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/benchmarking/">Benchmarking</a>
-            
-        </li>
-    
-
-                    
-
-    
-        <li>
-            
-            
-            
-            
-                
-
-
-
-
-
-
-
-    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/conclusion/">Conclusion</a>
-            
-        </li>
-    
-
-                    
             </ul>
         </div>
     </li>
@@ -582,90 +498,6 @@
 
 
     <a class="sidebar-item text-decoration-none rounded small active" href="../../../docs/hdbo/introduction/">Introduction</a>
-            
-        </li>
-    
-
-                    
-
-    
-        <li>
-            
-            
-            
-            
-                
-
-
-
-
-
-
-
-    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/preliminaries/">Preliminaries</a>
-            
-        </li>
-    
-
-                    
-
-    
-        <li>
-            
-            
-            
-            
-                
-
-
-
-
-
-
-
-    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/taxonomy/">Taxonomy</a>
-            
-        </li>
-    
-
-                    
-
-    
-        <li>
-            
-            
-            
-            
-                
-
-
-
-
-
-
-
-    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/benchmarking/">Benchmarking</a>
-            
-        </li>
-    
-
-                    
-
-    
-        <li>
-            
-            
-            
-            
-                
-
-
-
-
-
-
-
-    <a class="sidebar-item text-decoration-none rounded small" href="../../../docs/hdbo/conclusion/">Conclusion</a>
             
         </li>
     
@@ -753,7 +585,6 @@ new optimization objectives or discrete optimizers.</p>
 
     
 
-<!-- raw HTML omitted -->
 
 <h3 id="introduction" class="heading">Introduction <a href="#introduction" aria-labelledby="introduction">
 
@@ -771,7 +602,7 @@ new optimization objectives or discrete optimizers.</p>
 
     &nbsp;
 </a></h3>
-<p>Optimizing an unknown and expensive-to-evaluate function is a frequent
+<p class="px-2">Optimizing an unknown and expensive-to-evaluate function is a frequent
 problem across disciplines (<a href="#Shahriari2016BOreview">Shahriari et al., 2016</a>): examples are
 finding the right parameters for machine learning models or simulators,
 drug discovery (<a href="#Bombarelli:AutoChemDesign:2018">Gómez-Bombarelli et al., 2018</a> <a href="#Griffiths:ConstrainedBOVAEs:2020">Griffiths and Hernández-Lobato, 2020</a> <a href="#Pyzer-Knapp:BODrugDiscovery:2018">Pyzer-Knapp, 2018</a>), protein design
@@ -3179,9 +3010,75 @@ poorly with both dataset size and dimensionality of the input.</p>
     });
 </script>
 
-<p class="pb-4">High-dimensional BO has been the focus of an entire research field (see <a href="#svg">Figure 1</a>), in which methods are extended to address the curse of dimensionality and its consequences
+<p class="px-2">High-dimensional BO has been the focus of an entire research field (see <a href="#svg">Figure 1</a>), in which methods are extended to address the curse of dimensionality and its consequences
 (<a href="#BinoisWycoff:HDGPs:2022">Binois and Wycoff, 2022</a>;
 <a href="#SantoniDoerr:HDBO:2023">Santoni et al., 2023</a>). Within this setting, discrete sequence optimization has received particular focus, due to its applicability in the optimization of molecules and proteins. However, prior work often focuses on sequence lengths and number of categories below the hundreds (see Fig. 2), making it difficult for practitioners to judge expected performance on real-world problems in these domains. We contribute (i) a survey of the field while focusing on the real-world applications of high-dimensional discrete sequences, (ii) a benchmark several optimizers in established black boxes, and (iii) an open source, unified interface: <code>poli</code> and <code>poli-baselines</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <a aria-label="Contnue reading the paper"
+        href="https://arxiv.org/abs/2406.04739v1" target="_blank" rel="noopener noreferrer" class="btn btn-success  position-relative  col-12 col-sm-8 col-md-4 offset-sm-2 offset-md-4 me-3"
+        role="button"
+        >
+        <div class="d-flex justify-content-center">
+            <div class="my-auto">Contnue reading the paper&nbsp;
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-up-right-from-square fa-2xs"></i> --><svg class="svg-inline--fa fas fa-up-right-from-square fa-2xs" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 512 512"><path d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
+
+    &nbsp;
+</div><div class="align-self-center ps-1">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-file "></i> --><svg class="svg-inline--fa fas fa-file " fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 384 512"><path d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128z"/></svg>
+
+    
+</div>
+        </div>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                arXiv
+                <span class="visually-hidden">Contnue reading the paper</span>
+            </span></a>&nbsp;
+
+
 
 <h5 id="references" class="heading">References <a href="#references" aria-labelledby="references">
 
@@ -3312,6 +3209,114 @@ Proceedings of Machine Learning Research, pages 20459–20478. PMLR.</p>
 <p class="pb-3">Protein design with guided discrete diffusion. In Oh, A., Naumann, T., Globerson, A., Saenko, K., Hardt, M., and Levine, S., editors, Advances in Neural Information
 Processing Systems, volume 36, pages 12489–12517. Curran Associates, Inc</p>
 
+<h6 id="Snoek:PracticalBO:2012" class="heading">Snoek, J., Larochelle, H., and Adams, R. P. (2012). <a href="#Snoek:PracticalBO:2012" aria-labelledby="Snoek:PracticalBO:2012">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p class="pb-3">Practical bayesian optimization of machine learning algorithms. In Pereira, F., Burges, C., Bottou, L., and Weinberger, K., editors, Advances in Neural Information Processing Systems, volume 25. Curran Associates, Inc.</p>
+
+<h6 id="Turner:BOHyperTuning:202" class="heading">Turner, R., Eriksson, D., McCourt, M., Kiili, J., Laaksonen, E., Xu, Z., and Guyon, I. (2021). <a href="#Turner:BOHyperTuning:202" aria-labelledby="Turner:BOHyperTuning:202">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p class="pb-3">Bayesian optimization is superior to random search for machine learning hyperparameter tuning: Analysis of the black-box optimization challenge 2020. In Escalante, H. J. and Hofmann, K., editors, Proceedings of the NeurIPS 2020 Competition and Demonstration Track, volume 133 of Proceedings of Machine Learning Research, pages 3–26. PMLR.</p>
+
+<h6 id="Turner:Mockus:OriginalBO:1975" class="heading">Močkus, J. (1975). <a href="#Turner:Mockus:OriginalBO:1975" aria-labelledby="Turner:Mockus:OriginalBO:1975">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p class="pb-3">On bayesian methods for seeking the extremum. In Marchuk, G. I., editor, Optimization Techniques IFIP Technical Conference Novosibirsk, July 1–7, 1974, page 400–404, Berlin, Heidelberg. Springer.</p>
+
+<h6 id="Wang2013rembo" class="heading">Wang, Z., Zoghi, M., Hutter, F., Matheson, D., and De Freitas, N. (2013). <a href="#Wang2013rembo" aria-labelledby="Wang2013rembo">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p class="pb-3">Bayesian optimization in high dimensions via random embeddings. In Proceedings of the Twenty-Third International Joint Conference on Artificial Intelligence, IJCAI ’13, page 1778–1784.</p>
+
+<h6 id="BinoisWycoff:HDGPs:2022" class="heading">Binois, M. and Wycoff, N. (2022). <a href="#BinoisWycoff:HDGPs:2022" aria-labelledby="BinoisWycoff:HDGPs:2022">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p class="pb-3">A survey on high-dimensional gaussian process modeling with application to bayesian optimization. 2(2).</p>
+
+<h6 id="SantoniDoerr:HDBO:2023" class="heading">Santoni, M. L., Raponi, E., Leone, R. D., and Doerr, C. (2023). <a href="#SantoniDoerr:HDBO:2023" aria-labelledby="SantoniDoerr:HDBO:2023">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- <i class="fas fa-link anchor"></i> --><svg class="svg-inline--fa fas fa-link anchor" fill="currentColor" aria-hidden="true" role="img" viewBox="0 0 640 512"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+
+    &nbsp;
+</a></h6>
+<p>Comparison of high-dimensional bayesian optimization algorithms on bbob.</p>
+
 
 
 
@@ -3388,7 +3393,7 @@ Processing Systems, volume 36, pages 12489–12517. Curran Associates, Inc</p>
 </div>
 </div>
 
-<script src="../../../js/main.bundle.min.659492aa85df79271c4d0050104a69d4602e1a3f828b4b92bc95a303342b82ec.js" integrity="sha256-ZZSSqoXfeSccTQBQEEpp1GAuGj&#43;Ci0uSvJWjAzQrguw=" crossorigin="anonymous" async></script>
+<script src="../../../js/main.bundle.min.659dc489e7126ac06aba3d53fdffc60cae0ebf23e29a0f6da85b2ad76a5697f5.js" integrity="sha256-ZZ3EiecSasBquj1T/f/GDK4OvyPimg9tqFsq12pWl/U=" crossorigin="anonymous" async></script>
     
 
     

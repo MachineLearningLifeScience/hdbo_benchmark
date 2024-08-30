@@ -383,7 +383,7 @@
 
 
 
-</div><p>We test several HDBO methods on discrete sequence optimization tasks. So far, we have optimized the <a href="https://openreview.net/forum?id=yCZRdI0Y7G">PMO benchmark</a> on <strong>SELFIES</strong> representations, and also thermal stability of red fluorescent proteins and their mutations using <a href="https://elifesciences.org/articles/82593">RaSP</a>. Discrete solvers like <code>GeneticAlgorithm</code>, <code>Bounce</code> and <code>ProbRep</code> work directly on sequence space, while others rely on latent representations learned using autoencoders.</p>
+</div><p>We test several HDBO methods on discrete sequence optimization tasks. So far, we have optimized the <a href="https://openreview.net/forum?id=yCZRdI0Y7G">PMO benchmark</a> on <strong>SELFIES</strong> representations, and also thermal stability of red fluorescent proteins and their mutations using <a href="https://elifesciences.org/articles/82593">RaSP</a>. Discrete solvers like <code>GeneticAlgorithm</code>, <code>Bounce</code> and <code>ProbRep</code> work directly on sequence space, while others rely on latent representations learned using autoencoders. Higher scores are better for all tasks.</p>
 <p>For details, check <a href="https://github.com/MachineLearningLifeScience/hdbo_benchmark">our repository on GitHub</a>.</p>
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
@@ -414,7 +414,7 @@
                 
                     <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;PMO 2D</th>
                 
-                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;PMO 128D</th>
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;PMO 128</th>
                 
                     <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;RaSP</th>
                 
@@ -502,7 +502,7 @@
                     
                         <td>12.96&nbsp;±&nbsp;2.14</td>
                     
-                        <td>0.83&nbsp;±&nbsp;0.22</td>
+                        <td>0.84&nbsp;±&nbsp;0.41</td>
                     
                 </tr>
             
@@ -544,7 +544,7 @@
                     
                         <td>19.66&nbsp;±&nbsp;3.29</td>
                     
-                        <td></td>
+                        <td>0.67&nbsp;±&nbsp;0.57</td>
                     
                 </tr>
             
@@ -558,7 +558,7 @@
                     
                         <td>15.39&nbsp;±&nbsp;4.08</td>
                     
-                        <td>0.25&nbsp;±&nbsp;0.49</td>
+                        <td>0.17&nbsp;±&nbsp;0.37</td>
                     
                 </tr>
             
@@ -2061,7 +2061,7 @@
             
                 <tr>
                     
-                        <th scope="row" class="font-monospace fw-bold">CMA-ES</th>
+                        <th scope="row" class="font-monospace fw-bold">CMAES</th>
                     
 
                     
@@ -2075,7 +2075,7 @@
                     
 
                     
-                        <td>1.75&nbsp;±&nbsp;0.22</td>
+                        <td>1.75&nbsp;±&nbsp;0.41</td>
                     
                 </tr>
             
@@ -2091,11 +2091,21 @@
             
                 <tr>
                     
+                        <th scope="row" class="font-monospace fw-bold">SAASBO</th>
+                    
+
+                    
+                        <td>1.47&nbsp;±&nbsp;0.57</td>
+                    
+                </tr>
+            
+                <tr>
+                    
                         <th scope="row" class="font-monospace fw-bold">Turbo</th>
                     
 
                     
-                        <td>0.80&nbsp;±&nbsp;0.49</td>
+                        <td>0.67&nbsp;±&nbsp;0.37</td>
                     
                 </tr>
             
@@ -2237,7 +2247,7 @@
 </div>
 </div>
 
-<script src="../js/main.bundle.min.659492aa85df79271c4d0050104a69d4602e1a3f828b4b92bc95a303342b82ec.js" integrity="sha256-ZZSSqoXfeSccTQBQEEpp1GAuGj&#43;Ci0uSvJWjAzQrguw=" crossorigin="anonymous" async></script>
+<script src="../js/main.bundle.min.659dc489e7126ac06aba3d53fdffc60cae0ebf23e29a0f6da85b2ad76a5697f5.js" integrity="sha256-ZZ3EiecSasBquj1T/f/GDK4OvyPimg9tqFsq12pWl/U=" crossorigin="anonymous" async></script>
     
 
     
