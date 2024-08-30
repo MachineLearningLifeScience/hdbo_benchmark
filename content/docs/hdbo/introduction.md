@@ -29,12 +29,7 @@ new optimization objectives or discrete optimizers.
 Read the full [paper on arXiv](https://arxiv.org/abs/2406.04739v1) or continue reading below.
 {{< /card >}}
 
-<!-- {{< button icon="fas file" color="secondary" tooltip="" href="" badge="arXiv" >}}
-    Paper
-{{< /button >}} -->
-
 ### Introduction
-
 Optimizing an unknown and expensive-to-evaluate function is a frequent
 problem across disciplines ([Shahriari et al., 2016]({{< relref "#Shahriari2016BOreview" >}})): examples are
 finding the right parameters for machine learning models or simulators,
@@ -55,13 +50,18 @@ challenge for Bayesian optimization algorithms
 [Snoek et al., 2012]({{< relref "#Snoek:PracticalBO:2012" >}}))
 given that they tend to scale
 poorly with both dataset size and dimensionality of the input.
+{.px-2}
 
 {{< svg "/static/img/HDBO_timeline.svg" "<strong>Figure 1:</strong> A timeline of high-dimensional Bayesian optimization methods, with arrows drawn between methods that explicitly augment or use each other. References are clickable." >}}
 
 High-dimensional BO has been the focus of an entire research field (see [Figure 1]({{< relref "#svg" >}})), in which methods are extended to address the curse of dimensionality and its consequences 
 ([Binois and Wycoff, 2022]({{< relref "#BinoisWycoff:HDGPs:2022" >}});
 [Santoni et al., 2023]({{< relref "#SantoniDoerr:HDBO:2023" >}})). Within this setting, discrete sequence optimization has received particular focus, due to its applicability in the optimization of molecules and proteins. However, prior work often focuses on sequence lengths and number of categories below the hundreds (see Fig. 2), making it difficult for practitioners to judge expected performance on real-world problems in these domains. We contribute (i) a survey of the field while focusing on the real-world applications of high-dimensional discrete sequences, (ii) a benchmark several optimizers in established black boxes, and (iii) an open source, unified interface: `poli` and `poli-baselines`.
-{.pb-4}
+{.px-2}
+
+{{< button href="https://arxiv.org/abs/2406.04739v1" icon="fas file" color="success" tooltip="" badge="arXiv" class="col-12 col-sm-8 col-md-4 offset-sm-2 offset-md-4">}}
+    Contnue reading the paper
+{{< /button >}}
 
 ##### References
 
@@ -92,3 +92,26 @@ Proceedings of Machine Learning Research, pages 20459–20478. PMLR.
 Protein design with guided discrete diffusion. In Oh, A., Naumann, T., Globerson, A., Saenko, K., Hardt, M., and Levine, S., editors, Advances in Neural Information
 Processing Systems, volume 36, pages 12489–12517. Curran Associates, Inc
 {.pb-3}
+
+###### Snoek, J., Larochelle, H., and Adams, R. P. (2012). {#Snoek:PracticalBO:2012}
+Practical bayesian optimization of machine learning algorithms. In Pereira, F., Burges, C., Bottou, L., and Weinberger, K., editors, Advances in Neural Information Processing Systems, volume 25. Curran Associates, Inc.
+{.pb-3}
+
+###### Turner, R., Eriksson, D., McCourt, M., Kiili, J., Laaksonen, E., Xu, Z., and Guyon, I. (2021). {#Turner:BOHyperTuning:202}
+Bayesian optimization is superior to random search for machine learning hyperparameter tuning: Analysis of the black-box optimization challenge 2020. In Escalante, H. J. and Hofmann, K., editors, Proceedings of the NeurIPS 2020 Competition and Demonstration Track, volume 133 of Proceedings of Machine Learning Research, pages 3–26. PMLR.
+{.pb-3}
+
+###### Močkus, J. (1975). {#Turner:Mockus:OriginalBO:1975}
+On bayesian methods for seeking the extremum. In Marchuk, G. I., editor, Optimization Techniques IFIP Technical Conference Novosibirsk, July 1–7, 1974, page 400–404, Berlin, Heidelberg. Springer. 
+{.pb-3}
+
+###### Wang, Z., Zoghi, M., Hutter, F., Matheson, D., and De Freitas, N. (2013). {#Wang2013rembo}
+Bayesian optimization in high dimensions via random embeddings. In Proceedings of the Twenty-Third International Joint Conference on Artificial Intelligence, IJCAI ’13, page 1778–1784.
+{.pb-3}
+
+###### Binois, M. and Wycoff, N. (2022). {#BinoisWycoff:HDGPs:2022}
+A survey on high-dimensional gaussian process modeling with application to bayesian optimization. 2(2).
+{.pb-3}
+
+###### Santoni, M. L., Raponi, E., Leone, R. D., and Doerr, C. (2023). {#SantoniDoerr:HDBO:2023}
+Comparison of high-dimensional bayesian optimization algorithms on bbob.

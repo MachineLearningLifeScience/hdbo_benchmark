@@ -379,9 +379,14 @@ def join_rankings():
 
     # join the two tables on the index
     df = df1.join(df2, how="outer")
+    # breakpoint()
     df.to_csv(ROOT_DIR / "csv" / "model_vs_benchmark_table.csv")
 
 if __name__ == "__main__":
+    # postprocess_csv(ROOT_DIR / "csv" / "table_rasp_32.csv", save=True, transpose=True)
+    join_rankings()
+
+if False and (__name__ == "__main__"):
     tags: None = None
     model_vs_benchmark_table_columns = []
     seeds = [1, 2, 3]
