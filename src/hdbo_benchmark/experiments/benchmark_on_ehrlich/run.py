@@ -5,7 +5,6 @@ import click
 
 import torch
 import numpy as np
-from selfies import split_selfies  # type: ignore[import]
 
 import poli  # type: ignore[import]
 from poli.core.util.seeding import seed_numpy, seed_python  # type: ignore[import]
@@ -139,6 +138,7 @@ def main(
         motif_length=motif_length,
         n_motifs=n_motifs,
         seed=seed,
+        return_value_on_unfeasible=-1.0,
         evaluation_budget=max_iter + n_initial_points,
     )
 

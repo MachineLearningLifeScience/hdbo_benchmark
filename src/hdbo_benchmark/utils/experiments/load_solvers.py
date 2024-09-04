@@ -10,17 +10,17 @@ from hdbo_benchmark.utils.constants import DEVICE
 SOLVER_NAMES = [
     "random_mutation",
     "genetic_algorithm",
+    "cma_es",
+    "line_bo",
+    "baxus",
+    "turbo",
     "vanilla_bo",
     "vanilla_bo_with_lognormal_prior",
     "vanilla_bo_hvarfner",
-    "line_bo",
-    "saas_bo",
     "alebo",
-    "cma_es",
-    "baxus",
-    "turbo",
     "bounce",
     "pr",
+    "saas_bo",
 ]
 
 
@@ -33,6 +33,7 @@ def load_solver(
     lower_bound: float | None = None,
     max_iter: int | None = None,
     noise_std: float = 0.0,
+    std: float = 0.25,
     n_initial_points: int = 10,
     **solver_kwargs,
 ) -> Tuple[Any, Dict[str, Any]]:
@@ -40,6 +41,12 @@ def load_solver(
         case "random_mutation":
             from poli_baselines.solvers.simple.continuous_random_mutation import (
                 ContinuousRandomMutation,
+            )
+
+            solver_kwargs.update(
+                {
+                    "std": std,
+                }
             )
 
             return ContinuousRandomMutation, solver_kwargs
@@ -156,6 +163,8 @@ def load_solver(
                 {
                     # "initial_trust_region_length": 0.8 * 4,
                     "noise_std": noise_std,
+                    "n_dimensions": n_dimensions,
+                    "n_init": n_initial_points,
                     "max_iter": max_iter,
                 }
             )

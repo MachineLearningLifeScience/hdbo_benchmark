@@ -37,12 +37,14 @@ data/trained_models/zinc_250k
 data/trained_models/vae_mario
 data/trained_models/vae_mario-*
 data/trained_models/gps
+data/trained_models/ae_for_esm/latent_dim_128
 data/benchmark_on_toy_objective/
 data/benchmark_on_toy_objective_*/
 data/benchmark_on_low_intrinsic_dimensionality/
 data/benchmark_on_low_intrinsic_dimensionality*/
 data/regressing_a_simple_function/
 data/backups
+data/esm_embeddings/esm_embeddings_pool.json
 reports/figures/regressing_a_simple_function/ExactGPModel*
 reports/figures/regressing_a_simple_function/ExactGPModelWithLogNormalPrior*
 reports/figures/regressing_a_simple_function/ExactGPWithPolynomialKernel*
@@ -72,3 +74,4 @@ data/results_cache/
 # Running experiments locally
 *.local.sh
 *_local.py
+*_local.ipynb

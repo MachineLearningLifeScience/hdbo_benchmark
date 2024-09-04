@@ -12,6 +12,8 @@ dependencies = [
     "CairoSVG",
     "wandb",
     "click",
+    "lightning",
+    "fair-esm",
     "poli@git+https://github.com/MachineLearningLifeScience/poli.git@dev",
     "poli-baselines@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
 ]
