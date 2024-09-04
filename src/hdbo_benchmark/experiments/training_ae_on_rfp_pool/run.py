@@ -13,6 +13,7 @@ import lightning as L
 
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
 from hdbo_benchmark.utils.constants import ROOT_DIR
+from hdbo_benchmark.utils.download.from_drive import download_file_from_google_drive
 
 
 @click.command()
@@ -20,8 +21,7 @@ from hdbo_benchmark.utils.constants import ROOT_DIR
 @click.option("--max-epochs", type=int, default=100)
 @click.option("--seed", type=int, default=None)
 @click.option("--batch-size", type=int, default=256)
-@click.option("--strict-on-hash/--no-strict-on-hash", default=True)
-def main(latent_dim, max_epochs, seed, batch_size, strict_on_hash):
+def main(latent_dim, max_epochs, seed, batch_size):
     ESM_DATA_DIR = ROOT_DIR / "data" / "esm_embeddings"
     MODELS_DIR = (
         ROOT_DIR / "data" / "trained_models" / "ae_for_esm" / f"latent_dim_{latent_dim}"
@@ -30,9 +30,17 @@ def main(latent_dim, max_epochs, seed, batch_size, strict_on_hash):
     if seed is None:
         seed = np.random.randint(0, 1_000)
 
-    torch.manual_seed(seed)
+    L.seed_everything(seed)
 
     # Defining the training data and dataloaders
+    POOL_FILE = ESM_DATA_DIR / "esm_embeddings_pool.json"
+    if not POOL_FILE.exists():
+        download_file_from_google_drive(
+            "1xHZ9P48u6a2PCxe8EUfF3vA3EpVyYMhQ",  # The ID of the file on drive.
+            POOL_FILE,
+            md5_checksum="d5cfa674d621d6e54359ff185ab6fd69",
+        )
+
     with open(ESM_DATA_DIR / "esm_embeddings_pool.json") as f:
         embeddings_and_sequences = json.load(f)
 
@@ -62,3 +70,31 @@ def main(latent_dim, max_epochs, seed, batch_size, strict_on_hash):
     trainer.fit(
         model, train_dataloaders=train_dataloader, val_dataloaders=test_dataloader
     )
+
+    # Predicting for some embeddings
+    latent_embeddings = model.encode(embeddings)
+    decoded_tokens = model.decode(latent_embeddings)
+
+    print(decoded_tokens.argmax(dim=1)[:5])
+    print(tokens[0:5])
+
+    print(
+        [
+            "".join(x)
+            for x in model.decode_to_string_array(
+                latent_embeddings[:5].numpy(force=True)
+            )
+        ]
+    )
+    print(["".join(x) for x in model._from_token_ids_to_strings(tokens[:5])])
+
+    # Calculate the accuracy
+    print(
+        "accuracy:",
+        torch.sum(decoded_tokens.argmax(dim=1) == tokens)
+        / (len(tokens) * model.max_sequence_length),
+    )
+
+
+if __name__ == "__main__":
+    main()
