@@ -80,7 +80,7 @@ def main(
 
     train_model(
         model,  # type: ignore
-        max_epochs=45,#750,
+        max_epochs=750,
         train_loader=train_loader,
         test_loader=test_loader,
         experiment_name=experiment_name,
