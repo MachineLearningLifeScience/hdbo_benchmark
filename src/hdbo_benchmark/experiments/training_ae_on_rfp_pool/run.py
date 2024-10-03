@@ -22,9 +22,13 @@ from hdbo_benchmark.utils.download.from_drive import download_file_from_google_d
 @click.option("--seed", type=int, default=None)
 @click.option("--batch-size", type=int, default=256)
 def main(latent_dim, max_epochs, seed, batch_size):
-    ESM_DATA_DIR = ROOT_DIR / "data" / "esm_embeddings"
+    ESM_DATA_DIR = ROOT_DIR / "data" / "esm_embeddings"  # TODO: train AE only on RFP!
     MODELS_DIR = (
-        ROOT_DIR / "data" / "trained_models" / "ae_for_esm" / f"latent_dim_{latent_dim}"
+        ROOT_DIR
+        / "data"
+        / "trained_models"
+        / "ae_for_rfp_oh"
+        / f"latent_dim_{latent_dim}"
     )
 
     if seed is None:

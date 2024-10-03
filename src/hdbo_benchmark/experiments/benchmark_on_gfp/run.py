@@ -7,21 +7,18 @@ import poli  # type: ignore[import]
 import poli_baselines  # type: ignore[import]
 import torch
 from poli import objective_factory  # type: ignore[import]
-from poli.core.abstract_black_box import \
-    AbstractBlackBox  # type: ignore[import]
-from poli.core.exceptions import \
-    BudgetExhaustedException  # type: ignore[import]
+from poli.core.abstract_black_box import AbstractBlackBox  # type: ignore[import]
+from poli.core.exceptions import BudgetExhaustedException  # type: ignore[import]
 from poli.core.util.seeding import seed_numpy  # type: ignore[import]
 from poli.core.util.seeding import seed_python
 
 import hdbo_benchmark
 from hdbo_benchmark.utils.constants import DEVICE, ROOT_DIR
-from hdbo_benchmark.utils.experiments.load_solvers import (SOLVER_NAMES,
-                                                           load_solver)
-from hdbo_benchmark.utils.logging.idempotence_of_experiments import \
-    experiment_has_already_run
-from hdbo_benchmark.utils.logging.uncommited_changes import \
-    has_uncommitted_changes
+from hdbo_benchmark.utils.experiments.load_solvers import SOLVER_NAMES, load_solver
+from hdbo_benchmark.utils.logging.idempotence_of_experiments import (
+    experiment_has_already_run,
+)
+from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
 from hdbo_benchmark.utils.logging.wandb_observer import initialize_observer
 
 torch.set_default_dtype(torch.float32)
@@ -164,9 +161,7 @@ def main(
         x0 = None
         y0 = None
     else:
-        z0 = vae.encode(x0.to(DEVICE)).numpy(
-            force=True
-        )
+        z0 = vae.encode(x0.to(DEVICE)).numpy(force=True)
         z0 = from_range_to_unit_cube(z0, latent_space_bounds)
         x0 = problem.x0
         y0 = f(x0)

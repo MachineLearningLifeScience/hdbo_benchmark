@@ -9,23 +9,19 @@ import pandas as pd
 import poli  # type: ignore[import]
 import poli_baselines  # type: ignore[import]
 import torch
-from poli.core.abstract_black_box import \
-    AbstractBlackBox  # type: ignore[import]
-from poli.core.exceptions import \
-    BudgetExhaustedException  # type: ignore[import]
-from poli.core.util.seeding import (seed_numpy,  # type: ignore[import]
-                                    seed_python)
+from poli.core.abstract_black_box import AbstractBlackBox  # type: ignore[import]
+from poli.core.exceptions import BudgetExhaustedException  # type: ignore[import]
+from poli.core.util.seeding import seed_numpy, seed_python  # type: ignore[import]
 from poli.repository import RaspProblemFactory  # type: ignore[import]
 
 import hdbo_benchmark
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
 from hdbo_benchmark.utils.constants import DEVICE, ROOT_DIR
-from hdbo_benchmark.utils.experiments.load_solvers import (SOLVER_NAMES,
-                                                           load_solver)
-from hdbo_benchmark.utils.logging.idempotence_of_experiments import \
-    experiment_has_already_run
-from hdbo_benchmark.utils.logging.uncommited_changes import \
-    has_uncommitted_changes
+from hdbo_benchmark.utils.experiments.load_solvers import SOLVER_NAMES, load_solver
+from hdbo_benchmark.utils.logging.idempotence_of_experiments import (
+    experiment_has_already_run,
+)
+from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
 from hdbo_benchmark.utils.logging.wandb_observer import initialize_observer
 
 torch.set_default_dtype(torch.float32)

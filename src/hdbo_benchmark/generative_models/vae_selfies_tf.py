@@ -2,6 +2,7 @@
 Implements a Variational Autoencoder in TF that can be trained on
 SELFIES data from zinc250k.
 """
+
 from __future__ import annotations
 
 import json
@@ -61,41 +62,45 @@ class VAESelfiesTF(tf.keras.Model):
         self.input_length = self.max_sequence_length * len(self.alphabet_s_to_i)
 
         # Define the model
-        self.encoder = models.Sequential(layers=[
-            layers.InputLayer(input_shape=(self.input_length,)),
-            layers.Dense(2048),
-            layers.BatchNormalization(),
-            layers.ReLU(),
-            layers.Dropout(0.2),
-            layers.Dense(1024),
-            layers.BatchNormalization(),
-            layers.ReLU(),
-            layers.Dropout(0.2),
-            layers.Dense(256),
-            layers.BatchNormalization(),
-            layers.ReLU(),
-            layers.Dropout(0.2),
-            layers.Dense(latent_dim * 2)
-        ])
+        self.encoder = models.Sequential(
+            layers=[
+                layers.InputLayer(input_shape=(self.input_length,)),
+                layers.Dense(2048),
+                layers.BatchNormalization(),
+                layers.ReLU(),
+                layers.Dropout(0.2),
+                layers.Dense(1024),
+                layers.BatchNormalization(),
+                layers.ReLU(),
+                layers.Dropout(0.2),
+                layers.Dense(256),
+                layers.BatchNormalization(),
+                layers.ReLU(),
+                layers.Dropout(0.2),
+                layers.Dense(latent_dim * 2),
+            ]
+        )
 
         # The decoder, which outputs the logits of the categorical
         # distribution over the vocabulary.
-        self.decoder = models.Sequential(layers=[
-            layers.InputLayer(input_shape=(latent_dim,)),
-            layers.Dense(256),
-            layers.BatchNormalization(),
-            layers.ReLU(),
-            layers.Dropout(0.2),
-            layers.Dense(1024),
-            layers.BatchNormalization(),
-            layers.ReLU(),
-            layers.Dropout(0.2),
-            layers.Dense(2048),
-            layers.BatchNormalization(),
-            layers.ReLU(),
-            layers.Dropout(0.2),
-            layers.Dense(self.input_length),
-        ])
+        self.decoder = models.Sequential(
+            layers=[
+                layers.InputLayer(input_shape=(latent_dim,)),
+                layers.Dense(256),
+                layers.BatchNormalization(),
+                layers.ReLU(),
+                layers.Dropout(0.2),
+                layers.Dense(1024),
+                layers.BatchNormalization(),
+                layers.ReLU(),
+                layers.Dropout(0.2),
+                layers.Dense(2048),
+                layers.BatchNormalization(),
+                layers.ReLU(),
+                layers.Dropout(0.2),
+                layers.Dense(self.input_length),
+            ]
+        )
 
         # Defines the prior
         self.p_z = tfp.distributions.MultivariateNormalDiag(
@@ -106,7 +111,9 @@ class VAESelfiesTF(tf.keras.Model):
         # Moves to device
         self.device = device
 
-    def encode(self, x: tf.Tensor, training: bool=False) -> tfp.distributions.MultivariateNormalDiag:
+    def encode(
+        self, x: tf.Tensor, training: bool = False
+    ) -> tfp.distributions.MultivariateNormalDiag:
         """
         Computes the approximate posterior q(z|x) over
         the latent variable z.
@@ -114,9 +121,13 @@ class VAESelfiesTF(tf.keras.Model):
         hidden = self.encoder(tf.reshape(x, (x.shape[0], -1)), training=training)
         mu, log_var = tf.split(hidden, num_or_size_splits=2, axis=1)
 
-        return tfp.distributions.MultivariateNormalDiag(loc=mu, scale_diag=tf.math.exp(0.5 * log_var))
+        return tfp.distributions.MultivariateNormalDiag(
+            loc=mu, scale_diag=tf.math.exp(0.5 * log_var)
+        )
 
-    def decode(self, z: tf.Tensor, training: bool=False) -> tfp.distributions.Categorical:
+    def decode(
+        self, z: tf.Tensor, training: bool = False
+    ) -> tfp.distributions.Categorical:
         """
         Returns a categorical likelihood over the vocabulary
         """
@@ -124,10 +135,14 @@ class VAESelfiesTF(tf.keras.Model):
 
         # The categorical distribution expects (batch_size, ..., num_classes)
         return tfp.distributions.Categorical(
-            logits=tf.reshape(logits, (-1, self.max_sequence_length, len(self.alphabet_s_to_i)))
+            logits=tf.reshape(
+                logits, (-1, self.max_sequence_length, len(self.alphabet_s_to_i))
+            )
         )
 
-    def call(self, x: tf.Tensor, training:bool=False) -> Tuple[tfp.distributions.MultivariateNormDiag, tfp.distributions.Categorical]:
+    def call(
+        self, x: tf.Tensor, training: bool = False
+    ) -> Tuple[tfp.distributions.MultivariateNormDiag, tfp.distributions.Categorical]:
         """
         Computes a forward pass through the VAE, returning
         the distributions q_z_given_x and p_x_given_z.
@@ -139,7 +154,7 @@ class VAESelfiesTF(tf.keras.Model):
 
         return q_z_given_x, p_x_given_z
 
-    def loss_function(self, x: tf.Tensor, training: bool=False) -> tf.Tensor:
+    def loss_function(self, x: tf.Tensor, training: bool = False) -> tf.Tensor:
         """
         Computes the ELBO loss for a given batch {x}.
         """
@@ -147,10 +162,12 @@ class VAESelfiesTF(tf.keras.Model):
 
         # Computes the KL divergence between q(z|x) and p(z)
         kl_div = tfp.distributions.kl_divergence(q_z_given_x, self.p_z)
-        kl_div = kl_div*0.01 # KLD contribution 1%
+        kl_div = kl_div * 0.01  # KLD contribution 1%
 
         # Computes the reconstruction loss
-        recon_loss = -tf.math.reduce_sum(p_x_given_z.log_prob(tf.argmax(x, axis=-1)), axis=-1)
+        recon_loss = -tf.math.reduce_sum(
+            p_x_given_z.log_prob(tf.argmax(x, axis=-1)), axis=-1
+        )
 
         # Computes the ELBO loss
         loss: tf.Tensor = tf.math.reduce_mean((kl_div + recon_loss))

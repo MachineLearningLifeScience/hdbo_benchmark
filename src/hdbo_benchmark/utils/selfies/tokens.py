@@ -1,6 +1,7 @@
 """
 A set of utilities to transform SELFIE strings into tokens and vice versa.
 """
+
 from __future__ import annotations
 
 from __future__ import annotations

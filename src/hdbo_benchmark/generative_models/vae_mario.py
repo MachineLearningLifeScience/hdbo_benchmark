@@ -15,6 +15,7 @@ import torch.nn as nn
 
 from hdbo_benchmark.generative_models.vae import VAE
 from hdbo_benchmark.utils.data.mario import load_mario_tensors
+
 # from hdbo_benchmark.utils.visualization.levels import get_img_from_level
 
 

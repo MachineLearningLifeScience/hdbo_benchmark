@@ -12,7 +12,9 @@ from torch.utils.data import DataLoader, TensorDataset
 
 from hdbo_benchmark.utils.constants import DEVICE
 
-ROOT_DIR = Path(__file__).parent.parent.parent.parent.parent.parent.resolve() # TODO: perhaps work from _home_ ?
+ROOT_DIR = Path(
+    __file__
+).parent.parent.parent.parent.parent.parent.resolve()  # TODO: perhaps work from _home_ ?
 
 
 def load_zinc_250k_dataset() -> np.ndarray:
@@ -22,7 +24,10 @@ def load_zinc_250k_dataset() -> np.ndarray:
     loads the dataset of SELFIES strings, and one-hot encodes them.
     """
     dataset_path = (
-        ROOT_DIR / "corel" / "experiments" / "assets"
+        ROOT_DIR
+        / "corel"
+        / "experiments"
+        / "assets"
         / "data"
         / "pmo"
         / "zinc250k_onehot_and_integers.npz"
@@ -37,7 +42,10 @@ def load_zinc_250k_alphabet() -> Dict[str, int]:
     Returns the alphabet (dict[str, int]) of SELFIES characters.
     """
     alphabet_path = (
-        ROOT_DIR / "corel" / "experiments" / "assets"
+        ROOT_DIR
+        / "corel"
+        / "experiments"
+        / "assets"
         / "data"
         / "pmo"
         / "alphabet_stoi.json"
@@ -124,12 +132,8 @@ def load_zinc_250k_dataloaders_tf(
     # Split the data into train and test using the
     # specified percentage.
     training_index = int(len(one_hot_molecules) * train_test_split)
-    train_data = (
-        tf.convert_to_tensor(one_hot_molecules[:training_index])
-    )
-    test_data = (
-        tf.convert_to_tensor(one_hot_molecules[training_index:])
-    )
+    train_data = tf.convert_to_tensor(one_hot_molecules[:training_index])
+    test_data = tf.convert_to_tensor(one_hot_molecules[training_index:])
 
     # Overfit to a single batch if specified
     if overfit_to_a_single_batch:
@@ -140,12 +144,18 @@ def load_zinc_250k_dataloaders_tf(
     train_dataset = tf.data.Dataset.from_tensor_slices(train_data)
     test_dataset = tf.data.Dataset.from_tensor_slices(test_data)
 
-    train_dataset = train_dataset.shuffle(buffer_size=10).batch(batch_size).prefetch(buffer_size=tf.data.AUTOTUNE)
-    test_dataset = test_dataset.shuffle(buffer_size=10).batch(batch_size).prefetch(buffer_size=tf.data.AUTOTUNE)
+    train_dataset = (
+        train_dataset.shuffle(buffer_size=10)
+        .batch(batch_size)
+        .prefetch(buffer_size=tf.data.AUTOTUNE)
+    )
+    test_dataset = (
+        test_dataset.shuffle(buffer_size=10)
+        .batch(batch_size)
+        .prefetch(buffer_size=tf.data.AUTOTUNE)
+    )
 
     return train_dataset, test_dataset
-
-
 
 
 if __name__ == "__main__":
