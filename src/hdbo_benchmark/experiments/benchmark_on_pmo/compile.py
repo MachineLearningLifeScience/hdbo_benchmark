@@ -17,15 +17,15 @@ def condition_to_write(solver_name, function_name, n_dimensions) -> bool:
     return solver_name in [
         "random_mutation",
         "vanilla_bo_hvarfner",
+        "cma_es",
+        # "line_bo",
+        # "saas_bo",
+        # "alebo",
         # "cma_es",
-        "line_bo",
-        "saas_bo",
-        "alebo",
-        # "cma_es",
-        "baxus",
+        # "baxus",
         "bounce",
         "pr",
-        # "turbo",
+        "turbo",
     ]
 
 
