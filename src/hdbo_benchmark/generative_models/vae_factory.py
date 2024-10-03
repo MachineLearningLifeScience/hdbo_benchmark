@@ -79,7 +79,7 @@ class VAEFactory:
     def _create_vae_on_molecules(self, latent_dim: int) -> VAESelfies:
         match latent_dim:
             case 2:
-                weights_path = (
+                weights_path = ( # TODO: d=2 OLD ARCHITECTURE -> RETRAIN required
                     MODELS_DIR
                     / "training_vae_on_zinc_250k"
                     / "latent_dim-2-batch_size-512-lr-0.0005-seed-86.pt"
@@ -93,7 +93,7 @@ class VAEFactory:
                 weights_path = (
                     MODELS_DIR
                     / "training_vae_on_zinc_250k"
-                    / "latent_dim-128-batch_size-512-lr-0.0005-seed-714.pt"
+                    / "latent_dim-128-batch_size-512-lr-0.0005-seed-0.pt" # UPDATED ARCHITECTURE
                 )
                 vae: VAESelfies = VAESelfies(latent_dim=latent_dim, device=DEVICE)
                 opt_vae: VAESelfies = torch.compile(vae)  # type: ignore
