@@ -9,9 +9,7 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=24G
 #SBATCH --time=1-00:00:00
-
-# Telling all models to not use GPU
-export CUDA_VISIBLE_DEVICES=""
+#SBATCH --gres=gpu:1
 
 discrete_solvers=("bounce" "pr")
 

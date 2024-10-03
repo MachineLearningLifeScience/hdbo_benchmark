@@ -54,7 +54,7 @@ for function_name in function_names:
                 conda_env_name = "hdbo_benchmark"
 
             print(
-                f"sbatch src/hdbo_benchmark/experiments/benchmark_on_pmo/batch.sh {solver_name} {function_name} {latent_dim} {conda_env_name} {max_iter} {current_date}"
+                f"sbatch src/hdbo_benchmark/experiments/benchmark_on_pmo/batch.sh {solver_name} {function_name} {latent_dim} {conda_env_name} {max_iter} {current_date}-CoRel-Experiments-AISTATS"
             )
 
 # scp data/trained_models/training_vae_on_zinc_250k/latent_dim-128-batch_size-512-lr-0.0005-seed-714.pt hendrixgate03fl:Projects/high_dimensional_bo_benchmark/data/trained_models/training_vae_on_zinc_250k/latent_dim-128-batch_size-512-lr-0.0005-seed-714.pt
