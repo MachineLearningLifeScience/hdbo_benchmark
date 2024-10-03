@@ -2,7 +2,7 @@
 A set of utilities to draw molecules from SELFIE and SMILES strings,
 using RDKit and cairosvg.
 """
-
+from __future__ import annotations
 from pathlib import Path
 import PIL.Image as Image
 import io
