@@ -6,12 +6,13 @@ import json
 
 import numpy as np
 
+import tensorflow as tf
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 
 from hdbo_benchmark.utils.constants import DEVICE
 
-ROOT_DIR = Path(__file__).parent.parent.parent.parent.parent.resolve()
+ROOT_DIR = Path(__file__).parent.parent.parent.parent.parent.parent.resolve() # TODO: perhaps work from _home_ ?
 
 
 def load_zinc_250k_dataset() -> np.ndarray:
@@ -21,10 +22,9 @@ def load_zinc_250k_dataset() -> np.ndarray:
     loads the dataset of SELFIES strings, and one-hot encodes them.
     """
     dataset_path = (
-        ROOT_DIR
+        ROOT_DIR / "corel" / "experiments" / "assets"
         / "data"
-        / "small_molecule_datasets"
-        / "processed"
+        / "pmo"
         / "zinc250k_onehot_and_integers.npz"
     )
     dataset_onehot: np.ndarray = np.load(dataset_path)["onehot"]
@@ -37,10 +37,9 @@ def load_zinc_250k_alphabet() -> Dict[str, int]:
     Returns the alphabet (dict[str, int]) of SELFIES characters.
     """
     alphabet_path = (
-        ROOT_DIR
+        ROOT_DIR / "corel" / "experiments" / "assets"
         / "data"
-        / "small_molecule_datasets"
-        / "processed"
+        / "pmo"
         / "alphabet_stoi.json"
     )
 
@@ -101,6 +100,52 @@ def load_zinc_250k_dataloaders(
     )
 
     return train_loader, test_loader
+
+
+def load_zinc_250k_dataloaders_tf(
+    random_seed: int = 42,
+    train_test_split: float = 0.8,
+    batch_size: int = 256,
+    overfit_to_a_single_batch: bool = False,
+    device: torch.device = DEVICE,
+) -> Tuple:
+    """
+    Returns a train-test split for the Zinc 250k dataset.
+    The inputs are shuffled according to the provided seed using
+    numpy, and the dataloaders have shuffling turned on.
+    """
+    # Loading the one-hot representation
+    one_hot_molecules = load_zinc_250k_dataset()
+
+    # Shuffling according to the seed provided
+    np.random.seed(random_seed)
+    np.random.shuffle(one_hot_molecules)
+
+    # Split the data into train and test using the
+    # specified percentage.
+    training_index = int(len(one_hot_molecules) * train_test_split)
+    train_data = (
+        tf.convert_to_tensor(one_hot_molecules[:training_index])
+    )
+    test_data = (
+        tf.convert_to_tensor(one_hot_molecules[training_index:])
+    )
+
+    # Overfit to a single batch if specified
+    if overfit_to_a_single_batch:
+        train_data = train_data[:batch_size]
+        test_data = test_data[:batch_size]
+
+    # Building the datasets
+    train_dataset = tf.data.Dataset.from_tensor_slices(train_data)
+    test_dataset = tf.data.Dataset.from_tensor_slices(test_data)
+
+    train_dataset = train_dataset.shuffle(buffer_size=10).batch(batch_size).prefetch(buffer_size=tf.data.AUTOTUNE)
+    test_dataset = test_dataset.shuffle(buffer_size=10).batch(batch_size).prefetch(buffer_size=tf.data.AUTOTUNE)
+
+    return train_dataset, test_dataset
+
+
 
 
 if __name__ == "__main__":

@@ -17,8 +17,8 @@ import pandas as pd
 import selfies as sf  # type: ignore
 
 if __name__ == "__main__":
-    ROOT_DIR = Path(__file__).parent.parent.parent.parent.parent.resolve()
-    PROCESSED_DIR = ROOT_DIR / "data" / "small_molecule_datasets" / "processed"
+    ROOT_DIR = Path(__file__).parent.parent.parent.parent.parent.parent.resolve()
+    PROCESSED_DIR = ROOT_DIR / "corel" / "experiments" / "assets" / "data" / "pmo"
 
     dataset_path = PROCESSED_DIR / "zinc250k.csv"
     alphabet_path = PROCESSED_DIR / "zinc250k_alphabet_stoi.json"
