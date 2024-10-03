@@ -188,6 +188,7 @@ def main(
         n_dimensions=latent_dim,
         seed=seed,
         n_initial_points=n_initial_points,
+        **kwargs_,
     )
     kwargs.update(kwargs_)
     solver = solver_(
