@@ -49,7 +49,7 @@ for function_name in function_names:
             elif solver_name == "bounce":
                 conda_env_name = "bounce"
             elif solver_name == "pr":
-                conda_env_name = "hdbo__pr"
+                conda_env_name = "poli__pr"
             else:
                 conda_env_name = "hdbo_benchmark"
 
