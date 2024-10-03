@@ -47,7 +47,7 @@ for function_name in function_names:
             if solver_name == "baxus":
                 conda_env_name = "baxus_"
             elif solver_name == "bounce":
-                conda_env_name = "bounce"
+                conda_env_name = "poli__bounce"
             elif solver_name == "pr":
                 conda_env_name = "poli__pr"
             else:
