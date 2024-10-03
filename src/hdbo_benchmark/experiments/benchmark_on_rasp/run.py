@@ -21,6 +21,10 @@ import poli_baselines  # type: ignore[import]
 import hdbo_benchmark
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
 from hdbo_benchmark.utils.experiments.load_solvers import load_solver, SOLVER_NAMES
+from hdbo_benchmark.utils.experiments.normalization import (
+    from_unit_cube_to_range,
+    from_range_to_unit_cube,
+)
 from hdbo_benchmark.utils.constants import ROOT_DIR, DEVICE
 from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
 
@@ -30,14 +34,6 @@ from hdbo_benchmark.utils.logging.idempotence_of_experiments import (
 )
 
 torch.set_default_dtype(torch.float32)
-
-
-def from_unit_cube_to_range(z: np.ndarray, bounds: tuple[float, float]) -> np.ndarray:
-    return z * (bounds[1] - bounds[0]) + bounds[0]
-
-
-def from_range_to_unit_cube(z: np.ndarray, bounds: tuple[float, float]) -> np.ndarray:
-    return (z - bounds[0]) / (bounds[1] - bounds[0])
 
 
 def in_latent_space(
