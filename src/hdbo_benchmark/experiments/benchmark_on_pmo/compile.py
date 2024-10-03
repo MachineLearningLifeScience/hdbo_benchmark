@@ -51,7 +51,7 @@ for function_name in function_names:
             elif solver_name == "pr":
                 conda_env_name = "hdbo__pr"
             else:
-                conda_env_name = "hdbo"
+                conda_env_name = "hdbo_benchmark"
 
             print(
                 f"sbatch src/hdbo_benchmark/experiments/benchmark_on_pmo/batch.sh {solver_name} {function_name} {latent_dim} {conda_env_name} {max_iter} {current_date}"
