@@ -3,12 +3,12 @@
 #SBATCH --output=output_pmo.log
 #SBATCH --error=error_pmo.log
 #SBATCH --partition=boomsma
-#SBATCH --array=1-3%3
+#SBATCH --array=1-10%3
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=3
-#SBATCH --mem=30G
-#SBATCH --time=2-23:00:00
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=24G
+#SBATCH --time=1-00:00:00
 
 # Telling all models to not use GPU
 export CUDA_VISIBLE_DEVICES=""
