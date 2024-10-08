@@ -2,14 +2,15 @@
 #SBATCH --job-name=pmo-benchmark
 #SBATCH --output=output_pmo.log
 #SBATCH --error=error_pmo.log
-#SBATCH --partition=boomsma
-#SBATCH --array=1-10%3
+#SBATCH --partition=boomsma,gpu
+#SBATCH --array=1-10%7
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=24G
 #SBATCH --time=1-00:00:00
 #SBATCH --gres=gpu:1
+#SBATCH --exclude=hendrixgpu17fl
 
 discrete_solvers=("bounce" "pr")
 
