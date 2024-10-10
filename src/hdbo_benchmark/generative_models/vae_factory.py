@@ -88,6 +88,18 @@ class VAEFactory:
                 opt_vae: VAESelfies = torch.compile(vae)  # type: ignore
                 opt_vae.load_state_dict(torch.load(weights_path, map_location=DEVICE))
                 return opt_vae
+            case 64:
+                # We return our MLP VAE.
+                weights_path = (
+                    MODELS_DIR
+                    / "training_vae_on_zinc_250k"
+                    / "latent_dim-64-batch_size-512-lr-0.0005-seed-63.pt" # UPDATED ARCHITECTURE
+                )
+                vae: VAESelfies = VAESelfies(latent_dim=latent_dim, device=DEVICE)
+                opt_vae: VAESelfies = torch.compile(vae)  # type: ignore
+                opt_vae.load_state_dict(torch.load(weights_path, map_location=DEVICE))
+                opt_vae.eval()
+                return opt_vae
             case 128:
                 # We return our MLP VAE.
                 weights_path = (
