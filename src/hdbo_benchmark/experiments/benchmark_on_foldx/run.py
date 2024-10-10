@@ -72,7 +72,7 @@ def in_latent_space(
 @click.option(
     "--solver-name",
     type=str,
-    default="random_mutation",
+    default="directed_evolution",
     help=f"The name of the solver to run. All solvers available are: {SOLVER_NAMES}",
 )
 @click.option("--latent-dim", type=int, default=128)
@@ -81,6 +81,7 @@ def in_latent_space(
 @click.option("--strict-on-hash/--no-strict-on-hash", type=bool, default=True)
 @click.option("--force-run/--no-force-run", default=True)
 @click.option("--solve-in-discrete-space/--no-solve-in-discrete-space", default=False)
+@click.option("--use-starting-pool/--no-use-starting-pool", default=False)
 @click.option("--tag", type=str, default="default")
 def main(
     solver_name: str,
@@ -90,10 +91,11 @@ def main(
     strict_on_hash: bool,
     force_run: bool,
     solve_in_discrete_space: bool,
+    starting_pool: bool,
     tag: str,
 ):
     print(f"Device: {DEVICE}")
-    experiment_name = "benchmark_on_rasp"
+    experiment_name = "benchmark_on_foldx_stability"
     n_initial_points = 6
 
     for module in [hdbo_benchmark, poli, poli_baselines]:
@@ -137,7 +139,6 @@ def main(
     wildtype_pdbs = [p["closest_pdb"] for p in closest_pdbs]
     ALL_PDBS = list(filter(lambda x: x.parent.name in wildtype_pdbs, ALL_PDBS))
     ALL_PDB_IDS = [p.parent.name for p in ALL_PDBS]
-    chains_to_keep = [p.stem.split("_")[1] for p in ALL_PDBS]
 
     with open(ESM_EMBEDDINGS_DIR / "esm_embeddings.json") as f:
         embeddings_and_sequences = json.load(f)
