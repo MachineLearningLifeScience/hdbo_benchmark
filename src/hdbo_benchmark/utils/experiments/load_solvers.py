@@ -5,22 +5,30 @@ from typing import Tuple, Dict, Any
 
 import numpy as np
 
+from poli_baselines.core.abstract_solver import AbstractSolver
+
 from hdbo_benchmark.utils.constants import DEVICE
 
 SOLVER_NAMES = [
-    "random_mutation",
+    "directed_evolution",
+    "hill_climbing",
     "genetic_algorithm",
     "cma_es",
-    "line_bo",
+    "random_line_bo",
+    "coordinate_line_bo",
     "baxus",
     "turbo",
-    "vanilla_bo",
-    "vanilla_bo_with_lognormal_prior",
     "vanilla_bo_hvarfner",
     "alebo",
     "bounce",
     "pr",
     "saas_bo",
+    "lambo2",
+]
+
+SOLVERS_THAT_DONT_ALLOW_CUSTOM_INPUTS = [
+    "bounce",
+    "baxus",
 ]
 
 
@@ -29,16 +37,20 @@ def load_solver(
     seed: int | None = None,
     n_dimensions: int | None = None,
     n_intrinsic_dimensions: int | None = None,
-    upper_bound: float | None = None,
-    lower_bound: float | None = None,
     max_iter: int | None = None,
     noise_std: float = 0.0,
     std: float = 0.25,
     n_initial_points: int = 10,
     **solver_kwargs,
-) -> Tuple[Any, Dict[str, Any]]:
+) -> Tuple[AbstractSolver, Dict[str, Any]]:
     match solver_name:
-        case "random_mutation":
+        case "directed_evolution":
+            from poli_baselines.solvers.simple.random_mutation import (
+                RandomMutation,
+            )
+
+            return RandomMutation, solver_kwargs
+        case "hill_climbing":
             from poli_baselines.solvers.simple.continuous_random_mutation import (
                 ContinuousRandomMutation,
             )
@@ -104,7 +116,7 @@ def load_solver(
             )
 
             return VanillaBOHvarfner, solver_kwargs
-        case "line_bo":
+        case "random_line_bo":
             from poli_baselines.solvers.bayesian_optimization.line_bayesian_optimization import (
                 LineBO,
             )
@@ -112,6 +124,18 @@ def load_solver(
             solver_kwargs.update(
                 {
                     "type_of_line": "random",
+                }
+            )
+
+            return LineBO, solver_kwargs
+        case "coordinate_line_bo":
+            from poli_baselines.solvers.bayesian_optimization.line_bayesian_optimization import (
+                LineBO,
+            )
+
+            solver_kwargs.update(
+                {
+                    "type_of_line": "coordinate",
                 }
             )
 
@@ -202,5 +226,19 @@ def load_solver(
             solver_kwargs.pop("bounds", None)
 
             return ProbabilisticReparametrizationSolver, solver_kwargs
+        case "lambo2":
+            from poli_baselines.solvers.bayesian_optimization.lambo2 import (
+                LaMBO2,
+            )
+
+            # TODO: write these out.
+            solver_kwargs.update(
+                {
+                    "device": DEVICE,
+                }
+            )
+            solver_kwargs.pop("bounds", None)
+
+            return LaMBO2, solver_kwargs
         case _:
             raise ValueError(f"Unknown solver {solver_name}")

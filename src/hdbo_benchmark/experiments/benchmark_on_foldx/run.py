@@ -1,5 +1,5 @@
 """
-Running the benchmark on additive RaSP
+Running the benchmark on FoldX stability.
 """
 
 # mypy: disable-error-code="import-untyped"
@@ -16,7 +16,7 @@ import numpy as np
 import esm
 
 import poli
-from poli.repository import RaspProblemFactory
+from poli.repository import FoldXStabilityProblemFactory
 from poli.core.util.seeding import seed_numpy, seed_python
 from poli.core.abstract_black_box import AbstractBlackBox
 from poli.core.exceptions import BudgetExhaustedException
@@ -156,11 +156,8 @@ def main(
     torch.manual_seed(seed)
 
     # 2. Load a black box and solver
-    problem = RaspProblemFactory().create(
+    problem = FoldXStabilityProblemFactory().create(
         wildtype_pdb_path=ALL_PDBS,
-        additive=True,
-        chains_to_keep=chains_to_keep,
-        penalize_unfeasible_with=-100.0,
         evaluation_budget=max_iter + n_initial_points,
     )
     f = problem.black_box
@@ -168,7 +165,7 @@ def main(
     obs = initialize_observer(
         experiment_name=experiment_name,
         f=f,
-        function_name="rasp",
+        function_name="foldx_stability",
         solver_name=solver_name,
         n_dimensions=latent_dim,
         seed=seed,

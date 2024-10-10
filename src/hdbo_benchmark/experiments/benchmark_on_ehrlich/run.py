@@ -1,3 +1,8 @@
+"""
+Running the benchmark on Ehrlich functions.
+"""
+
+# mypy: disable-error-code="import-untyped"
 from typing import Callable
 from uuid import uuid4
 
@@ -6,12 +11,12 @@ import click
 import torch
 import numpy as np
 
-import poli  # type: ignore[import]
-from poli.core.util.seeding import seed_numpy, seed_python  # type: ignore[import]
-from poli.objective_repository import EhrlichBlackBox  # type: ignore[import]
-from poli.core.exceptions import BudgetExhaustedException  # type: ignore[import]
+import poli
+from poli.core.util.seeding import seed_numpy, seed_python
+from poli.objective_repository import EhrlichHoloBlackBox
+from poli.core.exceptions import BudgetExhaustedException
 
-import poli_baselines  # type: ignore[import]
+import poli_baselines
 
 import hdbo_benchmark
 from hdbo_benchmark.utils.experiments.load_solvers import load_solver, SOLVER_NAMES
@@ -133,7 +138,7 @@ def main(
     torch.manual_seed(seed)
 
     # 2. Load the black box and solver
-    f = EhrlichBlackBox(
+    f = EhrlichHoloBlackBox(
         sequence_length=sequence_length,
         motif_length=motif_length,
         n_motifs=n_motifs,
@@ -145,7 +150,7 @@ def main(
     obs = initialize_observer(
         experiment_name=experiment_name,
         f=f,
-        function_name="ehrlich",
+        function_name="ehrlich_holo",
         solver_name=solver_name,
         n_dimensions=sequence_length,
         seed=seed,
