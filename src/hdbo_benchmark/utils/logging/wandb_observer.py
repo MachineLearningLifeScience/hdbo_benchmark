@@ -5,15 +5,18 @@ To run this example, you will need to install wandb:
     pip install wandb
 """
 
+# mypy: disable-error-code="import-untyped"
+from typing import Literal
+
 import numpy as np
-from poli.core.black_box_information import BlackBoxInformation  # type: ignore[import]
 import wandb
 
-import poli  # type: ignore[import]
-from poli.core.abstract_black_box import AbstractBlackBox  # type: ignore[import]
-from poli.core.util.abstract_observer import AbstractObserver  # type: ignore[import]
+import poli
+from poli.core.black_box_information import BlackBoxInformation
+from poli.core.abstract_black_box import AbstractBlackBox
+from poli.core.util.abstract_observer import AbstractObserver
 
-import poli_baselines  # type: ignore[import]
+import poli_baselines
 
 import hdbo_benchmark
 
@@ -43,6 +46,7 @@ class WandbObserver(AbstractObserver):
         x0: np.ndarray,
         y0: np.ndarray,
         seed: int,
+        mode: Literal["online", "offline", "disabled"] = "online",
         **kwargs,
     ) -> object:
         run = wandb.init(
@@ -59,6 +63,7 @@ class WandbObserver(AbstractObserver):
             name=observer_init_info["run_name"],
             tags=[kwargs.get("tag", "default")],
             reinit=self.allow_reinit,
+            mode=mode,
         )
         self.run = run  # type: ignore[assignment]
 
@@ -99,6 +104,7 @@ def initialize_observer(
     experiment_id: str,
     max_iter: int,
     strict_on_hash: bool,
+    mode: str = "online",
     tag: str = "default",
 ) -> WandbObserver:
     wandb_observer = WandbObserver(project_name=experiment_name)
@@ -121,6 +127,7 @@ def initialize_observer(
         ),
         n_dimensions=n_dimensions,
         max_iter=max_iter,
+        mode=mode,
         tag=tag,
     )
 

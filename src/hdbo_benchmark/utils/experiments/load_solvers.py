@@ -31,6 +31,18 @@ SOLVERS_THAT_DONT_ALLOW_CUSTOM_INPUTS = [
     "baxus",
 ]
 
+DISCRETE_SPACE_SOLVERS = [
+    "directed_evolution",
+    "pr",
+    "bounce",
+    "lambo2",
+    "genetic_algorithm",
+]
+
+CONTINUOUS_SPACE_SOLVERS = [
+    solver for solver in SOLVER_NAMES if solver not in DISCRETE_SPACE_SOLVERS
+]
+
 
 def load_solver(
     solver_name: str,
@@ -43,11 +55,22 @@ def load_solver(
     n_initial_points: int = 10,
     **solver_kwargs,
 ) -> Tuple[AbstractSolver, Dict[str, Any]]:
+    if solver_name in DISCRETE_SPACE_SOLVERS:
+        solver_kwargs.pop("bounds", None)
+        solver_kwargs.pop("std", None)
+
+    if solver_name in CONTINUOUS_SPACE_SOLVERS:
+        solver_kwargs.pop("sequence_length", None)
+        solver_kwargs.pop("alphabet", None)
+
     match solver_name:
         case "directed_evolution":
             from poli_baselines.solvers.simple.random_mutation import (
                 RandomMutation,
             )
+
+            solver_kwargs.pop("bounds", None)
+            solver_kwargs.pop("sequence_length", None)
 
             return RandomMutation, solver_kwargs
         case "hill_climbing":
