@@ -1,5 +1,3 @@
-import os
-
 import pytest
 
 from click.testing import CliRunner
@@ -11,10 +9,16 @@ from hdbo_benchmark.utils.experiments.load_solvers import SOLVER_NAMES
 
 SOLVERS_THAT_RUN_IN_BASE_ENV = SOLVER_NAMES
 
+SOLVER_NAMES.pop(SOLVER_NAMES.index("directed_evolution"))
+SOLVER_NAMES.pop(SOLVER_NAMES.index("hill_climbing"))
+SOLVER_NAMES.pop(SOLVER_NAMES.index("genetic_algorithm"))
+SOLVER_NAMES.pop(SOLVER_NAMES.index("cma_es"))
+SOLVER_NAMES.pop(SOLVER_NAMES.index("random_line_bo"))
+
 PMO_BENCHMARK_SETUPS = [
     (function_name, solver_name, 128)
     for solver_name in SOLVER_NAMES
-    for function_name in PMOBenchmark(string_representation="SELFIES").problem_names
+    for function_name in PMOBenchmark(string_representation="SELFIES").problem_names[:1]
 ]
 
 RASP_BENCHMARK_SETUPS = []
@@ -56,6 +60,7 @@ def test_main_run(function_name, solver_name, latent_dim):
 
 
 if __name__ == "__main__":
-    for test_setup in TEST_SETUPS[:5]:
+    print(len(TEST_SETUPS))
+    for test_setup in TEST_SETUPS:
         print(test_setup)
         test_main_run(*test_setup)

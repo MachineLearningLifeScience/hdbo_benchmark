@@ -3,7 +3,7 @@ from typing import Callable
 import numpy as np
 
 from poli.core.problem import Problem
-from hdbo_benchmark.generative_models.vae import VAE
+from hdbo_benchmark.generative_models.vae import VAE, OptimizedVAE
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
 from hdbo_benchmark.utils.experiments.normalization import from_unit_cube_to_range
 
@@ -36,6 +36,7 @@ def _in_latent_space_of_proteins(
 
     _latent_f.info = f.info  # type: ignore[attr-defined]
     _latent_f.num_workers = f.num_workers  # type: ignore[attr-defined]
+    _latent_f.observer = f.observer  # type: ignore[attr-defined]
 
     return _latent_f
 
@@ -53,6 +54,7 @@ def _in_the_latent_space_of_molecules(
 
     _latent_f.info = f.info  # type: ignore[attr-defined]
     _latent_f.num_workers = f.num_workers  # type: ignore[attr-defined]
+    _latent_f.observer = f.observer  # type: ignore[attr-defined]
 
     return _latent_f
 
@@ -65,12 +67,16 @@ def transform_problem_from_discrete_to_continuous(
     if isinstance(generative_model, LitAutoEncoder):
         # TODO: add z0
         continuous_f = _in_latent_space_of_proteins(
-            f=problem.f, ae=generative_model, latent_space_bounds=bounds
+            problem=problem,
+            ae=generative_model,
+            latent_space_bounds=bounds,
         )
-    elif isinstance(generative_model, VAE):
+    elif isinstance(generative_model, (VAE, OptimizedVAE)):
         # TODO: add z0
         continuous_f = _in_the_latent_space_of_molecules(
-            f=problem.f, vae=generative_model, latent_space_bounds=bounds
+            problem=problem,
+            vae=generative_model,
+            latent_space_bounds=bounds,
         )
     else:
         raise ValueError(
@@ -78,7 +84,10 @@ def transform_problem_from_discrete_to_continuous(
         )
 
     z0 = generative_model.encode_from_string_array(problem.x0)
+
+    # TODO: continuous_f should be an AbstractBlackBox.
     return Problem(
         black_box=continuous_f,
         x0=z0,
+        strict_validation=False,
     )

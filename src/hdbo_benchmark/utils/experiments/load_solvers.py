@@ -197,7 +197,7 @@ def load_solver(
                 {
                     "initial_mean": np.random.randn(n_dimensions)
                     .reshape(1, -1)
-                    .clip(*solver_kwargs.get("bounds", [None, None])),
+                    .clip(*solver_kwargs.get("bounds", [0.0, 1.0])),
                     "population_size": n_initial_points,
                     "initial_sigma": 1.0,
                 }
@@ -214,6 +214,7 @@ def load_solver(
                     "n_dimensions": n_dimensions,
                     "n_init": n_initial_points,
                     "max_iter": max_iter,
+                    "bounds": solver_kwargs.get("bounds", [0.0, 1.0]),
                 }
             )
 

@@ -68,3 +68,6 @@ class VAE(torch.nn.Module):
 
     def decode_to_string_array(self, z: np.ndarray) -> np.ndarray:
         raise NotImplementedError
+
+
+OptimizedVAE = torch._dynamo.eval_frame.OptimizedModule
