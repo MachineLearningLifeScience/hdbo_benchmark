@@ -6,6 +6,7 @@ from typing import Tuple, Dict, Any
 import numpy as np
 
 from poli_baselines.core.abstract_solver import AbstractSolver
+from poli.core.problem import Problem
 
 from hdbo_benchmark.utils.constants import DEVICE
 
@@ -265,3 +266,24 @@ def load_solver(
             return LaMBO2, solver_kwargs
         case _:
             raise ValueError(f"Unknown solver {solver_name}")
+
+
+def load_solver_from_problem(
+    solver_name: str,
+    problem: Problem,
+    seed: int | None = None,
+):
+    solver_, kwargs = load_solver(
+        solver_name=solver_name,
+        seed=seed,
+        n_dimensions=problem.x0.shape[1],
+        n_initial_points=problem.x0.shape[0],
+    )
+
+    f, x0 = problem.black_box, problem.x0
+    return solver_(
+        black_box=f,
+        x0=x0,
+        y0=f(x0),
+        **kwargs,
+    )

@@ -16,3 +16,5 @@ MODELS_DIR = ROOT_DIR / "data" / "trained_models"
 
 WANDB_PROJECT = "hdbo-embeddings-benchmark"
 WANDB_ENTITY = "hdbo-benchmark"
+
+PENALIZE_UNFEASIBLE_WITH = -100.0
