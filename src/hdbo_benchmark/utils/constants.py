@@ -9,8 +9,6 @@ elif torch.backends.mps.is_available():
 else:
     DEVICE = torch.device("cpu")
 
-# DEVICE = torch.device("cpu")
-
 ROOT_DIR = Path(__file__).parent.parent.parent.parent.resolve()
 MODELS_DIR = ROOT_DIR / "data" / "trained_models"
 

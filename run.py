@@ -37,27 +37,7 @@ from hdbo_benchmark.utils.logging.idempotence_of_experiments import (
 from hdbo_benchmark.utils.logging.wandb_observer import ObserverConfig
 
 
-@click.command()
-@click.option(
-    "--function-name",
-    type=str,
-    default="foldx_stability",
-    help="The name of the objective function to optimize.",
-)
-@click.option(
-    "--solver-name",
-    type=str,
-    default="directed_evolution",
-    help=f"The name of the solver to run. All solvers available are: {SOLVER_NAMES}",
-)
-@click.option("--n-dimensions", type=int, default=128)
-@click.option("--seed", type=int, default=None)
-@click.option("--max-iter", type=int, default=100)
-@click.option("--strict-on-hash/--no-strict-on-hash", type=bool, default=True)
-@click.option("--force-run/--no-force-run", default=True)
-@click.option("--wandb-mode", type=str, default="online")
-@click.option("--tag", type=str, default="default")
-def main(
+def _main(
     function_name: str,
     solver_name: str,
     n_dimensions: int,
@@ -151,6 +131,50 @@ def main(
         print("Budget exhausted.")
 
     problem.black_box.observer.finish()
+
+
+@click.command()
+@click.option(
+    "--function-name",
+    type=str,
+    default="foldx_stability",
+    help="The name of the objective function to optimize.",
+)
+@click.option(
+    "--solver-name",
+    type=str,
+    default="directed_evolution",
+    help=f"The name of the solver to run. All solvers available are: {SOLVER_NAMES}",
+)
+@click.option("--n-dimensions", type=int, default=128)
+@click.option("--seed", type=int, default=None)
+@click.option("--max-iter", type=int, default=100)
+@click.option("--strict-on-hash/--no-strict-on-hash", type=bool, default=True)
+@click.option("--force-run/--no-force-run", default=True)
+@click.option("--wandb-mode", type=str, default="online")
+@click.option("--tag", type=str, default="default")
+def main(
+    function_name: str,
+    solver_name: str,
+    n_dimensions: int,
+    seed: int,
+    max_iter: int,
+    strict_on_hash: bool,
+    force_run: bool,
+    wandb_mode: str,
+    tag: str,
+):
+    _main(
+        function_name,
+        solver_name,
+        n_dimensions,
+        seed,
+        max_iter,
+        strict_on_hash,
+        force_run,
+        wandb_mode,
+        tag,
+    )
 
 
 if __name__ == "__main__":

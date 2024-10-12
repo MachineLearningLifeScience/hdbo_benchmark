@@ -1,7 +1,8 @@
+import torch
+
 import pytest
 
-from click.testing import CliRunner
-from run import main
+from run import _main
 
 from poli.benchmarks import PMOBenchmark
 
@@ -9,11 +10,7 @@ from hdbo_benchmark.utils.experiments.load_solvers import SOLVER_NAMES
 
 SOLVERS_THAT_RUN_IN_BASE_ENV = SOLVER_NAMES
 
-SOLVER_NAMES.pop(SOLVER_NAMES.index("directed_evolution"))
-SOLVER_NAMES.pop(SOLVER_NAMES.index("hill_climbing"))
-SOLVER_NAMES.pop(SOLVER_NAMES.index("genetic_algorithm"))
-SOLVER_NAMES.pop(SOLVER_NAMES.index("cma_es"))
-SOLVER_NAMES.pop(SOLVER_NAMES.index("random_line_bo"))
+DEVICE = torch.device("cpu")
 
 PMO_BENCHMARK_SETUPS = [
     (function_name, solver_name, 128)
@@ -34,29 +31,17 @@ TEST_SETUPS = PMO_BENCHMARK_SETUPS + RASP_BENCHMARK_SETUPS
     TEST_SETUPS,
 )
 def test_main_run(function_name, solver_name, latent_dim):
-    runner = CliRunner()
-    result = runner.invoke(
-        main,
-        [
-            "--solver-name",
-            solver_name,
-            "--function-name",
-            function_name,
-            "--n-dimensions",
-            str(latent_dim),
-            "--max-iter",
-            "1",
-            "--no-strict-on-hash",
-            "--force-run",
-            "--tag",
-            "test",
-            "--wandb-mode",
-            "disabled",
-        ],
+    _main(
+        solver_name=solver_name,
+        function_name=function_name,
+        n_dimensions=latent_dim,
+        seed=None,
+        max_iter=1,
+        strict_on_hash=False,
+        force_run=True,
+        tag="test",
+        wandb_mode="disabled",
     )
-
-    print(result.output)
-    assert result.exit_code == 0
 
 
 if __name__ == "__main__":

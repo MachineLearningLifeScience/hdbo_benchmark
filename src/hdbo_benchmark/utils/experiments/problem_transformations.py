@@ -5,7 +5,10 @@ import numpy as np
 from poli.core.problem import Problem
 from hdbo_benchmark.generative_models.vae import VAE, OptimizedVAE
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
-from hdbo_benchmark.utils.experiments.normalization import from_unit_cube_to_range
+from hdbo_benchmark.utils.experiments.normalization import (
+    from_unit_cube_to_range,
+    from_range_to_unit_cube,
+)
 
 
 def _in_latent_space_of_proteins(
@@ -83,7 +86,8 @@ def transform_problem_from_discrete_to_continuous(
             f"The generative model must be either a LitAutoEncoder or a VAE. (Received {type(generative_model)})"
         )
 
-    z0 = generative_model.encode_from_string_array(problem.x0)
+    z0_ = generative_model.encode_from_string_array(problem.x0)
+    z0 = from_range_to_unit_cube(z0_, bounds)
 
     # TODO: continuous_f should be an AbstractBlackBox.
     return Problem(

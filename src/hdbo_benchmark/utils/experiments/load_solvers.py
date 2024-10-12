@@ -44,6 +44,23 @@ CONTINUOUS_SPACE_SOLVERS = [
     solver for solver in SOLVER_NAMES if solver not in DISCRETE_SPACE_SOLVERS
 ]
 
+SOLVER_NAME_TO_ENV = {
+    "directed_evolution": "hdbo_benchmark",
+    "hill_climbing": "hdbo_benchmark",
+    "genetic_algorithm": "hdbo_benchmark",
+    "cma_es": "hdbo_benchmark",
+    "random_line_bo": "hdbo_benchmark",
+    "coordinate_line_bo": "hdbo_benchmark",
+    "baxus": "poli__baxus",
+    "turbo": "hdbo_benchmark",
+    "vanilla_bo_hvarfner": "poli__ax",
+    "alebo": "poli__alebo",
+    "bounce": "poli__bounce",
+    "pr": "poli__pr",
+    "saas_bo": "poli__ax",
+    "lambo2": "poli__lambo2",
+}
+
 
 def load_solver(
     solver_name: str,
@@ -136,6 +153,7 @@ def load_solver(
             solver_kwargs.update(
                 {
                     "device": DEVICE,
+                    "bounds": solver_kwargs.get("bounds", [0.0, 1.0]),
                 }
             )
 
@@ -171,6 +189,7 @@ def load_solver(
                 {
                     "noise_std": noise_std,
                     "device": DEVICE,
+                    "bounds": solver_kwargs.get("bounds", [0.0, 1.0]),
                 }
             )
 
