@@ -18,8 +18,43 @@ dependencies = [
     "poli-baselines@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
 ]
 
+[project.optional-dependencies]
+bounce = [
+    "poli-baselines[bounce]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+]
+ax = [
+    "poli-baselines[ax]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+]
+alebo = [
+    "poli-baselines[alebo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+]
+baxus = [
+    "poli-baselines[baxus]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+]
+saasbo = [
+    "poli-baselines[saasbo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+]
+vanilla_bo = [
+    "poli-baselines[vanilla_bo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+]
+pr = [
+    "poli-baselines[pr]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+]
+lambo2 = ["poli-baselines[lambo2]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"]
+
 [tool.mypy]
 python_version = "3.10"
 warn_return_any = true
 warn_unused_configs = true
 ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+markers = [
+    "hdbo_base: base tests for HDBO",
+    "hdbo_ax: tests for HDBO with Ax",
+    "hdbo_baxus: tests for HDBO with BAxUS",
+    "hdbo_alebo: tests for HDBO with Alebo",
+    "hdbo_bounce: tests for HDBO with Bounce",
+    "hdbo_pr: tests for HDBO with PR",
+    "hdbo_lambo2: tests for HDBO with Lambo2",
+]

@@ -6,9 +6,16 @@ from run import _main
 
 from poli.benchmarks import PMOBenchmark
 
-from hdbo_benchmark.utils.experiments.load_solvers import SOLVER_NAMES
+from hdbo_benchmark.utils.experiments.load_solvers import (
+    SOLVER_NAMES,
+    SOLVER_NAME_TO_ENV,
+)
 
-SOLVERS_THAT_RUN_IN_BASE_ENV = SOLVER_NAMES
+SOLVERS_THAT_RUN_IN_BASE_ENV = [
+    solver_name
+    for solver_name in SOLVER_NAMES
+    if SOLVER_NAME_TO_ENV[solver_name] == "hdbo_benchmark"
+]
 
 DEVICE = torch.device("cpu")
 
@@ -26,9 +33,27 @@ for latent_dim in [128]:
 TEST_SETUPS = PMO_BENCHMARK_SETUPS + RASP_BENCHMARK_SETUPS
 
 
+def construct_setups(solvers: list[str]):
+    pmo_setups = [
+        (function_name, solver_name, 128)
+        for solver_name in solvers
+        for function_name in PMOBenchmark(
+            string_representation="SELFIES"
+        ).problem_names[:1]
+    ]
+
+    rasp_setups = []
+    for latent_dim in [128]:
+        for solver_name in solvers:
+            rasp_setups.append(("rasp", solver_name, latent_dim))
+
+    return pmo_setups + rasp_setups
+
+
+@pytest.mark.hdbo_base
 @pytest.mark.parametrize(
     "function_name, solver_name, latent_dim",
-    TEST_SETUPS,
+    construct_setups(SOLVERS_THAT_RUN_IN_BASE_ENV),
 )
 def test_main_run(function_name, solver_name, latent_dim):
     _main(
@@ -44,8 +69,125 @@ def test_main_run(function_name, solver_name, latent_dim):
     )
 
 
+@pytest.mark.hdbo_ax
+@pytest.mark.parametrize(
+    "function_name, solver_name, latent_dim",
+    construct_setups(["vanilla_bo_hvarfner", "saas_bo"]),
+)
+def test_main_run_ax(function_name, solver_name, latent_dim):
+    _main(
+        solver_name=solver_name,
+        function_name=function_name,
+        n_dimensions=latent_dim,
+        seed=None,
+        max_iter=1,
+        strict_on_hash=False,
+        force_run=True,
+        tag="test",
+        wandb_mode="disabled",
+    )
+
+
+@pytest.mark.hdbo_baxus
+@pytest.mark.parametrize(
+    "function_name, solver_name, latent_dim",
+    construct_setups(["baxus"]),
+)
+def test_main_run_baxus(function_name, solver_name, latent_dim):
+    _main(
+        solver_name=solver_name,
+        function_name=function_name,
+        n_dimensions=latent_dim,
+        seed=None,
+        max_iter=1,
+        strict_on_hash=False,
+        force_run=True,
+        tag="test",
+        wandb_mode="disabled",
+    )
+
+
+@pytest.mark.hdbo_alebo
+@pytest.mark.parametrize(
+    "function_name, solver_name, latent_dim",
+    construct_setups(["alebo"]),
+)
+def test_main_run_alebo(function_name, solver_name, latent_dim):
+    _main(
+        solver_name=solver_name,
+        function_name=function_name,
+        n_dimensions=latent_dim,
+        seed=None,
+        max_iter=1,
+        strict_on_hash=False,
+        force_run=True,
+        tag="test",
+        wandb_mode="disabled",
+    )
+
+
+@pytest.mark.hdbo_bounce
+@pytest.mark.parametrize(
+    "function_name, solver_name, latent_dim",
+    construct_setups(["bounce"]),
+)
+def test_main_run_bounce(function_name, solver_name, latent_dim):
+    _main(
+        solver_name=solver_name,
+        function_name=function_name,
+        n_dimensions=latent_dim,
+        seed=None,
+        max_iter=1,
+        strict_on_hash=False,
+        force_run=True,
+        tag="test",
+        wandb_mode="disabled",
+    )
+
+
+@pytest.mark.hdbo_pr
+@pytest.mark.parametrize(
+    "function_name, solver_name, latent_dim",
+    construct_setups(["pr"]),
+)
+def test_main_run_pr(function_name, solver_name, latent_dim):
+    _main(
+        solver_name=solver_name,
+        function_name=function_name,
+        n_dimensions=latent_dim,
+        seed=None,
+        max_iter=1,
+        strict_on_hash=False,
+        force_run=True,
+        tag="test",
+        wandb_mode="disabled",
+    )
+
+
+@pytest.mark.hdbo_lambo2
+@pytest.mark.parametrize(
+    "function_name, solver_name, latent_dim",
+    filter(
+        lambda function_name, s, lat: function_name == "foldx_stability",
+        construct_setups(["lambo2"]),
+    ),
+)
+def test_main_run_lambo2(function_name, solver_name, latent_dim):
+    _main(
+        solver_name=solver_name,
+        function_name=function_name,
+        n_dimensions=latent_dim,
+        seed=None,
+        max_iter=1,
+        strict_on_hash=False,
+        force_run=True,
+        tag="test",
+        wandb_mode="disabled",
+    )
+
+
 if __name__ == "__main__":
-    print(len(TEST_SETUPS))
-    for test_setup in TEST_SETUPS:
+    test_setups_in_main = construct_setups(SOLVERS_THAT_RUN_IN_BASE_ENV)
+    for test_setup in test_setups_in_main:
         print(test_setup)
         test_main_run(*test_setup)
