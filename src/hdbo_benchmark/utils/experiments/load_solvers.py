@@ -51,14 +51,14 @@ SOLVER_NAME_TO_ENV = {
     "cma_es": "hdbo_benchmark",
     "random_line_bo": "hdbo_benchmark",
     "coordinate_line_bo": "hdbo_benchmark",
-    "baxus": "poli__baxus",
+    "baxus": "hdbo_baxus",
     "turbo": "hdbo_benchmark",
-    "vanilla_bo_hvarfner": "poli__ax",
-    "alebo": "poli__alebo",
-    "bounce": "poli__bounce",
-    "pr": "poli__pr",
-    "saas_bo": "poli__ax",
-    "lambo2": "poli__lambo2",
+    "vanilla_bo_hvarfner": "hdbo_ax",
+    "alebo": "hdbo_alebo",
+    "bounce": "hdbo_bounce",
+    "pr": "hdbo_pr",
+    "saas_bo": "hdbo_ax",
+    "lambo2": "hdbo_lambo2",
 }
 
 

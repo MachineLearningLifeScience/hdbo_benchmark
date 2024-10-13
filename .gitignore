@@ -61,6 +61,7 @@ reports/figures/
 conf_dict.json
 *.txt.xz
 model_history.zip
+.tox
 
 # TDC
 oracle/
@@ -74,4 +75,5 @@ data/results_cache/
 # Running experiments locally
 *.local.sh
 *_local.py
+*.local.py
 *_local.ipynb

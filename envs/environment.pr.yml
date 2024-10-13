@@ -1,0 +1,8 @@
+name: hdbo_pr
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - -e .[pr]

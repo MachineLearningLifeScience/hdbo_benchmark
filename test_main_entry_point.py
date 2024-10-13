@@ -1,5 +1,3 @@
-import torch
-
 import pytest
 
 from run import _main
@@ -17,19 +15,6 @@ SOLVERS_THAT_RUN_IN_BASE_ENV = [
     if SOLVER_NAME_TO_ENV[solver_name] == "hdbo_benchmark"
 ]
 
-PMO_BENCHMARK_SETUPS = [
-    (function_name, solver_name, 128)
-    for solver_name in SOLVER_NAMES
-    for function_name in PMOBenchmark(string_representation="SELFIES").problem_names[:1]
-]
-
-RASP_BENCHMARK_SETUPS = []
-for latent_dim in [32]:
-    for solver_name in SOLVER_NAMES:
-        RASP_BENCHMARK_SETUPS.append(("rasp", solver_name, latent_dim))
-
-TEST_SETUPS = PMO_BENCHMARK_SETUPS + RASP_BENCHMARK_SETUPS
-
 
 def construct_setups(solvers: list[str]):
     pmo_setups = [
@@ -41,7 +26,7 @@ def construct_setups(solvers: list[str]):
     ]
 
     rasp_setups = []
-    for latent_dim in [128]:
+    for latent_dim in [32]:
         for solver_name in solvers:
             rasp_setups.append(("rasp", solver_name, latent_dim))
 
