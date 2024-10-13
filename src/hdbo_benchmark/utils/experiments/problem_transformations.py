@@ -3,6 +3,8 @@ from typing import Callable
 import numpy as np
 
 from poli.core.problem import Problem
+from poli.core.black_box_information import BlackBoxInformation
+from poli.core.lambda_black_box import LambdaBlackBox
 from hdbo_benchmark.generative_models.vae import VAE, OptimizedVAE
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
 from hdbo_benchmark.utils.experiments.normalization import (
@@ -37,11 +39,20 @@ def _in_latent_space_of_proteins(
         val = np.array(results).reshape(z.shape[0], 1)
         return val
 
-    _latent_f.info = f.info  # type: ignore[attr-defined]
-    _latent_f.num_workers = f.num_workers  # type: ignore[attr-defined]
-    _latent_f.observer = f.observer  # type: ignore[attr-defined]
+    new_black_box = LambdaBlackBox(
+        function=_latent_f,
+        info=BlackBoxInformation(
+            name=f.info.name,
+            max_sequence_length=ae.latent_dim,
+            aligned=True,
+            fixed_length=True,
+            deterministic=f.info.deterministic,
+            alphabet=None,
+            discrete=False,
+        ),
+    )
 
-    return _latent_f
+    return new_black_box
 
 
 def _in_the_latent_space_of_molecules(
@@ -55,11 +66,20 @@ def _in_the_latent_space_of_molecules(
         val: np.ndarray = f(np.array(selfies_strings))
         return val
 
-    _latent_f.info = f.info  # type: ignore[attr-defined]
-    _latent_f.num_workers = f.num_workers  # type: ignore[attr-defined]
-    _latent_f.observer = f.observer  # type: ignore[attr-defined]
+    new_black_box = LambdaBlackBox(
+        function=_latent_f,
+        info=BlackBoxInformation(
+            name=f.info.name,
+            max_sequence_length=vae.latent_dim,
+            aligned=True,
+            fixed_length=True,
+            deterministic=f.info.deterministic,
+            alphabet=None,
+            discrete=False,
+        ),
+    )
 
-    return _latent_f
+    return new_black_box
 
 
 def transform_problem_from_discrete_to_continuous(
@@ -68,14 +88,12 @@ def transform_problem_from_discrete_to_continuous(
     bounds: tuple[float, float],
 ) -> Problem:
     if isinstance(generative_model, LitAutoEncoder):
-        # TODO: add z0
         continuous_f = _in_latent_space_of_proteins(
             problem=problem,
             ae=generative_model,
             latent_space_bounds=bounds,
         )
     elif isinstance(generative_model, (VAE, OptimizedVAE)):
-        # TODO: add z0
         continuous_f = _in_the_latent_space_of_molecules(
             problem=problem,
             vae=generative_model,
@@ -89,9 +107,7 @@ def transform_problem_from_discrete_to_continuous(
     z0_ = generative_model.encode_from_string_array(problem.x0)
     z0 = from_range_to_unit_cube(z0_, bounds)
 
-    # TODO: continuous_f should be an AbstractBlackBox.
     return Problem(
         black_box=continuous_f,
         x0=z0,
-        strict_validation=False,
     )

@@ -14,7 +14,6 @@ import numpy as np
 from poli.core.util.seeding import seed_python_numpy_and_torch
 from poli.core.exceptions import BudgetExhaustedException
 
-
 from hdbo_benchmark.utils.experiments.load_solvers import (
     load_solver_from_problem,
     SOLVER_NAMES,
@@ -129,8 +128,6 @@ def _main(
         print("Interrupted optimization.")
     except BudgetExhaustedException:
         print("Budget exhausted.")
-
-    problem.black_box.observer.finish()
 
 
 @click.command()

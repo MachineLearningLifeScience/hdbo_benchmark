@@ -17,8 +17,6 @@ SOLVERS_THAT_RUN_IN_BASE_ENV = [
     if SOLVER_NAME_TO_ENV[solver_name] == "hdbo_benchmark"
 ]
 
-DEVICE = torch.device("cpu")
-
 PMO_BENCHMARK_SETUPS = [
     (function_name, solver_name, 128)
     for solver_name in SOLVER_NAMES
@@ -26,7 +24,7 @@ PMO_BENCHMARK_SETUPS = [
 ]
 
 RASP_BENCHMARK_SETUPS = []
-for latent_dim in [128]:
+for latent_dim in [32]:
     for solver_name in SOLVER_NAMES:
         RASP_BENCHMARK_SETUPS.append(("rasp", solver_name, latent_dim))
 
@@ -168,7 +166,7 @@ def test_main_run_pr(function_name, solver_name, latent_dim):
 @pytest.mark.parametrize(
     "function_name, solver_name, latent_dim",
     filter(
-        lambda function_name, s, lat: function_name == "foldx_stability",
+        lambda tuple_: tuple_[0] == "foldx_stability",
         construct_setups(["lambo2"]),
     ),
 )
@@ -188,6 +186,7 @@ def test_main_run_lambo2(function_name, solver_name, latent_dim):
 
 if __name__ == "__main__":
     test_setups_in_main = construct_setups(SOLVERS_THAT_RUN_IN_BASE_ENV)
+    print(len(test_setups_in_main))
     for test_setup in test_setups_in_main:
         print(test_setup)
         test_main_run(*test_setup)
