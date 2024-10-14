@@ -300,10 +300,11 @@ def load_solver_from_problem(
         n_initial_points=problem.x0.shape[0],
     )
 
-    f, x0 = problem.black_box, problem.x0
+    f, data_package = problem.black_box, problem.data_package
+    x0, y0 = data_package.supervised_data
     return solver_(
         black_box=f,
         x0=x0,
-        y0=f(x0),
+        y0=y0,
         **kwargs,
     )

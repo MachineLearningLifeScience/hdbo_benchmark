@@ -22,13 +22,13 @@ def construct_setups(solvers: list[str]):
         for solver_name in solvers
         for function_name in PMOBenchmark(
             string_representation="SELFIES"
-        ).problem_names[:1]
+        ).problem_names[:5]
     ]
 
     rasp_setups = []
-    for latent_dim in [32]:
-        for solver_name in solvers:
-            rasp_setups.append(("rasp", solver_name, latent_dim))
+    # for latent_dim in [32]:
+    #     for solver_name in solvers:
+    #         rasp_setups.append(("rasp", solver_name, latent_dim))
 
     return pmo_setups + rasp_setups
 

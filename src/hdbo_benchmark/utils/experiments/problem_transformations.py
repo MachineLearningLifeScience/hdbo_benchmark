@@ -5,6 +5,7 @@ import numpy as np
 from poli.core.problem import Problem
 from poli.core.black_box_information import BlackBoxInformation
 from poli.core.lambda_black_box import LambdaBlackBox
+from poli.core.data_package import DataPackage
 from hdbo_benchmark.generative_models.vae import VAE, OptimizedVAE
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
 from hdbo_benchmark.utils.experiments.normalization import (
@@ -107,7 +108,31 @@ def transform_problem_from_discrete_to_continuous(
     z0_ = generative_model.encode_from_string_array(problem.x0)
     z0 = from_range_to_unit_cube(z0_, bounds)
 
+    if problem.data_package is not None:
+        data_package = problem.data_package
+        if data_package.unsupervised_data is not None:
+            new_unsupervised_data_ = generative_model.encode_from_string_array(
+                data_package.unsupervised_data
+            )
+            new_unsupervised_data = from_range_to_unit_cube(
+                new_unsupervised_data_, bounds
+            )
+
+        if data_package.supervised_data is not None:
+            x_, y_ = data_package.supervised_data
+
+            if x_ is not None:
+                z_ = generative_model.encode_from_string_array(x_)
+                z = from_range_to_unit_cube(z_, bounds)
+
+        new_data_package = DataPackage(
+            unsupervised_data=new_unsupervised_data, supervised_data=(z, y_)
+        )
+    else:
+        new_data_package = problem.data_package
+
     return Problem(
         black_box=continuous_f,
         x0=z0,
+        data_package=new_data_package,
     )

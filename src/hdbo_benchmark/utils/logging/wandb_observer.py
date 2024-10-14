@@ -110,15 +110,12 @@ def initialize_observer(
     observer_config: ObserverConfig,
 ) -> WandbObserver:
     experiment_name = observer_config.experiment_name
-    function_name = observer_config.function_name
-    solver_name = observer_config.solver_name
     n_dimensions = observer_config.n_dimensions
     seed = observer_config.seed
     max_iter = observer_config.max_iter
     strict_on_hash = observer_config.strict_on_hash
     mode = observer_config.wandb_mode
     tag = observer_config.tags
-    experiment_id = observer_config.experiment_id
 
     wandb_observer = WandbObserver(project_name=experiment_name)
     wandb_observer.initialize_observer(

@@ -97,7 +97,7 @@ class VAEFactory:
                 )
                 vae: VAESelfies = VAESelfies(latent_dim=latent_dim, device=DEVICE)
                 opt_vae: VAESelfies = torch.compile(vae)  # type: ignore
-                opt_vae.load_state_dict(torch.load(weights_path, map_location=DEVICE))
+                opt_vae.load_state_dict(torch.load(weights_path, map_location=DEVICE, weights_only=True))
                 return opt_vae
             case 256:
                 # We return our trained RNNVAE.

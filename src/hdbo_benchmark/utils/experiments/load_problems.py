@@ -1,9 +1,13 @@
 import json
 
+import numpy as np
+
 import poli
 from poli.benchmarks import PMOBenchmark
 from poli.core.problem import Problem
 from poli.repository import RaspProblemFactory, FoldXStabilityProblemFactory
+from poli.core.data_package import DataPackage
+from poli.core.chemistry.data_packages import TenMoleculesDataPackage
 
 from hdbo_benchmark.utils.constants import ROOT_DIR, PENALIZE_UNFEASIBLE_WITH
 from hdbo_benchmark.utils.logging.wandb_observer import (
@@ -15,6 +19,22 @@ from hdbo_benchmark.utils.experiments.load_metadata_for_vaes import (
     load_sequence_length_for_pmo,
 )
 
+def turn_into_supervised_problem(problem: Problem) -> Problem:
+    data_package = problem.data_package
+    x0 = data_package.unsupervised_data
+    problem.black_box.set_evaluation_budget(np.inf)
+    y0 = problem.black_box(problem.data_package.unsupervised_data)
+    problem.black_box.reset_evaluation_budget()
+
+    return Problem(
+        black_box=problem.black_box,
+        x0=problem.x0,
+        data_package=DataPackage(
+            unsupervised_data=x0,
+            supervised_data=(x0, y0)
+        )
+    )
+
 
 def _load_pmo_problem(function_name: str) -> Problem:
     problem = poli.create(
@@ -23,8 +43,9 @@ def _load_pmo_problem(function_name: str) -> Problem:
         alphabet=load_alphabet_for_pmo(),
         max_sequence_length=load_sequence_length_for_pmo(),
     )
+    problem.data_package = TenMoleculesDataPackage(string_representation="SELFIES")
+    return turn_into_supervised_problem(problem)
 
-    return problem
 
 
 def _load_rasp():
