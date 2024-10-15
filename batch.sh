@@ -30,3 +30,5 @@ command="conda run -n ${ENV_NAME} python run.py \
 
 echo $command
 eval $command
+
+# python run.py --function-name=albuterol_similarity --solver-name=directed_evolution --n-dimensions=128 --max-iter=500 --strict-on-hash --wandb-mode=online --seed=9999 --tag=debug-on-cluster

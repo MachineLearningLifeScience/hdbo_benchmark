@@ -1,13 +1,12 @@
 import json
 
-import numpy as np
-
 import poli
 from poli.benchmarks import PMOBenchmark
 from poli.core.problem import Problem
 from poli.repository import RaspProblemFactory, FoldXStabilityProblemFactory
 from poli.core.data_package import DataPackage
-from poli.core.chemistry.data_packages import TenMoleculesDataPackage
+from poli.core.chemistry.data_packages import RandomMoleculesDataPackage
+from poli.core.proteins.data_packages import RFPRaspSupervisedDataPackage
 
 from hdbo_benchmark.utils.constants import ROOT_DIR, PENALIZE_UNFEASIBLE_WITH
 from hdbo_benchmark.utils.logging.wandb_observer import (
@@ -22,9 +21,7 @@ from hdbo_benchmark.utils.experiments.load_metadata_for_vaes import (
 def turn_into_supervised_problem(problem: Problem) -> Problem:
     data_package = problem.data_package
     x0 = data_package.unsupervised_data
-    problem.black_box.set_evaluation_budget(np.inf)
     y0 = problem.black_box(problem.data_package.unsupervised_data)
-    problem.black_box.reset_evaluation_budget()
 
     return Problem(
         black_box=problem.black_box,
@@ -43,7 +40,7 @@ def _load_pmo_problem(function_name: str) -> Problem:
         alphabet=load_alphabet_for_pmo(),
         max_sequence_length=load_sequence_length_for_pmo(),
     )
-    problem.data_package = TenMoleculesDataPackage(string_representation="SELFIES")
+    problem.data_package = RandomMoleculesDataPackage(string_representation="SELFIES", n_molecules=10)
     return turn_into_supervised_problem(problem)
 
 
@@ -61,22 +58,28 @@ def _load_rasp():
     ALL_PDBS = list(filter(lambda x: x.parent.name in wildtype_pdbs, ALL_PDBS))
     chains_to_keep = [p.stem.split("_")[1] for p in ALL_PDBS]
 
-    return RaspProblemFactory().create(
+    problem = RaspProblemFactory().create(
         wildtype_pdb_path=ALL_PDBS,
         additive=True,
         chains_to_keep=chains_to_keep,
         penalize_unfeasible_with=PENALIZE_UNFEASIBLE_WITH,
     )
 
+    problem.data_package = RFPRaspSupervisedDataPackage()
+
+    return problem
+
 
 def _load_foldx_stability():
     PDBS_DIR = ROOT_DIR / "data" / "rfp_pdbs"
     ALL_PDBS = list(PDBS_DIR.rglob("**/*_Repair.pdb"))
 
-    return FoldXStabilityProblemFactory().create(
+    problem = FoldXStabilityProblemFactory().create(
         wildtype_pdb_path=ALL_PDBS,
         verbose=True,
     )
+
+    return problem
 
 
 def _load_problem(function_name: str) -> Problem:
@@ -100,8 +103,12 @@ def load_problem(
     observer_config: ObserverConfig = None,
 ):
     problem = _load_problem(function_name)
+    
+    if problem.data_package.supervised_data is None:
+        raise ValueError("Expected the problem to have a supervised dataset attached.")
 
-    n_initial_points = problem.x0.shape[0]
+    initial_x, _ = problem.data_package.supervised_data
+    n_initial_points = initial_x.shape[0]
     problem.black_box.set_evaluation_budget(max_iter + n_initial_points)
 
     if set_observer:

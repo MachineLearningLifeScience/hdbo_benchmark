@@ -23,6 +23,7 @@ import hdbo_benchmark
 
 from hdbo_benchmark.utils.constants import WANDB_PROJECT, WANDB_ENTITY
 from hdbo_benchmark.utils.logging.library_hashes import get_git_hash_of_library
+from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
 
 
 @dataclass
@@ -113,7 +114,6 @@ def initialize_observer(
     n_dimensions = observer_config.n_dimensions
     seed = observer_config.seed
     max_iter = observer_config.max_iter
-    strict_on_hash = observer_config.strict_on_hash
     mode = observer_config.wandb_mode
     tag = observer_config.tags
 
@@ -123,11 +123,17 @@ def initialize_observer(
         caller_info=observer_config,
         seed=seed,
         hdbo_benchmark_hash=(
-            get_git_hash_of_library(hdbo_benchmark) if strict_on_hash else None
+            get_git_hash_of_library(hdbo_benchmark)
+            if not has_uncommitted_changes(hdbo_benchmark)
+            else None
         ),
-        poli_hash=get_git_hash_of_library(poli) if strict_on_hash else None,
+        poli_hash=(
+            get_git_hash_of_library(poli) if not has_uncommitted_changes(poli) else None
+        ),
         poli_baselines_hash=(
-            get_git_hash_of_library(poli_baselines) if strict_on_hash else None
+            get_git_hash_of_library(poli_baselines)
+            if not has_uncommitted_changes(poli_baselines)
+            else None
         ),
         n_dimensions=n_dimensions,
         max_iter=max_iter,
