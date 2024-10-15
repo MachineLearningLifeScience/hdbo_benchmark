@@ -21,7 +21,10 @@ import poli_baselines
 
 import hdbo_benchmark
 from hdbo_benchmark.generative_models.vae_factory import VAEFactory, VAESelfies, VAE
-from hdbo_benchmark.utils.experiments.load_solvers import load_solver, SOLVER_NAMES
+from hdbo_benchmark.utils.experiments.load_solvers import (
+    load_solver_class,
+    SOLVER_NAMES,
+)
 from hdbo_benchmark.utils.experiments.load_metadata_for_vaes import (
     load_alphabet_for_pmo,
     load_sequence_length_for_pmo,
@@ -188,7 +191,7 @@ def main(
             "bounds": bounds,
         }
 
-    solver_, kwargs = load_solver(
+    solver_, kwargs = load_solver_class(
         solver_name=solver_name,
         n_dimensions=latent_dim,
         seed=seed,

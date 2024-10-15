@@ -25,7 +25,7 @@ import poli_baselines
 import hdbo_benchmark
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
 from hdbo_benchmark.utils.experiments.load_solvers import (
-    load_solver,
+    load_solver_class,
     SOLVER_NAMES,
     DISCRETE_SPACE_SOLVERS,
     SOLVERS_THAT_DONT_ALLOW_CUSTOM_INPUTS,
@@ -237,7 +237,7 @@ def main(
         )
         x0_for_solver = z0
 
-    solver_, kwargs = load_solver(
+    solver_, kwargs = load_solver_class(
         solver_name=solver_name,
         n_dimensions=latent_dim,
         seed=seed,

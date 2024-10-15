@@ -62,7 +62,7 @@ SOLVER_NAME_TO_ENV = {
 }
 
 
-def load_solver(
+def load_solver_class(
     solver_name: str,
     seed: int | None = None,
     n_dimensions: int | None = None,
@@ -285,18 +285,22 @@ def load_solver(
 
             return LaMBO2, solver_kwargs
         case _:
-            raise ValueError(f"Unknown solver {solver_name}")
-
+            raise ValueError(f"Unknown solver {solver_name}") 
 
 def load_solver_from_problem(
     solver_name: str,
     problem: Problem,
     seed: int | None = None,
 ):
-    solver_, kwargs = load_solver(
+    if len(problem.x0.shape) == 1:
+        n_dimensions = None
+    else:
+        n_dimensions = problem.x0.shape[1]
+    
+    solver_, kwargs = load_solver_class(
         solver_name=solver_name,
         seed=seed,
-        n_dimensions=problem.x0.shape[1],
+        n_dimensions=n_dimensions,
         n_initial_points=problem.x0.shape[0],
     )
 

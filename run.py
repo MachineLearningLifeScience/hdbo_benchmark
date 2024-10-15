@@ -1,5 +1,5 @@
 """
-This script is an entry-point for all experiments.
+This script is an entry_point for all experiments.
 
 For documentation on how to run each individual experiment,
 please refer to the README.md.
@@ -55,14 +55,15 @@ def _main(
 
     # Checking if this experimenr has already been run
     if (
-        experiment_has_already_run(
+        not force_run
+        and wandb_mode == "online"
+        and experiment_has_already_run(
             experiment_name="hdbo_benchmark_results",
             solver_name=solver_name,
             function_name=function_name,
             n_dimensions=n_dimensions,
             seed=seed,
         )
-        and not force_run
     ):
         print(
             f"The experiment for solver {solver_name} with function "
@@ -175,4 +176,14 @@ def main(
 
 
 if __name__ == "__main__":
-    main()
+    _main(
+        solver_name="directed_evolution",
+        function_name="rfp_rasp",
+        n_dimensions=128,
+        seed=999,
+        max_iter=200,
+        strict_on_hash=False,
+        force_run=True,
+        wandb_mode="offline",
+        tag="Debug",
+    )

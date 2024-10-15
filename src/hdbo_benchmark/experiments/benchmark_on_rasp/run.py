@@ -25,7 +25,10 @@ import poli_baselines
 
 import hdbo_benchmark
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
-from hdbo_benchmark.utils.experiments.load_solvers import load_solver, SOLVER_NAMES
+from hdbo_benchmark.utils.experiments.load_solvers import (
+    load_solver_class,
+    SOLVER_NAMES,
+)
 from hdbo_benchmark.utils.experiments.normalization import (
     from_unit_cube_to_range,
     from_range_to_unit_cube,
@@ -217,7 +220,7 @@ def main(
             "bounds": f_input_bounds,
         }
 
-    solver_, kwargs = load_solver(
+    solver_, kwargs = load_solver_class(
         solver_name=solver_name,
         n_dimensions=latent_dim,
         seed=seed,

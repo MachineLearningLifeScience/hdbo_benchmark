@@ -16,7 +16,7 @@ from poli.core.util.seeding import seed_numpy, seed_python  # type: ignore
 
 import hdbo_benchmark
 from hdbo_benchmark.utils.experiments.load_solvers import (
-    load_solver,
+    load_solver_class,
     SOLVER_NAMES,
 )
 from hdbo_benchmark.utils.constants import ROOT_DIR
@@ -104,7 +104,7 @@ def run(
     if n_intrinsic_dimensions is None:
         n_intrinsic_dimensions = n_dimensions - 1
 
-    solver_, kwargs = load_solver(
+    solver_, kwargs = load_solver_class(
         solver_name,
         n_dimensions=n_dimensions,
         n_intrinsic_dimensions=n_intrinsic_dimensions,

@@ -19,7 +19,10 @@ from poli.core.exceptions import BudgetExhaustedException
 import poli_baselines
 
 import hdbo_benchmark
-from hdbo_benchmark.utils.experiments.load_solvers import load_solver, SOLVER_NAMES
+from hdbo_benchmark.utils.experiments.load_solvers import (
+    load_solver_class,
+    SOLVER_NAMES,
+)
 from hdbo_benchmark.utils.constants import ROOT_DIR, DEVICE
 from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
 
@@ -196,7 +199,7 @@ def main(
             "bounds": bounds,
         }
 
-    solver_, kwargs = load_solver(
+    solver_, kwargs = load_solver_class(
         solver_name=solver_name,
         n_dimensions=sequence_length * len(f.info.alphabet),
         seed=seed,
