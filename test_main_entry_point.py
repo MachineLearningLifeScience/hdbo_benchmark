@@ -18,6 +18,7 @@ SOLVERS_THAT_RUN_IN_BASE_ENV = [
 MAX_ITER = 1
 SEED = 1
 
+
 def construct_setups(solvers: list[str]):
     pmo_setups = [
         (function_name, solver_name, 128)
@@ -32,7 +33,7 @@ def construct_setups(solvers: list[str]):
     for latent_dim in [32]:
         for solver_name in solvers:
             rasp_setups.append(("rfp_rasp", solver_name, latent_dim))
-            foldx_setups.append(("rfp_foldx_stability", solver_name, latent_dim))
+            # foldx_setups.append(("rfp_foldx_stability", solver_name, latent_dim))
 
     return pmo_setups + rasp_setups + foldx_setups
 
@@ -175,13 +176,12 @@ def test_main_run_lambo2(function_name, solver_name, latent_dim):
 
 if __name__ == "__main__":
     test_setups_in_main = construct_setups(SOLVERS_THAT_RUN_IN_BASE_ENV)
-    # print(len(test_setups_in_main))
-    # for test_setup in test_setups_in_main:
-    #     print(test_setup)
-    #     try:
-    #         test_main_run(*test_setup)
-    #     except Exception as e:
-    #         print(f"could not run for {test_setup}")
-    #         print(e)
-    #     print("-" * 80)
-    test_main_run(function_name="rfp_rasp", solver_name="hill_climbing", latent_dim=32)
+    print(len(test_setups_in_main))
+    for test_setup in test_setups_in_main:
+        print(test_setup)
+        try:
+            test_main_run(*test_setup)
+        except Exception as e:
+            print(f"could not run for {test_setup}")
+            print(e)
+        print("-" * 80)

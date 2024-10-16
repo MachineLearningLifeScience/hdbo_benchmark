@@ -51,10 +51,18 @@ class LitAutoEncoder(L.LightningModule):
         )
 
         ESM_EMBEDDINGS_DIR = ROOT_DIR / "data" / "esm_embeddings"
-        with open(ESM_EMBEDDINGS_DIR / "esm_embeddings.json") as fp:
-            embeddings_and_sequences = json.load(fp)
-        df = pd.DataFrame(embeddings_and_sequences)
-        df.set_index("label", inplace=True)
+        with open(ESM_EMBEDDINGS_DIR / "esm_embeddings_pool.json") as fp:
+            embeddings_and_sequences_pool = json.load(fp)
+        with open(ESM_EMBEDDINGS_DIR / "esm_embeddings.json") as fp2:
+            embeddings_and_sequences = json.load(fp2)
+
+        df1 = pd.DataFrame(embeddings_and_sequences_pool)
+        df1.set_index("label", inplace=True)
+
+        df2 = pd.DataFrame(embeddings_and_sequences)
+        df2.set_index("label", inplace=True)
+
+        df = pd.concat([df1, df2])
         self.esm_df_of_precomputed_embeddings = df
 
     def training_step(self, batch, batch_idx):
@@ -100,16 +108,17 @@ class LitAutoEncoder(L.LightningModule):
         return np.array(self._from_token_ids_to_strings(x_hat))
 
     def encode_from_string_array(self, x: np.ndarray) -> np.ndarray:
-        embeddigs = []
+        embeddings = []
         for x_i in x:
             sequence = "".join(x_i)
             df = self.esm_df_of_precomputed_embeddings
-            embedding = df[df["sequence"] == sequence]["embedding"].values
-        
-            embeddigs.append([embedding])
+            embedding = df[df["sequence"] == sequence]["embedding"].values[0]
 
-        return np.array(embeddigs)
+            embeddings.append(embedding)
 
+        x = torch.tensor(embeddings, dtype=torch.float32)
+        z = self.encode(x).numpy(force=True)
+        return z
 
     def clean_up_special_tokens(self, x: np.ndarray) -> np.ndarray:
         return np.array(
