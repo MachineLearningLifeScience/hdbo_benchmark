@@ -77,6 +77,7 @@ data/results_cache/
 *_local.py
 *.local.py
 *_local.ipynb
+*_logs.log
 
 # SLURM logs
 slurm_logs/
