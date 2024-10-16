@@ -176,14 +176,4 @@ def main(
 
 
 if __name__ == "__main__":
-    _main(
-        solver_name="directed_evolution",
-        function_name="rfp_rasp",
-        n_dimensions=128,
-        seed=999,
-        max_iter=200,
-        strict_on_hash=False,
-        force_run=True,
-        wandb_mode="offline",
-        tag="Debug",
-    )
+    main()
