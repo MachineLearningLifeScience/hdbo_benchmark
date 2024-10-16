@@ -1,3 +1,5 @@
+import selfies as sf
+
 import poli
 from poli.benchmarks import PMOBenchmark
 from poli.core.problem import Problem
@@ -33,6 +35,9 @@ def turn_into_supervised_problem(problem: Problem, strict: bool = True) -> Probl
         )
     )
 
+def tokenize_selfies(x: str, max_sequence_length: int) -> list[str]:
+    selfies_tokens = list(sf.split_selfies(x))
+    return selfies_tokens + ["[nop]"] * (max_sequence_length - len(selfies_tokens))
 
 def _load_pmo_problem(function_name: str) -> Problem:
     problem = poli.create(
@@ -41,7 +46,11 @@ def _load_pmo_problem(function_name: str) -> Problem:
         alphabet=load_alphabet_for_pmo(),
         max_sequence_length=load_sequence_length_for_pmo(),
     )
-    problem.data_package = RandomMoleculesDataPackage(string_representation="SELFIES", n_molecules=10)
+    problem.data_package = RandomMoleculesDataPackage(
+        string_representation="SELFIES",
+        n_molecules=10,
+        tokenize_with=lambda x: tokenize_selfies(x, problem.info.max_sequence_length),
+    )
     return turn_into_supervised_problem(problem)
 
 

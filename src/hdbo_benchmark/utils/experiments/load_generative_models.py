@@ -23,13 +23,13 @@ def load_generative_model_and_bounds(
             )
 
             return vae, latent_space_bounds
-        case "rasp":
+        case "rfp_rasp":
             experiment_name = "benchmark_on_rasp"
             latent_space_bounds = (-15.0, 15.0)  # By inspecting z0.
             ae = ProteinAEFactory().create(latent_dim=latent_dim)
 
             return ae, latent_space_bounds
-        case "foldx_stability":
+        case "rfp_foldx_stability":
             latent_space_bounds = (-15.0, 15.0)  # By inspecting z0.
             ae = ProteinAEFactory().create(latent_dim=latent_dim)
 

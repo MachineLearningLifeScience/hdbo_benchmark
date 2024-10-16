@@ -20,31 +20,31 @@ dependencies = [
 
 [project.optional-dependencies]
 bounce = [
-    "poli-baselines[bounce]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+    "poli-baselines[bounce]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
 ax = [
-    "poli-baselines[ax]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+    "poli-baselines[ax]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
 alebo = [
-    "poli-baselines[alebo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+    "poli-baselines[alebo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
 baxus = [
-    "poli-baselines[baxus]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+    "poli-baselines[baxus]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
 saasbo = [
-    "poli-baselines[saasbo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+    "poli-baselines[saasbo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
 vanilla_bo = [
-    "poli-baselines[vanilla_bo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+    "poli-baselines[vanilla_bo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
 pr = [
-    "poli-baselines[pr]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+    "poli-baselines[pr]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
-lambo2 = ["poli-baselines[lambo2]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"]
-tdc = ["poli[tdc]@git+https://MachineLearningLifeScience/poli.git@dev"]
-foldx = ["poli[foldx]@git+https://MachineLearningLifeScience/poli.git@dev"]
-rasp = ["poli[rasp]@git+https://MachineLearningLifeScience/poli.git@dev"]
-ehrlich_holo = ["poli[ehrlich_holo]@git+https://MachineLearningLifeScience/poli.git@dev"]
+lambo2 = ["poli-baselines[lambo2]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"]
+tdc = ["poli[tdc]@git+https://MachineLearningLifeScience/poli.git"]
+foldx = ["poli[foldx]@git+https://MachineLearningLifeScience/poli.git"]
+rasp = ["poli[rasp]@git+https://MachineLearningLifeScience/poli.git"]
+ehrlich_holo = ["poli[ehrlich_holo]@git+https://MachineLearningLifeScience/poli.git"]
 
 [tool.mypy]
 python_version = "3.10"

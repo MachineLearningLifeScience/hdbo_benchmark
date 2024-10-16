@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 
 import torch
 import torch.nn as nn
@@ -17,6 +18,8 @@ import esm
 from esm import Alphabet
 
 import lightning as L
+
+from hdbo_benchmark.utils.constants import ROOT_DIR
 
 THIS_DIR = Path(__file__).parent.resolve()
 
@@ -46,6 +49,13 @@ class LitAutoEncoder(L.LightningModule):
             nn.ReLU(),
             nn.Linear(256, self.alphabet_size * self.max_sequence_length),
         )
+
+        ESM_EMBEDDINGS_DIR = ROOT_DIR / "data" / "esm_embeddings"
+        with open(ESM_EMBEDDINGS_DIR / "esm_embeddings.json") as fp:
+            embeddings_and_sequences = json.load(fp)
+        df = pd.DataFrame(embeddings_and_sequences)
+        df.set_index("label", inplace=True)
+        self.esm_df_of_precomputed_embeddings = df
 
     def training_step(self, batch, batch_idx):
         # training_step defines the train loop.
@@ -90,19 +100,16 @@ class LitAutoEncoder(L.LightningModule):
         return np.array(self._from_token_ids_to_strings(x_hat))
 
     def encode_from_string_array(self, x: np.ndarray) -> np.ndarray:
-        # First we encode to integers
-        token_ids = []
+        embeddigs = []
         for x_i in x:
-            seq_ = "".join(x_i)
-            seq_ = "<cls>" + seq_ + "<eos>" + ("<pad>" * (230 - len(seq_) - 2))
-            seq_as_tokens = self.alphabet.tokenize(seq_)
-            token_ids.append(
-                [self.alphabet.get_idx(token_i) for token_i in seq_as_tokens]
-            )
-        x_int = torch.Tensor(token_ids).long()
-        # then to one-hot
-        x = torch.nn.functional.one_hot(x_int, num_classes=self.alphabet_size)
-        return self.encode(x).detach().numpy()
+            sequence = "".join(x_i)
+            df = self.esm_df_of_precomputed_embeddings
+            embedding = df[df["sequence"] == sequence]["embedding"].values
+        
+            embeddigs.append([embedding])
+
+        return np.array(embeddigs)
+
 
     def clean_up_special_tokens(self, x: np.ndarray) -> np.ndarray:
         return np.array(
