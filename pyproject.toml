@@ -14,6 +14,7 @@ dependencies = [
     "click",
     "lightning",
     "fair-esm",
+    "pytorch-holo",
     "poli@git+https://github.com/MachineLearningLifeScience/poli.git",
     "poli-baselines@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]

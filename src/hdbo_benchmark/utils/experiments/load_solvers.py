@@ -285,7 +285,8 @@ def load_solver_class(
 
             return LaMBO2, solver_kwargs
         case _:
-            raise ValueError(f"Unknown solver {solver_name}") 
+            raise ValueError(f"Unknown solver {solver_name}")
+
 
 def load_solver_from_problem(
     solver_name: str,
@@ -296,7 +297,7 @@ def load_solver_from_problem(
         n_dimensions = None
     else:
         n_dimensions = problem.x0.shape[1]
-    
+
     solver_, kwargs = load_solver_class(
         solver_name=solver_name,
         seed=seed,
