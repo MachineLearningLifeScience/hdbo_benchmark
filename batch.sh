@@ -3,7 +3,7 @@
 #SBATCH --output=slurm_logs/output.%j.log
 #SBATCH --error=slurm_logs/output.%j.err
 #SBATCH -p gpu --gres=gpu:titanx:1
-#SBATCH --array=1-5%5
+#SBATCH --array=1-1%1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=10
