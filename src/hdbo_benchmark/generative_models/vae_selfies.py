@@ -2,6 +2,7 @@
 Implements a Variational Autoencoder that can be trained on
 SELFIES data from zinc250k.
 """
+
 from __future__ import annotations
 from typing import Tuple, Dict, Optional
 from pathlib import Path
@@ -16,9 +17,9 @@ import torch.nn as nn
 
 from torch.distributions import Normal, Categorical
 
-# from hdbo_benchmark.utils.selfies.visualization import (
-#     selfie_to_numpy_image_array,
-# )
+from hdbo_benchmark.utils.selfies.visualization import (
+    selfie_to_numpy_image_array,
+)
 from hdbo_benchmark.utils.selfies.tokens import from_selfie_to_tensor
 from hdbo_benchmark.generative_models.vae import VAE
 
@@ -153,7 +154,7 @@ class VAESelfies(VAE):
 
         # Computes the KL divergence between q(z|x) and p(z)
         kl_div = torch.distributions.kl_divergence(q_z_given_x, self.p_z).sum(dim=-1)
-        kl_div = kl_div*0.01 # KLD contribution 1%
+        kl_div = kl_div * 0.01  # KLD contribution 1%
 
         # Computes the reconstruction loss
         recon_loss = -p_x_given_z.log_prob(x.argmax(dim=-1).to(self.device)).sum(dim=-1)
