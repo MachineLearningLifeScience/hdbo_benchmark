@@ -16,22 +16,25 @@ def load_generative_model_and_bounds(
             string_representation="SELFIES"
         ).problem_names:
             experiment_name = "benchmark_on_pmo"
-            latent_space_bounds = (-5.0, 5.0)
+            latent_space_bounds = (-10.0, 10.0)
             vae = VAEFactory().create(
                 experiment_name=experiment_name,
                 latent_dim=latent_dim,
             )
+            vae.eval()
 
             return vae, latent_space_bounds
         case "rfp_rasp":
             experiment_name = "benchmark_on_rasp"
             latent_space_bounds = (-15.0, 15.0)  # By inspecting z0.
             ae = ProteinAEFactory().create(latent_dim=latent_dim)
+            ae.eval()
 
             return ae, latent_space_bounds
         case "rfp_foldx_stability":
             latent_space_bounds = (-15.0, 15.0)  # By inspecting z0.
             ae = ProteinAEFactory().create(latent_dim=latent_dim)
+            ae.eval()
 
             return ae, latent_space_bounds
         case _:
