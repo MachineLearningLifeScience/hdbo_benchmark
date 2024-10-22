@@ -24,6 +24,7 @@ command="conda run -n ${ENV_NAME} python run.py \
         --n-dimensions=${N_DIMENSIONS} \
         --max-iter=${MAX_ITER} \
         --strict-on-hash \
+        --force-run \
         --wandb-mode=online \
         --seed=${SLURM_ARRAY_TASK_ID} \
         --tag=${TAG}"
