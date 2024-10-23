@@ -14,7 +14,6 @@ dependencies = [
     "click",
     "lightning",
     "fair-esm",
-    "pytorch-holo",
     "poli@git+https://github.com/MachineLearningLifeScience/poli.git",
     "poli-baselines@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
@@ -45,7 +44,7 @@ lambo2 = ["poli-baselines[lambo2]@git+https://github.com/MachineLearningLifeScie
 tdc = ["poli[tdc]@git+https://MachineLearningLifeScience/poli.git"]
 foldx = ["poli[foldx]@git+https://MachineLearningLifeScience/poli.git"]
 rasp = ["poli[rasp]@git+https://MachineLearningLifeScience/poli.git"]
-ehrlich_holo = ["poli[ehrlich_holo]@git+https://MachineLearningLifeScience/poli.git"]
+ehrlich = ["poli[ehrlich]@git+https://MachineLearningLifeScience/poli.git"]
 
 [tool.mypy]
 python_version = "3.10"
