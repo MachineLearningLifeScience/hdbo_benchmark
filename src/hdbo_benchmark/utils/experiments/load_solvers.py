@@ -4,6 +4,7 @@
 from typing import Tuple, Dict, Any
 
 import numpy as np
+import torch
 
 from poli_baselines.core.abstract_solver import AbstractSolver
 from poli.core.problem import Problem
@@ -247,10 +248,14 @@ def load_solver_class(
         case "bounce":
             from poli_baselines.solvers.bayesian_optimization.bounce import BounceSolver
 
+            torch.set_default_dtype(torch.float64)
+
             solver_kwargs.update(
                 {
                     "noise_std": noise_std,
                     "n_initial_points": n_initial_points,
+                    "device": DEVICE,
+                    "dtype": "float64",
                 }
             )
             solver_kwargs.pop("bounds", None)
@@ -293,20 +298,21 @@ def load_solver_from_problem(
     problem: Problem,
     seed: int | None = None,
 ):
-    if len(problem.x0.shape) == 1:
+    f, data_package = problem.black_box, problem.data_package
+    x0, y0 = data_package.supervised_data
+
+    if len(x0.shape) == 1:
         n_dimensions = None
     else:
-        n_dimensions = problem.x0.shape[1]
+        n_dimensions = x0.shape[1]
 
     solver_, kwargs = load_solver_class(
         solver_name=solver_name,
         seed=seed,
         n_dimensions=n_dimensions,
-        n_initial_points=problem.x0.shape[0],
+        n_initial_points=x0.shape[0],
     )
 
-    f, data_package = problem.black_box, problem.data_package
-    x0, y0 = data_package.supervised_data
     return solver_(
         black_box=f,
         x0=x0,

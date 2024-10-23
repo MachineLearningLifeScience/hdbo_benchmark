@@ -67,7 +67,7 @@ def _main(
     ):
         print(
             f"The experiment for solver {solver_name} with function "
-            f"rasp and n_dimensions {n_dimensions} "
+            f"{function_name} and n_dimensions {n_dimensions} "
             f" and seed {seed} has already been run."
         )
         return

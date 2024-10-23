@@ -74,41 +74,72 @@ def _load_foldx_stability() -> Problem:
 
     return problem
 
-def _load_ehrlich_holo(size: Literal["small", "large"]) -> Problem:
 
-    # TODO: decide on these according to the original paper.
-    if size == "small":
-        sequence_length = 5
-        n_motifs = 1
-        motif_length = 4
-        n_supervised_points = 10
-    elif size == "large":
-        sequence_length = 64
-        n_motifs = 4
-        motif_length = 10
-        n_supervised_points = 1000
-    else:
-        raise ValueError()
-    
+def _load_pest_control_equivalent() -> Problem:
     problem = EhrlichHoloProblemFactory().create(
-        sequence_length=sequence_length,
-        motif_length=motif_length,
-        n_motifs=n_motifs,
-        return_value_on_unfeasible=-1.0
+        sequence_length=25,
+        motif_length=25,
+        n_motifs=1,
+        return_value_on_unfeasible=-1.0,
+        alphabet=["A", "B", "C", "D", "E"],
     )
     f: EhrlichHoloBlackBox = problem.black_box
-    unsupervised_data = np.array([list(x_i) for x_i in f.initial_solution(n_samples=n_supervised_points)])
+
+    unsupervised_data = np.array(
+        [list(x_i) for x_i in f.initial_solution(n_samples=10)]
+    )
 
     problem.data_package = DataPackage(
         unsupervised_data=unsupervised_data,
         supervised_data=(
             unsupervised_data,
             f(unsupervised_data),
-        )
+        ),
     )
 
     return problem
 
+
+def _load_ehrlich_holo(size: Literal["small", "large"]) -> Problem:
+    match size:
+        case "tiny":
+            sequence_length = 5
+            n_motifs = 1
+            motif_length = 4
+            n_supervised_points = 10
+        case "small":
+            sequence_length = 15
+            n_motifs = 2
+            motif_length = 5
+            n_supervised_points = 10
+        case "large":
+            sequence_length = 64
+            n_motifs = 4
+            motif_length = 10
+            n_supervised_points = 1000
+        case _:
+            raise ValueError()
+
+    problem = EhrlichHoloProblemFactory().create(
+        sequence_length=sequence_length,
+        motif_length=motif_length,
+        n_motifs=n_motifs,
+        return_value_on_unfeasible=-1.0,
+    )
+    f: EhrlichHoloBlackBox = problem.black_box
+    unsupervised_data = np.array(
+        [list(x_i) for x_i in f.initial_solution(n_samples=n_supervised_points)]
+    )
+
+    problem.data_package = DataPackage(
+        unsupervised_data=unsupervised_data,
+        supervised_data=(
+            unsupervised_data,
+            f(unsupervised_data),
+        ),
+    )
+
+    return problem
 
 
 def _load_problem(function_name: str) -> Problem:
@@ -121,10 +152,14 @@ def _load_problem(function_name: str) -> Problem:
             return _load_rasp()
         case "rfp_foldx_stability":
             return _load_foldx_stability()
+        case "ehrlich_holo_tiny":
+            return _load_ehrlich_holo(size="tiny")
         case "ehrlich_holo_small":
             return _load_ehrlich_holo(size="small")
         case "ehrlich_holo_large":
             return _load_ehrlich_holo(size="large")
+        case "pest_control_equivalent":
+            return _load_pest_control_equivalent()
         case _:
             raise ValueError(f"Unknown function name: {function_name}")
 
