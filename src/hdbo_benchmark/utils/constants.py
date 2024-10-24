@@ -1,11 +1,15 @@
+import os
 from pathlib import Path
 
 import torch
 
-if torch.cuda.is_available():
-    DEVICE = torch.device("cuda")
+if "HDBO_TORCH_DEVICE" in os.environ:
+    DEVICE = torch.device(os.environ["HDBO_TORCH_DEVICE"])
 else:
-    DEVICE = torch.device("cpu")
+    if torch.cuda.is_available():
+        DEVICE = torch.device("cuda")
+    else:
+        DEVICE = torch.device("cpu")
 
 ROOT_DIR = Path(__file__).parent.parent.parent.parent.resolve()
 MODELS_DIR = ROOT_DIR / "data" / "trained_models"
