@@ -109,6 +109,7 @@ class WandbObserver(AbstractObserver):
 def initialize_observer(
     problem: Problem,
     observer_config: ObserverConfig,
+    supervised_data: tuple[np.ndarray, np.ndarray],
 ) -> WandbObserver:
     experiment_name = observer_config.experiment_name
     n_dimensions = observer_config.n_dimensions
@@ -139,6 +140,11 @@ def initialize_observer(
         max_iter=max_iter,
         mode=mode,
         tag=tag,
+        supervised_x=supervised_data[0],
+        supervised_y=supervised_data[1],
     )
+
+    for x_i, y_i in zip(*supervised_data):
+        wandb_observer.observe(x=np.array([x_i]), y=np.array([y_i]))
 
     return wandb_observer

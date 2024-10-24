@@ -100,7 +100,7 @@ def _load_pest_control_equivalent() -> Problem:
     return problem
 
 
-def _load_ehrlich_holo(size: Literal["small", "large"]) -> Problem:
+def _load_ehrlich_holo(size: Literal["tiny", "small", "large"]) -> Problem:
     match size:
         case "tiny":
             sequence_length = 5
@@ -187,6 +187,7 @@ def load_problem(
         obs = initialize_observer(
             problem=problem,
             observer_config=observer_config,
+            supervised_data=problem.data_package.supervised_data,
         )
         problem.black_box.set_observer(obs)
 
