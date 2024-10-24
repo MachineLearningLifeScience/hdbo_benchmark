@@ -107,6 +107,7 @@ def _main(
         generative_model, bounds = load_generative_model_and_bounds(
             function_name=function_name,
             latent_dim=n_dimensions,
+            problem=problem,
         )
 
         # Make the problem continuous

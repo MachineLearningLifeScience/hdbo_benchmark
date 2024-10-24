@@ -8,6 +8,7 @@ from poli.core.lambda_black_box import LambdaBlackBox
 from poli.core.data_package import DataPackage
 from hdbo_benchmark.generative_models.vae import VAE, OptimizedVAE
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
+from hdbo_benchmark.generative_models.onehot import OneHot
 from hdbo_benchmark.utils.experiments.normalization import (
     from_unit_cube_to_range,
     from_range_to_unit_cube,
@@ -83,9 +84,36 @@ def _in_the_latent_space_of_molecules(
     return new_black_box
 
 
+def _in_onehot_space(
+    problem: Problem, onehot: OneHot, latent_space_bounds: tuple[float, float]
+) -> Callable[[np.ndarray], np.ndarray]:
+    f = problem.black_box
+
+    def _latent_f(z: np.ndarray) -> np.ndarray:
+        z = from_unit_cube_to_range(z, latent_space_bounds)
+        x = onehot.decode_to_string_array(z)
+        val = f(x)
+        return val
+
+    new_black_box = LambdaBlackBox(
+        function=_latent_f,
+        info=BlackBoxInformation(
+            name=f.info.name,
+            max_sequence_length=onehot.max_sequence_length * onehot.n_classes,
+            aligned=True,
+            fixed_length=True,
+            deterministic=f.info.deterministic,
+            alphabet=None,
+            discrete=False,
+        ),
+    )
+
+    return new_black_box
+
+
 def transform_problem_from_discrete_to_continuous(
     problem: Problem,
-    generative_model: VAE | LitAutoEncoder,
+    generative_model: VAE | LitAutoEncoder | OneHot,
     bounds: tuple[float, float],
 ) -> Problem:
     if isinstance(generative_model, LitAutoEncoder):
@@ -98,6 +126,12 @@ def transform_problem_from_discrete_to_continuous(
         continuous_f = _in_the_latent_space_of_molecules(
             problem=problem,
             vae=generative_model,
+            latent_space_bounds=bounds,
+        )
+    elif isinstance(generative_model, OneHot):
+        continuous_f = _in_onehot_space(
+            problem=problem,
+            onehot=generative_model,
             latent_space_bounds=bounds,
         )
     else:
