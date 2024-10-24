@@ -140,7 +140,7 @@ def initialize_observer(
         max_iter=max_iter,
         mode=mode,
         tag=tag,
-        supervised_x=supervised_data[0],
+        supervised_x=supervised_data[0].tolist(),
         supervised_y=supervised_data[1],
     )
 
