@@ -81,3 +81,6 @@ data/results_cache/
 
 # SLURM logs
 slurm_logs/
+
+# Install scripts
+install_envs.sh
