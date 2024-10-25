@@ -244,6 +244,8 @@ def load_solver_class(
                 Turbo,
             )
 
+            torch.set_default_dtype(torch.float64)
+
             return Turbo, solver_kwargs
         case "bounce":
             from poli_baselines.solvers.bayesian_optimization.bounce import BounceSolver
