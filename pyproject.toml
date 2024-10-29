@@ -41,10 +41,10 @@ pr = [
     "poli-baselines[pr]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
 lambo2 = ["poli-baselines[lambo2]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"]
-tdc = ["poli[tdc]@git+https://MachineLearningLifeScience/poli.git"]
-foldx = ["poli[foldx]@git+https://MachineLearningLifeScience/poli.git"]
-rasp = ["poli[rasp]@git+https://MachineLearningLifeScience/poli.git"]
-ehrlich = ["poli[ehrlich]@git+https://MachineLearningLifeScience/poli.git"]
+tdc = ["poli-core[tdc]@git+https://MachineLearningLifeScience/poli.git"]
+foldx = ["poli-core[foldx]@git+https://MachineLearningLifeScience/poli.git"]
+rasp = ["poli-core[rasp]@git+https://MachineLearningLifeScience/poli.git"]
+ehrlich = ["poli-core[ehrlich]@git+https://MachineLearningLifeScience/poli.git"]
 
 [tool.mypy]
 python_version = "3.10"

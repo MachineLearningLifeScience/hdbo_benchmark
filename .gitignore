@@ -84,3 +84,6 @@ slurm_logs/
 
 # Install scripts
 install_envs.sh
+
+table_128.csv
+table_2.csv

@@ -1,6 +1,7 @@
 import matplotlib
 import seaborn as sns
-import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
 from hdbo_benchmark.utils.constants import ROOT_DIR
 
@@ -50,10 +51,6 @@ independent_replications = {
 }
 
 
-import matplotlib.pyplot as plt
-import pandas as pd
-
-
 fig, ax = plt.subplots(1, 1, figsize=(20, 6))
 
 dfs = []
@@ -91,7 +88,7 @@ sns.swarmplot(
 ax.set_yscale("log")
 ax.legend(bbox_to_anchor=(1.04, 1), loc="upper left", ncol=2)
 ax.set_xlabel("")
-ax.set_ylabel("")
+ax.set_ylabel("Value")
 ax.set_ylim([0, 10**5])
 
 plt.tight_layout()
