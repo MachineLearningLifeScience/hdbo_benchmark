@@ -22,8 +22,10 @@ from hdbo_benchmark.utils.selfies.visualization import (
 )
 from hdbo_benchmark.utils.selfies.tokens import from_selfie_to_tensor
 from hdbo_benchmark.generative_models.vae import VAE
-
-ROOT_DIR = Path(__file__).parent.parent.parent.parent.resolve()
+from hdbo_benchmark.utils.experiments.load_metadata_for_vaes import (
+    load_alphabet_for_pmo,
+    load_sequence_length_for_pmo,
+)
 
 
 class VAESelfies(VAE):
@@ -32,15 +34,7 @@ class VAESelfies(VAE):
         latent_dim: int = 64,
         device: torch.device = torch.device("cpu"),
     ) -> None:
-        with open(
-            ROOT_DIR
-            / "data"
-            / "small_molecule_datasets"
-            / "processed"
-            / "zinc250k_alphabet_stoi.json",
-            "r",
-        ) as fp:
-            alphabet_s_to_i = json.load(fp)
+        alphabet_s_to_i = load_alphabet_for_pmo()
 
         super().__init__(
             latent_dim=latent_dim,
@@ -49,17 +43,7 @@ class VAESelfies(VAE):
         )
 
         # Load the metadata to find the maximum sequence length
-        with open(
-            ROOT_DIR
-            / "data"
-            / "small_molecule_datasets"
-            / "processed"
-            / "zinc250k_metadata.json",
-            "r",
-        ) as fp:
-            metadata = json.load(fp)
-
-        self.max_sequence_length = metadata["max_sequence_length"]
+        self.max_sequence_length = load_sequence_length_for_pmo()
 
         # Define the input length: length of a given SELFIES
         # (always padded to be {max_length}), times the number of tokens
