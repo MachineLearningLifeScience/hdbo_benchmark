@@ -10,6 +10,8 @@ def get_all_runs_for_experiment(
     n_dimensions: int | None = None,
     seed: int | None = None,
     tags: list[str] | None = None,
+    user: str | None = None,
+    datetime_cutoff: str | None = None,
 ) -> list[wandb.apis.public.Run]:
     api = wandb.Api()
 
@@ -35,8 +37,34 @@ def get_all_runs_for_experiment(
     if tags is not None:
         filter_["tags"] = {"$in": tags}
 
+    if datetime_cutoff is not None:
+        # datetime_cutoff should be a string in the format "2021-09-01T00:00:00"
+        filter_["created_at"] = {"$lt": datetime_cutoff}
+
     runs = api.runs(
         f"{WANDB_ENTITY}/{experiment_name}",
         filter_ if filter_ else None,
     )
     return list(runs)
+
+
+def get_all_runs_for_function_names(
+    function_names: list[str],
+    solver_name: str | None = None,
+    n_dimensions: int | None = None,
+    tags: list[str] | None = None,
+    seed: int | None = None,
+) -> list[wandb.apis.public.Run]:
+    all_runs = []
+    for function_name in function_names:
+        runs = get_all_runs_for_experiment(
+            experiment_name="hdbo_benchmark_results",
+            function_name=function_name,
+            solver_name=solver_name,
+            n_dimensions=n_dimensions,
+            seed=seed,
+            tags=tags,
+        )
+        all_runs.extend(runs)
+
+    return all_runs

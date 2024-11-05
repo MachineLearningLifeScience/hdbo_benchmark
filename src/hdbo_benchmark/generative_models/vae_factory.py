@@ -9,7 +9,6 @@ import torch
 
 from hdbo_benchmark.generative_models.vae import VAE
 from hdbo_benchmark.generative_models.vae_selfies import VAESelfies
-from hdbo_benchmark.generative_models.vae_rnn_selfies import VAERNNSelfies
 from hdbo_benchmark.generative_models.vae_mario import VAEMario
 from hdbo_benchmark.utils.constants import MODELS_DIR, DEVICE
 
@@ -82,38 +81,28 @@ class VAEFactory:
                 weights_path = (
                     MODELS_DIR
                     / "training_vae_on_zinc_250k"
-                    / "latent_dim-2-batch_size-512-lr-0.0005-seed-86.pt"
+                    / "latent_dim-2-batch_size-512-lr-0.0005-seed-1.pt"
                 )
-                vae = VAESelfies(latent_dim=latent_dim, device=DEVICE)
-                opt_vae: VAESelfies = torch.compile(vae)  # type: ignore
-                opt_vae.load_state_dict(torch.load(weights_path, map_location=DEVICE))
-                return opt_vae
+            case 64:
+                weights_path = (
+                    MODELS_DIR
+                    / "training_vae_on_zinc_250k"
+                    / "latent_dim-64-batch_size-512-lr-0.0005-seed-0.pt"
+                )
             case 128:
                 # We return our MLP VAE.
                 weights_path = (
                     MODELS_DIR
                     / "training_vae_on_zinc_250k"
-                    / "latent_dim-128-batch_size-512-lr-0.0005-seed-714.pt"
+                    / "latent_dim-128-batch_size-512-lr-0.0005-seed-1.pt"
                 )
-                vae: VAESelfies = VAESelfies(latent_dim=latent_dim, device=DEVICE)
-                opt_vae: VAESelfies = torch.compile(vae)  # type: ignore
-                opt_vae.load_state_dict(torch.load(weights_path, map_location=DEVICE))
-                return opt_vae
-            case 256:
-                # We return our trained RNNVAE.
-                vae: VAERNNSelfies = VAERNNSelfies(
-                    latent_dim=256,
-                    device=DEVICE,
-                    hidden_dim=512,
-                    num_layers=1,
-                )
-                weights_path = (
-                    MODELS_DIR
-                    / "training_vae_on_zinc_250k"
-                    / "rnn-latent_dim-256-batch_size-512-lr-0.0005-seed-49.pt"
-                )
-                opt_vae: VAERNNSelfies = torch.compile(vae)
-                opt_vae.load_state_dict(torch.load(weights_path, map_location=DEVICE))
-                return opt_vae
             case _:
                 raise NotImplementedError
+
+        vae = VAESelfies(latent_dim=latent_dim, device=DEVICE)
+        opt_vae: VAESelfies = torch.compile(vae)  # type: ignore
+        opt_vae.load_state_dict(
+            torch.load(weights_path, map_location=DEVICE, weights_only=True)
+        )
+        opt_vae.eval()
+        return opt_vae

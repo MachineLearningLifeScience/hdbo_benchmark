@@ -61,6 +61,7 @@ reports/figures/
 conf_dict.json
 *.txt.xz
 model_history.zip
+.tox
 
 # TDC
 oracle/
@@ -74,4 +75,15 @@ data/results_cache/
 # Running experiments locally
 *.local.sh
 *_local.py
+*.local.py
 *_local.ipynb
+*_logs.log
+
+# SLURM logs
+slurm_logs/
+
+# Install scripts
+install_envs.sh
+
+table_128.csv
+table_2.csv

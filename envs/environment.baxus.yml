@@ -1,0 +1,8 @@
+name: hdbo_baxus
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - -e ..[baxus]

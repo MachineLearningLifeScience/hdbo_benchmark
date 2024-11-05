@@ -28,7 +28,10 @@ def compute_pretty_names(n_dimensions: int, use_tex: bool = True):
                 "random_mutation": (
                     r"\texttt{HillClimbing}" if use_tex else "HillClimbing"
                 ),
-                # "cma_es": r"\texttt{CMAES}",
+                "genetic_algorithm": (
+                    r"\texttt{GeneticAlgorithm}" if use_tex else "GeneticAlgorithm"
+                ),
+                "cma_es": r"\texttt{CMAES}",
                 "vanilla_bo_hvarfner": (
                     r"Hvarfner's \texttt{VanillaBO}"
                     if use_tex
@@ -47,7 +50,10 @@ def compute_pretty_names(n_dimensions: int, use_tex: bool = True):
                 "random_mutation": (
                     r"\texttt{HillClimbing}" if use_tex else "HillClimbing"
                 ),
-                # "cma_es": r"\texttt{CMAES}",
+                "genetic_algorithm": (
+                    r"\texttt{GeneticAlgorithm}" if use_tex else "GeneticAlgorithm"
+                ),
+                "cma_es": r"\texttt{CMAES}",
                 "vanilla_bo_hvarfner": (
                     r"Hvarfner's \texttt{VanillaBO}"
                     if use_tex
@@ -67,6 +73,42 @@ def compute_pretty_names(n_dimensions: int, use_tex: bool = True):
     return solver_name_but_pretty
 
 
+def select_runs(df: pd.DataFrame, function_name: str, solver_name: str) -> pd.DataFrame:
+    sliced_df = df[
+        (df["function_name"] == function_name) & (df["solver_name"] == solver_name)
+    ]
+    sliced_df = sliced_df[sliced_df["seed"].isin([1, 2, 3])]
+
+    if len(sliced_df["experiment_id"].unique()) > 3:
+        slices_per_seed = []
+        for seed_ in range(1, 4):
+            assert seed_ in sliced_df["seed"].unique()
+            sliced_df_of_seed = sliced_df[sliced_df["seed"] == seed_]
+            experiment_id_of_longest_runs = (
+                sliced_df_of_seed.groupby("experiment_id")["_step"].max().nlargest(1)
+            )
+            print(
+                f"Largest experiment id for {solver_name} in {function_name} (seed {seed_}): {experiment_id_of_longest_runs.index[0]} ({experiment_id_of_longest_runs.values[0]})"
+            )
+            slices_per_seed.append(
+                sliced_df_of_seed[
+                    sliced_df_of_seed["experiment_id"]
+                    == experiment_id_of_longest_runs.index[0]
+                ]
+            )
+
+        sliced_df = pd.concat(slices_per_seed)
+
+        # Let's make sure we're still selecting the 5 seeds
+        assert len(sliced_df["seed"].unique()) == 3
+        for i in range(1, 4):
+            assert i in sliced_df["seed"].unique()
+
+    return sliced_df
+
+    ...
+
+
 def summary_per_function(
     df: pd.DataFrame,
     normalized_per_row: bool = True,
@@ -78,11 +120,7 @@ def summary_per_function(
     rows = []
     for function_name in df["function_name"].unique():
         for solver_name in df["solver_name"].unique():
-            slice_df = df[
-                (df["function_name"] == function_name)
-                & (df["solver_name"] == solver_name)
-            ]
-            slice_df = slice_df[slice_df["seed"].isin([1, 2, 3])]
+            slice_df = select_runs(df, function_name, solver_name)
             if (
                 len(slice_df["seed"].unique()) != 3
                 and solver_name in solver_name_but_pretty.keys()
@@ -354,6 +392,7 @@ if __name__ == "__main__":
             save_cache=True,
             use_cache=True,
             tags=tags,
+            datetime_cutoff="2024-08-15T00:00:00",
         )
         max_iter = 310 if n_dimensions == 128 else 110
         df = df[df["_step"] <= max_iter]

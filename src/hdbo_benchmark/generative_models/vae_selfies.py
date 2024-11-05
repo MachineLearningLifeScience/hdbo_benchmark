@@ -3,6 +3,7 @@ Implements a Variational Autoencoder that can be trained on
 SELFIES data from zinc250k.
 """
 
+from __future__ import annotations
 from typing import Tuple, Dict, Optional
 from pathlib import Path
 from itertools import product
@@ -66,12 +67,18 @@ class VAESelfies(VAE):
 
         # Define the model
         self.encoder = nn.Sequential(
-            nn.Linear(self.input_length, 1024),
+            nn.Linear(self.input_length, 2048),
+            nn.BatchNorm1d(2048),
             nn.ReLU(),
-            nn.Linear(1024, 512),
+            nn.Dropout(0.2),
+            nn.Linear(2048, 1024),
+            nn.BatchNorm1d(1024),
             nn.ReLU(),
-            nn.Linear(512, 256),
+            nn.Dropout(0.2),
+            nn.Linear(1024, 256),
+            nn.BatchNorm1d(256),
             nn.ReLU(),
+            nn.Dropout(0.2),
         )
         self.encoder_mu = nn.Linear(256, latent_dim)
         self.encoder_log_var = nn.Linear(256, latent_dim)
@@ -80,12 +87,18 @@ class VAESelfies(VAE):
         # distribution over the vocabulary.
         self.decoder = nn.Sequential(
             nn.Linear(latent_dim, 256),
+            nn.BatchNorm1d(256),
             nn.ReLU(),
-            nn.Linear(256, 512),
+            nn.Dropout(0.2),
+            nn.Linear(256, 1024),
+            nn.BatchNorm1d(1024),
             nn.ReLU(),
-            nn.Linear(512, 1024),
+            nn.Dropout(0.2),
+            nn.Linear(1024, 2048),
+            nn.BatchNorm1d(2048),
             nn.ReLU(),
-            nn.Linear(1024, self.input_length),
+            nn.Dropout(0.2),
+            nn.Linear(2048, self.input_length),
         )
 
         # Defines the prior
@@ -141,6 +154,7 @@ class VAESelfies(VAE):
 
         # Computes the KL divergence between q(z|x) and p(z)
         kl_div = torch.distributions.kl_divergence(q_z_given_x, self.p_z).sum(dim=-1)
+        kl_div = kl_div * 0.01  # KLD contribution 1%
 
         # Computes the reconstruction loss
         recon_loss = -p_x_given_z.log_prob(x.argmax(dim=-1).to(self.device)).sum(dim=-1)

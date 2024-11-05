@@ -46,6 +46,7 @@ def convert_data_to_dataframes(
         df["poli_hash"] = run.config["poli_hash"]
         df["hdbo_benchmark_hash"] = run.config["hdbo_benchmark_hash"]
         df["poli_baselines_hash"] = run.config["poli_baselines_hash"]
+        df["experiment_id"] = run.name.split("-")[-1]
         df["state"] = run.state
         dfs.append(df)
 
@@ -58,6 +59,7 @@ def create_base_table(
     save_cache: bool = True,
     use_cache: bool = False,
     tags: list[str] | None = None,
+    datetime_cutoff: str | None = None,
 ) -> pd.DataFrame:
     CACHE_PATH = ROOT_DIR / "data" / "results_cache"
     CACHE_PATH.mkdir(exist_ok=True, parents=True)
@@ -72,7 +74,10 @@ def create_base_table(
         return df
 
     all_runs = get_all_runs_for_experiment(
-        experiment_name=experiment_name, n_dimensions=n_dimensions, tags=tags
+        experiment_name=experiment_name,
+        n_dimensions=n_dimensions,
+        tags=tags,
+        datetime_cutoff=datetime_cutoff,
     )
 
     # Append with the results from PR on 2D
@@ -82,6 +87,7 @@ def create_base_table(
             solver_name="pr",
             n_dimensions=2,
             tags=tags,
+            datetime_cutoff=datetime_cutoff,
         )
         all_runs.extend(pr_runs)
 
@@ -92,6 +98,7 @@ def create_base_table(
             solver_name="bounce",
             n_dimensions=128,
             tags=tags,
+            datetime_cutoff=datetime_cutoff,
         )
         all_runs.extend(bounce_runs)
 
@@ -110,5 +117,6 @@ if __name__ == "__main__":
         save_cache=True,
         use_cache=False,
         tags=None,
+        datetime_cutoff="2024-08-15T00:00:00",
     )
     print(df)

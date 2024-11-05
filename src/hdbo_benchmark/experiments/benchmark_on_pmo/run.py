@@ -1,3 +1,8 @@
+"""
+Running the benchmark on PMO.
+"""
+
+# mypy: disable-error-code="import-untyped"
 from typing import Callable
 from uuid import uuid4
 
@@ -5,18 +10,21 @@ import click
 
 import torch
 import numpy as np
-from selfies import split_selfies  # type: ignore[import]
+from selfies import split_selfies
 
-import poli  # type: ignore[import]
-from poli.core.util.seeding import seed_numpy, seed_python  # type: ignore[import]
-from poli.core.abstract_black_box import AbstractBlackBox  # type: ignore[import]
-from poli.core.exceptions import BudgetExhaustedException  # type: ignore[import]
+import poli
+from poli.core.util.seeding import seed_numpy, seed_python
+from poli.core.abstract_black_box import AbstractBlackBox
+from poli.core.exceptions import BudgetExhaustedException
 
-import poli_baselines  # type: ignore[import]
+import poli_baselines
 
 import hdbo_benchmark
 from hdbo_benchmark.generative_models.vae_factory import VAEFactory, VAESelfies, VAE
-from hdbo_benchmark.utils.experiments.load_solvers import load_solver, SOLVER_NAMES
+from hdbo_benchmark.utils.experiments.load_solvers import (
+    load_solver_class,
+    SOLVER_NAMES,
+)
 from hdbo_benchmark.utils.experiments.load_metadata_for_vaes import (
     load_alphabet_for_pmo,
     load_sequence_length_for_pmo,
@@ -183,7 +191,7 @@ def main(
             "bounds": bounds,
         }
 
-    solver_, kwargs = load_solver(
+    solver_, kwargs = load_solver_class(
         solver_name=solver_name,
         n_dimensions=latent_dim,
         seed=seed,

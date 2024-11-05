@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hdbo_benchmark"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
     "numpy<2",
     "botorch",
@@ -14,12 +14,51 @@ dependencies = [
     "click",
     "lightning",
     "fair-esm",
-    "poli@git+https://github.com/MachineLearningLifeScience/poli.git@dev",
-    "poli-baselines@git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
+    "poli-core",
+    "poli-baselines@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
+
+[project.optional-dependencies]
+bounce = [
+    "poli-baselines[bounce]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
+]
+ax = [
+    "poli-baselines[ax]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
+]
+alebo = [
+    "poli-baselines[alebo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
+]
+baxus = [
+    "poli-baselines[baxus]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
+]
+saasbo = [
+    "poli-baselines[saasbo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
+]
+vanilla_bo = [
+    "poli-baselines[vanilla_bo]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
+]
+pr = [
+    "poli-baselines[pr]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
+]
+lambo2 = ["poli-baselines[lambo2]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"]
+tdc = ["poli-core[tdc]@git+https://MachineLearningLifeScience/poli.git"]
+foldx = ["poli-core[foldx]@git+https://MachineLearningLifeScience/poli.git"]
+rasp = ["poli-core[rasp]@git+https://MachineLearningLifeScience/poli.git"]
+ehrlich = ["poli-core[ehrlich]@git+https://MachineLearningLifeScience/poli.git"]
 
 [tool.mypy]
 python_version = "3.10"
 warn_return_any = true
 warn_unused_configs = true
 ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+markers = [
+    "hdbo_base: base tests for HDBO",
+    "hdbo_ax: tests for HDBO with Ax",
+    "hdbo_baxus: tests for HDBO with BAxUS",
+    "hdbo_alebo: tests for HDBO with Alebo",
+    "hdbo_bounce: tests for HDBO with Bounce",
+    "hdbo_pr: tests for HDBO with PR",
+    "hdbo_lambo2: tests for HDBO with Lambo2",
+]

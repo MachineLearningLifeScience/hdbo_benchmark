@@ -5,20 +5,40 @@ To run this example, you will need to install wandb:
     pip install wandb
 """
 
+# mypy: disable-error-code="import-untyped"
+from typing import Literal
+from dataclasses import dataclass
+
 import numpy as np
-from poli.core.black_box_information import BlackBoxInformation  # type: ignore[import]
 import wandb
 
-import poli  # type: ignore[import]
-from poli.core.abstract_black_box import AbstractBlackBox  # type: ignore[import]
-from poli.core.util.abstract_observer import AbstractObserver  # type: ignore[import]
+import poli
+from poli.core.black_box_information import BlackBoxInformation
+from poli.core.problem import Problem
+from poli.core.util.abstract_observer import AbstractObserver
 
-import poli_baselines  # type: ignore[import]
+import poli_baselines
 
 import hdbo_benchmark
 
 from hdbo_benchmark.utils.constants import WANDB_PROJECT, WANDB_ENTITY
 from hdbo_benchmark.utils.logging.library_hashes import get_git_hash_of_library
+from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
+
+
+@dataclass
+class ObserverConfig:
+    experiment_name: str
+    function_name: str
+    solver_name: str
+    n_dimensions: int
+    seed: int
+    max_iter: int
+    strict_on_hash: bool
+    force_run: bool
+    experiment_id: str
+    wandb_mode: str
+    tags: list[str]
 
 
 class WandbObserver(AbstractObserver):
@@ -39,26 +59,23 @@ class WandbObserver(AbstractObserver):
     def initialize_observer(
         self,
         black_box_info: BlackBoxInformation,
-        observer_init_info: dict[str, str],
-        x0: np.ndarray,
-        y0: np.ndarray,
+        caller_info: ObserverConfig,
         seed: int,
+        mode: Literal["online", "offline", "disabled"] = "online",
         **kwargs,
     ) -> object:
+        run_name = f"{caller_info.experiment_name}-{caller_info.solver_name}-{caller_info.function_name}-n_dimensions-{caller_info.n_dimensions}-seed-{seed}"
         run = wandb.init(
             project=self.project_name if self.project_name else WANDB_PROJECT,
             entity=WANDB_ENTITY,
             config={
-                "name": black_box_info.name,
-                "x0": x0,
-                "y0": y0,
-                "seed": seed,
-                "solver_name": observer_init_info["solver_name"],
+                **caller_info.__dict__,
                 **kwargs,
             },
-            name=observer_init_info["run_name"],
-            tags=[kwargs.get("tag", "default")],
+            name=run_name,
+            tags=caller_info.tags,
             reinit=self.allow_reinit,
+            mode=mode,
         )
         self.run = run  # type: ignore[assignment]
 
@@ -90,38 +107,44 @@ class WandbObserver(AbstractObserver):
 
 
 def initialize_observer(
-    experiment_name: str,
-    f: AbstractBlackBox,
-    function_name: str,
-    solver_name: str,
-    n_dimensions: int,
-    seed: int,
-    experiment_id: str,
-    max_iter: int,
-    strict_on_hash: bool,
-    tag: str = "default",
+    problem: Problem,
+    observer_config: ObserverConfig,
+    supervised_data: tuple[np.ndarray, np.ndarray],
 ) -> WandbObserver:
+    experiment_name = observer_config.experiment_name
+    n_dimensions = observer_config.n_dimensions
+    seed = observer_config.seed
+    max_iter = observer_config.max_iter
+    mode = observer_config.wandb_mode
+    tag = observer_config.tags
+
     wandb_observer = WandbObserver(project_name=experiment_name)
     wandb_observer.initialize_observer(
-        black_box_info=f.info,
-        observer_init_info={
-            "run_name": f"{function_name}-{solver_name}-n_dimensions-{n_dimensions}-seed-{seed}-exp_id-{experiment_id}",
-            "solver_name": solver_name,
-        },
-        x0=np.array([[]]),
-        y0=np.array([[]]),
+        black_box_info=problem.info,
+        caller_info=observer_config,
         seed=seed,
-        function_name=function_name,
         hdbo_benchmark_hash=(
-            get_git_hash_of_library(hdbo_benchmark) if strict_on_hash else None
+            get_git_hash_of_library(hdbo_benchmark)
+            if not has_uncommitted_changes(hdbo_benchmark)
+            else None
         ),
-        poli_hash=get_git_hash_of_library(poli) if strict_on_hash else None,
+        poli_hash=(
+            get_git_hash_of_library(poli) if not has_uncommitted_changes(poli) else None
+        ),
         poli_baselines_hash=(
-            get_git_hash_of_library(poli_baselines) if strict_on_hash else None
+            get_git_hash_of_library(poli_baselines)
+            if not has_uncommitted_changes(poli_baselines)
+            else None
         ),
         n_dimensions=n_dimensions,
         max_iter=max_iter,
+        mode=mode,
         tag=tag,
+        supervised_x=supervised_data[0].tolist(),
+        supervised_y=supervised_data[1],
     )
+
+    for x_i, y_i in zip(*supervised_data):
+        wandb_observer.observe(x=np.array([x_i]), y=np.array([y_i]))
 
     return wandb_observer

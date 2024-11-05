@@ -4,41 +4,95 @@
 from typing import Tuple, Dict, Any
 
 import numpy as np
+import torch
+
+from poli_baselines.core.abstract_solver import AbstractSolver
+from poli.core.problem import Problem
 
 from hdbo_benchmark.utils.constants import DEVICE
 
 SOLVER_NAMES = [
-    "random_mutation",
+    "directed_evolution",
+    "hill_climbing",
     "genetic_algorithm",
     "cma_es",
-    "line_bo",
+    "random_line_bo",
+    "coordinate_line_bo",
     "baxus",
     "turbo",
-    "vanilla_bo",
-    "vanilla_bo_with_lognormal_prior",
     "vanilla_bo_hvarfner",
     "alebo",
     "bounce",
     "pr",
     "saas_bo",
+    "lambo2",
 ]
 
+SOLVERS_THAT_DONT_ALLOW_CUSTOM_INPUTS = [
+    "bounce",
+    "baxus",
+]
 
-def load_solver(
+DISCRETE_SPACE_SOLVERS = [
+    "directed_evolution",
+    "pr",
+    "bounce",
+    "lambo2",
+    "genetic_algorithm",
+]
+
+CONTINUOUS_SPACE_SOLVERS = [
+    solver for solver in SOLVER_NAMES if solver not in DISCRETE_SPACE_SOLVERS
+]
+
+SOLVER_NAME_TO_ENV = {
+    "directed_evolution": "hdbo_benchmark",
+    "hill_climbing": "hdbo_benchmark",
+    "genetic_algorithm": "hdbo_benchmark",
+    "cma_es": "hdbo_benchmark",
+    "random_line_bo": "hdbo_benchmark",
+    "coordinate_line_bo": "hdbo_benchmark",
+    "baxus": "hdbo_baxus",
+    "turbo": "hdbo_benchmark",
+    "vanilla_bo_hvarfner": "hdbo_ax",
+    "alebo": "hdbo_alebo",
+    "bounce": "hdbo_bounce",
+    "pr": "hdbo_pr",
+    "saas_bo": "hdbo_ax",
+    "lambo2": "hdbo_lambo2",
+}
+
+
+def load_solver_class(
     solver_name: str,
     seed: int | None = None,
     n_dimensions: int | None = None,
     n_intrinsic_dimensions: int | None = None,
-    upper_bound: float | None = None,
-    lower_bound: float | None = None,
     max_iter: int | None = None,
     noise_std: float = 0.0,
     std: float = 0.25,
     n_initial_points: int = 10,
     **solver_kwargs,
-) -> Tuple[Any, Dict[str, Any]]:
+) -> Tuple[AbstractSolver, Dict[str, Any]]:
+    if solver_name in DISCRETE_SPACE_SOLVERS:
+        solver_kwargs.pop("bounds", None)
+        solver_kwargs.pop("std", None)
+
+    if solver_name in CONTINUOUS_SPACE_SOLVERS:
+        solver_kwargs.pop("sequence_length", None)
+        solver_kwargs.pop("alphabet", None)
+
     match solver_name:
-        case "random_mutation":
+        case "directed_evolution":
+            from poli_baselines.solvers.simple.random_mutation import (
+                RandomMutation,
+            )
+
+            solver_kwargs.pop("bounds", None)
+            solver_kwargs.pop("sequence_length", None)
+
+            return RandomMutation, solver_kwargs
+        case "hill_climbing":
             from poli_baselines.solvers.simple.continuous_random_mutation import (
                 ContinuousRandomMutation,
             )
@@ -100,11 +154,12 @@ def load_solver(
             solver_kwargs.update(
                 {
                     "device": DEVICE,
+                    "bounds": solver_kwargs.get("bounds", [0.0, 1.0]),
                 }
             )
 
             return VanillaBOHvarfner, solver_kwargs
-        case "line_bo":
+        case "random_line_bo":
             from poli_baselines.solvers.bayesian_optimization.line_bayesian_optimization import (
                 LineBO,
             )
@@ -116,6 +171,18 @@ def load_solver(
             )
 
             return LineBO, solver_kwargs
+        case "coordinate_line_bo":
+            from poli_baselines.solvers.bayesian_optimization.line_bayesian_optimization import (
+                LineBO,
+            )
+
+            solver_kwargs.update(
+                {
+                    "type_of_line": "coordinate",
+                }
+            )
+
+            return LineBO, solver_kwargs
         case "saas_bo":
             from poli_baselines.solvers.bayesian_optimization.saasbo import SAASBO
 
@@ -123,6 +190,7 @@ def load_solver(
                 {
                     "noise_std": noise_std,
                     "device": DEVICE,
+                    "bounds": solver_kwargs.get("bounds", [0.0, 1.0]),
                 }
             )
 
@@ -149,8 +217,8 @@ def load_solver(
                 {
                     "initial_mean": np.random.randn(n_dimensions)
                     .reshape(1, -1)
-                    .clip(*solver_kwargs.get("bounds", [None, None])),
-                    "population_size": n_initial_points,
+                    .clip(*solver_kwargs.get("bounds", [0.0, 1.0])),
+                    "population_size": 10,
                     "initial_sigma": 1.0,
                 }
             )
@@ -166,6 +234,7 @@ def load_solver(
                     "n_dimensions": n_dimensions,
                     "n_init": n_initial_points,
                     "max_iter": max_iter,
+                    "bounds": solver_kwargs.get("bounds", [0.0, 1.0]),
                 }
             )
 
@@ -175,14 +244,20 @@ def load_solver(
                 Turbo,
             )
 
+            torch.set_default_dtype(torch.float64)
+
             return Turbo, solver_kwargs
         case "bounce":
             from poli_baselines.solvers.bayesian_optimization.bounce import BounceSolver
+
+            torch.set_default_dtype(torch.float64)
 
             solver_kwargs.update(
                 {
                     "noise_std": noise_std,
                     "n_initial_points": n_initial_points,
+                    "device": DEVICE,
+                    "dtype": "float64",
                 }
             )
             solver_kwargs.pop("bounds", None)
@@ -202,5 +277,47 @@ def load_solver(
             solver_kwargs.pop("bounds", None)
 
             return ProbabilisticReparametrizationSolver, solver_kwargs
+        case "lambo2":
+            from poli_baselines.solvers.bayesian_optimization.lambo2 import (
+                LaMBO2,
+            )
+
+            # TODO: write these out.
+            solver_kwargs.update(
+                {
+                    "device": DEVICE,
+                }
+            )
+            solver_kwargs.pop("bounds", None)
+
+            return LaMBO2, solver_kwargs
         case _:
             raise ValueError(f"Unknown solver {solver_name}")
+
+
+def load_solver_from_problem(
+    solver_name: str,
+    problem: Problem,
+    seed: int | None = None,
+):
+    f, data_package = problem.black_box, problem.data_package
+    x0, y0 = data_package.supervised_data
+
+    if len(x0.shape) == 1:
+        n_dimensions = None
+    else:
+        n_dimensions = x0.shape[1]
+
+    solver_, kwargs = load_solver_class(
+        solver_name=solver_name,
+        seed=seed,
+        n_dimensions=n_dimensions,
+        n_initial_points=x0.shape[0],
+    )
+
+    return solver_(
+        black_box=f,
+        x0=x0,
+        y0=y0,
+        **kwargs,
+    )
