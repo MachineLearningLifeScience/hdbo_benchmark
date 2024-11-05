@@ -5,9 +5,7 @@ SELFIES data from zinc250k.
 
 from __future__ import annotations
 from typing import Tuple, Dict, Optional
-from pathlib import Path
 from itertools import product
-import json
 
 import numpy as np
 import matplotlib.pyplot as plt

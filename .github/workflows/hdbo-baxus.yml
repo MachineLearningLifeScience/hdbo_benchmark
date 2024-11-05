@@ -1,10 +1,21 @@
 name: Tests on hdbo baxus (python 3.10)
 
-on: [push]
+on:
+  push:
+      branches:
+      - master
+  pull_request:
+      types: [opened, synchronize, reopened, ready_for_review, closed]
+      branches:
+      - master
+  schedule:
+      - cron: '0 0 * * 0'
 
 jobs:
   build-linux:
     runs-on: ubuntu-latest
+    timeout-minutes: 8
+    if: github.event.pull_request.draft == false
     strategy:
       max-parallel: 5
 
