@@ -3,6 +3,7 @@ Defines a common way of loading VAEs from just the name
 of the experiment and the latent dimension.
 """
 
+from pathlib import Path
 from typing import Literal
 
 import torch
@@ -10,7 +11,10 @@ import torch
 from hdbo_benchmark.generative_models.vae import VAE
 from hdbo_benchmark.generative_models.vae_selfies import VAESelfies
 from hdbo_benchmark.generative_models.vae_mario import VAEMario
-from hdbo_benchmark.utils.constants import MODELS_DIR, DEVICE
+from hdbo_benchmark.utils.constants import DEVICE
+from hdbo_benchmark.assets import __file__ as ASSETS_PATH
+
+ASSETS_DIR = Path(ASSETS_PATH).parent
 
 
 class VAEFactory:
@@ -30,6 +34,7 @@ class VAEFactory:
         return vae
 
     def _create_vae_on_mario(self, latent_dim: int) -> VAEMario:
+        MODELS_DIR = ASSETS_DIR / "training_vae_on_mario"
         match latent_dim:
             case 2:
                 weights_path = (
@@ -76,6 +81,7 @@ class VAEFactory:
         return opt_vae
 
     def _create_vae_on_molecules(self, latent_dim: int) -> VAESelfies:
+        MODELS_DIR = ASSETS_DIR / "training_vae_on_zinc_250k"
         match latent_dim:
             case 2:
                 weights_path = (
