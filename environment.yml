@@ -13,6 +13,6 @@ dependencies:
     - click
     - fair-esm
     - lightning
-    - "git+https://github.com/MachineLearningLifeScience/poli.git@dev"
+    - poli-core
     - "git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main"
     - -e .

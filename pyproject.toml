@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hdbo_benchmark"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
     "numpy<2",
     "botorch",
@@ -14,7 +14,7 @@ dependencies = [
     "click",
     "lightning",
     "fair-esm",
-    "poli@git+https://github.com/MachineLearningLifeScience/poli.git",
+    "poli-core",
     "poli-baselines@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
 

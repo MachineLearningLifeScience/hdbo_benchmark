@@ -2,7 +2,7 @@ CairoSVG
 botorch
 matplotlib
 seaborn
-poli @ git+https://github.com/MachineLearningLifeScience/poli.git
+poli-core
 poli-baselines @ git+https://github.com/MachineLearningLifeScience/poli-baselines.git@main
 wandb
 lightning
