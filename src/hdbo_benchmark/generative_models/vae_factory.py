@@ -85,22 +85,16 @@ class VAEFactory:
         match latent_dim:
             case 2:
                 weights_path = (
-                    MODELS_DIR
-                    / "training_vae_on_zinc_250k"
-                    / "latent_dim-2-batch_size-512-lr-0.0005-seed-1.pt"
+                    MODELS_DIR / "latent_dim-2-batch_size-512-lr-0.0005-seed-1.pt"
                 )
             case 64:
                 weights_path = (
-                    MODELS_DIR
-                    / "training_vae_on_zinc_250k"
-                    / "latent_dim-64-batch_size-512-lr-0.0005-seed-0.pt"
+                    MODELS_DIR / "latent_dim-64-batch_size-512-lr-0.0005-seed-0.pt"
                 )
             case 128:
                 # We return our MLP VAE.
                 weights_path = (
-                    MODELS_DIR
-                    / "training_vae_on_zinc_250k"
-                    / "latent_dim-128-batch_size-512-lr-0.0005-seed-1.pt"
+                    MODELS_DIR / "latent_dim-128-batch_size-512-lr-0.0005-seed-1.pt"
                 )
             case _:
                 raise NotImplementedError
