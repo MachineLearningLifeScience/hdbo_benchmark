@@ -25,17 +25,16 @@ def construct_setups(solvers: list[str]):
         for solver_name in solvers
         for function_name in PMOBenchmark(
             string_representation="SELFIES"
-        ).problem_names[:5]
+        ).problem_names[:1]
     ]
 
-    rasp_setups = []
-    foldx_setups = []
-    for latent_dim in [32]:
-        for solver_name in solvers:
-            rasp_setups.append(("rfp_rasp", solver_name, latent_dim))
-            # foldx_setups.append(("rfp_foldx_stability", solver_name, latent_dim))
+    ehrlich_like_setups = [
+        (function_name, solver_name, 128)
+        for function_name in ["ehrlich_holo_tiny", "pest_control_equivalent"]
+        for solver_name in solvers
+    ]
 
-    return pmo_setups + rasp_setups + foldx_setups
+    return pmo_setups + ehrlich_like_setups
 
 
 @pytest.mark.hdbo_base
