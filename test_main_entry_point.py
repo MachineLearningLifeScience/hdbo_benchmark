@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from run import _main
@@ -17,6 +19,8 @@ SOLVERS_THAT_RUN_IN_BASE_ENV = [
 
 MAX_ITER = 1
 SEED = 1
+
+os.environ["WANDB_MODE"] = "disabled"
 
 
 def construct_setups(solvers: list[str]):
