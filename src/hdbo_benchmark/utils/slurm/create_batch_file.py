@@ -18,8 +18,8 @@ def write_batch_script_for_commands(
     commands: list[str],
     *,
     job_name: str = "hdbo_benchmark",
-    output_path: str = f"slurm_logs/{WANDB_PROJECT}",
-    error_path: str = f"slurm_logs/{WANDB_PROJECT}",
+    output_dir: str = f"slurm_logs/{WANDB_PROJECT}",
+    error_dir: str = f"slurm_logs/{WANDB_PROJECT}",
     gpu_resources: str = "--gres=gpu:titanx:1",
     parallel_count: int = 1,
     slurm_script_output_path: Path | str = ROOT_DIR / "batch_script.local.sh",
@@ -37,11 +37,15 @@ def write_batch_script_for_commands(
     with open(instruction_file_output_path, "w") as fp_instruction:
         fp_instruction.writelines(commands)
 
+    # Making sure the output and error dirs exist
+    output_dir.mkdir(parents=True, exist_ok=True)
+    error_dir.mkdir(parents=True, exist_ok=True)
+
     # Define the values for the placeholders
     context = {
         "job_name": job_name,
-        "output_path": output_path,
-        "error_path": error_path,
+        "output_path": output_dir,
+        "error_path": error_dir,
         "gpu_resources": gpu_resources,
         "line_count": line_count,
         "parallel_count": parallel_count,
