@@ -34,7 +34,7 @@ jobs:
         python -m pip install tox
     - name: Check linting
       run: |
-        tox -e formatting-py310
+        tox -e formatting-and-linting-py310
     - name: Check tests with tox on base env
       run: |
         tox -e hdbo-base-py310
