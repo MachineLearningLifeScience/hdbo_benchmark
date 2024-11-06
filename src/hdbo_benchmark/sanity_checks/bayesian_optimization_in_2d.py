@@ -5,18 +5,15 @@ we visualize the acquisition function and the posterior mean and variance.
 
 import warnings
 
-warnings.filterwarnings("ignore", module="botorch")
-
-import numpy as np
 import matplotlib.pyplot as plt
-
+import numpy as np
 from poli import objective_factory  # type: ignore
-
-from poli_baselines.solvers import LineBO, VanillaBayesianOptimization  # type: ignore
-
 from poli_baselines.core.utils.visualization.objective_functions import (  # type: ignore
     plot_objective_function,
 )
+from poli_baselines.solvers import VanillaBayesianOptimization  # type: ignore
+
+warnings.filterwarnings("ignore", module="botorch")
 
 if __name__ == "__main__":
     problem_info, f_ackley, _, _, _ = objective_factory.create(

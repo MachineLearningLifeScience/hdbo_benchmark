@@ -4,26 +4,23 @@ SELFIES data from zinc250k.
 """
 
 from __future__ import annotations
-from typing import Tuple, Dict, Optional
+
 from itertools import product
+from typing import Dict, Optional, Tuple
 
-import numpy as np
 import matplotlib.pyplot as plt
-
+import numpy as np
 import torch
 import torch.nn as nn
+from torch.distributions import Categorical, Normal
 
-from torch.distributions import Normal, Categorical
-
-from hdbo_benchmark.utils.selfies.visualization import (
-    selfie_to_numpy_image_array,
-)
-from hdbo_benchmark.utils.selfies.tokens import from_selfie_to_tensor
 from hdbo_benchmark.generative_models.vae import VAE
 from hdbo_benchmark.utils.experiments.load_metadata_for_vaes import (
     load_alphabet_for_pmo,
     load_sequence_length_for_pmo,
 )
+from hdbo_benchmark.utils.selfies.tokens import from_selfie_to_tensor
+from hdbo_benchmark.utils.selfies.visualization import selfie_to_numpy_image_array
 
 
 class VAESelfies(VAE):

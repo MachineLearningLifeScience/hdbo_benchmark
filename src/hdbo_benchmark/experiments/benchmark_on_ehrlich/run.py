@@ -7,29 +7,25 @@ from typing import Callable
 from uuid import uuid4
 
 import click
-
-import torch
 import numpy as np
-
 import poli
+import poli_baselines
+import torch
+from poli.core.exceptions import BudgetExhaustedException
 from poli.core.util.seeding import seed_numpy, seed_python
 from poli.objective_repository import EhrlichHoloBlackBox
-from poli.core.exceptions import BudgetExhaustedException
-
-import poli_baselines
 
 import hdbo_benchmark
+from hdbo_benchmark.utils.constants import DEVICE, ROOT_DIR
 from hdbo_benchmark.utils.experiments.load_solvers import (
-    load_solver_class,
     SOLVER_NAMES,
+    load_solver_class,
 )
-from hdbo_benchmark.utils.constants import ROOT_DIR, DEVICE
-from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
-
-from hdbo_benchmark.utils.logging.wandb_observer import initialize_observer
 from hdbo_benchmark.utils.logging.idempotence_of_experiments import (
     experiment_has_already_run,
 )
+from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
+from hdbo_benchmark.utils.logging.wandb_observer import initialize_observer
 
 torch.set_default_dtype(torch.float32)
 

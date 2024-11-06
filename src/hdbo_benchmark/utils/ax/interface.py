@@ -1,17 +1,9 @@
 import numpy as np
-
-from poli.core.abstract_black_box import AbstractBlackBox  # type: ignore[import]
-
-from ax import (  # type: ignore[import]
-    Data,
-    Experiment,
-    ParameterType,
-    RangeParameter,
-    SearchSpace,
-)
+from ax import ParameterType, RangeParameter, SearchSpace  # type: ignore[import]
+from ax.core.generator_run import GeneratorRun  # type: ignore[import]
 from ax.core.metric import Metric  # type: ignore[import]
 from ax.metrics.noisy_function import NoisyFunctionMetric  # type: ignore[import]
-from ax.core.generator_run import GeneratorRun  # type: ignore[import]
+from poli.core.abstract_black_box import AbstractBlackBox  # type: ignore[import]
 
 
 def define_search_space(

@@ -5,10 +5,10 @@ plot levels.
 
 from pathlib import Path
 
-import torch
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 import PIL
+import torch
 
 from hdbo_benchmark.utils.mario.levels import onehot_to_levels
 
@@ -86,7 +86,7 @@ def get_img_from_level(level: np.ndarray) -> np.ndarray:
             image_row.append(tile)
         image_.append(image_row)
 
-    image_rows = [np.hstack([tile for tile in row]) for row in image]  # type: ignore
+    image_rows = [np.hstack([tile for tile in row]) for row in image_]  # type: ignore
     image: np.ndarray = np.vstack([np.asarray(row) for row in image_rows])  # type: ignore
 
     return image

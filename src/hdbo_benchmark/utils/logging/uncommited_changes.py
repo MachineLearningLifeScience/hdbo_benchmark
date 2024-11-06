@@ -1,5 +1,5 @@
-from types import ModuleType
 import subprocess
+from types import ModuleType
 
 
 def has_uncommitted_changes(library: ModuleType):

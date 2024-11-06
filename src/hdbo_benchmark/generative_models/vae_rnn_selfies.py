@@ -2,12 +2,11 @@ import json
 
 import numpy as np
 import torch
-from torch.distributions import Normal, Categorical
-
 import torch.nn as nn
+from torch.distributions import Categorical, Normal
 
 from hdbo_benchmark.generative_models.vae import VAE
-from hdbo_benchmark.utils.constants import ROOT_DIR, DEVICE
+from hdbo_benchmark.utils.constants import DEVICE, ROOT_DIR
 
 
 class Encoder(nn.Module):
@@ -137,7 +136,7 @@ class VAERNNSelfies(VAE):
 
 
 if __name__ == "__main__":
-    from hdbo_benchmark.utils.constants import MODELS_DIR, DEVICE
+    from hdbo_benchmark.utils.constants import DEVICE, MODELS_DIR
 
     vae = VAERNNSelfies(
         latent_dim=256,

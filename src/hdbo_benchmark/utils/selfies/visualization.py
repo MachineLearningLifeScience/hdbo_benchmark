@@ -3,18 +3,15 @@ A set of utilities to draw molecules from SELFIE and SMILES strings,
 using RDKit and cairosvg.
 """
 
-from pathlib import Path
-import PIL.Image as Image
 import io
-
-from rdkit import Chem  # type: ignore[import]
-from rdkit.Chem.Draw import rdMolDraw2D  # type: ignore[import]
-
-import numpy as np
+from pathlib import Path
 
 import cairosvg  # type: ignore[import]
-
+import numpy as np
+import PIL.Image as Image
 import selfies as sf  # type: ignore[import]
+from rdkit import Chem  # type: ignore[import]
+from rdkit.Chem.Draw import rdMolDraw2D  # type: ignore[import]
 
 
 def draw_molecule_from_selfies(

@@ -2,7 +2,7 @@ from typing import Tuple
 
 import numpy as np
 import torch
-from torch.distributions import Normal, Categorical
+from torch.distributions import Categorical, Normal
 
 
 class VAE(torch.nn.Module):

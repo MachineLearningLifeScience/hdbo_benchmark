@@ -3,8 +3,9 @@ Taken and adapted from:
 https://stackoverflow.com/a/39225272
 """
 
-import requests
 import hashlib
+
+import requests
 
 
 def download_file_from_google_drive(file_id, destination, md5_checksum: str = None):

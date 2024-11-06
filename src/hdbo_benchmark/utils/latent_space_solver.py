@@ -9,10 +9,9 @@ latent space point, and then decoding this point to get a new candidate
 point in the original space.
 """
 
-from typing import Callable, Type, Tuple
+from typing import Callable, Tuple, Type
 
 import numpy as np
-
 from poli.core.abstract_black_box import AbstractBlackBox  # type: ignore[import]
 from poli_baselines.core.abstract_solver import AbstractSolver  # type: ignore[import]
 

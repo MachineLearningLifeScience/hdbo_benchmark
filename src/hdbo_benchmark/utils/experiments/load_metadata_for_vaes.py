@@ -1,6 +1,5 @@
-from pathlib import Path
-
 import json
+from pathlib import Path
 
 from hdbo_benchmark.assets import __file__ as assets_file
 

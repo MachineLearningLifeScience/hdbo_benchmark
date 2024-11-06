@@ -5,13 +5,13 @@ The notation very much follows the original VAE paper.
 """
 
 from itertools import product
-from typing import Tuple, Optional
+from typing import Optional
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 import torch
-from torch.distributions import Distribution, Normal, Categorical, kl_divergence
 import torch.nn as nn
+from torch.distributions import Categorical, Normal
 
 from hdbo_benchmark.generative_models.vae import VAE
 from hdbo_benchmark.utils.data.mario import load_mario_tensors

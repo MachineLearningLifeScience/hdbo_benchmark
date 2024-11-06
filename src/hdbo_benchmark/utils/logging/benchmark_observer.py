@@ -1,7 +1,7 @@
-from uuid import uuid4
 import json
-import numpy as np
+from uuid import uuid4
 
+import numpy as np
 from poli.core.black_box_information import BlackBoxInformation
 from poli.core.util.abstract_observer import AbstractObserver
 

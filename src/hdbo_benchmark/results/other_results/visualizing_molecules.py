@@ -1,9 +1,8 @@
-import pickle
 import json
+import pickle
 
-import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+import pandas as pd
 
 from hdbo_benchmark.utils.constants import ROOT_DIR
 from hdbo_benchmark.utils.selfies.visualization import selfie_to_numpy_image_array

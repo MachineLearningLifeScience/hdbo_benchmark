@@ -1,7 +1,7 @@
 import esm
 
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
-from hdbo_benchmark.utils.constants import ROOT_DIR, DEVICE
+from hdbo_benchmark.utils.constants import DEVICE, ROOT_DIR
 
 
 class ProteinAEFactory:

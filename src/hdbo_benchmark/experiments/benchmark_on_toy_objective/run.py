@@ -5,24 +5,22 @@ Runs the benchmark experiment for the toy objective function.
 from uuid import uuid4
 
 import click
-
 import numpy as np
-import torch
-
 import poli  # type: ignore
 import poli_baselines  # type: ignore
-from poli.objective_repository import ToyContinuousBlackBox  # type: ignore
+import torch
 from poli.core.util.seeding import seed_numpy, seed_python  # type: ignore
+from poli.objective_repository import ToyContinuousBlackBox  # type: ignore
 
 import hdbo_benchmark
-from hdbo_benchmark.utils.experiments.load_solvers import (
-    load_solver_class,
-    SOLVER_NAMES,
-)
 from hdbo_benchmark.utils.constants import ROOT_DIR
+from hdbo_benchmark.utils.experiments.load_solvers import (
+    SOLVER_NAMES,
+    load_solver_class,
+)
 from hdbo_benchmark.utils.logging import (
-    get_git_hash_of_library,
     WandbObserver,
+    get_git_hash_of_library,
     has_uncommitted_changes,
 )
 

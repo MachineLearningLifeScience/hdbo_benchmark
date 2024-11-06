@@ -1,5 +1,4 @@
 import wandb
-
 from hdbo_benchmark.utils.constants import WANDB_ENTITY
 
 

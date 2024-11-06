@@ -1,13 +1,12 @@
 """Solvers for the benchmark on toy objective functions."""
 
 # mypy: disable-error-code="import-untyped"
-from typing import Tuple, Dict, Any
+from typing import Any, Dict, Tuple
 
 import numpy as np
 import torch
-
-from poli_baselines.core.abstract_solver import AbstractSolver
 from poli.core.problem import Problem
+from poli_baselines.core.abstract_solver import AbstractSolver
 
 from hdbo_benchmark.utils.constants import DEVICE
 
@@ -84,9 +83,7 @@ def load_solver_class(
 
     match solver_name:
         case "directed_evolution":
-            from poli_baselines.solvers.simple.random_mutation import (
-                RandomMutation,
-            )
+            from poli_baselines.solvers.simple.random_mutation import RandomMutation
 
             solver_kwargs.pop("bounds", None)
             solver_kwargs.pop("sequence_length", None)
@@ -125,10 +122,10 @@ def load_solver_class(
 
             return VanillaBayesianOptimization, solver_kwargs
         case "vanilla_bo_with_lognormal_prior":
+            import gpytorch
             from poli_baselines.solvers.bayesian_optimization.vanilla_bayesian_optimization import (
                 VanillaBayesianOptimization,
             )
-            import gpytorch
 
             assert n_dimensions is not None
             kernel = gpytorch.kernels.ScaleKernel(
@@ -278,9 +275,7 @@ def load_solver_class(
 
             return ProbabilisticReparametrizationSolver, solver_kwargs
         case "lambo2":
-            from poli_baselines.solvers.bayesian_optimization.lambo2 import (
-                LaMBO2,
-            )
+            from poli_baselines.solvers.bayesian_optimization.lambo2 import LaMBO2
 
             # TODO: write these out.
             solver_kwargs.update(

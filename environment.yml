@@ -1,4 +1,4 @@
-name: hdbo_benchmark 
+name: hdbo_benchmark
 channels:
   - defaults
 dependencies:

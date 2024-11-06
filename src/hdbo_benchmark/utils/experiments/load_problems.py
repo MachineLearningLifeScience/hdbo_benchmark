@@ -1,24 +1,27 @@
 from typing import Literal
 
-import selfies as sf
 import numpy as np
-
 import poli
+import selfies as sf
 from poli.benchmarks import PMOBenchmark
-from poli.core.problem import Problem
-from poli.repository import RFPRaspProblemFactory, RFPFoldXStabilityProblemFactory
-from poli.repository import EhrlichHoloProblemFactory, EhrlichHoloBlackBox
-from poli.core.data_package import DataPackage
 from poli.core.chemistry.data_packages import RandomMoleculesDataPackage
+from poli.core.data_package import DataPackage
+from poli.core.problem import Problem
+from poli.repository import (
+    EhrlichHoloBlackBox,
+    EhrlichHoloProblemFactory,
+    RFPFoldXStabilityProblemFactory,
+    RFPRaspProblemFactory,
+)
 
 from hdbo_benchmark.utils.constants import PENALIZE_UNFEASIBLE_WITH
-from hdbo_benchmark.utils.logging.wandb_observer import (
-    initialize_observer,
-    ObserverConfig,
-)
 from hdbo_benchmark.utils.experiments.load_metadata_for_vaes import (
     load_alphabet_for_pmo,
     load_sequence_length_for_pmo,
+)
+from hdbo_benchmark.utils.logging.wandb_observer import (
+    ObserverConfig,
+    initialize_observer,
 )
 
 

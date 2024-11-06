@@ -1,7 +1,7 @@
 import matplotlib
-import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
 
 from hdbo_benchmark.utils.constants import ROOT_DIR
 

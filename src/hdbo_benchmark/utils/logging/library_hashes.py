@@ -1,5 +1,5 @@
-import subprocess
 import re
+import subprocess
 
 
 def get_git_hash_of_library(library):

@@ -7,35 +7,31 @@ from typing import Callable
 from uuid import uuid4
 
 import click
-
-import torch
 import numpy as np
-from selfies import split_selfies
-
 import poli
-from poli.core.util.seeding import seed_numpy, seed_python
+import poli_baselines
+import torch
 from poli.core.abstract_black_box import AbstractBlackBox
 from poli.core.exceptions import BudgetExhaustedException
-
-import poli_baselines
+from poli.core.util.seeding import seed_numpy, seed_python
+from selfies import split_selfies
 
 import hdbo_benchmark
-from hdbo_benchmark.generative_models.vae_factory import VAEFactory, VAESelfies, VAE
-from hdbo_benchmark.utils.experiments.load_solvers import (
-    load_solver_class,
-    SOLVER_NAMES,
-)
+from hdbo_benchmark.generative_models.vae_factory import VAE, VAEFactory, VAESelfies
+from hdbo_benchmark.utils.constants import DEVICE, ROOT_DIR
 from hdbo_benchmark.utils.experiments.load_metadata_for_vaes import (
     load_alphabet_for_pmo,
     load_sequence_length_for_pmo,
 )
-from hdbo_benchmark.utils.constants import ROOT_DIR, DEVICE
-from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
-
-from hdbo_benchmark.utils.logging.wandb_observer import initialize_observer
+from hdbo_benchmark.utils.experiments.load_solvers import (
+    SOLVER_NAMES,
+    load_solver_class,
+)
 from hdbo_benchmark.utils.logging.idempotence_of_experiments import (
     experiment_has_already_run,
 )
+from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
+from hdbo_benchmark.utils.logging.wandb_observer import initialize_observer
 
 torch.set_default_dtype(torch.float32)
 

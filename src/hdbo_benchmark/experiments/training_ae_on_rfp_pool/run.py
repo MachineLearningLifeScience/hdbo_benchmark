@@ -1,15 +1,11 @@
 import json
 
 import click
-
-import numpy as np
-
-import torch
-from torch.utils.data import TensorDataset, DataLoader
-
 import esm
-
 import lightning as L
+import numpy as np
+import torch
+from torch.utils.data import DataLoader, TensorDataset
 
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
 from hdbo_benchmark.utils.constants import ROOT_DIR

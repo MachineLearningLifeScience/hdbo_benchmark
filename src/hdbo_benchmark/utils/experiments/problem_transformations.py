@@ -1,17 +1,17 @@
 from typing import Callable
 
 import numpy as np
-
-from poli.core.problem import Problem
 from poli.core.black_box_information import BlackBoxInformation
-from poli.core.lambda_black_box import LambdaBlackBox
 from poli.core.data_package import DataPackage
-from hdbo_benchmark.generative_models.vae import VAE, OptimizedVAE
+from poli.core.lambda_black_box import LambdaBlackBox
+from poli.core.problem import Problem
+
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
 from hdbo_benchmark.generative_models.onehot import OneHot
+from hdbo_benchmark.generative_models.vae import VAE, OptimizedVAE
 from hdbo_benchmark.utils.experiments.normalization import (
-    from_unit_cube_to_range,
     from_range_to_unit_cube,
+    from_unit_cube_to_range,
 )
 
 
