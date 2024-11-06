@@ -115,6 +115,11 @@ def _load_ehrlich_holo(size: Literal["tiny", "small", "large"]) -> Problem:
             n_motifs = 2
             motif_length = 5
             n_supervised_points = 10
+        case "medium":
+            sequence_length = 32
+            n_motifs = 3
+            motif_length = 8
+            n_supervised_points = 50
         case "large":
             sequence_length = 64
             n_motifs = 4
@@ -159,6 +164,8 @@ def _load_problem(function_name: str) -> Problem:
             return _load_ehrlich_holo(size="tiny")
         case "ehrlich_holo_small":
             return _load_ehrlich_holo(size="small")
+        case "ehrlich_holo_medium":
+            return _load_ehrlich_holo(size="medium")
         case "ehrlich_holo_large":
             return _load_ehrlich_holo(size="large")
         case "pest_control_equivalent":
