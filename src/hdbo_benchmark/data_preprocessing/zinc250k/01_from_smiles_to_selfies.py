@@ -44,7 +44,7 @@ def translate_smiles_to_selfies(
             selfies_strings.append(sf.encoder(smile))
         except sf.EncoderError:
             if strict:
-                raise ValueError(f"Failed to encode SMILES to SELFIES.")
+                raise ValueError("Failed to encode SMILES to SELFIES.")
             else:
                 selfies_strings.append(None)
 

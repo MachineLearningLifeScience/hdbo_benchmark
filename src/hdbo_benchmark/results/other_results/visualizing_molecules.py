@@ -3,7 +3,6 @@ import pickle
 
 import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
 
 from hdbo_benchmark.utils.constants import ROOT_DIR
 from hdbo_benchmark.utils.selfies.visualization import selfie_to_numpy_image_array

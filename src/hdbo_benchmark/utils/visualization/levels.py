@@ -86,7 +86,7 @@ def get_img_from_level(level: np.ndarray) -> np.ndarray:
             image_row.append(tile)
         image_.append(image_row)
 
-    image_rows = [np.hstack([tile for tile in row]) for row in image]  # type: ignore
+    image_rows = [np.hstack([tile for tile in row]) for row in image_]  # type: ignore
     image: np.ndarray = np.vstack([np.asarray(row) for row in image_rows])  # type: ignore
 
     return image

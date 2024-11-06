@@ -6,7 +6,7 @@ import numpy as np
 import seaborn as sns  # type: ignore
 import torch
 
-from .constants import FONT_SIZE, SQUARE_FIG_SIZE
+from .constants import SQUARE_FIG_SIZE
 
 sns.set_style("darkgrid")
 

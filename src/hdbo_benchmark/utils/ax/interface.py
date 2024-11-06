@@ -1,7 +1,5 @@
 import numpy as np
 from ax import (  # type: ignore[import]
-    Data,
-    Experiment,
     ParameterType,
     RangeParameter,
     SearchSpace,

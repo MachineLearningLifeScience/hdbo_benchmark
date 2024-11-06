@@ -3,7 +3,6 @@ A set of utilities to transform SELFIE strings into tokens and vice versa.
 """
 
 import json
-import re
 from pathlib import Path
 from typing import Any, Dict, List, Union
 

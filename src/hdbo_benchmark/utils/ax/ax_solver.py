@@ -3,7 +3,6 @@ from typing import Tuple
 
 import numpy as np
 from ax.modelbridge.generation_strategy import (  # type: ignore[import]
-    GenerationStep,
     GenerationStrategy,
 )
 from ax.service.ax_client import AxClient, ObjectiveProperties  # type: ignore[import]

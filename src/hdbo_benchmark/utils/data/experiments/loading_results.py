@@ -90,9 +90,6 @@ def load_results_as_dataframe(
 def load_results_as_dataframe_from_wandb(
     experiment_name: str, solver_name: str, function_name: str, n_dimensions: int
 ) -> pd.DataFrame:
-    api = wandb.Api()
-    runs = api.runs(f"{WANDB_ENTITY}/{experiment_name}")
-
     df = load_all_results_as_dataframe_from_wandb(experiment_name)
     df = df[df["solver"] == solver_name]
     df = df[df["function_name"] == function_name]

@@ -8,10 +8,11 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-pd.set_option("display.max_colwidth", None)
-
 from hdbo_benchmark.results.benchmark_on_pmo.create_table import create_base_table
 from hdbo_benchmark.utils.constants import ROOT_DIR
+
+pd.set_option("display.max_colwidth", None)
+
 
 N_DIMENSIONS = 128
 COLOR_IN_TABLE = "Green"
