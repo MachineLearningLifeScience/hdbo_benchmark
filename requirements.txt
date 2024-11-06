@@ -7,10 +7,3 @@ poli-baselines @ git+https://github.com/MachineLearningLifeScience/poli-baseline
 wandb
 lightning
 fair-esm
-mypy
-pandas-stubs
-types-Pillow
-ruff
-black
-isort
-pre-commit

@@ -1,0 +1,7 @@
+mypy
+pandas-stubs
+types-Pillow
+ruff
+black
+isort
+pre-commit
