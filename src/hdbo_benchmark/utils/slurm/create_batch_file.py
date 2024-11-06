@@ -38,8 +38,8 @@ def write_batch_script_for_commands(
         fp_instruction.writelines(commands)
 
     # Making sure the output and error dirs exist
-    output_dir.mkdir(parents=True, exist_ok=True)
-    error_dir.mkdir(parents=True, exist_ok=True)
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    Path(error_dir).mkdir(parents=True, exist_ok=True)
 
     # Define the values for the placeholders
     context = {
