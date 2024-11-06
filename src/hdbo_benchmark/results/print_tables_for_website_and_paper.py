@@ -37,7 +37,7 @@ def compute_pretty_names_for_solvers(use_tex: bool = True):
         "saas_bo": r"\texttt{SAASBO}" if use_tex else "SAASBO",
         # "alebo": r"\texttt{ALEBO}",
         "turbo": r"\texttt{Turbo}" if use_tex else "Turbo",
-        "baxus": r"\texttt{BAxUS}",
+        "baxus": r"\texttt{BAxUS}" if use_tex else "BAxUS",
         "bounce": r"\texttt{Bounce}" if use_tex else "Bounce",
         "pr": r"\texttt{ProbRep}" if use_tex else "ProbRep",
         # "lambo2": r"\texttt{Lambo2}" if use_tex else "Lambo2",
@@ -46,7 +46,7 @@ def compute_pretty_names_for_solvers(use_tex: bool = True):
     return solver_name_but_pretty
 
 
-def compute_pretty_names_for_functions(use_tex: bool = True):
+def compute_pretty_names_for_functions():
     return {
         "pest_control_equivalent": "PestControlEquiv",
         "ehrlich_holo_tiny": "Ehrlich(L=5)",
@@ -159,8 +159,14 @@ def summary_per_function(
     return summary_avg, summary_std, missing_experiments
 
 
-def print_table_as_tex(df, normalized: bool = False, transpose: bool = False):
-    solver_name_but_pretty = compute_pretty_names_for_solvers()
+def print_table_as_tex(
+    df,
+    normalized: bool = False,
+    transpose: bool = False,
+    use_tex: bool = True,
+    include_color: bool = True,
+):
+    solver_name_but_pretty = compute_pretty_names_for_solvers(use_tex=use_tex)
     problem_name_but_pretty = compute_pretty_names_for_functions()
     index_name = "Solver" + r"\textbackslash " + "Oracle" if transpose else "Oracle"
     summary_avg, summary_std, missing_experiments = summary_per_function(
@@ -196,9 +202,18 @@ def print_table_as_tex(df, normalized: bool = False, transpose: bool = False):
                     + f"{int(50 * normalized_avg)}"
                     + "}"
                 )
-                row[pretty_solver_name] = (
-                    cell_color_str + f"${avg}" r"{\pm \scriptstyle " + f"{std}" + "}$"
-                )
+                if use_tex:
+                    if include_color:
+                        cell_string = (
+                            cell_color_str + f"${avg}"
+                            r"{\pm \scriptstyle " + f"{std}" + "}$"
+                        )
+                    else:
+                        cell_string = f"${avg}" r"{\pm \scriptstyle " + f"{std}" + "}$"
+                else:
+                    cell_string = f"{avg} +/- {std}"
+
+                row[pretty_solver_name] = cell_string
 
         final_table_rows.append(row)
 
@@ -218,12 +233,17 @@ def print_table_as_tex(df, normalized: bool = False, transpose: bool = False):
         solver_score = summary_avg_normalized.loc[:, solver_name].sum()
         sum_std_scores = summary_std.loc[:, solver_name].sum()
         ranks[solver_name] = solver_score
-        row[pretty_solver_name] = (
-            f"${solver_score:.2f}"
-            + r"{\pm \scriptstyle "
-            + f"{sum_std_scores:.2f}"
-            + "}$"
-        )
+        if use_tex:
+            sum_cell_string = (
+                f"${solver_score:.2f}"
+                + r"{\pm \scriptstyle "
+                + f"{sum_std_scores:.2f}"
+                + "}$"
+            )
+        else:
+            sum_cell_string = f"{solver_score:.2f}" + " +/- " + f"{sum_std_scores:.2f}"
+
+        row[pretty_solver_name] = sum_cell_string
 
     # Let's compute the colors, normalizing the ranks
     ranks = pd.Series(ranks)
@@ -232,10 +252,11 @@ def print_table_as_tex(df, normalized: bool = False, transpose: bool = False):
         if solver_name not in summary_avg.columns:
             continue
         rank = ranks[solver_name]
-        cell_color_str = (
-            r"\cellcolor{" + COLOR_IN_TABLE + "!" + f"{int(50 * rank)}" + "}"
-        )
-        row[pretty_solver_name] = cell_color_str + row[pretty_solver_name]
+        if use_tex and include_color:
+            cell_color_str = (
+                r"\cellcolor{" + COLOR_IN_TABLE + "!" + f"{int(50 * rank)}" + "}"
+            )
+            row[pretty_solver_name] = cell_color_str + row[pretty_solver_name]
 
     new_row = pd.DataFrame(row, index=[0])
     new_row.set_index(index_name, inplace=True)
@@ -245,6 +266,8 @@ def print_table_as_tex(df, normalized: bool = False, transpose: bool = False):
 
     if transpose:
         final_table = final_table.T
+
+    final_table.to_csv(ROOT_DIR / "data" / "results_cache" / "table_ehrlich.csv")
 
     latex_table = final_table.to_latex(escape=False)
     latex_table = r"\resizebox{\textwidth}{!}{" + latex_table + "}"
@@ -260,11 +283,17 @@ def print_table_as_tex(df, normalized: bool = False, transpose: bool = False):
         json.dump(missing_experiments, f)
 
 
-def print_table_for_ehrlich():
+def print_table_for_ehrlich(use_tex: bool = True, include_color: bool = True):
     df = create_base_table_for_ehrlich(save_cache=True, use_cache=True)
 
-    print_table_as_tex(df, transpose=True)
+    print_table_as_tex(
+        df,
+        transpose=True,
+        use_tex=use_tex,
+        include_color=include_color,
+    )
 
 
 if __name__ == "__main__":
-    print_table_for_ehrlich()
+    print_table_for_ehrlich(use_tex=True, include_color=True)
+    print_table_for_ehrlich(use_tex=False, include_color=False)
