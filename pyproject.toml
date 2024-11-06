@@ -19,6 +19,14 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+dev = [
+    "mypy",
+    "black",
+    "isort",
+    "pre-commit",
+    "pytest",
+    "tox",
+]
 bounce = [
     "poli-baselines[bounce]@git+https://github.com/MachineLearningLifeScience/poli-baselines.git"
 ]
