@@ -1,9 +1,5 @@
 import numpy as np
-from ax import (  # type: ignore[import]
-    ParameterType,
-    RangeParameter,
-    SearchSpace,
-)
+from ax import ParameterType, RangeParameter, SearchSpace  # type: ignore[import]
 from ax.core.generator_run import GeneratorRun  # type: ignore[import]
 from ax.core.metric import Metric  # type: ignore[import]
 from ax.metrics.noisy_function import NoisyFunctionMetric  # type: ignore[import]

@@ -52,6 +52,9 @@ warn_return_any = true
 warn_unused_configs = true
 ignore_missing_imports = true
 
+[tool.isort]
+profile = "black"
+
 [tool.pytest.ini_options]
 markers = [
     "hdbo_base: base tests for HDBO",

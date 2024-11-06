@@ -1,4 +1,4 @@
-name: hdbo_bounce 
+name: hdbo_bounce
 channels:
   - defaults
 dependencies:

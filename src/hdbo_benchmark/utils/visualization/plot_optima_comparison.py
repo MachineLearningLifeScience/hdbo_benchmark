@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns  # type: ignore[import]
 
-
 from hdbo_benchmark.utils.data.experiments import load_results_as_dataframe
 
 from .colors import COLORS

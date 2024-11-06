@@ -5,7 +5,6 @@ we visualize the acquisition function and the posterior mean and variance.
 
 import warnings
 
-
 import matplotlib.pyplot as plt
 import numpy as np
 from poli import objective_factory  # type: ignore
