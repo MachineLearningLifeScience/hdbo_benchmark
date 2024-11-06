@@ -5,11 +5,10 @@ When run, this script downloads all the tables for the website.
 import json
 
 import numpy as np
-
 import pandas as pd
 
-from hdbo_benchmark.utils.constants import ROOT_DIR
 from hdbo_benchmark.results.download_tables import create_base_table_for_ehrlich
+from hdbo_benchmark.utils.constants import ROOT_DIR
 
 pd.set_option("display.max_colwidth", None)
 

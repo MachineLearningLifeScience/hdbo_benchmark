@@ -2,15 +2,14 @@
 When run, this script downloads all the tables for the website.
 """
 
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 import matplotlib
-
+import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
+import seaborn as sns
 
-from hdbo_benchmark.utils.constants import ROOT_DIR
 from hdbo_benchmark.results.benchmark_on_pmo.create_table import create_base_table
+from hdbo_benchmark.utils.constants import ROOT_DIR
 
 pd.set_option("display.max_colwidth", None)
 

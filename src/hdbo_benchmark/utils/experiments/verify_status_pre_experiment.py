@@ -1,7 +1,7 @@
 import poli
 import poli_baselines
-import hdbo_benchmark
 
+import hdbo_benchmark
 from hdbo_benchmark.utils.logging import has_uncommitted_changes
 
 

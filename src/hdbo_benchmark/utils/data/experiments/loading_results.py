@@ -1,13 +1,12 @@
 """Utilities for loading the results of the experiments."""
 
-from typing import Dict, Any, List
-from pathlib import Path
 import json
-
-import wandb
+from pathlib import Path
+from typing import Any, Dict, List
 
 import pandas as pd
 
+import wandb
 from hdbo_benchmark.utils.constants import WANDB_ENTITY
 
 ROOT_DIR = Path(__file__).parent.parent.parent.parent.parent.parent.resolve()

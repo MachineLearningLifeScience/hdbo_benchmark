@@ -6,18 +6,15 @@ ESM embeddings that returns the original sequence.
 import json
 from pathlib import Path
 
+import esm
+import lightning as L
 import numpy as np
 import pandas as pd
-
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import TensorDataset, DataLoader
-
-import esm
 from esm import Alphabet
-
-import lightning as L
+from torch.utils.data import DataLoader, TensorDataset
 
 from hdbo_benchmark.utils.constants import ROOT_DIR
 

@@ -1,12 +1,12 @@
 from poli.benchmarks import PMOBenchmark
 from poli.core.problem import Problem
 
-from hdbo_benchmark.generative_models.vae_factory import VAEFactory, VAE
-from hdbo_benchmark.generative_models.protein_ae_factory import (
-    ProteinAEFactory,
-    LitAutoEncoder,
-)
 from hdbo_benchmark.generative_models.onehot import OneHot
+from hdbo_benchmark.generative_models.protein_ae_factory import (
+    LitAutoEncoder,
+    ProteinAEFactory,
+)
+from hdbo_benchmark.generative_models.vae_factory import VAE, VAEFactory
 
 
 def load_generative_model_and_bounds(

@@ -1,11 +1,10 @@
 """Utilities for loading the Zinc 250k dataset"""
 
-from typing import Dict, Tuple
-from pathlib import Path
 import json
+from pathlib import Path
+from typing import Dict, Tuple
 
 import numpy as np
-
 import torch
 from torch.utils.data import DataLoader, TensorDataset
 

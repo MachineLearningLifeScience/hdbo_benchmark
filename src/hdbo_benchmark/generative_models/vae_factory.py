@@ -8,11 +8,11 @@ from typing import Literal
 
 import torch
 
-from hdbo_benchmark.generative_models.vae import VAE
-from hdbo_benchmark.generative_models.vae_selfies import VAESelfies
-from hdbo_benchmark.generative_models.vae_mario import VAEMario
-from hdbo_benchmark.utils.constants import DEVICE
 from hdbo_benchmark.assets import __file__ as ASSETS_PATH
+from hdbo_benchmark.generative_models.vae import VAE
+from hdbo_benchmark.generative_models.vae_mario import VAEMario
+from hdbo_benchmark.generative_models.vae_selfies import VAESelfies
+from hdbo_benchmark.utils.constants import DEVICE
 
 ASSETS_DIR = Path(ASSETS_PATH).parent
 

@@ -5,23 +5,21 @@ To run this example, you will need to install wandb:
     pip install wandb
 """
 
-# mypy: disable-error-code="import-untyped"
-from typing import Literal
 from dataclasses import dataclass
 
-import numpy as np
-import wandb
+# mypy: disable-error-code="import-untyped"
+from typing import Literal
 
+import numpy as np
 import poli
+import poli_baselines
 from poli.core.black_box_information import BlackBoxInformation
 from poli.core.problem import Problem
 from poli.core.util.abstract_observer import AbstractObserver
 
-import poli_baselines
-
 import hdbo_benchmark
-
-from hdbo_benchmark.utils.constants import WANDB_PROJECT, WANDB_ENTITY
+import wandb
+from hdbo_benchmark.utils.constants import WANDB_ENTITY, WANDB_PROJECT
 from hdbo_benchmark.utils.logging.library_hashes import get_git_hash_of_library
 from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
 

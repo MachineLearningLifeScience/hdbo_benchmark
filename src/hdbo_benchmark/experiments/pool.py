@@ -2,12 +2,10 @@
 This file takes a .sh script, and runs it in parallel using the multiprocessing library.
 """
 
-from multiprocessing import Pool
 import subprocess
+from multiprocessing import Pool
 
 import click
-
-import subprocess
 
 
 def run(line: str):

@@ -2,44 +2,40 @@
 Running the benchmark on additive RaSP
 """
 
+import json
+
 # mypy: disable-error-code="import-untyped"
 from typing import Callable
 from uuid import uuid4
-import json
 
 import click
-
-import pandas as pd
-import torch
-import numpy as np
-
 import esm
-
+import numpy as np
+import pandas as pd
 import poli
-from poli.repository import RaspProblemFactory
-from poli.core.util.seeding import seed_numpy, seed_python
+import poli_baselines
+import torch
 from poli.core.abstract_black_box import AbstractBlackBox
 from poli.core.exceptions import BudgetExhaustedException
-
-import poli_baselines
+from poli.core.util.seeding import seed_numpy, seed_python
+from poli.repository import RaspProblemFactory
 
 import hdbo_benchmark
 from hdbo_benchmark.generative_models.ae_for_esm import LitAutoEncoder
+from hdbo_benchmark.utils.constants import DEVICE, ROOT_DIR
 from hdbo_benchmark.utils.experiments.load_solvers import (
-    load_solver_class,
     SOLVER_NAMES,
+    load_solver_class,
 )
 from hdbo_benchmark.utils.experiments.normalization import (
-    from_unit_cube_to_range,
     from_range_to_unit_cube,
+    from_unit_cube_to_range,
 )
-from hdbo_benchmark.utils.constants import ROOT_DIR, DEVICE
-from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
-
-from hdbo_benchmark.utils.logging.wandb_observer import initialize_observer
 from hdbo_benchmark.utils.logging.idempotence_of_experiments import (
     experiment_has_already_run,
 )
+from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
+from hdbo_benchmark.utils.logging.wandb_observer import initialize_observer
 
 torch.set_default_dtype(torch.float32)
 

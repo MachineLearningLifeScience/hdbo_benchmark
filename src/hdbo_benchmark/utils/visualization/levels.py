@@ -5,10 +5,10 @@ plot levels.
 
 from pathlib import Path
 
-import torch
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 import PIL
+import torch
 
 from hdbo_benchmark.utils.mario.levels import onehot_to_levels
 

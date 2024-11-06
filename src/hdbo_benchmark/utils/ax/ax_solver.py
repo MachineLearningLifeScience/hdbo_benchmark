@@ -1,20 +1,18 @@
-from typing import Tuple
 import uuid
+from typing import Tuple
 
-from numpy import ndarray
 import numpy as np
-
-from poli.objective_repository import ToyContinuousBlackBox  # type: ignore[import]
+from ax.modelbridge.generation_strategy import (  # type: ignore[import]
+    GenerationStep,
+    GenerationStrategy,
+)
+from ax.service.ax_client import AxClient, ObjectiveProperties  # type: ignore[import]
+from numpy import ndarray
 from poli.core.abstract_black_box import AbstractBlackBox  # type: ignore[import]
-
+from poli.objective_repository import ToyContinuousBlackBox  # type: ignore[import]
 from poli_baselines.core.abstract_solver import AbstractSolver  # type: ignore[import]
 
-from hdbo_benchmark.utils.ax.interface import (
-    define_search_space,
-)
-
-from ax.service.ax_client import AxClient, ObjectiveProperties  # type: ignore[import]
-from ax.modelbridge.generation_strategy import GenerationStep, GenerationStrategy  # type: ignore[import]
+from hdbo_benchmark.utils.ax.interface import define_search_space
 
 
 class AxSolver(AbstractSolver):

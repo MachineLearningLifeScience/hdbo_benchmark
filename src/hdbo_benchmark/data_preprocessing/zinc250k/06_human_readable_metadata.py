@@ -5,8 +5,8 @@ directory, containing information about e.g. the maximum
 sequence length, and the length of the alphabet.
 """
 
-from pathlib import Path
 import json
+from pathlib import Path
 
 import pandas as pd
 

@@ -1,8 +1,8 @@
-from pathlib import Path
 from collections import defaultdict
+from pathlib import Path
 
-import torch
 import gpytorch  # type: ignore[import]
+import torch
 
 ROOT_DIR = Path(__file__).parent.parent.parent.parent.parent.resolve()
 MODELS_DIR = ROOT_DIR / "data" / "trained_models" / "gps"

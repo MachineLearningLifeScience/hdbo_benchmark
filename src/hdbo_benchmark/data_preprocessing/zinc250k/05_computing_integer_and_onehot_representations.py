@@ -8,12 +8,11 @@ These representations are saved to disk as .npz files at
 experiments/assets/data/small_molecules/processed/
 """
 
-from pathlib import Path
 import json
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
-
 import selfies as sf  # type: ignore
 
 if __name__ == "__main__":

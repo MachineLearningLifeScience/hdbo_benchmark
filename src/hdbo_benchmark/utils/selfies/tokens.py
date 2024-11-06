@@ -2,15 +2,13 @@
 A set of utilities to transform SELFIE strings into tokens and vice versa.
 """
 
-from pathlib import Path
-from typing import List, Dict, Union, Any
-
 import json
 import re
-
-import torch
+from pathlib import Path
+from typing import Any, Dict, List, Union
 
 import selfies as sf  # type: ignore[import]
+import torch
 
 ROOT_DIR = Path(__file__).parent.parent.parent.resolve()
 

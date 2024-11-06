@@ -1,11 +1,10 @@
 from typing import Callable
 
 import torch
-
 from torch.utils.data import DataLoader
 
-from hdbo_benchmark.generative_models import VAESelfies, VAEMario
-from hdbo_benchmark.utils.constants import MODELS_DIR, DEVICE
+from hdbo_benchmark.generative_models import VAEMario, VAESelfies
+from hdbo_benchmark.utils.constants import DEVICE, MODELS_DIR
 
 MODELS_DIR.mkdir(exist_ok=True, parents=True)
 

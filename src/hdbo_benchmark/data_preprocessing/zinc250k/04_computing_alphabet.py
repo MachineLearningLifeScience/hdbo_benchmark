@@ -1,13 +1,13 @@
 """Computes the alphabet by counting the tokens in the dataset."""
 
 from __future__ import annotations
+
+import json
 from collections import defaultdict
 from pathlib import Path
-import json
 
-import pandas as pd
 import matplotlib.pyplot as plt
-
+import pandas as pd
 import selfies as sf  # type: ignore
 
 if __name__ == "__main__":

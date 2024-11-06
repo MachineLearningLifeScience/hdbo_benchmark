@@ -1,10 +1,10 @@
 from pathlib import Path
-from typing import Union, Optional
+from typing import Optional, Union
 
-import numpy as np
-import torch
 import matplotlib.pyplot as plt
+import numpy as np
 import seaborn as sns  # type: ignore
+import torch
 
 from .constants import FONT_SIZE, SQUARE_FIG_SIZE
 

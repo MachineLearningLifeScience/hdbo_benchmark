@@ -5,9 +5,9 @@ script transforms the SMILES representation of the
 molecules in the ZINC dataset to SELFIES.
 """
 
-from typing import List
 import pickle
 from pathlib import Path
+from typing import List
 
 import selfies as sf
 
