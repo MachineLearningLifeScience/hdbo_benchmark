@@ -398,6 +398,9 @@
     <li class="nav-item" role="presentation">
         <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-rasp32d">RaSP 32D</button>
     </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-ehrlich">Ehrlich</button>
+    </li>
 </ul>
 
 <div class="tab-content" id="pills-tabContent">
@@ -2191,6 +2194,267 @@
     }
 </style>
 
+
+    
+    
+    
+
+<div class="tab-pane " id="pills-ehrlich" role="tabpanel" aria-labelledby="pills-ehrlich-tab">
+    <table class="table table-hover border">
+        <thead class="">
+            <tr class="">
+                
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;</th>
+                
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;PestControlEquiv</th>
+                
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Ehrlich(L=5)</th>
+                
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Ehrlich(L=15)</th>
+                
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Ehrlich(L=64)</th>
+                
+                    <th scope="col" class="" data-sortable="true" data-sort-order="desc">&nbsp;Sum (normalized per row)</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">DirectedEvolution</th>
+                    
+
+                    
+                        <td>0.968 +/- 0.03</td>
+                    
+                        <td>1.000 +/- 0.00</td>
+                    
+                        <td>0.448 +/- 0.16</td>
+                    
+                        <td>0.114 +/- 0.07</td>
+                    
+                        <td>2.23 +/- 0.27</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">HillClimbing</th>
+                    
+
+                    
+                        <td>0.640 +/- 0.12</td>
+                    
+                        <td>0.500 +/- 0.25</td>
+                    
+                        <td>0.392 +/- 0.20</td>
+                    
+                        <td>0.089 +/- 0.07</td>
+                    
+                        <td>0.56 +/- 0.64</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">CMAES</th>
+                    
+
+                    
+                        <td>0.816 +/- 0.06</td>
+                    
+                        <td>0.750 +/- 0.18</td>
+                    
+                        <td>0.312 +/- 0.13</td>
+                    
+                        <td>0.077 +/- 0.08</td>
+                    
+                        <td>1.24 +/- 0.45</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">GeneticAlgorithm</th>
+                    
+
+                    
+                        <td>0.712 +/- 0.02</td>
+                    
+                        <td>0.950 +/- 0.11</td>
+                    
+                        <td>0.336 +/- 0.10</td>
+                    
+                        <td>0.083 +/- 0.08</td>
+                    
+                        <td>1.50 +/- 0.31</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">Hvarfner's VanillaBO</th>
+                    
+
+                    
+                        <td>0.928 +/- 0.08</td>
+                    
+                        <td>0.650 +/- 0.14</td>
+                    
+                        <td>0.328 +/- 0.18</td>
+                    
+                        <td>0.079 +/- 0.08</td>
+                    
+                        <td>1.26 +/- 0.47</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">RandomLineBO</th>
+                    
+
+                    
+                        <td>0.624 +/- 0.11</td>
+                    
+                        <td>0.700 +/- 0.27</td>
+                    
+                        <td>0.472 +/- 0.14</td>
+                    
+                        <td>0.084 +/- 0.08</td>
+                    
+                        <td>1.04 +/- 0.60</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">SAASBO</th>
+                    
+
+                    
+                        <td>0.792 +/- 0.05</td>
+                    
+                        <td>0.600 +/- 0.14</td>
+                    
+                        <td>0.328 +/- 0.21</td>
+                    
+                        <td>0.075 +/- 0.06</td>
+                    
+                        <td>0.92 +/- 0.46</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">Turbo</th>
+                    
+
+                    
+                        <td>0.896 +/- 0.04</td>
+                    
+                        <td>0.850 +/- 0.14</td>
+                    
+                        <td>0.480 +/- 0.12</td>
+                    
+                        <td>0.124 +/- 0.11</td>
+                    
+                        <td>1.86 +/- 0.40</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">BAxUS</th>
+                    
+
+                    
+                        <td>0.712 +/- 0.08</td>
+                    
+                        <td>0.550 +/- 0.11</td>
+                    
+                        <td>0.400 +/- 0.11</td>
+                    
+                        <td>0.077 +/- 0.08</td>
+                    
+                        <td>0.79 +/- 0.39</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">Bounce</th>
+                    
+
+                    
+                        <td>1.000 +/- 0.00</td>
+                    
+                        <td>0.900 +/- 0.14</td>
+                    
+                        <td>0.416 +/- 0.13</td>
+                    
+                        <td>0.076 +/- 0.06</td>
+                    
+                        <td>2.00 +/- 0.33</td>
+                    
+                </tr>
+            
+                <tr>
+                    
+                        <th scope="row" class="font-monospace fw-bold">ProbRep</th>
+                    
+
+                    
+                        <td>0.896 +/- 0.04</td>
+                    
+                        <td>0.950 +/- 0.11</td>
+                    
+                        <td>0.328 +/- 0.08</td>
+                    
+                        <td>0.076 +/- 0.08</td>
+                    
+                        <td>1.80 +/- 0.31</td>
+                    
+                </tr>
+            
+        </tbody>
+    </table>
+
+    
+</div>
+
+<script src="../js/jquery-3.7.1.slim.min.js"></script>
+<script src="../js/bootstrap-table.min.js"></script>
+
+<script>
+    function customSort(sortName, sortOrder, data) {
+        var order = sortOrder === 'desc' ? -1 : 1
+        data.sort(function (a, b) {
+            var aa = +((a[sortName] + '').replace(/[^\d]/g, ''))
+            var bb = +((b[sortName] + '').replace(/[^\d]/g, ''))
+            if (aa < bb) {
+                return order * -1
+            }
+            if (aa > bb) {
+                return order
+            }
+            return 0
+        })
+    }
+    $("#pills-ehrlich table").bootstrapTable({
+        customSort: customSort,
+    });
+</script>
+
+<style>
+    th:first-child, td:first-child{
+        position: sticky;
+        left: 0px;
+        z-index: 1;
+    }
+</style>
+
 </div>
 
 
@@ -2247,7 +2511,7 @@
 </div>
 </div>
 
-<script src="../js/main.bundle.min.659dc489e7126ac06aba3d53fdffc60cae0ebf23e29a0f6da85b2ad76a5697f5.js" integrity="sha256-ZZ3EiecSasBquj1T/f/GDK4OvyPimg9tqFsq12pWl/U=" crossorigin="anonymous" async></script>
+<script src="../js/main.bundle.min.5cbddfd2c65d9665a7ea8f8a28a4e36cc14e4f05d5dd483d458feefbf862f16b.js" integrity="sha256-XL3f0sZdlmWn6o&#43;KKKTjbMFOTwXV3Ug9RY/u&#43;/hi8Ws=" crossorigin="anonymous" async></script>
     
 
     
