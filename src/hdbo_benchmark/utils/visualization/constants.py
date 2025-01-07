@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import numpy as np
 from matplotlib.colors import LinearSegmentedColormap
 
 SQUARE_FIG_SIZE = (8, 8)
@@ -9,9 +10,11 @@ ROOT_DIR = Path(__file__).parent.parent.parent.parent.parent
 FIGURE_PATH = ROOT_DIR / "reports" / "figures"
 FIGURE_PATH.mkdir(exist_ok=True, parents=True)
 
-COLORS_FOR_BINARY_MAPS = (
-    (198 / 255, 210 / 255, 210 / 255, 1.0),
-    (69 / 255, 71 / 255, 74 / 255, 1.0),
+COLORS_FOR_BINARY_MAPS = np.array(
+    [
+        [198 / 255, 210 / 255, 210 / 255, 1.0],
+        [69 / 255, 71 / 255, 74 / 255, 1.0],
+    ]
 )
 CMAP_BINARY = LinearSegmentedColormap.from_list(
     "Custom", COLORS_FOR_BINARY_MAPS, len(COLORS_FOR_BINARY_MAPS)
