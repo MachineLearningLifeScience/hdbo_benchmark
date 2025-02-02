@@ -147,9 +147,9 @@ def _load_ehrlich_holo(size: Literal["tiny", "small", "large"]) -> Problem:
 
 def _load_problem(function_name: str) -> Problem:
     match function_name:
-        case function_name if function_name in PMOBenchmark(
-            string_representation="SELFIES"
-        ).problem_names:
+        case function_name if (
+            function_name in PMOBenchmark(string_representation="SELFIES").problem_names
+        ):
             return _load_pmo_problem(function_name)
         case "rfp_rasp":
             return _load_rasp()

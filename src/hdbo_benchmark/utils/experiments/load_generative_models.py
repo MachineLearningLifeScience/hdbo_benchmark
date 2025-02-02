@@ -15,9 +15,9 @@ def load_generative_model_and_bounds(
     problem: Problem,
 ) -> tuple[VAE | LitAutoEncoder, tuple[float, float]]:
     match function_name:
-        case function_name if function_name in PMOBenchmark(
-            string_representation="SELFIES"
-        ).problem_names:
+        case function_name if (
+            function_name in PMOBenchmark(string_representation="SELFIES").problem_names
+        ):
             experiment_name = "benchmark_on_pmo"
             latent_space_bounds = (-10.0, 10.0)
             vae = VAEFactory().create(

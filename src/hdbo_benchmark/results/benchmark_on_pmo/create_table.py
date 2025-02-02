@@ -26,8 +26,8 @@ goes like this:
 """
 
 import pandas as pd
-
 import wandb
+
 from hdbo_benchmark.utils.constants import ROOT_DIR
 from hdbo_benchmark.utils.results.download_from_wandb import get_all_runs_for_experiment
 

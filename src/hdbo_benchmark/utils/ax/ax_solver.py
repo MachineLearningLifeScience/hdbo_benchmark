@@ -54,7 +54,7 @@ class AxSolver(AbstractSolver):
         )
 
         def evaluate(
-            parametrization: dict[str, float]
+            parametrization: dict[str, float],
         ) -> dict[str, tuple[float, float]]:
             x = np.array([[parametrization[f"x{i}"] for i in range(x0.shape[1])]])
             y = black_box(x)

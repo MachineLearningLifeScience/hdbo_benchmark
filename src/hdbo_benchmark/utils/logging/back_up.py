@@ -8,8 +8,8 @@ https://docs.wandb.ai/guides/track/public-api-guide#export-data
 from time import time
 
 import pandas as pd
-
 import wandb
+
 from hdbo_benchmark.utils.constants import ROOT_DIR, WANDB_ENTITY, WANDB_PROJECT
 from hdbo_benchmark.utils.data.experiments.loading_results import _load_run_as_row
 

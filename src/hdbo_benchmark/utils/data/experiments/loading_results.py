@@ -5,8 +5,8 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 import pandas as pd
-
 import wandb
+
 from hdbo_benchmark.utils.constants import WANDB_ENTITY
 
 ROOT_DIR = Path(__file__).parent.parent.parent.parent.parent.parent.resolve()

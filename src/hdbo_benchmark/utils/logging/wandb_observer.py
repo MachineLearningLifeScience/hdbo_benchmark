@@ -13,12 +13,12 @@ from typing import Literal
 import numpy as np
 import poli
 import poli_baselines
+import wandb
 from poli.core.black_box_information import BlackBoxInformation
 from poli.core.problem import Problem
 from poli.core.util.abstract_observer import AbstractObserver
 
 import hdbo_benchmark
-import wandb
 from hdbo_benchmark.utils.constants import WANDB_ENTITY, WANDB_PROJECT
 from hdbo_benchmark.utils.logging.library_hashes import get_git_hash_of_library
 from hdbo_benchmark.utils.logging.uncommited_changes import has_uncommitted_changes
