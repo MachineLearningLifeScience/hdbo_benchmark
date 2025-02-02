@@ -84,10 +84,6 @@ conda env create --file environment.data_preprocessing.yml
 
 and following the scripts in `src/hdbo_benchmark/data_preprocessing/zinc250k` inside that env (`conda activate hdbo__data_preprocessing`).
 
-## Training a simple autoencoder for protein sequences
-
-...TODO: write.
-
 ## Citing all the relevant work
 
 Depending on the black box you use within `poli`, we expect you to cite a set of references. [Check the documentation of the black box for a list (including `bibtex`)](https://machinelearninglifescience.github.io/poli-docs/using_poli/objective_repository/all_objectives.html).
