@@ -7,7 +7,10 @@ import json
 import numpy as np
 import pandas as pd
 
-from hdbo_benchmark.results.download_tables import create_base_table_for_ehrlich
+from hdbo_benchmark.results.download_tables import (
+    create_base_table_for_ehrlich,
+    create_base_table_for_entire_benchmark,
+)
 from hdbo_benchmark.utils.constants import ROOT_DIR
 
 pd.set_option("display.max_colwidth", None)
@@ -54,7 +57,9 @@ def compute_pretty_names_for_functions():
     }
 
 
-def select_runs(df: pd.DataFrame, function_name: str, solver_name: str) -> pd.DataFrame:
+def select_runs(
+    df: pd.DataFrame, function_name: str, solver_name: str
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     sliced_df = df[
         (df["function_name"] == function_name) & (df["solver_name"] == solver_name)
     ]
@@ -63,9 +68,23 @@ def select_runs(df: pd.DataFrame, function_name: str, solver_name: str) -> pd.Da
     max_iter = 1299 if function_name == "ehrlich_holo_large" else 309
     sliced_df = sliced_df[sliced_df["_step"] <= max_iter]
 
+    # # Saving the longest runs per seed per problem
+    # longest_runs_per_problem_per_seed: dict[str, list[int]] = {}
+    # for function_name in sliced_df["function_name"].unique():
+    #     longest_runs_per_problem_per_seed[function_name] = []
+    #     for seed_ in range(1, 6):
+    #         sliced_df_of_seed = sliced_df[sliced_df["seed"] == seed_]
+    #         longest_run = (
+    #             sliced_df_of_seed.groupby("experiment_id")["_step"].max().nlargest(1)
+    #         )
+    #         longest_runs_per_problem_per_seed[function_name].append(
+    #             longest_run.index[0]
+    #         )
+
     # If the number of experiments is greater than 5, we need to select the "longest" 5,
     # i.e. the ones in which the number of iterations is the greatest (for each seed)
-    if len(sliced_df["experiment_id"].unique()) > 5:
+    rows_for_summary = []
+    if len(sliced_df["experiment_id"].unique()) >= 5:
         slices_per_seed = []
         for seed_ in range(1, 6):
             assert seed_ in sliced_df["seed"].unique()
@@ -75,6 +94,15 @@ def select_runs(df: pd.DataFrame, function_name: str, solver_name: str) -> pd.Da
             )
             print(
                 f"Largest experiment id for {solver_name} in {function_name} (seed {seed_}): {experiment_id_of_longest_runs.index[0]} ({experiment_id_of_longest_runs.values[0]})"
+            )
+            rows_for_summary.append(
+                {
+                    "function_name": function_name,
+                    "solver_name": solver_name,
+                    "seed": seed_,
+                    "experiment_id": experiment_id_of_longest_runs.index[0],
+                    "max_steps": experiment_id_of_longest_runs.values[0],
+                }
             )
             slices_per_seed.append(
                 sliced_df_of_seed[
@@ -89,8 +117,12 @@ def select_runs(df: pd.DataFrame, function_name: str, solver_name: str) -> pd.Da
         assert len(sliced_df["seed"].unique()) == 5
         for i in range(1, 6):
             assert i in sliced_df["seed"].unique()
+    else:
+        print(
+            f"Something's fishy with {function_name} and {solver_name}. Seeds: {sliced_df['seed'].unique()}"
+        )
 
-    return sliced_df
+    return sliced_df, pd.DataFrame(rows_for_summary)
 
 
 def summary_per_function(
@@ -98,14 +130,18 @@ def summary_per_function(
     normalized_per_row: bool = True,
     use_tex: bool = True,
     normalize_with_max_value: float | None = None,
-) -> tuple[pd.DataFrame, pd.DataFrame]:
+) -> tuple[pd.DataFrame, pd.DataFrame, list[dict[str, str]], pd.DataFrame]:
     solver_name_but_pretty = compute_pretty_names_for_solvers(use_tex=use_tex)
 
     rows = []
     missing_experiments = []
+    run_lengths = []
     for function_name in df["function_name"].unique():
         for solver_name in df["solver_name"].unique():
-            slice_df = select_runs(df, function_name, solver_name)
+            slice_df, summary_of_run_lengths = select_runs(
+                df, function_name, solver_name
+            )
+            run_lengths.append(summary_of_run_lengths)
             if (
                 len(slice_df["seed"].unique()) != 5
                 and solver_name in solver_name_but_pretty.keys()
@@ -155,7 +191,7 @@ def summary_per_function(
                 continue
             summary_avg.loc[i] = (row - lowest_value) / (best_value - lowest_value)
 
-    return summary_avg, summary_std, missing_experiments
+    return summary_avg, summary_std, missing_experiments, pd.concat(run_lengths)
 
 
 def print_table_as_tex(
@@ -168,20 +204,33 @@ def print_table_as_tex(
     solver_name_but_pretty = compute_pretty_names_for_solvers(use_tex=use_tex)
     problem_name_but_pretty = compute_pretty_names_for_functions()
     index_name = "Solver" + r"\textbackslash " + "Oracle" if transpose else "Oracle"
-    summary_avg, summary_std, missing_experiments = summary_per_function(
+    summary_avg, summary_std, missing_experiments, run_lengths = summary_per_function(
         df, normalized_per_row=normalized
     )
-    summary_avg_normalized, _, _ = summary_per_function(
+    summary_avg_normalized, _, _, _ = summary_per_function(
         df, normalized_per_row=True, normalize_with_max_value=1.0
     )
 
     final_table_rows: list[dict[str, str]] = []
-    for function_name, pretty_function_name in problem_name_but_pretty.items():
+    for function_name in summary_avg.index:
+        pretty_function_name = problem_name_but_pretty.get(function_name, function_name)
         row = {
             index_name: pretty_function_name,
         }
         for solver_name, pretty_solver_name in solver_name_but_pretty.items():
+            run_lengths_for_solver = run_lengths[
+                (run_lengths["function_name"] == function_name)
+                & (run_lengths["solver_name"] == solver_name)
+            ]
             if solver_name not in summary_avg.columns:
+                row[pretty_solver_name] = r"\alert{[TBD]}"
+                continue
+            if any(run_lengths_for_solver["max_steps"] < 20):
+                print(
+                    f"Some runs for {pretty_solver_name} in {pretty_function_name}"
+                    " have less than 20 steps."
+                    " Will consider them as TBD for now."
+                )
                 row[pretty_solver_name] = r"\alert{[TBD]}"
                 continue
 
@@ -266,20 +315,33 @@ def print_table_as_tex(
     if transpose:
         final_table = final_table.T
 
-    final_table.to_csv(ROOT_DIR / "data" / "results_cache" / "table_ehrlich.csv")
+    final_table.to_csv(ROOT_DIR / "data" / "results_cache" / "table_benchmark.csv")
 
     latex_table = final_table.to_latex(escape=False)
     latex_table = r"\resizebox{\textwidth}{!}{" + latex_table + "}"
 
     print(latex_table)
 
-    with open(ROOT_DIR / "data" / "results_cache" / "table_ehrlich.tex", "w") as f:
+    with open(ROOT_DIR / "data" / "results_cache" / "table_benchmark.tex", "w") as f:
         f.write(latex_table)
 
     with open(
-        ROOT_DIR / "data" / "results_cache" / "missing_experiments_ehrlich.json", "w"
+        ROOT_DIR / "data" / "results_cache" / "missing_experiments.json", "w"
     ) as f:
         json.dump(missing_experiments, f)
+
+    run_lengths.to_csv(ROOT_DIR / "data" / "results_cache" / "run_lengths.csv")
+
+
+def print_table_for_website(use_tex: bool = True, include_color: bool = True):
+    df = create_base_table_for_entire_benchmark(save_cache=True, use_cache=True)
+
+    print_table_as_tex(
+        df,
+        transpose=False,
+        use_tex=use_tex,
+        include_color=include_color,
+    )
 
 
 def print_table_for_ehrlich(use_tex: bool = True, include_color: bool = True):
@@ -294,5 +356,4 @@ def print_table_for_ehrlich(use_tex: bool = True, include_color: bool = True):
 
 
 if __name__ == "__main__":
-    print_table_for_ehrlich(use_tex=True, include_color=True)
-    print_table_for_ehrlich(use_tex=False, include_color=False)
+    print_table_for_website(use_tex=True, include_color=False)

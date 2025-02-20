@@ -30,6 +30,7 @@ import pandas as pd
 import wandb
 from hdbo_benchmark.utils.constants import ROOT_DIR
 from hdbo_benchmark.utils.results.download_from_wandb import (
+    get_all_runs_for_experiment,
     get_all_runs_for_function_names,
 )
 
@@ -85,10 +86,33 @@ def create_base_table_for_ehrlich(
     return df
 
 
+def create_base_table_for_entire_benchmark(
+    save_cache: bool = True,
+    use_cache: bool = False,
+    tags: list[str] | None = None,
+):
+    CACHE_PATH = ROOT_DIR / "data" / "results_cache"
+    CACHE_PATH.mkdir(exist_ok=True, parents=True)
+    tags_str = "-".join(tags) if tags is not None else "all"
+    CACHE_FILE = CACHE_PATH / f"base_table_entire_benchmark-tags-{tags_str}.csv"
+
+    if use_cache and CACHE_FILE.exists():
+        df = pd.read_csv(CACHE_FILE)
+        return df
+
+    all_runs = get_all_runs_for_experiment(experiment_name="hdbo-benchmark-results-v2")
+    all_dfs = convert_data_to_dataframes(all_runs)
+
+    df = pd.concat(all_dfs)
+    if save_cache:
+        df.to_csv(CACHE_FILE, index=False)
+
+    return df
+
+
 if __name__ == "__main__":
-    df = create_base_table_for_ehrlich(
+    create_base_table_for_entire_benchmark(
         save_cache=True,
-        use_cache=True,
+        use_cache=False,
         tags=None,
     )
-    print(df)
