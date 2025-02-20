@@ -3,7 +3,7 @@ When run, this script downloads all the tables for the website.
 """
 
 import json
-
+from typing import Literal
 import numpy as np
 import pandas as pd
 
@@ -58,11 +58,16 @@ def compute_pretty_names_for_functions():
 
 
 def select_runs(
-    df: pd.DataFrame, function_name: str, solver_name: str
+    df: pd.DataFrame,
+    function_name: str,
+    solver_name: str,
+    n_dimensions: Literal[128, 2, None] = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     sliced_df = df[
         (df["function_name"] == function_name) & (df["solver_name"] == solver_name)
     ]
+    if n_dimensions is not None:
+        sliced_df = sliced_df[sliced_df["n_dimensions"] == n_dimensions]
     sliced_df = sliced_df[sliced_df["seed"].isin([1, 2, 3, 4, 5])]
 
     max_iter = 1299 if function_name == "ehrlich_holo_large" else 309
@@ -130,6 +135,7 @@ def summary_per_function(
     normalized_per_row: bool = True,
     use_tex: bool = True,
     normalize_with_max_value: float | None = None,
+    n_dimensions: Literal[128, 2, None] = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame, list[dict[str, str]], pd.DataFrame]:
     solver_name_but_pretty = compute_pretty_names_for_solvers(use_tex=use_tex)
 
@@ -200,15 +206,21 @@ def print_table_as_tex(
     transpose: bool = False,
     use_tex: bool = True,
     include_color: bool = True,
+    n_dimensions: Literal[128, 2, None] = None,
 ):
     solver_name_but_pretty = compute_pretty_names_for_solvers(use_tex=use_tex)
     problem_name_but_pretty = compute_pretty_names_for_functions()
     index_name = "Solver" + r"\textbackslash " + "Oracle" if transpose else "Oracle"
     summary_avg, summary_std, missing_experiments, run_lengths = summary_per_function(
-        df, normalized_per_row=normalized
+        df,
+        normalized_per_row=normalized,
+        n_dimensions=n_dimensions,
     )
     summary_avg_normalized, _, _, _ = summary_per_function(
-        df, normalized_per_row=True, normalize_with_max_value=1.0
+        df,
+        normalized_per_row=True,
+        normalize_with_max_value=1.0,
+        n_dimensions=n_dimensions,
     )
 
     final_table_rows: list[dict[str, str]] = []
@@ -315,25 +327,40 @@ def print_table_as_tex(
     if transpose:
         final_table = final_table.T
 
-    final_table.to_csv(ROOT_DIR / "data" / "results_cache" / "table_benchmark.csv")
+    final_table.to_csv(
+        ROOT_DIR / "data" / "results_cache" / f"table_benchmark_{n_dimensions}.csv"
+    )
 
     latex_table = final_table.to_latex(escape=False)
     latex_table = r"\resizebox{\textwidth}{!}{" + latex_table + "}"
 
     print(latex_table)
 
-    with open(ROOT_DIR / "data" / "results_cache" / "table_benchmark.tex", "w") as f:
+    with open(
+        ROOT_DIR / "data" / "results_cache" / f"table_benchmark_{n_dimensions}.tex",
+        "w",
+    ) as f:
         f.write(latex_table)
 
     with open(
-        ROOT_DIR / "data" / "results_cache" / "missing_experiments.json", "w"
+        ROOT_DIR
+        / "data"
+        / "results_cache"
+        / f"missing_experiments_{n_dimensions}.json",
+        "w",
     ) as f:
         json.dump(missing_experiments, f)
 
-    run_lengths.to_csv(ROOT_DIR / "data" / "results_cache" / "run_lengths.csv")
+    run_lengths.to_csv(
+        ROOT_DIR / "data" / "results_cache" / f"run_lengths_{n_dimensions}.csv"
+    )
 
 
-def print_table_for_website(use_tex: bool = True, include_color: bool = True):
+def print_table_for_website(
+    use_tex: bool = True,
+    include_color: bool = True,
+    n_dimensions: Literal[128, 2] = 128,
+):
     df = create_base_table_for_entire_benchmark(save_cache=True, use_cache=True)
 
     print_table_as_tex(
@@ -341,6 +368,7 @@ def print_table_for_website(use_tex: bool = True, include_color: bool = True):
         transpose=False,
         use_tex=use_tex,
         include_color=include_color,
+        n_dimensions=n_dimensions,
     )
 
 
@@ -356,4 +384,5 @@ def print_table_for_ehrlich(use_tex: bool = True, include_color: bool = True):
 
 
 if __name__ == "__main__":
-    print_table_for_website(use_tex=True, include_color=False)
+    print_table_for_website(use_tex=True, include_color=False, n_dimensions=128)
+    print_table_for_website(use_tex=True, include_color=False, n_dimensions=2)

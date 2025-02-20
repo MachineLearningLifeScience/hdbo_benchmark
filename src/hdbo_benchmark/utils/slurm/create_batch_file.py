@@ -35,7 +35,12 @@ def write_batch_script_for_commands(
 
     # Writing the instruction file
     with open(instruction_file_output_path, "w") as fp_instruction:
-        fp_instruction.writelines(commands)
+        fp_instruction.writelines(
+            [
+                command + "\n" if not command.endswith("\n") else command
+                for command in commands
+            ]
+        )
 
     # Making sure the output and error dirs exist
     Path(output_dir).mkdir(parents=True, exist_ok=True)
