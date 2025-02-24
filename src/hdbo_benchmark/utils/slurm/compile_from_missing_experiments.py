@@ -60,13 +60,15 @@ def from_incomplete_experiments_to_slurm_script(
 ):
     commands = []
     for experiment in incomplete_experiments:
+        max_iter = 300
         commands.append(
-            f"conda run -n {SOLVER_TO_CONDA_ENV_NAME[experiment['solver_name']]} python run.py --function-name {experiment['function_name']} --solver-name {experiment['solver_name']} --n-dimensions {experiment['n_dimensions']} --seed {experiment['seed']} --max-iter {experiment['max_steps']} --strict-on-hash --force-run --wandb-mode {wandb_mode} --tag {tag}"
+            f"conda run -n {SOLVER_TO_CONDA_ENV_NAME[experiment['solver_name']]} python run.py --function-name {experiment['function_name']} --solver-name {experiment['solver_name']} --n-dimensions {experiment['n_dimensions']} --seed {experiment['seed']} --max-iter {max_iter} --strict-on-hash --force-run --wandb-mode {wandb_mode} --tag {tag}"
         )
 
     write_batch_script_for_commands(
         commands,
         job_name=f"incomplete-experiments-{n_dimensions}-{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}",
+        gpu_resources="",
         slurm_script_output_path=ROOT_DIR
         / f"incomplete-experiments-{n_dimensions}.local.sh",
         instruction_file_output_path=ROOT_DIR

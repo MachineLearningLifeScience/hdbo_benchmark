@@ -21,6 +21,9 @@ def write_batch_script_for_commands(
     output_dir: str = f"slurm_logs/{WANDB_PROJECT}",
     error_dir: str = f"slurm_logs/{WANDB_PROJECT}",
     gpu_resources: str = "--gres=gpu:titanx:1",
+    cpus_per_task: int = 3,
+    mem: str = "16G",
+    time: str = "23:59:59",
     parallel_count: int = 1,
     slurm_script_output_path: Path | str = ROOT_DIR / "batch_script.local.sh",
     instruction_file_output_path: Path | str = ROOT_DIR / "lines_to_run.local.sh",
@@ -55,6 +58,9 @@ def write_batch_script_for_commands(
         "line_count": line_count,
         "parallel_count": parallel_count,
         "commands_file": instruction_file_output_path,
+        "cpus_per_task": cpus_per_task,
+        "mem": mem,
+        "time": time,
     }
 
     # Render the template with the context
