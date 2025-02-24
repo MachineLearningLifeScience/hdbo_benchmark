@@ -13,6 +13,7 @@ import numpy as np
 from poli.core.exceptions import BudgetExhaustedException
 from poli.core.util.seeding import seed_python_numpy_and_torch
 
+from hdbo_benchmark.utils.constants import WANDB_PROJECT
 from hdbo_benchmark.utils.experiments.load_generative_models import (
     load_generative_model_and_bounds,
 )
@@ -56,7 +57,7 @@ def _main(
         not force_run
         and wandb_mode == "online"
         and experiment_has_already_run(
-            experiment_name="hdbo_benchmark_results",
+            experiment_name=WANDB_PROJECT,
             solver_name=solver_name,
             function_name=function_name,
             n_dimensions=n_dimensions,
@@ -78,7 +79,7 @@ def _main(
 
     # Setting the observer configuration
     observer_config = ObserverConfig(
-        experiment_name="hdbo_benchmark_results",
+        experiment_name=WANDB_PROJECT,
         function_name=function_name,
         solver_name=solver_name,
         n_dimensions=n_dimensions,

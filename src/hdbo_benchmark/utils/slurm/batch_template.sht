@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name={{ job_name }}
+#SBATCH --output={{ output_path }}/%j.log
+#SBATCH --error={{ error_path }}/%j.err
+#SBATCH -p gpu {{ gpu_resources }}
+#SBATCH --array=1-{{ line_count }}%{{ parallel_count }}
+#SBATCH --cpus-per-task={{ cpus_per_task }}
+#SBATCH --mem={{ mem }}
+#SBATCH --time={{ time }}
+
+# Get the command from the corresponding line in the file
+command=$(sed -n "${SLURM_ARRAY_TASK_ID}p" {{ commands_file }})
+
+# Execute the command
+echo "Running command: $command"
+eval $command

@@ -9,7 +9,7 @@ sns.set_theme(style="whitegrid", font_scale=2.5)
 matplotlib.rcParams.update({"text.usetex": True})
 
 initialization = {
-    r"Hvarfner's \texttt{VanillaBO}": [33, 40, 59, 89, 240],
+    r"Hvarfner's": [33, 40, 59, 89, 240],
     r"\texttt{RandomLineBO}": [],
     r"\texttt{SAASBO}": [10, 20],
     r"\texttt{Turbo}": [50, 100, 1000],
@@ -23,7 +23,7 @@ initialization = {
 }
 
 evaluation_budget = {
-    r"Hvarfner's \texttt{VanillaBO}": [100, 200, 500, 1000],
+    r"Hvarfner's": [100, 200, 500, 1000],
     r"\texttt{RandomLineBO}": [1000],
     r"\texttt{BAxUS}": [100, 500, 1000],
     r"\texttt{SAASBO}": [50, 100, 400],
@@ -37,7 +37,7 @@ evaluation_budget = {
 }
 
 independent_replications = {
-    r"Hvarfner's \texttt{VanillaBO}": [10, 20],
+    r"Hvarfner's": [10, 20],
     r"\texttt{RandomLineBO}": [100],
     r"\texttt{BAxUS}": [20],
     r"\texttt{SAASBO}": [30],
